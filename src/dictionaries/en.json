@@ -1,0 +1,9 @@
+{
+
+	"shared": {
+		"not-found-page": "This page is not found"
+	},
+	"home": {
+		"title": "Hello, World!"
+	}
+}

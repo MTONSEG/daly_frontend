@@ -1,0 +1,45 @@
+.primaryBtn {
+    color: #fff;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 26px;
+    background: #36dd65;
+    border: none;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    &:hover {
+        background: #1ba341;
+    }
+    &.default {
+        padding: 16px 32px;
+    }
+    &.buying {
+        padding: 16px 38px;
+    }
+    &.basket-btn {
+        padding: 16px 26px;
+    }
+    &.medium {
+        padding: 16px 45px;
+    }
+    &.large {
+        padding: 16px 80px;
+    }
+    a {
+        color: white !important;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .primaryBtn.basket-btn {
+        width: auto;
+        padding: 12px 17px;
+    }
+}

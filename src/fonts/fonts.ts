@@ -1,5 +1,4 @@
 import { Roboto, Open_Sans, Poppins, Nunito } from 'next/font/google'
-// import { Poppins } from 'next/font/google'
 
 export const roboto = Roboto({
 	weight: ['400', '500'],

@@ -1,3 +1,4 @@
+import ProductCardFav from '@/components/ui/ProductCardFav'
 import { useTranslations } from 'next-intl'
 
 export default function Home() {
@@ -14,6 +15,8 @@ export default function Home() {
 		<>
 			<main>
 				<h1>{t('title')}</h1>
+				<div>hey</div>
+				<ProductCardFav id={1}></ProductCardFav>
 			</main>
 		</>
 	)

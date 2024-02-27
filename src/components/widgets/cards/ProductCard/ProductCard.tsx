@@ -3,11 +3,11 @@ import './ProductCard.scss'
 
 import { IProduct } from '@/types/types'
 
-import ProductCardFav from './ProductCardFav/ProductCardFav'
+import ProductCardFav from '../../../ui/buttons/FavouriteButton/FavouriteButton'
 import ProductCardImg from './ProductCardImg/ProductCardImg'
 import ProductCardInfo from './ProductCardInfo/ProductCardInfo'
 import ColorPicker from '../../ColorPicker/ColorPicker'
-import BuyButton from '@/components/ui/Buttons/BuyButton/BuyButton'
+import BuyButton from '@/components/ui/buttons/BuyButton/BuyButton'
 
 interface IProductCardProps {
 	product: IProduct
@@ -17,7 +17,9 @@ interface IProductCardProps {
 const ProductCard: React.FC<IProductCardProps> = ({ product, variant }) => {
 	return (
 		<div className={`product-card ${variant && variant}`}>
-			<ProductCardFav id={product.id}></ProductCardFav>
+			<div className='product-card__fav-container'>
+				<ProductCardFav id={product.id} isLabeled={false}></ProductCardFav>
+			</div>
 			<ProductCardImg
 				variant={variant}
 				urls={product.attributes.images}

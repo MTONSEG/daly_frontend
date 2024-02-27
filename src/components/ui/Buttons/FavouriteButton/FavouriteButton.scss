@@ -1,0 +1,16 @@
+.favourite-button {
+	&__container {
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		font-family: var(--font-family);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 150%;
+		color: #363a45;
+	}
+	&__icon {
+		width: 15px;
+		height: 14px;
+	}
+}

@@ -9,6 +9,8 @@ export default function Home() {
 			<main>
 				<Header />
 				<h1>{t('title')}</h1>
+				<div>hey</div>
+				<ProductCardFav id={1}></ProductCardFav>
 			</main>
 		</>
 	)

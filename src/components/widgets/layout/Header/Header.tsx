@@ -1,20 +1,12 @@
-'use client'
 import './Header.scss'
-import V from '@/icons/next.svg'
-import banner from '@/images/banner.jpg'
-import Image from 'next/image'
+import TopHeader from '@/components/widgets/layout/Header/TopHeader/TopHeader'
+import BottomHeader from '@/components/widgets/layout/Header/BottomHeader/BottomHeader'
 
 export default function Header() {
-	console.log(Image);
-	
-
 	return (
 		<header className='header'>
-			<div className='icon-wrap'>
-				<V />
-
-				<Image src={banner} alt='test' />
-			</div>
+			<TopHeader />
+			<BottomHeader />
 		</header>
 	)
 }

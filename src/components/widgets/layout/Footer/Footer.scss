@@ -1,0 +1,9 @@
+.header {
+	&:hover svg {
+		fill: brown;
+	}
+
+	svg {
+		fill: red;
+	}
+}

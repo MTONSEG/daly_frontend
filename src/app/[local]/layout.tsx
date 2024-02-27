@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/global.scss'
 import { poppins } from '@/fonts/fonts'
 import { ReduxProvider } from '@/components/providers/ReduxProvider'
+import Header from '@/components/widgets/layout/Header/Header'
+import Footer from '@/components/widgets/layout/Footer/Footer'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -21,7 +23,13 @@ export default function RootLayout({
 	return (
 		<html lang={local}>
 			<body className={poppins.variable}>
-				<ReduxProvider>{children}</ReduxProvider>
+				<ReduxProvider>
+					<div className='wrapper'>
+						<Header />
+						<main className='main'>{children}</main>
+						<Footer />
+					</div>
+				</ReduxProvider>
 			</body>
 		</html>
 	)

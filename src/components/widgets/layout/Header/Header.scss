@@ -1,3 +1,50 @@
 .header {
 	position: relative;
 }
+
+.top-header__row,
+.top-header__actions,
+.bottom-header__row {
+	display: flex;
+	align-items: center;
+}
+
+.top-header {
+	padding: 17px 0 13px;
+	position: relative;
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 6px;
+		width: 100%;
+		background: linear-gradient(
+			90deg,
+			#00c65e 25.16%,
+			rgba(0, 198, 94, 0) 100%
+		);
+	}
+
+	&__row {
+		justify-content: space-between;
+	}
+
+	&__enter-link {
+		svg {
+			width: 13px;
+			height: 13px;
+			fill: var(--bright-green);
+		}
+	}
+}
+
+.bottom-header {
+	padding: 11px 0;
+	background: var(--light-grey);
+
+	&__row {
+	}
+}

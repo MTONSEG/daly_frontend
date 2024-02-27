@@ -1,6 +1,8 @@
 {
 	"shared": {
-		"not-found-page": "This page is not found"
+		"not-found-page": "This page is not found",
+		"signin": "Вход",
+		"signup": "Регистрация"
 	},
 	"home": {
 		"title": "Привет, Мир!"

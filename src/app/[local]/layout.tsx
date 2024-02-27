@@ -4,6 +4,7 @@ import { poppins } from '@/fonts/fonts'
 import { ReduxProvider } from '@/components/providers/ReduxProvider'
 import Header from '@/components/widgets/layout/Header/Header'
 import Footer from '@/components/widgets/layout/Footer/Footer'
+import { NextIntlClientProvider, useMessages } from 'next-intl'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -20,16 +21,20 @@ export default function RootLayout({
 	children,
 	params: { local }
 }: Readonly<RootLayoutProps>) {
+	const messages = useMessages()
+
 	return (
 		<html lang={local}>
 			<body className={poppins.variable}>
-				<ReduxProvider>
-					<div className='wrapper'>
-						<Header />
-						<main className='main'>{children}</main>
-						<Footer />
-					</div>
-				</ReduxProvider>
+				<NextIntlClientProvider messages={messages}>
+					{/* <ReduxProvider> */}
+						<div className='wrapper'>
+							<Header />
+							<main className='main'>{children}</main>
+							<Footer />
+						</div>
+					{/* </ReduxProvider> */}
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	)

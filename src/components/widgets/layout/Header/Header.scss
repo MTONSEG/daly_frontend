@@ -33,6 +33,9 @@
 	}
 
 	&__enter-link {
+		display: inline-block;
+		margin: 0 0 0 30px;
+
 		svg {
 			width: 13px;
 			height: 13px;

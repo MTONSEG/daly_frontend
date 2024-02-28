@@ -5,10 +5,8 @@ import Logo from '@/components/ui/icons/Logo/Logo'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
-export default function TopHeader({ params }: { params: { locale: string } }) {
+export default function TopHeader() {
 	const t = useTranslations('shared')
-
-	console.log(params)
 	
 	return (
 		<div className='top-header'>

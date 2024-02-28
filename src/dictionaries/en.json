@@ -1,9 +1,11 @@
 {
-
 	"shared": {
-		"not-found-page": "This page is not found"
+		"not-found-page": "This page is not found",
+		"signin": "Sing In",
+		"signup": "Sing Up"
 	},
 	"home": {
-		"title": "Hello, World!"
+		"title": "Hello, World!",
+		"deliveryAndPay": "Shipping and payment"
 	}
 }

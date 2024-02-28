@@ -3,3 +3,17 @@
 @import './vars/fonts.scss';
 @import './vars/base.scss';
 
+.wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.main {
+	flex: 1 1 auto;
+}
+
+.icon {
+	width: 89px;
+	height: 31px;
+}

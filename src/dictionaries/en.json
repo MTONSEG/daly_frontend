@@ -5,6 +5,7 @@
 		"signup": "Sing Up"
 	},
 	"home": {
-		"title": "Hello, World!"
+		"title": "Hello, World!",
+		"deliveryAndPay": "Shipping and payment"
 	}
 }

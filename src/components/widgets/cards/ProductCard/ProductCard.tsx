@@ -7,7 +7,7 @@ import ProductCardFav from './ProductCardFav/ProductCardFav'
 import ProductCardImg from './ProductCardImg/ProductCardImg'
 import ProductCardInfo from './ProductCardInfo/ProductCardInfo'
 import ColorPicker from '../../ColorPicker/ColorPicker'
-import BuyButton from '@/components/ui/Buttons/BuyButton/BuyButton'
+import BuyButton from '@/components/ui/buttons/BuyButton/BuyButton'
 
 interface IProductCardProps {
 	product: IProduct

@@ -18,7 +18,8 @@ export default function TopHeader() {
 						<LocaleSelect/>
 
 						<Link href={'/'} className='top-header__enter-link'>
-							<UserIcon />{' '}
+							<UserIcon />
+							
 							<span>
 								{t('signin')} / {t('signup')}
 							</span>

@@ -4,6 +4,7 @@
 
 .top-header__row,
 .top-header__actions,
+.top-header__enter-link,
 .bottom-header__row {
 	display: flex;
 	align-items: center;
@@ -33,10 +34,14 @@
 	}
 
 	&__enter-link {
-		display: inline-block;
 		margin: 0 0 0 30px;
 
+		&:hover {
+			color: var(--dark-grey-06)
+		}
+
 		svg {
+			margin: 0 10px 0 0;
 			width: 13px;
 			height: 13px;
 			fill: var(--bright-green);

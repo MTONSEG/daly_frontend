@@ -1,5 +1,5 @@
 'use client'
-import InputContainer from '@/components/ui/forms/InputContainer/InputContainer'
+import Textarea from '@/components/ui/forms/Textarea/Textarea'
 import useInput from '@/hooks/useInput'
 import { useTranslations } from 'next-intl'
 import React from 'react'
@@ -8,8 +8,9 @@ const Product = () => {
 	const t = useTranslations('inputErrors')
 	const { value, setValue, error, setError } = useInput('')
 
-	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setValue(e.target.value)
+
 		if (e.target.value.length < 5) {
 			setError(t('>length'))
 		} else if (e.target.value.length > 7) {
@@ -21,15 +22,14 @@ const Product = () => {
 
 	return (
 		<div style={{ width: '100%' }}>
-			<InputContainer
+			<Textarea
 				placeholder='default'
 				value={value}
 				onChange={onChangeHandler}
-				type='text'
 				label='test'
 				name='testInput'
 				error={error}
-			></InputContainer>
+			></Textarea>
 		</div>
 	)
 }

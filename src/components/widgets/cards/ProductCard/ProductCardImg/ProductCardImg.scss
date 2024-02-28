@@ -1,9 +1,15 @@
-.product-card{
-    &__image-container{
+.product-card {
+	&__image-container {
+		position: relative;
+		height: 180px;
+		&.row {
+			height: 160px;
+		}
+	}
 
-    }
-
-    &__image{
-        
-    }
+	&__image {
+		object-fit: contain;
+		width: auto;
+		height: auto;
+	}
 }

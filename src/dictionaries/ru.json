@@ -7,5 +7,10 @@
 	"home": {
 		"title": "Привет, Мир!",
 		"deliveryAndPay": "Доставка и оплата"
+	},
+	"catalog": {
+		"buy-button-not-active": "Купить",
+		"buy-button-active": "В корзину",
+		"favourite-button": "В избранное"
 	}
 }

@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-
+import "./ProductCardInfo.scss";
 interface IProductCardInfoProps {
-	category: string
+	category: string | undefined
 	name: string
 }
 

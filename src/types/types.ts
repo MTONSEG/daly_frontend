@@ -3,6 +3,44 @@ export type IImage = {
 	url: string
 }
 
+export type IProperties = {
+	id: number
+	memory: string
+	ram: string
+	resolution: string
+	color: string
+	cpu: string
+	diagonale: string
+	display: string
+}
+
+export type ICategory = {
+	data: {
+		id: number
+		attributes: {
+			name: string
+			createdAt: string
+			updatedAt: string
+			publishedAt: string
+			locale: string
+			label: string
+		}
+	}
+}
+export type IProductComments = {
+	data: {
+		id: number
+		attributes: {
+			text: string
+			rating: number
+			product: string
+			author: string
+			email: string
+			name: string
+		}[]
+	}
+}
+
 export interface IProduct {
 	id: number
 	attributes: {
@@ -18,31 +56,9 @@ export interface IProduct {
 		publishedAt: string
 		locale: string
 		hit: false
-        images: IImage[]
-		properties?: {
-			id: number
-			memory: string
-			ram: string
-			resolution: string
-			color: string
-			cpu: string
-			diagonale: string
-			display: string
-		}
-		category: {
-			data: {
-				id: 192
-				attributes: {
-					name: 'smartphones'
-					createdAt: '2024-02-26T15:25:26.162Z'
-					updatedAt: '2024-02-26T15:27:03.616Z'
-					publishedAt: '2024-02-26T15:25:25.831Z'
-					locale: 'en'
-					label: 'Smartphones'
-				}
-			}
-		}
+		images?: IImage[]
+		properties?: IProperties
+		category?: ICategory
+		product_comments?: IProductComments
 	}
 }
-
-

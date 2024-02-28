@@ -1,0 +1,27 @@
+.product-card {
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	&__category {
+		color: --grey;
+		font-family: Poppins;
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 140%;
+		letter-spacing: 0px;
+		text-align: left;
+	}
+
+	&__name {
+		color: --dark-grey;
+		font-family: Poppins;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 152%;
+		letter-spacing: 0px;
+		text-align: left;
+	}
+}

@@ -7,5 +7,10 @@
 	"home": {
 		"title": "Hello, World!",
 		"deliveryAndPay": "Shipping and payment"
+	},
+	"catalog": {
+		"buy-button-not-active": "Buy",
+		"buy-button-active": "To basket",
+		"favourite-button": "To favourites"
 	}
 }

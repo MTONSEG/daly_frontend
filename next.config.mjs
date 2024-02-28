@@ -15,16 +15,21 @@ const nextConfig = {
 	},
 	
 	images: {
-		formats: ['image/avif', 'image/webp'],
-		deviceSizes: [375, 640, 750, 828, 1080, 1280, 1920],
-		remotePatterns: [
-			{
-				protocol: 'https',
-				hostname: 'res.cloudinary.com',
-				port: ''
-			}
-		]
-	}
+        formats: ['image/avif', 'image/webp'],
+        deviceSizes: [375, 640, 750, 828, 1080, 1280, 1920],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+                port: ''
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.dummyjson.com', // Add this line
+                port: ''
+            }
+        ]
+    }
 }
 
 export default withNextIntl(nextConfig)

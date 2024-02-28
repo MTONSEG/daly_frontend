@@ -1,0 +1,60 @@
+@import "../../../../../styles/vars/colors.scss"; 
+.product-card {
+	&__metrics {
+		display: flex;
+		flex-direction: row;
+        align-items: center;
+		justify-content: space-between;
+		padding: 0 9px 0 0;
+	}
+
+	&__price-block {
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+	}
+
+	&__discount {
+		color: $--bright-green;
+		font-family: Poppins;
+		font-size: 10.74px;
+		font-weight: 700;
+		line-height: 130%;
+		letter-spacing: 0.31px;
+		text-align: center;
+	}
+
+	&__price {
+		color: $--bright-green;
+		font-family: Poppins;
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 150%;
+
+		&.discounted {
+			color: $--grey;
+			text-decoration: line-through;
+		}
+	}
+
+	&__r-c-block,
+	&__r-c-item {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&__r-c-block {
+		gap: 15px;
+		color: $--dark-grey;
+		font-family: Poppins;
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 140%;
+		letter-spacing: 0px;
+	}
+
+	&__r-c-item {
+		gap: 5px;
+	}
+}

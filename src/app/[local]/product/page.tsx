@@ -1,14 +1,12 @@
 'use client'
-import Input from '@/components/ui/forms/Input/Input'
 import InputContainer from '@/components/ui/forms/InputContainer/InputContainer'
+import useInput from '@/hooks/useInput'
 import { useTranslations } from 'next-intl'
-import React, { useState } from 'react'
+import React from 'react'
 
 const Product = () => {
 	const t = useTranslations('inputErrors')
-
-	const [value, setValue] = useState('')
-	const [error, setError] = useState<string>('')
+	const { value, setValue, error, setError } = useInput('')
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)

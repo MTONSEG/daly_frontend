@@ -2,7 +2,7 @@ import './Input.scss'
 
 import { ChangeEvent, FC } from 'react'
 
-interface IInputProps {
+export interface IInputProps {
 	type: 'text' | 'number' | 'email' | 'password'
 	label?: string
 	value: string | number
@@ -11,6 +11,7 @@ interface IInputProps {
 	error: string
 	disabled?: boolean
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void
+	inputClassName?: string
 }
 
 const Input: FC<IInputProps> = ({
@@ -21,10 +22,11 @@ const Input: FC<IInputProps> = ({
 	placeholder,
 	error,
 	disabled,
-	onChange
+	onChange,
+	inputClassName
 }) => {
 	return (
-		<label className='input'>
+		<label className={`${inputClassName ? inputClassName : ''} input`}>
 			<p className='input__title'>{label}</p>
 			<input
 				className='input__input'

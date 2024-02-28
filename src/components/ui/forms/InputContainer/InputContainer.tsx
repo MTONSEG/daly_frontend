@@ -1,3 +1,4 @@
+'use client'
 import { FC } from 'react'
 import Input from '../Input/Input'
 import { IInputProps } from '../Input/Input'

@@ -1,35 +1,35 @@
 'use client'
-import Textarea from '@/components/ui/forms/Textarea/Textarea'
-import useInput from '@/hooks/useInput'
-import { useTranslations } from 'next-intl'
-import React from 'react'
+import Select from '@/components/ui/forms/Select/Select'
+// import useInput from '@/hooks/useInput'
+// import { useTranslations } from 'next-intl'
+import React, { useState } from 'react'
 
 const Product = () => {
-	const t = useTranslations('inputErrors')
-	const { value, setValue, error, setError } = useInput('')
+	const [value, setValue] = useState('0')
 
-	const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		setValue(e.target.value)
+	// const t = useTranslations('inputErrors')
+	// const { value, setValue, error, setError } = useInput('')
 
-		if (e.target.value.length < 5) {
-			setError(t('>length'))
-		} else if (e.target.value.length > 7) {
-			setError(t('<length'))
-		} else {
-			setError(t('ok'))
-		}
-	}
+	// const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+	// 	setValue(e.target.value)
+
+	// 	if (e.target.value.length < 5) {
+	// 		setError(t('>length'))
+	// 	} else if (e.target.value.length > 7) {
+	// 		setError(t('<length'))
+	// 	} else {
+	// 		setError(t('ok'))
+	// 	}
+	// }
 
 	return (
 		<div style={{ width: '100%' }}>
-			<Textarea
-				placeholder='default'
+			<Select
 				value={value}
-				onChange={onChangeHandler}
-				label='test'
-				name='testInput'
-				error={error}
-			></Textarea>
+				setValue={setValue}
+				defValue='0'
+				valuesArr={['1', '2']}
+			/>
 		</div>
 	)
 }

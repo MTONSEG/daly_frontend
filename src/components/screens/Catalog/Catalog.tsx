@@ -34,7 +34,7 @@ export default function Catalog() {
 				<ProductCard
 					key={index}
 					product={product}
-					variant={'card'}
+					variant={'row'}
 				></ProductCard>
 			))}
 		</>

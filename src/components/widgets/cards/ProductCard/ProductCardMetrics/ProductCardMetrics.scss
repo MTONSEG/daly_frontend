@@ -1,3 +1,5 @@
+@import '@/media';
+
 .product-card {
 	&__metrics {
 		display: flex;
@@ -16,7 +18,7 @@
 
 	&__discount {
 		color: var(--bright-green);
-		font-family: var(--poppins);
+		font-family: var(--inter);
 		font-size: 10.74px;
 		font-weight: 700;
 		line-height: 130%;
@@ -26,7 +28,7 @@
 
 	&__price {
 		color: var(--bright-green);
-		font-family: var(--poppins);
+		font-family: var(--inter);
 		font-size: 18px;
 		font-weight: 700;
 		line-height: 150%;
@@ -47,7 +49,7 @@
 	&__r-c-block {
 		gap: 15px;
 		color: var(--dark-grey);
-		font-family: var(--poppins);
+		font-family: var(--inter);
 		font-size: 12px;
 		font-weight: 500;
 		line-height: 140%;
@@ -56,5 +58,26 @@
 
 	&__r-c-item {
 		gap: 5px;
+	}
+
+	@include media-max(xs) {
+		&__discount {
+			font-size: 9.74px;
+			line-height: 100%;
+		}
+
+		&__price {
+			font-size: 14px;
+			line-height: 100%;
+		}
+
+		&__r-c-block {
+			gap: 7.5px;
+			font-size: 10px;
+		}
+
+		&__r-c-item {
+			gap: 3px;
+		}
 	}
 }

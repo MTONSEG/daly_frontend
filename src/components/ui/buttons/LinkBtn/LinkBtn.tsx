@@ -3,32 +3,28 @@
 import { ReactNode } from 'react'
 import './LinkBtn.scss'
 import Link, { LinkProps } from 'next/link'
-import { usePathname} from '@/navigation'
+import { usePathname } from '@/navigation'
 import { useParams } from 'next/navigation'
-
-
 
 interface PropsType extends LinkProps {
 	variant?: 'default' | 'green'
-	icon?: ReactNode
+	label: ReactNode | string
 	text?: string
 	href: string
 	className?: string
 }
 
 export default function LinkBtn({
-	icon,
-	text,
+	label,
 	href,
 	variant = 'default',
 	className = '',
 	...props
 }: PropsType) {
 	const path = usePathname()
-	const {locale} = useParams()
+	const { locale } = useParams()
 
 	console.log(path, locale)
-	
 
 	return (
 		<Link
@@ -36,8 +32,7 @@ export default function LinkBtn({
 			className={`${className} link-btn link-btn_${variant}`}
 			{...props}
 		>
-			{icon && icon}
-			{text && text}
+			{label && label}
 		</Link>
 	)
 }

@@ -1,1 +1,1 @@
-export const appendCurrency = (price: number) => `${price} '₴'`
+export const appendCurrency = (price: number) => `${price.toLocaleString()} '₴'`

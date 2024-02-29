@@ -1,11 +1,43 @@
 .popup-header {
+	position: relative;
+
+	&_compare {
+		svg {
+			width: 21px;
+		}
+	}
+
+	&_cart {
+		svg {
+			width: 17px;
+		}
+	}
+
+	&_favorite {
+		svg {
+			width: 19px;
+		}
+	}
+
 	&__container {
 		border-radius: 10px;
 		background: rgb(255, 255, 255);
 		box-shadow: 3px 4px 12px 0px var(--dark-grey-03);
-		position: absolute;
 		padding: 15px 13px 25px;
 		width: 273px;
+		position: absolute;
+		top: calc(100% + 20px);
+		right: -20px;
+		transform: translate(0, -20px);
+		transition: transform 0.2s, opacity 0.1s;
+		opacity: 0;
+		pointer-events: none;
+
+		&.active {
+			transform: translate(0, 0);
+			opacity: 1;
+			pointer-events: all;
+		}
 	}
 
 	&__triangle {
@@ -15,5 +47,29 @@
 		display: inline-block;
 		width: 15px;
 		height: 13px;
+	}
+
+	&__list {
+		margin: 0 0 20px;
+	}
+
+
+	&__btn,
+	&__btn svg {
+		height: 22px;
+		width: 22px;
+	}
+
+	&__btn {
+		display: inline-block;
+		margin: 0 20px 0 0;
+
+		&:last-child {
+			margin: 0;
+		}
+
+		&:hover {
+			opacity: 0.7;
+		}
 	}
 }

@@ -8,7 +8,9 @@
 .top-header__row,
 .top-header__actions,
 .top-header__enter-link,
-.bottom-header__row {
+.bottom-header__row,
+.bottom-header__popup-wrap,
+.bottom-header__right {
 	display: flex;
 	align-items: center;
 }
@@ -49,30 +51,22 @@
 			fill: var(--bright-green);
 		}
 	}
-
-	@include media-max(sm) {
-	}
-
-	@include media-max(sm) {
-	}
-
-	@include media-max(sm) {
-	}
 }
 
 .bottom-header {
 	padding: 11px 0;
 	background: var(--light-grey);
 
-	&__left {
+	&__right {
+		margin: 0 0 0 auto;
 	}
 
-	&__row {
-	}
+	&__support-link {
+		display: inline-block;
+		margin: 0 30px 0 0;
 
-	@include media-max(sm) {
-	}
-
-	@include media-max(sm) {
+		&:hover {
+			opacity: .7;
+		}
 	}
 }

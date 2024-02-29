@@ -1,18 +1,12 @@
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import Container from '@/components/ui/containers/Container/Container'
-import {
-	BurgerIcon,
-	DeliveryIcon,
-	SearchIcon
-} from '@/components/ui/icons'
+import { BurgerIcon, DeliveryIcon, SearchIcon } from '@/components/ui/icons'
+import CartPopup from '@/components/widgets/layout/Header/BottomHeader/CartPopup/CartPopup'
+import ComparePopup from '@/components/widgets/layout/Header/BottomHeader/ComparePopup/ComparePopup'
+import FavoritePopup from '@/components/widgets/layout/Header/BottomHeader/FavoritePopup/FavoritePopup'
 
-import {
-	CATALOG_PATH,
-	DELIVERY_PATH,
-	SUPPORT_PATH
-} from '@/routes/routes'
+import { CATALOG_PATH, DELIVERY_PATH, SUPPORT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 
 export default function BottomHeader() {
 	const t = useTranslations('home')
@@ -25,14 +19,14 @@ export default function BottomHeader() {
 						<LinkBtn
 							className='bottom-header__left-link'
 							href={`/${CATALOG_PATH}`}
-							icon={<BurgerIcon />}
+							label={<BurgerIcon />}
 							text={t('catalog')}
 						/>
 
 						<LinkBtn
 							className='bottom-header__left-link'
 							href={`/${DELIVERY_PATH}`}
-							icon={<DeliveryIcon />}
+							label={<DeliveryIcon />}
 							text={t('deliveryAndPay')}
 						/>
 					</div>
@@ -42,21 +36,17 @@ export default function BottomHeader() {
 					</div>
 
 					<div className='bottom-header__right'>
-						<Link
+						<LinkBtn
 							href={`/${SUPPORT_PATH}`}
 							className='bottom-header__support-link'
-						>
-							{t('support')}
-						</Link>
+							label={t('support')}
+						/>
 
-						{/* <PopupHeader label={<CompareIcon />}>
-							<></>
-							<LinkBtn
-								href={`${COMPARE_PATH}`}
-								text='В Сравнение'
-								variant='green'
-							/>
-						</PopupHeader> */}
+						<div className='bottom-header__popup-wrap'>
+							<ComparePopup />
+							<FavoritePopup />
+							<CartPopup />
+						</div>
 					</div>
 				</div>
 			</Container>

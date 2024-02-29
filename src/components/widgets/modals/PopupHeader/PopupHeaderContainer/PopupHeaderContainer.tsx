@@ -1,18 +1,40 @@
 'use client'
 
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { TriangleIcon } from '@/components/ui/icons'
-import { ReactNode } from 'react'
+import { setActive } from '@/utils/setActive'
+import { ReactNode, forwardRef, ForwardedRef } from 'react'
 
 interface PropsType {
 	children: ReactNode
+	isActive: boolean
+	hrefLink?: string
+	labelLink?: string
 }
 
-export default function PopupHeaderContainer(props: PropsType) {
-	return (
-		<div className='popup-header__container'>
-			<TriangleIcon className='popup-header__triangle' />
+const PopupHeaderContainer = forwardRef(
+	(props: PropsType, ref: ForwardedRef<HTMLDivElement>) => {
+		return (
+			<div
+				ref={ref}
+				className={`popup-header__container ${setActive(props.isActive)}`}
+			>
+				<TriangleIcon className='popup-header__triangle' />
 
-			{props.children}
-		</div>
-	)
-}
+				<ul className='popup-header__list'>{props.children}</ul>
+
+				{props.hrefLink && props.labelLink ? (
+					<LinkBtn
+						href={props.hrefLink}
+						variant='green'
+						label={props.labelLink}
+					/>
+				) : (
+					<></>
+				)}
+			</div>
+		)
+	}
+)
+
+export default PopupHeaderContainer

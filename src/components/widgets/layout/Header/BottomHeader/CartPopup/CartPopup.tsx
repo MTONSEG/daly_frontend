@@ -7,9 +7,12 @@ import PopupHeaderContainer from '@/components/widgets/modals/PopupHeader/PopupH
 import PopupHeaderItem from '@/components/widgets/modals/PopupHeader/PopupHeaderItem/PopupHeaderItem'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { COMPARE_PATH } from '@/routes/routes'
+import { useTranslations } from 'next-intl'
 
 export default function CartPopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
+
+	const t = useTranslations('home')
 
 	const handleToggle = () => {
 		setIsActive((active) => !active)
@@ -26,6 +29,8 @@ export default function CartPopup() {
 				isActive={isActive}
 				hrefLink={`/${COMPARE_PATH}`}
 				labelLink='В корзину'
+				isEmpty
+				textEmpty={t('empty-cart')}
 			>
 				<PopupHeaderItem
 					title='Смартфон Apple iPhone 12 mini 64 GB Green'

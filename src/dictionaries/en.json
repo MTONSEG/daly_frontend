@@ -2,13 +2,17 @@
 	"shared": {
 		"not-found-page": "This page is not found",
 		"signin": "Sing In",
-		"signup": "Sing Up"
+		"signup": "Sing Up",
+		"is-empty": "Is empty"
 	},
 	"home": {
 		"title": "Hello, World!",
 		"deliveryAndPay": "Shipping and payment",
 		"catalog": "Product catalog",
 		"support": "Support",
-		"find": "Find"
+		"find": "Find",
+		"empty-cart": "There are no items in your cart, please select something from the catalog",
+		"empty-favorite": "There are no products in your favorites, select something from the catalog",
+		"empty-compare": "There are no products in comparison, select something from the catalog"
 	}
 }

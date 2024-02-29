@@ -7,9 +7,12 @@ import PopupHeaderContainer from '@/components/widgets/modals/PopupHeader/PopupH
 import PopupHeaderItem from '@/components/widgets/modals/PopupHeader/PopupHeaderItem/PopupHeaderItem'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { COMPARE_PATH } from '@/routes/routes'
+import { useTranslations } from 'next-intl'
 
 export default function FavoritePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
+
+	const t = useTranslations('home')
 
 	const handleToggle = () => {
 		setIsActive((active) => !active)
@@ -26,6 +29,8 @@ export default function FavoritePopup() {
 				isActive={isActive}
 				hrefLink={`/${COMPARE_PATH}`}
 				labelLink='В избранное'
+				isEmpty
+				textEmpty={t('empty-favorite')}
 			>
 				<PopupHeaderItem
 					title='Смартфон Apple iPhone 12 mini 64 GB Green'

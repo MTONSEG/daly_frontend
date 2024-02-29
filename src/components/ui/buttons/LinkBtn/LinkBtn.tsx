@@ -8,14 +8,14 @@ import { useParams } from 'next/navigation'
 
 interface PropsType extends LinkProps {
 	variant?: 'default' | 'green'
-	label: ReactNode | string
+	children: ReactNode | string
 	text?: string
 	href: string
 	className?: string
 }
 
 export default function LinkBtn({
-	label,
+	children,
 	href,
 	variant = 'default',
 	className = '',
@@ -32,7 +32,7 @@ export default function LinkBtn({
 			className={`${className} link-btn link-btn_${variant}`}
 			{...props}
 		>
-			{label && label}
+			{children && children}
 		</Link>
 	)
 }

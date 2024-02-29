@@ -19,14 +19,14 @@ export default function BottomHeader() {
 						<LinkBtn
 							className='bottom-header__left-link'
 							href={`/${CATALOG_PATH}`}
-							label={<BurgerIcon />}
+							children={<BurgerIcon />}
 							text={t('catalog')}
 						/>
 
 						<LinkBtn
 							className='bottom-header__left-link'
 							href={`/${DELIVERY_PATH}`}
-							label={<DeliveryIcon />}
+							children={<DeliveryIcon />}
 							text={t('deliveryAndPay')}
 						/>
 					</div>
@@ -39,7 +39,7 @@ export default function BottomHeader() {
 						<LinkBtn
 							href={`/${SUPPORT_PATH}`}
 							className='bottom-header__support-link'
-							label={t('support')}
+							children={t('support')}
 						/>
 
 						<div className='bottom-header__popup-wrap'>

@@ -8,11 +8,19 @@ interface PropsType extends LinkProps {
 	icon?: ReactNode
 	text?: string
 	href: string
+	children?: React.ReactNode
 }
 
-export default function LinkBtn({ icon, text, href, ...props }: PropsType) {
+export default function LinkBtn({
+	icon,
+	text,
+	href,
+	children,
+	...props
+}: PropsType) {
 	return (
 		<Link href={href} className='link-btn' {...props}>
+			{children}
 			{icon && icon}
 			{text && text}
 		</Link>

@@ -28,11 +28,11 @@ export default function RootLayout({
 			<body className={poppins.variable}>
 				<NextIntlClientProvider messages={messages}>
 					{/* <ReduxProvider> */}
-						<div className='wrapper'>
-							<Header />
-							<main className='main'>{children}</main>
-							<Footer />
-						</div>
+					<div className='wrapper'>
+						<Header />
+						<main className='main'>{children}</main>
+						<Footer />
+					</div>
 					{/* </ReduxProvider> */}
 				</NextIntlClientProvider>
 			</body>

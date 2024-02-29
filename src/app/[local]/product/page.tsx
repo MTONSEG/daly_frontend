@@ -1,35 +1,29 @@
 'use client'
-import Select from '@/components/ui/forms/Select/Select'
+import Breadcrumbs from '@/components/ui/breadcrumbs/Breadcrumbs'
+import { useParams, usePathname } from 'next/navigation'
 // import useInput from '@/hooks/useInput'
 // import { useTranslations } from 'next-intl'
-import React, { useState } from 'react'
+import React from 'react'
+
+interface IBreadcrumb {
+	label: string
+	href: string
+	active?: boolean
+}
 
 const Product = () => {
-	const [value, setValue] = useState('0')
+	const currentPath = usePathname()
+	// const params = useParams()
+	// console.log(params)
 
-	// const t = useTranslations('inputErrors')
-	// const { value, setValue, error, setError } = useInput('')
-
-	// const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-	// 	setValue(e.target.value)
-
-	// 	if (e.target.value.length < 5) {
-	// 		setError(t('>length'))
-	// 	} else if (e.target.value.length > 7) {
-	// 		setError(t('<length'))
-	// 	} else {
-	// 		setError(t('ok'))
-	// 	}
-	// }
+	const breadcrumbArr: IBreadcrumb[] = [
+		{ label: 'test', href: '/', active: false },
+		{ label: 'test2', href: `${currentPath}`, active: true }
+	]
 
 	return (
 		<div style={{ width: '100%' }}>
-			<Select
-				value={value}
-				setValue={setValue}
-				defValue='0'
-				valuesArr={['1', '2']}
-			/>
+			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 		</div>
 	)
 }

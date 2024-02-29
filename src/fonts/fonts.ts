@@ -22,7 +22,7 @@ export const poppins = Poppins({
 })
 
 export const nunito = Nunito({
-	weight: ['500', '700'],
+	weight: ['400', '500', '700'],
 	subsets: ['latin', 'cyrillic'],
 	variable: '--nunito',
 	display: 'swap'

@@ -1,3 +1,5 @@
+@import '@/media';
+
 .header,
 .top-header {
 	position: relative;
@@ -6,7 +8,9 @@
 .top-header__row,
 .top-header__actions,
 .top-header__enter-link,
-.bottom-header__row {
+.bottom-header__row,
+.bottom-header__popup-wrap,
+.bottom-header__right {
 	display: flex;
 	align-items: center;
 }
@@ -37,7 +41,7 @@
 		margin: 0 0 0 30px;
 
 		&:hover {
-			color: var(--dark-grey-06)
+			color: var(--dark-grey-06);
 		}
 
 		svg {
@@ -52,4 +56,17 @@
 .bottom-header {
 	padding: 11px 0;
 	background: var(--light-grey);
+
+	&__right {
+		margin: 0 0 0 auto;
+	}
+
+	&__support-link {
+		display: inline-block;
+		margin: 0 30px 3px 0;
+
+		&:hover {
+			opacity: .7;
+		}
+	}
 }

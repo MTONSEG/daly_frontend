@@ -10,9 +10,10 @@ export const roboto = Roboto({
 export const open_sans = Open_Sans({
 	weight: ['400', '600'],
 	subsets: ['cyrillic', 'latin'],
-	variable: '--sans',
+	variable: '--inter',
 	display: 'swap'
 })
+
 
 export const poppins = Poppins({
 	weight: ['400', '500', '700'],

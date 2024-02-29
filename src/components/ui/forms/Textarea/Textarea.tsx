@@ -29,7 +29,7 @@ const Textarea: FC<ITextareaProps> = ({
 
 	return (
 		<label className={`${textareaClassName ? textareaClassName : ''} textarea`}>
-			<p className='textarea__title'>{label}</p>
+			{label && <p className='textarea__title'>{label}</p>}
 			<textarea
 				ref={textareaRef}
 				className='textarea__textarea'

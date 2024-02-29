@@ -28,7 +28,7 @@ const Input: FC<IInputProps> = ({
 }) => {
 	return (
 		<label className={`${inputClassName ? inputClassName : ''} input`}>
-			<p className='input__title'>{label}</p>
+			{label && <p className='input__title'>{label}</p>}
 			<input
 				className='input__input'
 				type={type}

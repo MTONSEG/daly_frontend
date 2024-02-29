@@ -1,0 +1,9 @@
+.link-btn {
+
+	&_green {
+		color: var(--white);
+		font-weight: 500;
+		padding: 12px;
+		background: var(--bright-green);
+	}
+}

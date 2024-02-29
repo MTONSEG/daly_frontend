@@ -6,6 +6,9 @@
 	},
 	"home": {
 		"title": "Hello, World!",
-		"deliveryAndPay": "Shipping and payment"
+		"deliveryAndPay": "Shipping and payment",
+		"catalog": "Product catalog",
+		"support": "Support",
+		"find": "Find"
 	}
 }

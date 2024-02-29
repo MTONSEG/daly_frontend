@@ -17,18 +17,20 @@ export default function BottomHeader() {
 				<div className='bottom-header__row'>
 					<div className='bottom-header__left'>
 						<LinkBtn
-							className='bottom-header__left-link'
+							className='bottom-header__catalog-link'
 							href={`/${CATALOG_PATH}`}
-							children={<BurgerIcon />}
 							text={t('catalog')}
-						/>
+						>
+							<BurgerIcon /> <span>{t('catalog')}</span>
+						</LinkBtn>
 
 						<LinkBtn
-							className='bottom-header__left-link'
+							className='bottom-header__delivery-link'
 							href={`/${DELIVERY_PATH}`}
-							children={<DeliveryIcon />}
 							text={t('deliveryAndPay')}
-						/>
+						>
+							<DeliveryIcon /> <span>{t('delivery-pay')}</span>
+						</LinkBtn>
 					</div>
 
 					<div className='bottom-header__search'>

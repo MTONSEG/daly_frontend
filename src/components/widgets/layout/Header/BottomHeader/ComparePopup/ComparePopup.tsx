@@ -29,51 +29,8 @@ export default function ComparePopup() {
 				isActive={isActive}
 				hrefLink={`/${COMPARE_PATH}`}
 				labelLink='В сравнение'
-				isEmpty
 				textEmpty={t('empty-compare')}
 			>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Greenfdfdsf sdf sd fsdfsdf'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
 				<PopupHeaderItem
 					title='Смартфон Apple iPhone 12 mini 64 GB Green'
 					price={70000}

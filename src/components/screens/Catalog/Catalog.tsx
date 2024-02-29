@@ -7,7 +7,6 @@ import './Catalog.scss'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 
 export default function Catalog() {
-	const t = useTranslations('home')
 	const [products, setProducts] = useState<IProduct[]>([])
 
 	useEffect(() => {

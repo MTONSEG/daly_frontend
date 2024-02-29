@@ -7,7 +7,7 @@
 	},
 	"home": {
 		"title": "Привет, Мир!",
-		"deliveryAndPay": "Доставка и оплата",
+		"delivery-pay": "Доставка и оплата",
 		"catalog": "Каталог товаров",
 		"support": "Поддержка",
 		"find": "Find",

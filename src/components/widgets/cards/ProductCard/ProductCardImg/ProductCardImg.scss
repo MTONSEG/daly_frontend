@@ -1,8 +1,11 @@
 .product-card {
 	&__image-container {
 		position: relative;
+		width: 100%;
 		height: 180px;
 		&.row {
+			width: 100%;
+			max-width: 200px;
 			height: 160px;
 		}
 	}

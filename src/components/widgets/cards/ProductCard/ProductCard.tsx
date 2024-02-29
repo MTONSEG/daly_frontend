@@ -25,24 +25,27 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant }) => {
 				variant={variant}
 				urls={product.attributes.images && product.attributes.images}
 			></ProductCardImg>
-			<ProductCardInfo
-				category={
-					product.attributes.category &&
-					product.attributes.category.data.attributes.label
-				}
-				name={product.attributes.title}
-			></ProductCardInfo>
-			<ColorPicker variant='forCard'></ColorPicker>
-			<ProductCardMetrics
-				price={product.attributes.price}
-				rating={product.attributes.rating}
-				commsQuantity={
-					product.attributes.product_comments &&
-					product.attributes.product_comments.data.attributes.length
-				}
-			></ProductCardMetrics>
-
-			<BuyButton id={product.id}></BuyButton>
+			<div className='product-card__info-container'>
+				<ProductCardInfo
+					category={
+						product.attributes.category &&
+						product.attributes.category.data.attributes.label
+					}
+					name={product.attributes.title}
+				></ProductCardInfo>
+				<ColorPicker variant='forCard'></ColorPicker>
+			</div>
+			<div className='product-card__button-container'>
+				<ProductCardMetrics
+					price={product.attributes.price}
+					rating={product.attributes.rating}
+					commsQuantity={
+						product.attributes.product_comments &&
+						product.attributes.product_comments.data.attributes.length
+					}
+				></ProductCardMetrics>
+				<BuyButton id={product.id}></BuyButton>
+			</div>
 		</div>
 	)
 }

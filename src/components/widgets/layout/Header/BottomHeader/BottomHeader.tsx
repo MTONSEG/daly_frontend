@@ -1,3 +1,5 @@
+'use client'
+
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import Container from '@/components/ui/containers/Container/Container'
 import { DeliveryIcon, SearchIcon } from '@/components/ui/icons'
@@ -11,6 +13,9 @@ import { useTranslations } from 'next-intl'
 export default function BottomHeader() {
 	const t = useTranslations('home')
 
+	console.log(process.env.API_TOKEN)
+	
+
 	return (
 		<div className='bottom-header'>
 			<Container>
@@ -21,7 +26,7 @@ export default function BottomHeader() {
 						<LinkBtn
 							className='bottom-header__delivery-link'
 							href={`/${DELIVERY_PATH}`}
-							text={t('deliveryAndPay')}
+							text={t('delivery-pay')}
 						>
 							<DeliveryIcon /> <span>{t('delivery-pay')}</span>
 						</LinkBtn>

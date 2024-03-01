@@ -1,6 +1,7 @@
 'use client'
 import Breadcrumbs from '@/components/ui/breadcrumbs/Breadcrumbs'
-import { useParams, usePathname } from 'next/navigation'
+import SliderThumbNail from '@/components/widgets/SliderThumbnail/SliderThumbnail'
+import { usePathname } from 'next/navigation'
 // import useInput from '@/hooks/useInput'
 // import { useTranslations } from 'next-intl'
 import React from 'react'
@@ -24,6 +25,7 @@ const Product = () => {
 	return (
 		<div style={{ width: '100%' }}>
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
+			<SliderThumbNail />
 		</div>
 	)
 }

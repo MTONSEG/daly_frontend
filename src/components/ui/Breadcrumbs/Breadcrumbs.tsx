@@ -1,5 +1,6 @@
 import './Breadcrumbs.scss'
 import LinkBtn from '../buttons/LinkBtn/LinkBtn'
+import { nunito } from '@/fonts/fonts'
 
 interface IBreadcrumb {
 	label: string
@@ -14,8 +15,9 @@ export default function Breadcrumbs({
 	breadcrumbsArr: IBreadcrumb[]
 	classname?: string
 }) {
+	console.log(nunito)
 	return (
-		<nav aria-label='Breadcrumb' className={`${classname} breadcrumbs`}>
+		<nav aria-label='Breadcrumb' className={`${classname}  breadcrumbs`}>
 			<ul className='breadcrumbs__ul'>
 				<li className='breadcrumbs__li'>
 					<LinkBtn href={'/'}>

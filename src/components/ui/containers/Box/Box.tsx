@@ -1,11 +1,31 @@
-import type { ReactNode } from 'react'
+import {
+	ForwardedRef,
+	forwardRef,
+	type HTMLAttributes,
+	type ReactNode
+} from 'react'
 import './Box.scss'
 
-interface PropsType {
-	variant?: 'default' | 'fullscreen'
+interface PropsType extends HTMLAttributes<HTMLDivElement> {
+	variant?: 'default' | 'fullscreen' | 'popup'
 	children: ReactNode
 }
 
-export default function Box({ variant = 'default', children }: PropsType) {
-	return <div className={`box box_${variant}`}>{children}</div>
-}
+const Box = forwardRef(
+	(
+		{
+			variant = 'default',
+			className = '',
+			...props
+		}: PropsType,
+		ref: ForwardedRef<HTMLDivElement>
+	) => {
+		return (
+			<div ref={ref} className={` ${className} box box_${variant}`} {...props}>
+				{props.children}
+			</div>
+		)
+	}
+)
+
+export default Box

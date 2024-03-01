@@ -13,18 +13,26 @@ interface PropsType {
 	labelLink?: string
 	isEmpty?: boolean
 	textEmpty?: string
+	variant?: 'default' 
 }
 
 const PopupHeaderContainer = forwardRef(
-	(props: PropsType, ref: ForwardedRef<HTMLDivElement>) => {
+	(
+		{ variant = 'default', ...props }: PropsType,
+		ref: ForwardedRef<HTMLDivElement>
+	) => {
 		const t = useTranslations('shared')
 
 		return (
 			<div
 				ref={ref}
-				className={`popup-header__container ${setActive(props.isActive)}`}
+				className={`popup-header__container ${setActive(
+					props.isActive
+				)} popup-header__container_${variant}`}
 			>
-				<TriangleIcon className='popup-header__triangle' />
+				
+					<TriangleIcon className='popup-header__triangle' />
+				
 
 				{props.isEmpty ? (
 					<p className='popup-header__text-empty'>
@@ -34,7 +42,7 @@ const PopupHeaderContainer = forwardRef(
 					<ul className='popup-header__list'>{props.children}</ul>
 				)}
 
-				{props.hrefLink && props.labelLink ? (
+				{props.hrefLink && props.labelLink  ? (
 					<LinkBtn
 						href={props.hrefLink}
 						variant='green'

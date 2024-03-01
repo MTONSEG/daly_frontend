@@ -4,6 +4,7 @@ import { inter } from '@/fonts/fonts'
 import Header from '@/components/widgets/layout/Header/Header'
 import Footer from '@/components/widgets/layout/Footer/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
+import { ReduxProvider } from '@/components/providers/ReduxProvider'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -26,13 +27,13 @@ export default function RootLayout({
 		<html lang={local}>
 			<body className={inter.variable}>
 				<NextIntlClientProvider messages={messages}>
-					{/* <ReduxProvider> */}
+					<ReduxProvider>
 						<div className='wrapper'>
 							<Header />
 							<main className='main'>{children}</main>
 							<Footer />
 						</div>
-					{/* </ReduxProvider> */}
+					</ReduxProvider>
 				</NextIntlClientProvider>
 			</body>
 		</html>

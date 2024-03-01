@@ -1,0 +1,48 @@
+.popup-catalog {
+	position: relative;
+
+	&__btn {
+		display: flex;
+		align-items: center;
+
+		svg {
+			width: 20px;
+			height: 16px;
+			margin: 0 4px 0 0;
+		}
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+
+	&__menu,
+	&__sub-list {
+		position: absolute;
+		border-radius: 10px;
+		background: var(--white);
+		box-shadow: 3px 4px 12px 0px var(--dark-grey-03);
+		width: 270px;
+	}
+
+	&__menu {
+		top: calc(100% + 20px);
+		left: 0;
+		padding: 25px 20px 30px;
+		transform: translate(0, -10px);
+		opacity: 0;
+		pointer-events: none;
+
+		&.active {
+			transform: translate(0, 0);
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+
+	&__item {
+	}
+
+	&__sub-list {
+	}
+}

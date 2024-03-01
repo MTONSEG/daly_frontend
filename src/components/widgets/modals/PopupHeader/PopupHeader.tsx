@@ -1,17 +1,21 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { HTMLAttributes, ReactNode } from 'react'
 import './PopupHeader.scss'
 
-interface PropsType {
+interface PropsType extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode
 	variant?: 'compare' | 'cart' | 'favorite'
 }
 
-export default function PopupHeader(props: PropsType) {
+export default function PopupHeader({
+	children,
+	variant = 'compare',
+	...props
+}: PropsType) {
 	return (
-		<div className={`popup-header popup-header_${props.variant}`}>
-			{props.children}
+		<div className={`popup-header popup-header_${variant}`} {...props}>
+			{children}
 		</div>
 	)
 }

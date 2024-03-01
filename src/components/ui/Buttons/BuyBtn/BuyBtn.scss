@@ -7,7 +7,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	padding: 6.5px 42px 6.5px 42px;
+	padding: 6.5px 15px 6.5px 15px;
 	gap: 20px;
 	color: var(--dark-grey);
 	font-family: var(--inter);
@@ -15,6 +15,7 @@
 	font-weight: 500;
 	line-height: 140%;
 	max-width: 164px;
+	min-width: 164px;
 	max-height: 30px;
 	cursor: pointer;
 
@@ -26,7 +27,7 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		padding: 6.5px 42px 6.5px 42px;
+		padding: 6.5px 15px 6.5px 15px;
 		gap: 20px;
 		color: var(--dark-grey);
 		font-family: var(--inter);

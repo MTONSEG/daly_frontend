@@ -16,7 +16,7 @@ export type IProperties = {
 	display: string
 }
 
-export type ICategory = {
+export type IProductCategory = {
 	data: {
 		id: number
 		attributes: {
@@ -60,7 +60,7 @@ export interface IProduct {
 		hit: false
         images?: IImage[]
 		properties?: IProperties
-		category?: ICategory
+		category?: IProductCategory
 		product_comments?: IProductComments
 	}
 }

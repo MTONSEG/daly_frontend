@@ -9,6 +9,7 @@
 		font-size: 14px;
 		line-height: 150%;
 		color: var(--dark-grey);
+		cursor: pointer;
 	}
 	&__icon {
 		width: 15px;
@@ -16,9 +17,12 @@
 	}
 
 	&__favourite-icon {
-		stroke: var(--bright-green) ;
-		stroke-width: 0.8 ;
-		// fill: #00c65e;
+		stroke: var(--bright-green);
+		stroke-width: 0.8;
+		transition: fill 0.2s;
+		&.active {
+			fill: #00c65e;
+		}
 	}
 
 	@include media-max(xs) {
@@ -36,11 +40,10 @@
 			width: 15px;
 			height: 14px;
 		}
-	
+
 		&__favourite-icon {
-			stroke: var(--bright-green) ;
-			stroke-width: 0.8 ;
-			// fill: #00c65e;
+			stroke: var(--bright-green);
+			stroke-width: 0.8;
 		}
 	}
 }

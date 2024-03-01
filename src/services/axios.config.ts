@@ -12,12 +12,12 @@ export const instanceAxios = axios.create({
 	baseURL: 'http://localhost:1337/api'
 })
 
-// export const getData = async <T>(endpoint: string): Promise<T> => {
+export const getData = async <T>(endpoint: string): Promise<T> => {
 
-// 	const response = await instanceAxios.get<T>(endpoint, auth(token))
+	const response = await instanceAxios.get<T>(endpoint, auth(token))
 
-// 	return response.data
-// }
+	return response.data
+}
 
 // export const postData = async <T>(endpoint: string, body: T): Promise<void> => {
 

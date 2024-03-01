@@ -8,15 +8,13 @@ interface PropsType extends HTMLAttributes<HTMLUListElement> {
 
 const PopupCatalogMenu = forwardRef(
 	(
-		{ children, className = '', ...props }: PropsType,
+		{ children, className = '', isActive, ...props }: PropsType,
 		ref: ForwardedRef<HTMLUListElement>
 	) => {
 		return (
 			<ul
 				ref={ref}
-				className={`${className} popup-catalog__menu ${setActive(
-					props.isActive
-				)}`}
+				className={`${className} popup-catalog__menu ${setActive(isActive)}`}
 				{...props}
 			>
 				{children}

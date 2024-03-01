@@ -1,14 +1,10 @@
-'use client'
-
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import Container from '@/components/ui/containers/Container/Container'
 import { DeliveryIcon, SearchIcon } from '@/components/ui/icons'
 import CartPopup from '@/components/widgets/layout/Header/BottomHeader/CartPopup/CartPopup'
 import ComparePopup from '@/components/widgets/layout/Header/BottomHeader/ComparePopup/ComparePopup'
-
 import FavoritePopup from '@/components/widgets/layout/Header/BottomHeader/FavoritePopup/FavoritePopup'
 import PopupCatalog from '@/components/widgets/modals/PopupCatalog/PopupCatalog'
-
 import { DELIVERY_PATH, SUPPORT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
 

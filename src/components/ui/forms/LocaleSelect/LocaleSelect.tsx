@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 import './LocaleSelect.scss'
 import Link from 'next/link'
 import useOutsideClick from '@/hooks/useOutSideClick'
-import { isArray } from '@/utils/isArray'
+import { checkArr } from '@/utils/checkArr'
 import { upperFirstLetter } from '@/utils/upperFirtLetter'
 import { locales, usePathname } from '@/navigation'
 
@@ -34,7 +34,7 @@ export default function LocaleSelect() {
 	return (
 		<div className={`local-select ${isActive ? 'active' : ''}`}>
 			<p className='local-select__head' onClick={handleMenuToggle}>
-				{upperFirstLetter(isArray(locale))}
+				{upperFirstLetter(checkArr(locale))}
 			</p>
 
 			<div ref={ref} className='local-select__list'>

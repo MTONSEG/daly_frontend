@@ -9,7 +9,7 @@ $breakpoints: (
 	xxs: 375px
 );
 
-@mixin media-up($breakpoint) {
+@mixin media-min($breakpoint) {
 	@if map-has-key($breakpoints, $breakpoint) {
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
 
@@ -21,7 +21,7 @@ $breakpoints: (
 	}
 }
 
-@mixin media-down($breakpoint) {
+@mixin media-max($breakpoint) {
 	@if map-has-key($breakpoints, $breakpoint) {
 		$breakpoint-value: map-get($breakpoints, $breakpoint);
 

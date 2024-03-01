@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/global.scss'
-import { poppins } from '@/fonts/fonts'
-import { ReduxProvider } from '@/components/providers/ReduxProvider'
+import { inter } from '@/fonts/fonts'
 import Header from '@/components/widgets/layout/Header/Header'
 import Footer from '@/components/widgets/layout/Footer/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
@@ -25,7 +24,7 @@ export default function RootLayout({
 
 	return (
 		<html lang={local}>
-			<body className={poppins.variable}>
+			<body className={inter.variable}>
 				<NextIntlClientProvider messages={messages}>
 					{/* <ReduxProvider> */}
 					<div className='wrapper'>

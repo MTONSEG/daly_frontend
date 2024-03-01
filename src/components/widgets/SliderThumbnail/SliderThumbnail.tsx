@@ -24,13 +24,15 @@ const SliderThumbNail: FC = () => {
 	}, [])
 
 	return (
-		<Container variant='fullscreen'>
+		<Container variant='default'>
 			<div className='slider-container'>
 				<Slider
 					className='slider__top'
 					arrows={false}
 					asNavFor={nav2 instanceof Slider ? nav2 : undefined}
 					ref={sliderRef1}
+					// dots={true}
+					responsive={[{ breakpoint: 374, settings: { dots: true } }]}
 				>
 					<div className='slider__slide-wr slider__slide-wr_top'>
 						<div className='slider__slide'>

@@ -1,4 +1,4 @@
-// @import ''
+@import '../../../../src/styles/mixins/media.scss';
 
 .slider {
 	&-container {
@@ -10,7 +10,7 @@
 		border-radius: 10px;
 
 		&_top {
-			width: 370px;
+			width: 100%;
 			padding: 15px 27px;
 			height: 460px;
 
@@ -52,15 +52,37 @@
 				border-color: var(--bright-green);
 			}
 		}
-
-		.slick-slide {
-		}
-
-		&__slide-wr {
-			// margin-left: 25px;
-		}
-	}
-
-	&__slide {
 	}
 }
+//
+@media screen and (max-width: 374px) {
+	.slider__top {
+		width: 100%;
+		height: auto;
+	}
+
+	.slider__bottom {
+		display: none;
+	}
+
+	.slider-container {
+		width: 100%;
+	}
+
+	.slider__slide-wr_top {
+		img {
+			object-fit: contain;
+		}
+	}
+
+	.slider-container {
+		width: 100%;
+	}
+
+	.slick-dots {
+		bottom: 10px;
+	}
+}
+
+// @include media-max(375px) {
+// }

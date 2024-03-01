@@ -1,18 +1,22 @@
 'use client'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import React, { useState, useEffect, useRef, FC } from 'react'
+import { useState, useEffect, useRef, FC } from 'react'
 import Slider from 'react-slick'
 import Image from 'next/image'
 import phoneBig from '@/images/SliderTest/phoneBig.png'
 import phone1 from '@/images/SliderTest/phone1.png'
 import phone2 from '@/images/SliderTest/phone2.png'
 import phone3 from '@/images/SliderTest/phone3.png'
-// import './test.css'
 import './SliderThumbnail.scss'
 import Container from '@/components/ui/containers/Container/Container'
+import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 
-const SliderThumbNail: FC = () => {
+interface ISliderThumbnail {
+	images: (string | StaticImport)[]
+}
+
+const SliderThumbNail: FC<ISliderThumbnail> = ({ images }) => {
 	const [nav1, setNav1] = useState<React.MutableRefObject<null> | null | Slider | undefined>(null)
 	const [nav2, setNav2] = useState<React.MutableRefObject<null> | null | Slider | undefined>(null)
 	const sliderRef1 = useRef(null)
@@ -31,7 +35,6 @@ const SliderThumbNail: FC = () => {
 					arrows={false}
 					asNavFor={nav2 instanceof Slider ? nav2 : undefined}
 					ref={sliderRef1}
-					// dots={true}
 					responsive={[{ breakpoint: 374, settings: { dots: true } }]}
 				>
 					<div className='slider__slide-wr slider__slide-wr_top'>

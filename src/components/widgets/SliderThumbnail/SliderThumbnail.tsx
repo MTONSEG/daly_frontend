@@ -11,9 +11,10 @@ import phone3 from '@/images/SliderTest/phone3.png'
 import './SliderThumbnail.scss'
 import Container from '@/components/ui/containers/Container/Container'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
+import { IImage } from '@/types/types'
 
 interface ISliderThumbnail {
-	images: (string | StaticImport)[]
+	images: IImage[]
 }
 
 const SliderThumbNail: FC<ISliderThumbnail> = ({ images }) => {
@@ -36,13 +37,19 @@ const SliderThumbNail: FC<ISliderThumbnail> = ({ images }) => {
 					asNavFor={nav2 instanceof Slider ? nav2 : undefined}
 					ref={sliderRef1}
 					responsive={[{ breakpoint: 374, settings: { dots: true } }]}
+					infinite={false}
 				>
-					<div className='slider__slide-wr slider__slide-wr_top'>
-						<div className='slider__slide'>
-							<Image alt='test' src={phoneBig} />
-						</div>
-					</div>
-					<div className='slider__slide-wr slider__slide-wr_top'>
+					{images.map((el, index) => {
+						return (
+							<div key={index} className='slider__slide-wr slider__slide-wr_top'>
+								<div className='slider__slide'>
+									<Image alt='test' width={370} height={200} src={el.url} />
+								</div>
+							</div>
+						)
+					})}
+
+					{/* <div className='slider__slide-wr slider__slide-wr_top'>
 						<div className='slider__slide'>
 							<Image alt='test' src={phone2} />
 						</div>
@@ -51,7 +58,7 @@ const SliderThumbNail: FC<ISliderThumbnail> = ({ images }) => {
 						<div className='slider__slide'>
 							<Image alt='test' src={phone3} />
 						</div>
-					</div>
+					</div> */}
 				</Slider>
 				<Slider
 					className='slider__bottom'
@@ -63,15 +70,15 @@ const SliderThumbNail: FC<ISliderThumbnail> = ({ images }) => {
 					ref={sliderRef2}
 					infinite={false}
 				>
-					<div className='slider__slide-wr slider__slide-wr_bottom'>
-						<Image alt='test' src={phoneBig} />
-					</div>
-					<div className='slider__slide-wr slider__slide-wr_bottom'>
-						<Image alt='test' src={phone2} />
-					</div>
-					<div className='slider__slide-wr slider__slide-wr_bottom'>
-						<Image alt='test' src={phone3} />
-					</div>
+					{images.map((el, index) => {
+						return (
+							<div key={index} className='slider__slide-wr slider__slide-wr_bottom'>
+								<div className='slider__slide'>
+									<Image alt='test' height={90} width={90} src={el.url} />
+								</div>
+							</div>
+						)
+					})}
 				</Slider>
 			</div>
 		</Container>

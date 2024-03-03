@@ -1,19 +1,39 @@
+'use client'
+
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
-import { HTMLAttributes, ReactNode } from 'react'
+import type { IProductsCategory } from '@/types/types'
+import { useMemo, type HTMLAttributes, type ReactNode } from 'react'
 
 interface PropsType extends HTMLAttributes<HTMLLIElement> {
 	children: ReactNode | string
+	products: IProductsCategory[]
+	href: string
 }
 
-export default function PopupCatalogItem({ ...props }: PropsType) {
+export default function PopupCatalogItem({
+	children,
+	products,
+	href,
+	...props
+}: PropsType) {
+	const productList = useMemo(() => {
+		const list: IProductsCategory[] =
+			products.length > 20 ? products.slice(0, 20) : products
+
+		return list.map((el) => (
+			<LinkBtn href='' className='popup-catalog__item-link' key={el.id}>
+				{el.attributes.title}
+			</LinkBtn>
+		))
+	}, [products])
 
 	return (
-		<li {...props} className='popup-catalog__item'>
-			<LinkBtn href={''}>{props.children}</LinkBtn>
+		<li {...props} className={`popup-catalog__item`}>
+			<LinkBtn href={href} className='popup-catalog__item-link'>
+				{children}
+			</LinkBtn>
 
-			<div className="popup-catalog__sub-list">
-				<LinkBtn href='' children='test' />
-			</div>
+			<div className={`popup-catalog__sub-list`}>{productList}</div>
 		</li>
 	)
 }

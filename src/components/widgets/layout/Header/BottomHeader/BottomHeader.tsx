@@ -5,15 +5,16 @@ import Container from '@/components/ui/containers/Container/Container'
 import { DeliveryIcon, SearchIcon } from '@/components/ui/icons'
 import CartPopup from '@/components/widgets/layout/Header/BottomHeader/CartPopup/CartPopup'
 import ComparePopup from '@/components/widgets/layout/Header/BottomHeader/ComparePopup/ComparePopup'
-
 import FavoritePopup from '@/components/widgets/layout/Header/BottomHeader/FavoritePopup/FavoritePopup'
 import PopupCatalog from '@/components/widgets/modals/PopupCatalog/PopupCatalog'
-
 import { DELIVERY_PATH, SUPPORT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
 
 export default function BottomHeader() {
 	const t = useTranslations('home')
+
+	console.log(process.env.API_TOKEN)
+	
 
 	return (
 		<div className='bottom-header'>
@@ -25,7 +26,7 @@ export default function BottomHeader() {
 						<LinkBtn
 							className='bottom-header__delivery-link'
 							href={`/${DELIVERY_PATH}`}
-							text={t('deliveryAndPay')}
+							text={t('delivery-pay')}
 						>
 							<DeliveryIcon /> <span>{t('delivery-pay')}</span>
 						</LinkBtn>

@@ -1,9 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
 import { IProduct } from '@/types/types'
 import './Catalog.scss'
 
+import Container from '@/components/ui/containers/Container/Container'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 
 export default function Catalog() {
@@ -30,13 +30,17 @@ export default function Catalog() {
 
 	return (
 		<>
-			{products.map((product, index) => (
-				<ProductCard
-					key={index}
-					product={product}
-					variant={'row'}
-				></ProductCard>
-			))}
+			<Container>
+				<div className='catalog'>
+					{products.map((product, index) => (
+						<ProductCard
+							key={index}
+							product={product}
+							variant={'row'}
+						></ProductCard>
+					))}
+				</div>
+			</Container>
 		</>
 	)
 }

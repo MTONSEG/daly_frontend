@@ -26,7 +26,7 @@ const FavouriteBtn: React.FC<IFavouriteBtnProps> = ({ id, isLabeled }) => {
 		}
 	}
 
-	const buttonText = t('remove-from-favorites')
+	const buttonText = t('favourite-button')
 
 	return (
 		<div className='favourite-button__container' onClick={handleClick}>

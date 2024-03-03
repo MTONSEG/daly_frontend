@@ -21,12 +21,13 @@
 		color: var(--dark-grey);
 		font-size: 16px;
 		line-height: 152%;
+		width: 100%;
 	}
 
 	@include media-max(xs) {
 		&__info {
 			gap: 5px;
-			max-width: 130px;
+			// max-width: 130px;
 		}
 
 		&__category {

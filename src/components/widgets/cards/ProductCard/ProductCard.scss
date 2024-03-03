@@ -22,14 +22,15 @@
 		.product-card__info-container {
 			flex: 1;
 			margin: 0 0px 0 20px;
+			display: flex;
 			justify-content: center;
 		}
 
 		.product-card__button-container {
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
 			gap: 20px;
-			width: 164px;
+			width: fit-content;
 
 			justify-content: center;
 		}
@@ -57,15 +58,7 @@
 		gap: 15px;
 	}
 
-	@include media-max(xs) {
-		box-shadow: 1px 2px 6px 3px var(--dark-grey-03);
-		padding: 10px 10px 20px 10px;
-
-		&.card {
-			max-width: 150px;
-			flex-direction: column;
-		}
-
+	@include media-max(md) {
 		&.row {
 			max-width: 100%;
 			flex-direction: row;
@@ -82,9 +75,47 @@
 				display: flex;
 				flex-direction: column;
 				gap: 20px;
-				width: 164px;
-
+				width: fit-content;
 				justify-content: center;
+			}
+		}
+	}
+
+	@include media-max(xs) {
+		box-shadow: 1px 2px 6px 3px var(--dark-grey-03);
+		padding: 10px 10px 20px 10px;
+
+		&.card {
+			// max-width: 150px;
+			flex-direction: column;
+		}
+
+		&.row {
+			max-width: 100%;
+			flex-direction: row;
+			justify-content: center;
+			padding: 20px 10px 30px 0px;
+
+			flex-wrap: wrap;
+
+			.product-card__info-container {
+				flex: 1;
+				margin: 0 0px 0 0px;
+				justify-content: center;
+				width: 170px;
+			}
+
+			.product-card__button-container {
+				display: flex;
+				flex-direction: column;
+				gap: 14px;
+				width: 100%;
+				justify-content: center;
+				padding: 0 20px;
+				.buy-button{
+					width: 100%;
+					max-width: 100%;
+				}
 			}
 		}
 
@@ -98,8 +129,34 @@
 		}
 
 		&__button-container {
-			margin: 20px 0 0 0;
-			gap: 7.5px;
+			margin: 25px 0 0 0;
+			gap: 14.5px;
+		}
+	}
+
+	@include media-max(xxs) {
+		&.row {
+			max-width: 100%;
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 20px 20px 20px 20px;
+
+			.product-card__info-container {
+				flex: 1;
+				margin: 0 0px 0 20px;
+				justify-content: center;
+			}
+
+			.product-card__button-container {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				width: 100%;
+				justify-content: center;
+			}
+			.buy-button{
+				width: 100%;
+			}
 		}
 	}
 }

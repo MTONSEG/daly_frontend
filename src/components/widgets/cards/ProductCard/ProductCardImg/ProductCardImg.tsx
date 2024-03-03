@@ -20,6 +20,8 @@ const ProductCardImg: React.FC<IProductCardImgProps> = ({ variant, urls }) => {
 					alt={`Image ${urls[0].url}`}
 					fill={true}
 					className={`product-card__image ${variant}`}
+					sizes='(max-width: 600px) 147px, 230px'
+					priority={true}
 				/>
 			)}
 		</div>

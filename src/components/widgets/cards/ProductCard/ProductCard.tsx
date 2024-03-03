@@ -19,22 +19,23 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant }) => {
 	return (
 		<div className={`product-card ${variant && variant}`}>
 			<div className='product-card__fav-container'>
-				<ProductCardFav id={product.id} isLabeled={false}></ProductCardFav>
+				<ProductCardFav id={product.id} isLabeled={false} />
 			</div>
+
 			<ProductCardImg
 				variant={variant}
 				urls={product.attributes.images && product.attributes.images}
-			></ProductCardImg>
+			/>
+
 			<div className='product-card__info-container'>
 				<ProductCardInfo
-					category={
-						product.attributes.category &&
-						product.attributes.category.data.attributes.label
-					}
+					category={product.attributes.category?.data.attributes.label}
 					name={product.attributes.title}
-				></ProductCardInfo>
-				<ColorPicker variant='forCard'></ColorPicker>
+				/>
+
+				<ColorPicker variant='forCard' />
 			</div>
+
 			<div className='product-card__button-container'>
 				<ProductCardMetrics
 					price={product.attributes.price}
@@ -43,8 +44,8 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant }) => {
 						product.attributes.product_comments &&
 						product.attributes.product_comments.data.attributes.length
 					}
-				></ProductCardMetrics>
-				<BuyButton id={product.id}></BuyButton>
+				/>
+				<BuyButton id={product.id} />
 			</div>
 		</div>
 	)

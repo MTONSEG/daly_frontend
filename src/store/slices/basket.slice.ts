@@ -33,13 +33,13 @@ const basketData = createSlice({
 			const existingProductIndex = state.products.findIndex(
 				(product) => product.id === id
 			)
-			if (existingProductIndex !== -1) {
-				const existingProduct = state.products[existingProductIndex]
-				if (existingProduct.quantity === 1) {
-					state.products.splice(existingProductIndex, 1)
-				} else {
-					existingProduct.quantity--
-				}
+			if (!existingProductIndex) return
+
+			const existingProduct = state.products[existingProductIndex]
+			if (existingProduct.quantity === 1) {
+				state.products.splice(existingProductIndex, 1)
+			} else {
+				existingProduct.quantity--
 			}
 		}
 	}

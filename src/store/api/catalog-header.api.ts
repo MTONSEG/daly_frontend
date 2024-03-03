@@ -6,7 +6,8 @@ export const catalogHeaderApi = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:1337/api/' }),
 	endpoints: (builder) => ({
 		getCategories: builder.query<IResponse<ICategory>, string>({
-			query: (locale) => `categories?sort[0]=name:asc&populate[0]=products&locale=${locale}`
+			query: (locale) =>
+				`categories?sort[0]=name:asc&populate[0]=products&locale=${locale}`
 		})
 	})
 })

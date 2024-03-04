@@ -5,12 +5,12 @@ import {
 	PayloadAction,
 	AsyncThunk
 } from '@reduxjs/toolkit'
-import { IFetchedFilters } from '@/types/types'
+import { IFilter, IResponse } from '@/types/types'
 import { RootState } from '../store'
 import { getData } from '@/services/axios.config'
 
 export const fetchAllFilters = createAsyncThunk<
-	IFetchedFilters[],
+	IFilter[] ,
 	void,
 	{ state: RootState; rejectValue: string }
 >(
@@ -18,14 +18,11 @@ export const fetchAllFilters = createAsyncThunk<
 	async (_, { getState, rejectWithValue, dispatch }) => {
 
 		try {
-			const fetchedFilters: IFetchedFilters[] = await getData(
+			const data = await getData<IResponse<IFilter[]>> (
 				'filters?locale=en&populate=brands,categories'
-			)
+            )
 
-			const allFilters = fetchedFilters
-			console.log('🚀 ~ fetchAllFilters ~ allProducts:', allFilters)
-
-			return allFilters
+			return data.data
 		} catch (error) {
 			console.error('Error getting all product data:', error)
 			return rejectWithValue('Text of error')
@@ -33,13 +30,13 @@ export const fetchAllFilters = createAsyncThunk<
 	}
 )
 
-interface IFiltersData {
+interface IFiltersState {
 	productsData:  []
 	error: null
 	status: 'start'
 }
 
-const initialState: IFiltersData = {
+const initialState: IFiltersState = {
 	productsData: [],
 	error: null,
 	status: 'start'

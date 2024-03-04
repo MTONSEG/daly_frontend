@@ -16,34 +16,28 @@ export type IProductProperties = {
 	display: string
 }
 
-
-export type IProductComments = {
-	data: {
-		id: number
-		attributes: {
-			text: string
-			rating: number
-			product: string
-			author: string
-			email: string
-			name: string
-		}
+export type IComment = {
+	id: number
+	attributes: {
+		text: string
+		rating: number
+		product: string
+		author: string
+		email: string
+		name: string
 	}
 }
 
-export type IProductBrand = {
-	data: {
-		id: number
-		attributes: {
-			name: string
-			createdAt: string
-			updatedAt: string
-			publishedAt: string
-			locale: string
-		}
+export type IBrand = {
+	id: number
+	attributes: {
+		name: string
+		createdAt: string
+		updatedAt: string
+		publishedAt: string
+		locale: string
 	}
 }
-
 
 export interface IProduct {
 	id: number
@@ -63,7 +57,8 @@ export interface IProduct {
 		images?: IProductImage[]
 		properties?: IProductProperties
 		category?: { data: ICategory }
-		product_comments?: { data: IProductComments }
+		product_comments?: { data: IComment[] }
+		brand?: { data: IBrand }
 	}
 }
 
@@ -100,58 +95,28 @@ export interface IMapIcons {
 	[key: string]: ComponentType<SVGProps<SVGSVGElement>>
 }
 
-
-export interface IFetchedFilters {
-	data: {
-		id: number
-		attributes: {
-			name: string
-			label: 'ram'
-			min_price: number
-			max_price: number
-			options: {
-				options: string[]
-			}
-			createdAt: string
-			updatedAt: string
-			publishedAt: string
-			locale: string
-			brands: {
-				data: IProductBrand[]
-			}
-			categories: {
-				data: ICategory[]
-			}
+export interface IFilter {
+	id: number
+	attributes: {
+		name: string
+		label: string
+		min_price: number
+		max_price: number
+		options: {
+			options: string[]
 		}
-	}[]	
-}
-
-export interface IFilters {
-	data: {
-		id: number
-		attributes: {
-			name: string
-			label: string
-			min_price: number
-			max_price: number
-			options: {
-				options: string[]
-			}
-			createdAt: string
-			updatedAt: string
-			publishedAt: string
-			locale: string
-			brands: {
-				data: IProductBrand[]
-			}
-			categories: {
-				data: ICategory[]
-			}
+		createdAt: string
+		updatedAt: string
+		publishedAt: string
+		locale: string
+		brands: {
+			data: IBrand[]
 		}
-	}[]	
+		categories: {
+			data: ICategory[]
+		}
+	}
 }
-
-
 
 export interface ISelectOption {
 	value: string

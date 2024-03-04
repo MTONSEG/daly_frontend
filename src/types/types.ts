@@ -1,11 +1,11 @@
 import { ComponentType, SVGProps } from 'react'
 
-export type IImage = {
+export interface IProductImage {
 	id: number
 	url: string
 }
 
-export type IProperties = {
+export type IProductProperties = {
 	id: number
 	memory: string
 	ram: string
@@ -16,19 +16,6 @@ export type IProperties = {
 	display: string
 }
 
-export type IProductCategory = {
-	data: {
-		id: number
-		attributes: {
-			name: string
-			createdAt: string
-			updatedAt: string
-			publishedAt: string
-			locale: string
-			label: string
-		}
-	}
-}
 
 export type IProductComments = {
 	data: {
@@ -73,11 +60,10 @@ export interface IProduct {
 		publishedAt: string
 		locale: string
 		hit: false
-		images?: IImage[]
-		properties?: IProperties
-		category?: IProductCategory
-		product_comments?: IProductComments
-		brand?:  IProductBrand
+		images?: IProductImage[]
+		properties?: IProductProperties
+		category?: { data: ICategory }
+		product_comments?: { data: IProductComments }
 	}
 }
 
@@ -93,47 +79,21 @@ export interface IMetaPagination {
 }
 
 export interface IResponse<T> {
-	data: T[]
+	data: T
 	meta: IMetaData
 }
 
 export interface ICategory {
 	id: number
-	attributes: ICategoryAttributes
-}
-
-export interface ICategoryAttributes {
-	name: string
-	createdAt: string
-	updatedAt: string
-	publishedAt: string
-	locale: string
-	label: string
-	products: IProductsCategoryData
-}
-
-export interface IProductsCategoryData {
-	data: IProductsCategory[]
-}
-
-export interface IProductsCategory {
-	id: number
-	attributes: IProductsCategoryAttributes
-}
-
-export interface IProductsCategoryAttributes {
-	title: string
-	description: string
-	price: number
-	rating: number
-	stock: number
-	thumbnail: string
-	createdAt: string
-	updatedAt: string
-	publishedAt: string
-	locale: string
-	discount: number
-	hit: boolean
+	attributes: {
+		name: string
+		createdAt: string
+		updatedAt: string
+		publishedAt: string
+		locale: string
+		label: string
+		products: { data: IProduct[] }
+	}
 }
 
 export interface IMapIcons {
@@ -160,7 +120,7 @@ export interface IFetchedFilters {
 				data: IProductBrand[]
 			}
 			categories: {
-				data: IProductCategory[]
+				data: ICategory[]
 			}
 		}
 	}[]	
@@ -185,10 +145,18 @@ export interface IFilters {
 				data: IProductBrand[]
 			}
 			categories: {
-				data: IProductCategory[]
+				data: ICategory[]
 			}
 		}
 	}[]	
 }
 
 
+
+export interface ISelectOption {
+	value: string
+	label: string
+	color: string
+	isFixed?: boolean
+	isDisabled?: boolean
+}

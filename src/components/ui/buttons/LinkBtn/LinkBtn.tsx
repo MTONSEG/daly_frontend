@@ -3,7 +3,6 @@
 import { ReactNode } from 'react'
 import './LinkBtn.scss'
 import Link, { LinkProps } from 'next/link'
-import { usePathname } from '@/navigation'
 import { useParams } from 'next/navigation'
 
 interface PropsType extends LinkProps {
@@ -22,10 +21,7 @@ export default function LinkBtn({
 	className = '',
 	...props
 }: PropsType) {
-	const path = usePathname()
 	const { locale } = useParams()
-
-	console.log(path, locale)
 
 	return (
 		<Link

@@ -41,6 +41,7 @@
 
 	&__enter-link {
 		margin: 0 0 0 30px;
+		font-weight: 500;
 
 		&:hover {
 			color: var(--dark-grey-06);
@@ -63,21 +64,26 @@
 		margin: 0 0 0 auto;
 	}
 
-	&__support-link {
-		display: inline-block;
-		margin: 0 30px 3px 0;
+	&__support-link,
+	&__delivery-link {
+		font-weight: 500;
+		line-height: 1.5;
 
 		&:hover {
-			opacity: .7;
+			opacity: 0.7;
 		}
 	}
 
+	&__support-link {
+		display: inline-block;
+		margin: 0 30px 3px 0;
+	}
+
 	&__delivery-link {
-		line-height: 1.5;
 		margin: 0 0 0 35px;
 
 		svg {
-			margin: 0 5px 0 0;
+			margin: 3px 6px 0 0;
 			width: 20px;
 			height: 20px;
 		}

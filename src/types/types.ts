@@ -29,6 +29,7 @@ export type IProductCategory = {
 		}
 	}
 }
+
 export type IProductComments = {
 	data: {
 		id: number
@@ -39,9 +40,23 @@ export type IProductComments = {
 			author: string
 			email: string
 			name: string
-		}[]
+		}
 	}
 }
+
+export type IProductBrand = {
+	data: {
+		id: number
+		attributes: {
+			name: string
+			createdAt: string
+			updatedAt: string
+			publishedAt: string
+			locale: string
+		}
+	}
+}
+
 
 export interface IProduct {
 	id: number
@@ -58,10 +73,11 @@ export interface IProduct {
 		publishedAt: string
 		locale: string
 		hit: false
-        images?: IImage[]
+		images?: IImage[]
 		properties?: IProperties
 		category?: IProductCategory
 		product_comments?: IProductComments
+		brand?:  IProductBrand
 	}
 }
 
@@ -123,3 +139,56 @@ export interface IProductsCategoryAttributes {
 export interface IMapIcons {
 	[key: string]: ComponentType<SVGProps<SVGSVGElement>>
 }
+
+
+export interface IFetchedFilters {
+	data: {
+		id: number
+		attributes: {
+			name: string
+			label: 'ram'
+			min_price: number
+			max_price: number
+			options: {
+				options: string[]
+			}
+			createdAt: string
+			updatedAt: string
+			publishedAt: string
+			locale: string
+			brands: {
+				data: IProductBrand[]
+			}
+			categories: {
+				data: IProductCategory[]
+			}
+		}
+	}[]	
+}
+
+export interface IFilters {
+	data: {
+		id: number
+		attributes: {
+			name: string
+			label: string
+			min_price: number
+			max_price: number
+			options: {
+				options: string[]
+			}
+			createdAt: string
+			updatedAt: string
+			publishedAt: string
+			locale: string
+			brands: {
+				data: IProductBrand[]
+			}
+			categories: {
+				data: IProductCategory[]
+			}
+		}
+	}[]	
+}
+
+

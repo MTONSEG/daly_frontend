@@ -5,9 +5,13 @@ import './Catalog.scss'
 
 import Container from '@/components/ui/containers/Container/Container'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
+import { fetchAllFilters } from '@/store/slices/filters.slice'
+import { useAppDispatch } from '@/hooks/useReduxHooks'
 
 export default function Catalog() {
 	const [products, setProducts] = useState<IProduct[]>([])
+
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		const fetchFeaturedProducts = async () => {
@@ -26,6 +30,7 @@ export default function Catalog() {
 		}
 
 		fetchFeaturedProducts()
+		dispatch(fetchAllFilters());
 	}, [])
 
 	return (

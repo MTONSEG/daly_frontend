@@ -22,7 +22,7 @@ import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { CATALOG_PATH } from '@/routes/routes'
 import PopupCatalogMenu from '@/components/widgets/modals/PopupCatalog/PopupCatalogMenu/PopupCatalogMenu'
 import PopupCatalogItem from '@/components/widgets/modals/PopupCatalog/PopupCatalogItem/PopupCatalogItem'
-import { useGetCategoriesQuery } from '@/store/api/catalog-header.api'
+import { useGetCategoriesQuery } from '@/store/api/header.api'
 import type { IMapIcons } from '@/types/types'
 import { useMemo } from 'react'
 import { useParams } from 'next/navigation'
@@ -88,7 +88,9 @@ const PopupCatalog = () => {
 		<div className='popup-catalog'>
 			<LinkBtn
 				href={`/${CATALOG_PATH}`}
-				className={`popup-catalog__btn ${setActive(formatPath(path) === CATALOG_PATH)}`}
+				className={`popup-catalog__btn ${setActive(
+					formatPath(path) === CATALOG_PATH
+				)}`}
 				onMouseEnter={handleOpen}
 			>
 				<BurgerIcon /> <span>{t('catalog')}</span>

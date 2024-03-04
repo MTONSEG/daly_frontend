@@ -6,7 +6,7 @@ import { IProduct } from '@/types/types'
 import ProductCardFav from '../../../ui/buttons/FavouriteBtn/FavouriteBtn'
 import ProductCardImg from './ProductCardImg/ProductCardImg'
 import ProductCardInfo from './ProductCardInfo/ProductCardInfo'
-import ColorPicker from '../../ColorPicker/ColorPicker'
+import ColorPicker from '../../fragments/ColorPicker/ColorPicker'
 import ProductCardMetrics from './ProductCardMetrics/ProductCardMetrics'
 import BuyButton from '@/components/ui/buttons/BuyBtn/BuyBtn'
 

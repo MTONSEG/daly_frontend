@@ -9,10 +9,11 @@ export const catalogHeaderApi = createApi({
 		headers: getAuthToken()
 	}),
 	endpoints: (builder) => ({
-		getCategories: builder.query<IResponse<ICategory>, string>({
+		getCategories: builder.query<IResponse<ICategory[]>, string>({
 			query: (locale) =>
 				`categories?sort[0]=name:asc&populate[0]=products&locale=${locale}&filters[name][$notContains]=mens`
-		})
+		}),
+		// searchProducts: builder.query<IResponse<>>
 	})
 })
 

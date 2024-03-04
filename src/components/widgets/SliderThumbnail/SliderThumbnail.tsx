@@ -4,13 +4,8 @@ import 'slick-carousel/slick/slick-theme.css'
 import { useState, useEffect, useRef, FC } from 'react'
 import Slider from 'react-slick'
 import Image from 'next/image'
-import phoneBig from '@/images/SliderTest/phoneBig.png'
-import phone1 from '@/images/SliderTest/phone1.png'
-import phone2 from '@/images/SliderTest/phone2.png'
-import phone3 from '@/images/SliderTest/phone3.png'
 import './SliderThumbnail.scss'
 import Container from '@/components/ui/containers/Container/Container'
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 import { IImage } from '@/types/types'
 
 interface ISliderThumbnail {
@@ -48,17 +43,6 @@ const SliderThumbNail: FC<ISliderThumbnail> = ({ images }) => {
 							</div>
 						)
 					})}
-
-					{/* <div className='slider__slide-wr slider__slide-wr_top'>
-						<div className='slider__slide'>
-							<Image alt='test' src={phone2} />
-						</div>
-					</div>
-					<div className='slider__slide-wr slider__slide-wr_top'>
-						<div className='slider__slide'>
-							<Image alt='test' src={phone3} />
-						</div>
-					</div> */}
 				</Slider>
 				<Slider
 					className='slider__bottom'

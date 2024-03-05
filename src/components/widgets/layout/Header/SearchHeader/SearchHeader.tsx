@@ -1,32 +1,59 @@
 'use client'
 
 import './SearchHeader.scss'
-// import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
 import { checkArr } from '@/utils/checkArr'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { searchProduct } from '@/store/header/header.api'
-// const AsyncSelect = dynamic(() => import('react-select/async'), { ssr: false })
-import { ISelectOption } from '@/types/types'
-import AsyncSelect from '@/components/ui/forms/AsyncSelect/AsyncSelect'
+import type { ISelectOption } from '@/types/types'
+import { useRouter } from '@/navigation'
+import { PRODUCT_PATH } from '@/routes/routes'
+import { useTranslations } from 'next-intl'
+
+const AsyncSelect = dynamic(() => import('react-select/async'))
 
 const SearchHeader = () => {
 	const dispatch = useAppDispatch()
-
 	const { searchList } = useAppSelector((state) => state.header)
+
+	const t = useTranslations('shared')
+
 	const { locale } = useParams()
+
+	const { push } = useRouter()
 
 	const loadOptions = (value: string) =>
 		new Promise<ISelectOption[]>((resolve) => {
-			dispatch(searchProduct({ title: value, locale: checkArr(locale) })).then(
-				() => resolve(searchList)
-			)
+			dispatch(searchProduct({ title: value, locale: checkArr(locale) }))
+				.then(() => resolve(searchList))
+				.catch((e) => {
+					console.log(e)
+				})
 		})
 
+	const handleChange = (value: ISelectOption) => {
+		push(`/${PRODUCT_PATH}/${value.id}`)
+	}
+
 	return (
-		<div className='search-header'>
-			<AsyncSelect loadOption={loadOptions} />
-		</div>
+		<AsyncSelect
+			unstyled
+			className='search-header'
+			classNamePrefix='search-header'
+			cacheOptions
+			loadOptions={loadOptions}
+			placeholder={t('search')}
+			loadingMessage={() => t('searching')}
+			noOptionsMessage={() => t('no-searched')}
+			onChange={(value) => {
+				handleChange(value as ISelectOption)
+			}}
+			components={{
+				DropdownIndicator: null,
+				IndicatorSeparator: null
+			}}
+		/>
 	)
 }
 

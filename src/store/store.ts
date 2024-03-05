@@ -3,7 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import basketSlice from './slices/basket.slice'
 import favouritesSlice from './slices/favourites.slice'
 import { catalogHeaderApi } from '@/store/header/header.api'
-import headerSlice from '@/store/slices/header.slice'
+import headerSlice from '@/store/header/header.slice'
 
 export const store = configureStore({
 	reducer: {

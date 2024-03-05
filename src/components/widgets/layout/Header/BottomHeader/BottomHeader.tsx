@@ -30,9 +30,7 @@ export default function BottomHeader() {
 						</LinkBtn>
 					</div>
 
-					<div className='bottom-header__search'>
-						<SearchHeader/>
-					</div>
+					<SearchHeader />
 
 					<div className='bottom-header__right'>
 						<LinkBtn

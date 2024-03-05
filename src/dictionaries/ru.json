@@ -20,5 +20,16 @@
 		">length": "мало",
 		"<length": "много",
 		"ok": "ok"
+	},
+	"catalog": {
+		"buy-button-not-active": "Купить",
+		"buy-button-active": "В корзину",
+		"favourite-button": "В избранное"
+	},
+	"color-picker": {
+		"color-1": "серый",
+		"color-2": "зеленый",
+		"color-3": "темный",
+		"color-4": "оранжевый"
 	}
 }

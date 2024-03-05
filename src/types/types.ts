@@ -1,8 +1,32 @@
 import { ComponentType, SVGProps } from 'react'
 
-export type IImage = {
+export interface IProductImage {
 	id: number
 	url: string
+}
+
+export type IProductProperties = {
+	id: number
+	memory: string
+	ram: string
+	resolution: string
+	color: string
+	cpu: string
+	diagonale: string
+	display: string
+}
+
+
+export type IProductComments = {
+	id: number
+	attributes: {
+		text: string
+		rating: number
+		product: string
+		author: string
+		email: string
+		name: string
+	}[]
 }
 
 export interface IProduct {
@@ -20,30 +44,10 @@ export interface IProduct {
 		publishedAt: string
 		locale: string
 		hit: false
-		images: IImage[]
-		properties?: {
-			id: number
-			memory: string
-			ram: string
-			resolution: string
-			color: string
-			cpu: string
-			diagonale: string
-			display: string
-		}
-		category: {
-			data: {
-				id: 192
-				attributes: {
-					name: 'smartphones'
-					createdAt: '2024-02-26T15:25:26.162Z'
-					updatedAt: '2024-02-26T15:27:03.616Z'
-					publishedAt: '2024-02-26T15:25:25.831Z'
-					locale: 'en'
-					label: 'Smartphones'
-				}
-			}
-		}
+		images?: IProductImage[]
+		properties?: IProductProperties
+		category?: { data: ICategory }
+		product_comments?: { data: IProductComments }
 	}
 }
 
@@ -65,43 +69,25 @@ export interface IResponse<T> {
 
 export interface ICategory {
 	id: number
-	attributes: ICategoryAttributes
-}
-
-export interface ICategoryAttributes {
-	name: string
-	createdAt: string
-	updatedAt: string
-	publishedAt: string
-	locale: string
-	label: string
-	products: IProductsCategoryData
-}
-
-export interface IProductsCategoryData {
-	data: IProductsCategory[]
-}
-
-export interface IProductsCategory {
-	id: number
-	attributes: IProductsCategoryAttributes
-}
-
-export interface IProductsCategoryAttributes {
-	title: string
-	description: string
-	price: number
-	rating: number
-	stock: number
-	thumbnail: string
-	createdAt: string
-	updatedAt: string
-	publishedAt: string
-	locale: string
-	discount: number
-	hit: boolean
+	attributes: {
+		name: string
+		createdAt: string
+		updatedAt: string
+		publishedAt: string
+		locale: string
+		label: string
+		products: { data: IProduct[] }
+	}
 }
 
 export interface IMapIcons {
 	[key: string]: ComponentType<SVGProps<SVGSVGElement>>
+}
+
+export interface ISelectOption {
+	value: string
+	label: string
+	color: string
+	isFixed?: boolean
+	isDisabled?: boolean
 }

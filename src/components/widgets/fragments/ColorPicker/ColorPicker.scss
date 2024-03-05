@@ -1,0 +1,54 @@
+.color-picker {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+
+	&.for-page {
+		gap: 15px;
+		.color-picker__heading {
+			font-size: 14px;
+		}
+
+		.color-picker__circle {
+			width: 20px;
+			height: 20px;
+		}
+
+		.color-picker__icon {
+			width: 10.5px;
+			height: 7.5px;
+		}
+	}
+
+	&__circles-container,
+	&__circle {
+		display: flex;
+	}
+
+	&__heading {
+		color: var(--dark-grey);
+		font-family: var(--inter);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 152%;
+	}
+
+	&__circles-container {
+		flex-direction: row;
+		gap: 10px;
+	}
+
+	&__circle {
+		width: 11px;
+		height: 11px;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+
+	&__icon {
+		width: 7px;
+		height: 5px;
+	}
+}

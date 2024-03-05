@@ -15,6 +15,17 @@
 		"empty-favorite": "There are no products in your favorites, select something from the catalog",
 		"empty-compare": "There are no products in comparison, select something from the catalog"
 	},
+	"catalog": {
+		"buy-button-not-active": "Buy",
+		"buy-button-active": "To basket",
+		"favourite-button": "To favourites"
+	},
+	"color-picker": {
+		"color-1": "grey",
+		"color-2": "green",
+		"color-3": "dark",
+		"color-4": "orange"
+	},
 	"inputErrors": {
 		">length": "not enough",
 		"<length": "too much",

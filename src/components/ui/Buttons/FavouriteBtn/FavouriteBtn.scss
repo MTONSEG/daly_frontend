@@ -1,0 +1,49 @@
+@import '@/media';
+.favourite-button {
+	&__container {
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		font-family: var(--inter);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 150%;
+		color: var(--dark-grey);
+		cursor: pointer;
+	}
+	&__icon {
+		width: 15px;
+		height: 14px;
+	}
+
+	&__favourite-icon {
+		stroke: var(--bright-green);
+		stroke-width: 0.8;
+		transition: fill 0.2s;
+		&.active {
+			fill: #00c65e;
+		}
+	}
+
+	@include media-max(xs) {
+		&__container {
+			display: flex;
+			flex-direction: row;
+			gap: 10px;
+			font-family: var(--inter);
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 150%;
+			color: var(--dark-grey);
+		}
+		&__icon {
+			width: 15px;
+			height: 14px;
+		}
+
+		&__favourite-icon {
+			stroke: var(--bright-green);
+			stroke-width: 0.8;
+		}
+	}
+}

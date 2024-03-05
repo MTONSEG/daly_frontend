@@ -12,7 +12,7 @@ import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 // import useInput from '@/hooks/useInput'
 // import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface IBreadcrumb {
 	label: string
@@ -56,27 +56,32 @@ const Product = () => {
 	// 	}
 	// }
 
-	// const { data, error, isLoading } = useDataFetch(
-	// 	`http://localhost:1337/api/products/${productId}?populate=images`
-	// )
+	const { data, error, isLoading } = useDataFetch(
+		`http://localhost:1337/api/products/${304}?populate=images`
+	)
 
 	// const breadcrumbArr: IBreadcrumb[] = [
 	// 	{ label: 'test', href: '/', active: false },
 	// 	{ label: 'test2', href: `${currentPath}`, active: true }
 	// ]
 
-	// if (error) {
-	// 	return <div>'Error'</div>
-	// }
+	useEffect(() => {
+		console.log(data)
+	}, [data])
 
-	// if (isLoading) {
-	// 	return <div>loading...</div>
-	// }
+	if (error) {
+		return <div>'Error'</div>
+	}
+
+	if (isLoading) {
+		return <div>loading...</div>
+	}
 
 	return (
 		<Container>
-			<div className='slider-container' style={{ margin: '50px auto' }}>
-				{/* <Breadcrumbs breadcrumbsArr={breadcrumbArr} />
+			<div className='slider-container' style={{ margin: '50px auto', height: 570 }}>
+				<>
+					{/* <Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 			{data ? <SliderThumbNail images={data.data.attributes.images} /> : ''}
 			<div style={{ width: '150px' }}>
 				<Input
@@ -101,7 +106,8 @@ const Product = () => {
 					error={textareaError}
 				></Textarea>
 			</div> */}
-				<SliderThumbnailFancyApp />
+				</>
+				{data && <SliderThumbnailFancyApp images={data.data.attributes.images} />}
 			</div>
 		</Container>
 	)

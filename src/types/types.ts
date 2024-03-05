@@ -59,7 +59,7 @@ export interface IMetaPagination {
 }
 
 export interface IResponse<T> {
-	data: T[]
+	data: T
 	meta: IMetaData
 }
 

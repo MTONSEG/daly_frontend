@@ -3,9 +3,9 @@ import Fancybox from './SliderComp/Fancybox'
 import Image from 'next/image'
 import './SliderThumbnail.scss'
 import { FC } from 'react'
-import { IImage } from '@/types/types'
+import { IProductImage } from '@/types/types'
 
-const SliderThumbnailFancyApp: FC<{ images: IImage[] }> = ({ images }) => {
+const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) => {
 	return (
 		<div style={{ height: '570px' }} className='slider-wrapper'>
 			<Fancybox

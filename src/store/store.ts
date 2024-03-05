@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import basketSlice from './slices/basket.slice'
 import favouritesSlice from './slices/favourites.slice'
-import filtersSlice from './slices/filters.slice'
+import filtersSlice from './filters/slice/filters.slice'
 
 export const store = configureStore({
 	reducer: {

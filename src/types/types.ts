@@ -102,19 +102,34 @@ export interface IFilter {
 		label: string
 		min_price: number
 		max_price: number
-		options: {
-			options: string[]
-		}
+
 		createdAt: string
 		updatedAt: string
 		publishedAt: string
 		locale: string
 		brands: {
-			data: IBrand[]
-		}
+			id: 2
+			active: false
+			brand: {
+				id: number
+				active: boolean
+				data: IBrand
+			}
+		}[]
 		categories: {
-			data: ICategory[]
-		}
+			id: 2
+			active: false
+			category: {
+				id: number
+				active: boolean
+				data: ICategory
+			}
+		}[]
+		options: {
+			id: number
+			title: string
+			active: boolean
+		}[]
 	}
 }
 

@@ -16,7 +16,7 @@ const headerSlice = createSlice({
 			if (!action.payload) return
 
 			state.searchList = action.payload.map((el) =>
-				formatOption(el.attributes.title)
+				formatOption(el.attributes.title, String(el.id))
 			)
 		})
 	}

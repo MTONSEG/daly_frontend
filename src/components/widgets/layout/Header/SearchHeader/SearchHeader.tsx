@@ -1,15 +1,17 @@
 'use client'
+
 import './SearchHeader.scss'
+// import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
 import { checkArr } from '@/utils/checkArr'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { searchProduct } from '@/store/header/header.api'
-import AsyncSelect from 'react-select/async'
+// const AsyncSelect = dynamic(() => import('react-select/async'), { ssr: false })
 import { ISelectOption } from '@/types/types'
+import AsyncSelect from '@/components/ui/forms/AsyncSelect/AsyncSelect'
 
 const SearchHeader = () => {
 	const dispatch = useAppDispatch()
-	const id = Date.now().toString()
 
 	const { searchList } = useAppSelector((state) => state.header)
 	const { locale } = useParams()
@@ -23,15 +25,7 @@ const SearchHeader = () => {
 
 	return (
 		<div className='search-header'>
-			<AsyncSelect
-				id={id}
-				instanceId={id}
-				unstyled
-				cacheOptions
-				loadOptions={loadOptions}
-				className='search-header__select'
-				loadingMessage={() => 'Загрузка'}
-			/>
+			<AsyncSelect loadOption={loadOptions} />
 		</div>
 	)
 }

@@ -31,7 +31,7 @@ export default function Catalog() {
 	return (
 		<>
 			<Container>
-				<div className='catalog'>
+				{/* <div className='catalog'>
 					{products.map((product, index) => (
 						<ProductCard
 							key={index}
@@ -39,7 +39,8 @@ export default function Catalog() {
 							variant={'row'}
 						></ProductCard>
 					))}
-				</div>
+				</div> */}
+				<></>
 			</Container>
 		</>
 	)

@@ -85,6 +85,7 @@ export interface IMapIcons {
 }
 
 export interface ISelectOption {
+	id: string,
 	value: string
 	label: string
 	isFixed?: boolean

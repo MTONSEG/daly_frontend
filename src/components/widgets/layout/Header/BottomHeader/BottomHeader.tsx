@@ -7,7 +7,7 @@ import CartPopup from '@/components/widgets/layout/Header/BottomHeader/CartPopup
 import ComparePopup from '@/components/widgets/layout/Header/BottomHeader/ComparePopup/ComparePopup'
 import FavoritePopup from '@/components/widgets/layout/Header/BottomHeader/FavoritePopup/FavoritePopup'
 import SearchHeader from '@/components/widgets/layout/Header/SearchHeader/SearchHeader'
-import PopupCatalog from '@/components/widgets/modals/PopupCatalog/PopupCatalog'
+import PopupCatalog from '@/components/widgets/popups/PopupCatalog/PopupCatalog'
 import { DELIVERY_PATH, SUPPORT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
 

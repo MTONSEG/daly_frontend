@@ -1,44 +1,36 @@
+'use client'
 import './SearchHeader.scss'
+import { useParams } from 'next/navigation'
+import { checkArr } from '@/utils/checkArr'
+import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
+import { searchProduct } from '@/store/header/header.api'
 import AsyncSelect from 'react-select/async'
-// import { ActionMeta, SingleValue } from 'react-select'
-// import { getData } from '@/services/axios.config'
-// import { useState } from 'react'
-// import { ISelectOption } from '@/types/types'
+import { ISelectOption } from '@/types/types'
 
 const SearchHeader = () => {
-	// const [options, setOptions] = useState<ISelectOption[]>([])
+	const dispatch = useAppDispatch()
+	const id = Date.now().toString()
 
-	// const handleChange = (
-	// 	value: SingleValue<string>,
-	// 	meta: ActionMeta<ISelectOption>
-	// ) => {
-	// 	console.log(value, meta)
-	// }
+	const { searchList } = useAppSelector((state) => state.header)
+	const { locale } = useParams()
 
-	// const loadOptions = (value: string, cb: (options: ISelectOption[]) => void) => {
-	// 	console.log(value)
-
-	// 	const data = new Promise((reject, resolve) => {
-	// 		getData(`/products?filters[title][$containsi]=${value}`)
-	// 			.then((res) => {
-	// 				console.log(res)
-	// 			})
-	// 			.catch((e) => {
-	// 				reject(e)
-	// 			})
-	// 	})
-
-	// 	console.log(data)
-	// }
+	const loadOptions = (value: string) =>
+		new Promise<ISelectOption[]>((resolve) => {
+			dispatch(searchProduct({ title: value, locale: checkArr(locale) })).then(
+				() => resolve(searchList)
+			)
+		})
 
 	return (
 		<div className='search-header'>
 			<AsyncSelect
+				id={id}
+				instanceId={id}
+				unstyled
 				cacheOptions
-				className='search-header__field'
-				// loadOptions={loadOptions}
-				// onChange={handleChange}
-				// options={options}
+				loadOptions={loadOptions}
+				className='search-header__select'
+				loadingMessage={() => 'Загрузка'}
 			/>
 		</div>
 	)

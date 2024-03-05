@@ -2,9 +2,9 @@
 
 import Button from '@/components/ui/buttons/Button/Button'
 import { CompareIcon } from '@/components/ui/icons'
-import PopupHeader from '@/components/widgets/modals/PopupHeader/PopupHeader'
-import PopupHeaderContainer from '@/components/widgets/modals/PopupHeader/PopupHeaderContainer/PopupHeaderContainer'
-import PopupHeaderItem from '@/components/widgets/modals/PopupHeader/PopupHeaderItem/PopupHeaderItem'
+import PopupHeader from '@/components/widgets/popups/PopupHeader/PopupHeader'
+import PopupHeaderContainer from '@/components/widgets/popups/PopupHeader/PopupHeaderContainer/PopupHeaderContainer'
+import PopupHeaderItem from '@/components/widgets/popups/PopupHeader/PopupHeaderItem/PopupHeaderItem'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { COMPARE_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'

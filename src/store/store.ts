@@ -1,8 +1,9 @@
-import { catalogHeaderApi } from '@/store/api/header.api'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import basketSlice from './slices/basket.slice'
 import favouritesSlice from './slices/favourites.slice'
+import { catalogHeaderApi } from '@/store/header/header.api'
+import headerSlice from '@/store/header/header.slice'
 import { getProductApi } from './api/productRTKQ.api'
 // import productSlice from './slices/productRTK.slice'
 
@@ -10,6 +11,7 @@ export const store = configureStore({
 	reducer: {
 		basket: basketSlice,
 		favourites: favouritesSlice,
+		header: headerSlice,
 		// productSlice: productSlice,
 		[catalogHeaderApi.reducerPath]: catalogHeaderApi.reducer,
 		[getProductApi.reducerPath]: getProductApi.reducer

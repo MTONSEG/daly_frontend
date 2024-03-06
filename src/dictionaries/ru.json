@@ -3,7 +3,10 @@
 		"not-found-page": "Страница не найдена",
 		"signin": "Вход",
 		"signup": "Регистрация",
-		"is-empty": "Пусто"
+		"is-empty": "Пусто",
+		"searching": "Поиск...",
+		"search": "Поиск",
+		"no-searched": "Ничего не найдено"
 	},
 	"home": {
 		"title": "Привет, Мир!",

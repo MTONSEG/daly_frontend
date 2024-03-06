@@ -3,7 +3,10 @@
 		"not-found-page": "This page is not found",
 		"signin": "Sing In",
 		"signup": "Sing Up",
-		"is-empty": "Is empty"
+		"is-empty": "Is empty",
+		"searching": "Searching...",
+		"search": "Search",
+		"no-searched": "Nothing found"
 	},
 	"home": {
 		"title": "Hello, World!",

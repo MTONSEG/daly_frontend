@@ -7,6 +7,7 @@ import useDataFetch from '@/hooks/useDataFetch'
 import './Product.scss'
 import { inter, open_sans } from '@/fonts/fonts'
 import ProductInfoCenter from '@/components/screens/Product/ProductInfoCenter/ProductInfoCenter'
+import ProductInfoRight from './ProductInfoRight/ProductInfoRight'
 
 interface IBreadcrumb {
 	label: string
@@ -84,6 +85,7 @@ const Product = () => {
 					)}
 				</div>
 				<ProductInfoCenter />
+				<ProductInfoRight />
 			</div>
 		</Container>
 	)

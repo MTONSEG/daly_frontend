@@ -32,9 +32,6 @@ const ProductInfoCenter = () => {
 					</div>
 				</div>
 			</div>
-			<div className='product__info__right'>
-				<div className='product__info__right_'></div>
-			</div>
 		</div>
 	)
 }

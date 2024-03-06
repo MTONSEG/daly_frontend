@@ -4,7 +4,10 @@ import { useTranslations } from 'next-intl'
 import './FavouriteBtn.scss'
 import { FavoriteIconGreen } from '../../icons'
 import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
-import { addFavorite, removeFavorite } from '@/store/slices/favourites.slice'
+import {
+	addFavorite,
+	removeFavorite
+} from '@/store/favourites/favourites.slice'
 
 interface IFavouriteBtnProps {
 	isLabeled?: boolean

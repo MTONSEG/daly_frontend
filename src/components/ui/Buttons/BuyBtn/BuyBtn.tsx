@@ -1,8 +1,8 @@
-"use client"
+'use client'
 import { CartIconThick } from '../../icons'
 import { useTranslations } from 'next-intl'
 import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
-import { addProduct } from '@/store/slices/basket.slice'
+import { addProduct } from '@/store/basket/basket.slice'
 import './BuyBtn.scss'
 
 interface IBuyButtonProps {

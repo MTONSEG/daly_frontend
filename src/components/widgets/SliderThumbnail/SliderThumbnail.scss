@@ -115,6 +115,10 @@
 	height: 90px;
 }
 
+.slider-wrapper {
+	height: 570px;
+}
+
 .slider__slide-wr {
 	border: 1px solid rgb(218, 220, 220);
 	border-radius: 10px;
@@ -165,5 +169,9 @@
 
 	.f-carousel__dots {
 		bottom: 10px;
+	}
+
+	.slider-wrapper {
+		height: 360px;
 	}
 }

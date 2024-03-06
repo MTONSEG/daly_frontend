@@ -1,3 +1,5 @@
+@import '@/media';
+
 .product {
 	border-radius: 10px;
 	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
@@ -6,6 +8,13 @@
 	margin-top: 20px;
 	display: grid;
 	grid-template-columns: 370px 1fr;
+
+	&__info {
+		margin-left: 40px;
+		display: flex;
+		display: grid;
+		grid-template-columns: 1fr 404px;
+	}
 
 	&__slider-container {
 		max-width: 370px;
@@ -33,5 +42,68 @@
 		svg {
 			margin-left: 5px;
 		}
+	}
+}
+
+@include media-max(lg) {
+	.product__info {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@include media-max(md) {
+	.product__info {
+		grid-template-columns: 1fr;
+
+		&_left {
+			order: 2;
+		}
+
+		&_right {
+			order: 1;
+		}
+	}
+}
+
+@include media-max(sm) {
+	.product {
+		grid-template-columns: 1fr;
+
+		&__title {
+			grid-column: 1/2;
+		}
+		.product__slider-container {
+			margin: 0 auto;
+		}
+	}
+
+	.product__info {
+		grid-template-columns: 1fr 1fr;
+		margin-top: 20px;
+		margin-left: 0;
+
+		&_left {
+			order: inherit;
+		}
+
+		&_deliver-btn {
+			display: none;
+		}
+	}
+}
+
+@include media-max(xs) {
+	.product__info {
+		grid-template-columns: 1fr;
+
+		&__right {
+			margin-top: 20px;
+		}
+	}
+}
+
+@include media-max(xs) {
+	.product {
+		padding: 30px 15px;
 	}
 }

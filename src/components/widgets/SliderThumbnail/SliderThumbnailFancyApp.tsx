@@ -7,7 +7,7 @@ import { IProductImage } from '@/types/types'
 
 const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) => {
 	return (
-		<div style={{ height: '570px' }} className='slider-wrapper'>
+		<div className='slider-wrapper'>
 			<Fancybox
 				options={{
 					Carousel: {
@@ -27,7 +27,7 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 							container: 'slider'
 						},
 						breakpoints: {
-							'(max-width: 375px)': {
+							'(max-width: 576px)': {
 								Thumbs: false,
 								Dots: true
 							}

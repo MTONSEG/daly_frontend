@@ -1,3 +1,5 @@
+@import '@/media';
+
 .product {
 	&__info {
 		&_box {
@@ -64,5 +66,51 @@
 			margin-top: 20px;
 			width: 100%;
 		}
+	}
+}
+
+@include media-max(lg) {
+	.product__info__right {
+		&__right {
+			max-width: 350px;
+			justify-self: center;
+		}
+	}
+}
+
+@include media-max(md) {
+	.product__info__right {
+	}
+	.product {
+		&__info {
+			&_box {
+				width: 100%;
+
+				&_icons-line {
+					flex-direction: column;
+				}
+
+				&_icon-col {
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+	.product__info__right {
+		justify-self: start;
+		width: 100%;
+		margin: 0 0 20px 0;
+	}
+}
+
+@include media-max(sm) {
+	.product__info_deliver-btn {
+		display: none !important;
+	}
+}
+
+@include media-max(sm) {
+	.product__info__right {
+		margin: 20px 0 0 0;
 	}
 }

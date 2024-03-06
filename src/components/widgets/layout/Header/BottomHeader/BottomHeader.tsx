@@ -19,7 +19,7 @@ export default function BottomHeader() {
 			<Container>
 				<div className='bottom-header__row'>
 					<div className='bottom-header__left'>
-						<PopupCatalog />
+						{window.innerWidth > 1023 ? <PopupCatalog /> : <>btn</>}
 
 						<LinkBtn
 							className='bottom-header__delivery-link'

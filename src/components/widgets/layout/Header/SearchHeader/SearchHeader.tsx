@@ -10,6 +10,7 @@ import type { ISelectOption } from '@/types/types'
 import { useRouter } from '@/navigation'
 import { PRODUCT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
+import { CSSProperties } from 'react'
 
 const AsyncSelect = dynamic(() => import('react-select/async'))
 
@@ -52,6 +53,12 @@ const SearchHeader = () => {
 			components={{
 				DropdownIndicator: null,
 				IndicatorSeparator: null
+			}}
+			styles={{
+				control: (base) => ({
+					...base,
+					cursor: 'pointer'
+				})
 			}}
 		/>
 	)

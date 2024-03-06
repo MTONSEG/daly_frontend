@@ -6,13 +6,13 @@
 	&__control,
 	&__menu {
 		background: var(--white);
-		border-radius: 18px;
 		width: 100%;
 		padding: 5px 0;
 	}
 
 	&__control {
 		padding: 5px 15px;
+		border-radius: 18px;
 
 		&.css-cp01gg-control {
 			min-height: 28px;
@@ -20,15 +20,41 @@
 	}
 
 	&__menu {
-		border: 1px solid var(--dark-grey-03);
+		box-shadow: 0 7px 10px var(--dark-grey-03);
 		top: calc(100% + 50px);
+		border-radius: 7px;
 	}
 
 	&__menu-list {
 		padding: 5px 0;
+
+		&::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: var(--white);
+		}
+
+		&::-webkit-scrollbar-thumb {
+			border: 2px solid var(--white);
+			background: var(--dark-grey-03);
+		}
 	}
 
 	&__indicator {
 		display: none;
+	}
+
+	
+
+	&__option {
+		padding: 5px 10px;
+		cursor: pointer;
+
+		&:hover {
+			color: var(--white);
+			background: var(--dark-grey-03);
+		}
 	}
 }

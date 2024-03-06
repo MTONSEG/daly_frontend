@@ -48,7 +48,11 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 
 	return (
 		<Container>
-			<div className='catalog'>{/* Render Product Cards */}</div>
+			<div className='catalog'>
+				{memoizedFilteredProducts.map((product, index) => {
+					return <ProductCard product={product} variant={'card'} key={index} />
+				})}
+			</div>
 		</Container>
 	)
 }

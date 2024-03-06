@@ -42,7 +42,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant }) => {
 					rating={product.attributes.rating}
 					commsQuantity={
 						product.attributes.product_comments &&
-						product.attributes.product_comments.data.attributes.length
+						product.attributes.product_comments.data.length
 					}
 				/>
 				<BuyButton id={product.id} />

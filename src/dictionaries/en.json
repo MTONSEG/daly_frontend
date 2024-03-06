@@ -33,5 +33,18 @@
 		">length": "not enough",
 		"<length": "too much",
 		"ok": "ok"
+	},
+	"product": {
+		"buy-button": "About delivery and payment",
+		"price": "Price",
+		"compare": "compare",
+		"favourite": "In favourite",
+		"memory": "Memory",
+		"resolution": "resolution",
+		"ram": "ram",
+		"buy": "buy",
+		"color": "color",
+		"characteristics": "Characteristics",
+		"allCharacteristics": "All characteristics"
 	}
 }

@@ -1,7 +1,7 @@
 import './Breadcrumbs.scss'
 import LinkBtn from '../buttons/LinkBtn/LinkBtn'
 
-interface IBreadcrumb {
+export interface IBreadcrumb {
 	label: string
 	href: string
 	active?: boolean

@@ -35,3 +35,7 @@ export { default as SockIcon } from '@/icons/catalog/sock.svg'
 export { default as TabletIcon } from '@/icons/catalog/tablet.svg'
 export { default as WheelIcon } from '@/icons/catalog/wheel.svg'
 export { default as HeadsetIcon } from '@/icons/catalog/headset.svg'
+
+// product page
+export { default as LikeIcon } from '@/icons/like-icon.svg'
+export { default as ArrowRight } from '@/icons/arrow-right.svg'

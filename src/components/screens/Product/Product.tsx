@@ -8,6 +8,8 @@ import './Product.scss'
 import { inter, open_sans } from '@/fonts/fonts'
 import ProductInfoCenter from '@/components/screens/Product/ProductInfoCenter/ProductInfoCenter'
 import ProductInfoRight from './ProductInfoRight/ProductInfoRight'
+import Button from '@/components/ui/buttons/Button/Button'
+import { ArrowRight } from '@/components/ui/icons'
 
 interface IBreadcrumb {
 	label: string
@@ -84,8 +86,17 @@ const Product = () => {
 						<SliderThumbnailFancyApp images={data.data.attributes.images} />
 					)}
 				</div>
-				<ProductInfoCenter />
-				<ProductInfoRight />
+				<div className='product__info'>
+					<div className='product__info_left'>
+						<ProductInfoCenter />
+					</div>
+					<div className='product__info__right'>
+						<ProductInfoRight />
+						<Button className='product__info_deliver-btn' variant='product'>
+							Подробнее про доставку и оплату <ArrowRight />
+						</Button>
+					</div>
+				</div>
 			</div>
 		</Container>
 	)

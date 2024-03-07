@@ -20,9 +20,12 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 	const t = useTranslations('product')
 	// {isError,data}
 	// глянуть типизация в слайдере
-	//bem
+	// bem
 	// кнопку в вариант вынести с параметром
 	// разделить на мелкие компоненты центр
+	// выделить ифно в отдельную компоненту
+	// кнопки,где нужны кнопки,кнопки - где любое действие
+	// вынести в отдельную компоненту перебор характеристик
 
 	const rtkQuery = useGetProductQuery({ locale: 'ru', id: id }).data?.data
 	const properties = rtkQuery && rtkQuery.attributes.properties

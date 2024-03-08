@@ -6,12 +6,14 @@ import { catalogHeaderApi } from '@/store/header/header.api'
 import headerSlice from '@/store/header/header.slice'
 import { getProductApi } from './api/productRTKQ.api'
 // import productSlice from './slices/productRTK.slice'
+import productSlice from '@/store/slices/product.slice'
 
 export const store = configureStore({
 	reducer: {
 		basket: basketSlice,
 		favourites: favouritesSlice,
 		header: headerSlice,
+		product: productSlice,
 		// productSlice: productSlice,
 		[catalogHeaderApi.reducerPath]: catalogHeaderApi.reducer,
 		[getProductApi.reducerPath]: getProductApi.reducer

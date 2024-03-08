@@ -2,18 +2,18 @@
 
 .product {
 	&__info {
-		&_box {
+		&__box {
 			border-radius: 5px;
 			background: rgb(255, 255, 255);
 			padding: 25px 22px;
 			box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
 
-			&_price-line {
+			&__price-line {
 				display: flex;
 				// justify-content: space-between;
 				align-items: center;
 
-				&_price_text {
+				&__price__text {
 					color: var(--dark-grey-06);
 					font-size: 16px;
 					font-weight: 500;
@@ -21,7 +21,7 @@
 					margin-right: 10px;
 				}
 
-				&_price_number {
+				&__price__number {
 					color: #000;
 					font-size: 16px;
 					font-size: 24px;
@@ -30,17 +30,17 @@
 				}
 			}
 
-			&_icons-line {
+			&__icons-line {
 				margin-top: 20px;
 				display: flex;
 			}
 
-			&_icon-col {
+			&__icon-col {
 				display: flex;
 				align-items: center;
 				margin-right: 40px;
 
-				&_text {
+				&__text {
 					color: var(--dark-grey-06);
 					font-weight: 600;
 					line-height: 150%;
@@ -50,7 +50,7 @@
 					margin-right: 10px;
 				}
 
-				&_icon {
+				&__icon {
 					cursor: pointer;
 					display: flex;
 					align-items: center;
@@ -63,7 +63,7 @@
 			}
 		}
 
-		&_buy-btn {
+		&__buy-btn {
 			margin-top: 20px;
 			width: 100%;
 		}
@@ -71,7 +71,7 @@
 }
 
 @include media-max(lg) {
-	.product__info__right {
+	.product-info__right {
 		&__right {
 			max-width: 350px;
 			justify-self: center;
@@ -80,24 +80,22 @@
 }
 
 @include media-max(md) {
-	.product__info__right {
-	}
 	.product {
 		&__info {
-			&_box {
+			&__box {
 				width: 100%;
 
-				&_icons-line {
+				&__icons-line {
 					flex-direction: column;
 				}
 
-				&_icon-col {
+				&__icon-col {
 					margin-bottom: 10px;
 				}
 			}
 		}
 	}
-	.product__info__right {
+	.product-info__right {
 		justify-self: start;
 		width: 100%;
 		margin: 0 0 20px 0;
@@ -105,13 +103,13 @@
 }
 
 @include media-max(sm) {
-	.product__info_deliver-btn {
+	.product-info__deliver-btn {
 		display: none !important;
 	}
 }
 
 @include media-max(sm) {
-	.product__info__right {
+	.product-info__right {
 		margin: 20px 0 0 0;
 	}
 }

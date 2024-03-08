@@ -27,4 +27,4 @@ const productSlice = createSlice({
 })
 
 export const { addFetchedData } = productSlice.actions
-export default productSlice
+export default productSlice.reducer

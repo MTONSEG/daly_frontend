@@ -35,6 +35,7 @@ export type IBrand = {
 		createdAt: string
 		updatedAt: string
 		publishedAt: string
+		label: string
 		locale: string
 	}
 }
@@ -102,26 +103,23 @@ export interface IFilter {
 		label: string
 		min_price: number
 		max_price: number
-
 		createdAt: string
 		updatedAt: string
 		publishedAt: string
 		locale: string
 		brands: {
-			id: 2
-			active: false
+			id: number
+			active: boolean
 			brand: {
 				id: number
-				active: boolean
 				data: IBrand
 			}
 		}[]
 		categories: {
-			id: 2
-			active: false
+			id: number
+			active: boolean
 			category: {
 				id: number
-				active: boolean
 				data: ICategory
 			}
 		}[]

@@ -8,7 +8,7 @@ import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { RootState } from '@/store/store'
 
 interface Props {
-	filters: any // Adjust the type accordingly
+	filters: any
 	locale: string | string[]
 }
 
@@ -25,12 +25,12 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 		console.log('Fetched the filtered Products')
 	}, [dispatch, fetchUrl])
 
-	const prevFetchUrl = useRef<string>() // Keep track of previous fetchUrl
+	const prevFetchUrl = useRef<string>()
 
 	useEffect(() => {
 		if (prevFetchUrl.current !== fetchUrl) {
 			fetchFilteredProductsMemoized()
-			prevFetchUrl.current = fetchUrl // Update prevFetchUrl
+			prevFetchUrl.current = fetchUrl
 		}
 	}, [fetchFilteredProductsMemoized, fetchUrl])
 

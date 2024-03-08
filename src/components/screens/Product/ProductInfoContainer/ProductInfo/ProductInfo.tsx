@@ -2,6 +2,7 @@ import ColorPicker from '../../../../widgets/fragments/ColorPicker/ColorPicker'
 import './ProductInfo.scss'
 import { FC } from 'react'
 import { useTranslations } from 'next-intl'
+import Button from '@/components/ui/buttons/Button/Button'
 
 interface IProductinfo {
 	data: {
@@ -37,7 +38,7 @@ const ProductInfo: FC<IProductinfo> = (data) => {
 							<p className='left-bottom__param-value'>{el[1]}</p>
 						</div>
 					))}
-					<button className='left-bottom__param-all-btn'>{t('allCharacteristics')}</button>
+					<Button className='left-bottom__param-all-btn'>{t('allCharacteristics')}</Button>
 				</div>
 			</div>
 		</div>

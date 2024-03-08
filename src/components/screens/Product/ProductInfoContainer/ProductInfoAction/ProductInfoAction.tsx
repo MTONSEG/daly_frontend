@@ -22,28 +22,28 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price }) => {
 	const onBuyHandler = () => {}
 
 	return (
-		<div className='info__box'>
-			<div className='info__box__price-line'>
-				<p className='info__box__price-line__price__text'>{t('price')}</p>
-				<p className='info__box__price-line__price__number'>{price} ₴</p>
+		<div className='action-box'>
+			<div className='action-box__price-line'>
+				<p className='price-line__text'>{t('price')}</p>
+				<p className='price-line__number'>{price} ₴</p>
 			</div>
-			<div className='info__box__icons-line'>
-				<div className='info__box__icon-col' onClick={compareHandler}>
-					<p className=' info__box__icon-col__text' onClick={favouriteHandler}>
+			<div className='action-box__icons-line'>
+				<div className='icons-line__col' onClick={compareHandler}>
+					<p className='icons-line__text' onClick={favouriteHandler}>
 						{t('compare')}
 					</p>
-					<p className=' info__box__icon-col__icon'>
+					<p className='icons-line__icon'>
 						<CompareIcon />
 					</p>
 				</div>
-				<div className=' info__box__icon-col'>
-					<p className=' info__box__icon-col__text'>{t('favourite')}</p>
-					<p className=' info__box__icon-col__icon'>
+				<div className='icons-line__col'>
+					<p className='icons-line__text'>{t('favourite')}</p>
+					<p className='icons-line__icon'>
 						<LikeIcon />
 					</p>
 				</div>
 			</div>
-			<Button className=' info__buy-btn' variant='product' onClick={onBuyHandler}>
+			<Button className='action-box__buy-btn' variant='product' onClick={onBuyHandler}>
 				{t('buy')}
 			</Button>
 		</div>

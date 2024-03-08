@@ -48,6 +48,11 @@
 @include media-max(lg) {
 	.info {
 		grid-template-columns: 1fr 1fr;
+
+		&__right {
+			max-width: 350px;
+			justify-self: center;
+		}
 	}
 }
 
@@ -55,12 +60,16 @@
 	.info {
 		grid-template-columns: 1fr;
 
-		&-left {
+		&__left {
 			order: 2;
 		}
 
-		&-right {
+		&__right {
 			order: 1;
+			justify-self: start;
+			max-width: 100%;
+			width: 100%;
+			margin: 0 0 20px 0;
 		}
 	}
 }
@@ -69,7 +78,7 @@
 	.product {
 		grid-template-columns: 1fr;
 
-		&-title {
+		&__title {
 			grid-column: 1/2;
 		}
 		.product__slider-container {
@@ -93,17 +102,16 @@
 }
 
 @include media-max(xs) {
-	.info {
+	.product {
+		padding: 30px 15px;
 		grid-template-columns: 1fr;
 
 		&__right {
 			margin-top: 20px;
 		}
 	}
-}
 
-@include media-max(xs) {
-	.product {
-		padding: 30px 15px;
+	.info {
+		grid-template-columns: 1fr;
 	}
 }

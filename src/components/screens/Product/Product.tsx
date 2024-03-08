@@ -41,7 +41,7 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 
 			<div className={`${open_sans.className} ${inter.className} product`}>
-				<div className='product__title'>{data?.data.attributes.title}</div>
+				<h2 className='product__title'>{data?.data.attributes.title}</h2>
 
 				<div className='product__slider-container'>
 					{data?.data.attributes.images && (

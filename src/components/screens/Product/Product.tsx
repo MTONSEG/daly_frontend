@@ -8,7 +8,6 @@ import { usePathname } from 'next/navigation'
 import { useGetProductQuery } from '@/store/api/productRTKQ.api'
 import { FC } from 'react'
 import ProductInfoContainer from './ProductInfoContainer/ProductInfoContainer'
-// import ProductInfoContainer from
 
 interface IProduct {
 	id: number

@@ -3,15 +3,11 @@ import Container from '@/components/ui/containers/Container/Container'
 import SliderThumbnailFancyApp from '@/components/widgets/SliderThumbnail/SliderThumbnailFancyApp'
 import './Product.scss'
 import { inter, open_sans } from '@/fonts/fonts'
-import ProductInfo from '@/components/screens/Product/ProductInfo/ProductInfo/ProductInfo'
-import ProductInfoRight from './ProductInfo/ProductInfoAction/ProductInfoAction'
-import Button from '@/components/ui/buttons/Button/Button'
 import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { usePathname } from 'next/navigation'
 import { useGetProductQuery } from '@/store/api/productRTKQ.api'
-import { useTranslations } from 'use-intl'
 import { FC } from 'react'
-import ProductInfo from './ProductInfo/ProductInfo'
+import ProductInfoContainer from './ProductInfoContainer/ProductInfoContainer'
 // import ProductInfoContainer from
 
 interface IProduct {
@@ -53,7 +49,7 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 						<SliderThumbnailFancyApp images={data.data.attributes.images} />
 					)}
 				</div>
-				{data && properties && <ProductInfo data={data?.data} properties={properties} />}
+				{data && properties && <ProductInfoContainer data={data?.data} properties={properties} />}
 			</div>
 		</Container>
 	)

@@ -1,14 +1,14 @@
-import './ProductInfoRight.scss'
+import './ProductInfoAction.scss'
 import Button from '@/components/ui/buttons/Button/Button'
 import { CompareIcon, LikeIcon } from '@/components/ui/icons'
 import { useTranslations } from 'next-intl'
 import { FC } from 'react'
 
-interface IProductInfoRight {
+interface IProductInfoAction {
 	price: number
 }
 
-const ProductInfoRight: FC<IProductInfoRight> = ({ price }) => {
+const ProductInfoAction: FC<IProductInfoAction> = ({ price }) => {
 	const t = useTranslations('product')
 
 	const compareHandler = () => {
@@ -50,4 +50,4 @@ const ProductInfoRight: FC<IProductInfoRight> = ({ price }) => {
 	)
 }
 
-export default ProductInfoRight
+export default ProductInfoAction

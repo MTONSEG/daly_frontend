@@ -1,9 +1,9 @@
 import ColorPicker from '../../../../widgets/fragments/ColorPicker/ColorPicker'
-import './ProductInfoCenter.scss'
+import './ProductInfo.scss'
 import { FC } from 'react'
 import { useTranslations } from 'next-intl'
 
-interface IProductInfoCenter {
+interface IProductInfo {
 	data: {
 		memory: string
 		ram: string
@@ -11,7 +11,7 @@ interface IProductInfoCenter {
 	}
 }
 
-const ProductInfoCenter: FC<IProductInfoCenter> = (data) => {
+const ProductInfo: FC<IProductInfo> = (data) => {
 	const t = useTranslations('product')
 
 	return (
@@ -44,4 +44,4 @@ const ProductInfoCenter: FC<IProductInfoCenter> = (data) => {
 	)
 }
 
-export default ProductInfoCenter
+export default ProductInfo

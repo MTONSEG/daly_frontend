@@ -31,6 +31,7 @@ const ProductInfo: FC<IProductinfo> = (data) => {
 
 			<div className='product-info__left-bottom'>
 				<p className='left-bottom__text'>{t('characteristics')}</p>
+
 				<div className='left-bottom__param'>
 					{Object.entries(data.data).map((el, index) => (
 						<div className='left-bottom__param-wr' key={index}>

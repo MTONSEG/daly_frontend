@@ -115,6 +115,10 @@
 		display: flex;
 		align-items: center;
 		margin-right: 40px;
+
+		&:nth-child(2) {
+			margin-right: 0;
+		}
 	}
 
 	&__text {
@@ -156,12 +160,11 @@
 @include media-max(sm) {
 	.action-box {
 		margin-top: 20px;
+		padding: 0;
+		box-shadow: none;
 
 		&__icons-line {
 			flex-direction: row;
 		}
-	}
-	.action-box__buy-btn {
-		// display: none !important;
 	}
 }

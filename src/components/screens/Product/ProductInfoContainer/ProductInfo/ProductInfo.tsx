@@ -3,8 +3,9 @@ import './ProductInfo.scss'
 import { FC } from 'react'
 import { useTranslations } from 'next-intl'
 import Button from '@/components/ui/buttons/Button/Button'
+import MapObject from './MapObject/MapObject'
 
-interface IProductinfo {
+export interface IProductinfo {
 	data: {
 		memory: string
 		ram: string
@@ -15,12 +16,16 @@ interface IProductinfo {
 const ProductInfo: FC<IProductinfo> = (data) => {
 	const t = useTranslations('product')
 
+	const onScrollButtonClickHandler = () => {}
+
 	return (
 		<div className='product-info'>
 			<div className='product-info__left-top'>
 				<p className='left-top__text'>{t('memory')}</p>
 				<div className='left-top__params'>
-					<button className='params__btn'>{data.data.memory}</button>
+					<Button variant='parameter' className='params__btn'>
+						{data.data.memory}
+					</Button>
 				</div>
 			</div>
 
@@ -33,13 +38,11 @@ const ProductInfo: FC<IProductinfo> = (data) => {
 				<p className='left-bottom__text'>{t('characteristics')}</p>
 
 				<div className='left-bottom__param'>
-					{Object.entries(data.data).map((el, index) => (
-						<div className='left-bottom__param-wr' key={index}>
-							<p className='left-bottom__param-key'>{t(el[0])}:</p>
-							<p className='left-bottom__param-value'>{el[1]}</p>
-						</div>
-					))}
-					<Button className='left-bottom__param-all-btn'>{t('allCharacteristics')}</Button>
+					<MapObject data={data.data}></MapObject>
+
+					<Button className='left-bottom__param-all-btn' onClick={onScrollButtonClickHandler}>
+						{t('allCharacteristics')}
+					</Button>
 				</div>
 			</div>
 		</div>

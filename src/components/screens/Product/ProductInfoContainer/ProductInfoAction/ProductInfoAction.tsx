@@ -28,20 +28,18 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price }) => {
 				<p className='price-line__number'>{price} ₴</p>
 			</div>
 			<div className='action-box__icons-line'>
-				<div className='icons-line__col' onClick={compareHandler}>
-					<p className='icons-line__text' onClick={favouriteHandler}>
-						{t('compare')}
-					</p>
+				<Button className='icons-line__col' onClick={favouriteHandler}>
+					<p className='icons-line__text'>{t('compare')}</p>
 					<p className='icons-line__icon'>
 						<CompareIcon />
 					</p>
-				</div>
-				<div className='icons-line__col'>
+				</Button>
+				<Button className='icons-line__col' onClick={compareHandler}>
 					<p className='icons-line__text'>{t('favourite')}</p>
 					<p className='icons-line__icon'>
 						<LikeIcon />
 					</p>
-				</div>
+				</Button>
 			</div>
 			<Button className='action-box__buy-btn' variant='product' onClick={onBuyHandler}>
 				{t('buy')}

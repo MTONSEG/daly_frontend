@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react'
 import './Button.scss'
 
 interface PropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
-	variant?: 'default' | 'product'
+	variant?: 'default' | 'product' | 'parameter'
 	className?: string
 }
 

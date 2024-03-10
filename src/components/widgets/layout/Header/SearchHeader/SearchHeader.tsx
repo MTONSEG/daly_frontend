@@ -1,46 +1,70 @@
+'use client'
+
 import './SearchHeader.scss'
-import AsyncSelect from 'react-select/async'
-// import { ActionMeta, SingleValue } from 'react-select'
-// import { getData } from '@/services/axios.config'
-// import { useState } from 'react'
-// import { ISelectOption } from '@/types/types'
+import dynamic from 'next/dynamic'
+import { useParams } from 'next/navigation'
+import { checkArr } from '@/utils/checkArr'
+import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
+import { searchProduct } from '@/store/header/header.api'
+import type { ISelectOption } from '@/types/types'
+import { useRouter } from '@/navigation'
+import { PRODUCT_PATH } from '@/routes/routes'
+import { useTranslations } from 'next-intl'
+
+const AsyncSelect = dynamic(() => import('react-select/async'))
 
 const SearchHeader = () => {
-	// const [options, setOptions] = useState<ISelectOption[]>([])
+	const dispatch = useAppDispatch()
+	const { searchList } = useAppSelector((state) => state.header)
 
-	// const handleChange = (
-	// 	value: SingleValue<string>,
-	// 	meta: ActionMeta<ISelectOption>
-	// ) => {
-	// 	console.log(value, meta)
-	// }
+	const t = useTranslations('shared')
 
-	// const loadOptions = (value: string, cb: (options: ISelectOption[]) => void) => {
-	// 	console.log(value)
+	const { locale } = useParams()
 
-	// 	const data = new Promise((reject, resolve) => {
-	// 		getData(`/products?filters[title][$containsi]=${value}`)
-	// 			.then((res) => {
-	// 				console.log(res)
-	// 			})
-	// 			.catch((e) => {
-	// 				reject(e)
-	// 			})
-	// 	})
+	const { push } = useRouter()
 
-	// 	console.log(data)
-	// }
+	const loadOptions = (value: string) =>
+		new Promise<ISelectOption[]>((resolve) => {
+			dispatch(searchProduct({ title: value, locale: checkArr(locale) }))
+				.then(() => resolve(searchList))
+				.catch((e) => {
+					console.log(e)
+				})
+		})
+
+	const handleChange = (value: ISelectOption) => {
+		push(`/${PRODUCT_PATH}/${value.id}`)
+	}
 
 	return (
-		<div className='search-header'>
-			<AsyncSelect
-				cacheOptions
-				className='search-header__field'
-				// loadOptions={loadOptions}
-				// onChange={handleChange}
-				// options={options}
-			/>
-		</div>
+		<AsyncSelect
+			unstyled
+			className='search-header'
+			classNamePrefix='search-header'
+			cacheOptions
+			loadOptions={loadOptions}
+			placeholder={t('search-placeholder')}
+			loadingMessage={() => t('searching')}
+			noOptionsMessage={() => t('no-searched')}
+			onChange={(value) => {
+				handleChange(value as ISelectOption)
+			}}
+			components={{
+				DropdownIndicator: null,
+				IndicatorSeparator: null
+			}}
+			styles={{
+				control: (base, state) => ({
+					...base,
+					cursor: 'pointer',
+					boxShadow: state.isFocused ? '0 0 10px #dadcdc' : ''
+				}),
+				option: (base) => ({
+					...base,
+					cursor: 'pointer'
+				}),
+			}}
+		/>
 	)
 }
 

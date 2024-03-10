@@ -88,7 +88,7 @@ export interface ICategory {
 		publishedAt: string
 		locale: string
 		label: string
-		products: { data: IProduct[] }
+		products?: { data: IProduct[] }
 	}
 }
 
@@ -132,9 +132,9 @@ export interface IFilter {
 }
 
 export interface ISelectOption {
+	id: string,
 	value: string
 	label: string
-	color: string
 	isFixed?: boolean
 	isDisabled?: boolean
 }

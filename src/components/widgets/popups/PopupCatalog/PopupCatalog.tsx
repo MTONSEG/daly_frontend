@@ -20,9 +20,6 @@ import './PopupCatalog.scss'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { CATALOG_PATH } from '@/routes/routes'
-import PopupCatalogMenu from '@/components/widgets/modals/PopupCatalog/PopupCatalogMenu/PopupCatalogMenu'
-import PopupCatalogItem from '@/components/widgets/modals/PopupCatalog/PopupCatalogItem/PopupCatalogItem'
-import { useGetCategoriesQuery } from '@/store/api/header.api'
 import type { IMapIcons } from '@/types/types'
 import { useMemo } from 'react'
 import { useParams } from 'next/navigation'
@@ -31,6 +28,9 @@ import { ThreeDots } from 'react-loader-spinner'
 import { usePathname } from '@/navigation'
 import { setActive } from '@/utils/setActive'
 import { formatPath } from '@/utils/formatPath'
+import { useGetCategoriesQuery } from '@/store/header/header.api'
+import PopupCatalogItem from '@/components/widgets/popups/PopupCatalog/PopupCatalogItem/PopupCatalogItem'
+import PopupCatalogMenu from '@/components/widgets/popups/PopupCatalog/PopupCatalogMenu/PopupCatalogMenu'
 
 const PopupCatalog = () => {
 	const { ref, isActive, setIsActive } =
@@ -68,13 +68,10 @@ const PopupCatalog = () => {
 		() =>
 			data?.data.map((el) => {
 				const Icon = iconMap[el.attributes.name]
+				const products = el.attributes.products ? el.attributes.products.data : []
 
 				return (
-					<PopupCatalogItem
-						href={''}
-						products={el.attributes.products.data}
-						key={el.id}
-					>
+					<PopupCatalogItem href={''} products={products} key={el.id}>
 						{Icon ? <Icon /> : ''}
 
 						<span>{el.attributes.label}</span>

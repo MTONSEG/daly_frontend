@@ -1,3 +1,5 @@
+@import '@/media';
+
 .popup-catalog {
 	position: relative;
 
@@ -132,6 +134,19 @@
 		svg {
 			width: 50px;
 			fill: var(--bright-green);
+		}
+	}
+
+	@include media-max(md) {
+		&__btn {
+			padding: 5px;
+			span {
+				display: none;
+			}
+
+			svg {
+				height: 22px;
+			}
 		}
 	}
 }

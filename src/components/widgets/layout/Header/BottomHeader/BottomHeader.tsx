@@ -7,7 +7,7 @@ import CartPopup from '@/components/widgets/layout/Header/BottomHeader/CartPopup
 import ComparePopup from '@/components/widgets/layout/Header/BottomHeader/ComparePopup/ComparePopup'
 import FavoritePopup from '@/components/widgets/layout/Header/BottomHeader/FavoritePopup/FavoritePopup'
 import SearchHeader from '@/components/widgets/layout/Header/SearchHeader/SearchHeader'
-import PopupCatalog from '@/components/widgets/modals/PopupCatalog/PopupCatalog'
+import PopupCatalog from '@/components/widgets/popups/PopupCatalog/PopupCatalog'
 import { DELIVERY_PATH, SUPPORT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
 
@@ -19,7 +19,7 @@ export default function BottomHeader() {
 			<Container>
 				<div className='bottom-header__row'>
 					<div className='bottom-header__left'>
-						<PopupCatalog />
+						{window.innerWidth > 1023 ? <PopupCatalog /> : <>btn</>}
 
 						<LinkBtn
 							className='bottom-header__delivery-link'
@@ -30,9 +30,7 @@ export default function BottomHeader() {
 						</LinkBtn>
 					</div>
 
-					<div className='bottom-header__search'>
-						<SearchHeader/>
-					</div>
+					<SearchHeader />
 
 					<div className='bottom-header__right'>
 						<LinkBtn

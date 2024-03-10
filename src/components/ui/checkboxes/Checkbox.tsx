@@ -18,7 +18,7 @@ const Checkbox: React.FC<ICheckboxProps> = ({
 	const [active, setActive] = useState<boolean>(isActive)
 	return (
 		<div className='check-box'>
-			<label className='checkbox-label'>
+			<label className='check-box__label'>
 				<div className={`check-box__check ${active && 'active'}`}>
 					<input
 						type='checkbox'

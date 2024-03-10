@@ -1,5 +1,7 @@
 import { IFilter } from '@/types/types'
 
+type FilterHandler = (filter: IFilter) => string
+
 export const filtersQueryBuilder = (
 	filters: IFilter[],
 	locale: string | string[],
@@ -8,37 +10,40 @@ export const filtersQueryBuilder = (
 ): string => {
 	const baseurl = `http://localhost:1337/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
 
+	const filterHandlers: { [key: string]: FilterHandler } = {
+		price: (filter) =>
+			`filters[price][$gt]=${filter.attributes.min_price}&filters[price][$lt]=${filter.attributes.max_price}`,
+		brand: (filter) =>
+			filter.attributes.brands
+				.filter((item) => item.active)
+				.map(
+					(item) =>
+						`filters[brand][name][$eq]=${item.brand.data.attributes.name}`
+				)
+				.join('&'),
+		category: (filter) =>
+			filter.attributes.categories
+				.filter((item) => item.active)
+				.map(
+					(item) =>
+						`filters[category][name][$eq]=${item.category.data.attributes.name}`
+				)
+				.join('&'),
+		stock: () => 'filters[stock][$gt]=0',
+		default: (filter) =>
+			filter.attributes.options
+				.filter((option) => option.active)
+				.map(
+					(option) =>
+						`filters[properties][${filter.attributes.name}][$eq]=${option.title}`
+				)
+				.join('&')
+	}
+
 	const filterQueries = filters.map((filter) => {
-		switch (filter.attributes.name) {
-			case 'price':
-				return `filters[price][$gt]=${filter.attributes.min_price}&filters[price][$lt]=${filter.attributes.max_price}`
-			case 'brand':
-				return filter.attributes.brands
-					.filter((item) => item.active)
-					.map(
-						(item) =>
-							`filters[brand][name][$eq]=${item.brand.data.attributes.name}`
-					)
-					.join('&')
-			case 'category':
-				return filter.attributes.categories
-					.filter((item) => item.active)
-					.map(
-						(item) =>
-							`filters[category][name][$eq]=${item.category.data.attributes.name}`
-					)
-					.join('&')
-			case 'stock':
-				return 'filters[stock][$gt]=0'
-			default:
-				return filter.attributes.options
-					.filter((option) => option.active)
-					.map(
-						(option) =>
-							`filters[properties][${filter.attributes.name}][$eq]=${option.title}`
-					)
-					.join('&')
-		}
+		const handler =
+			filterHandlers[filter.attributes.name] || filterHandlers.default
+		return handler(filter)
 	})
 
 	const validFilterQueries = filterQueries.filter((query) => query !== '') // Filter out empty queries

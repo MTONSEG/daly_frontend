@@ -1,0 +1,76 @@
+.filter-dropdown {
+	display: flex;
+	flex-direction: column;
+
+	&__head {
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		&:hover {
+			.filter-dropdown__name {
+				opacity: 0.8;
+			}
+		}
+	}
+
+	&__name {
+		color: var(--dark-grey);
+		font-family: var(--inter);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 152%;
+		transition: 0.3s;
+	}
+
+	&__arrow {
+		position: relative;
+		width: 10px;
+		height: 10px; /* Adjust the height to match the width for a symmetrical arrow */
+		transition: 0.3s;
+		&.active {
+			transform: rotate(90deg);
+		}
+	}
+
+	&__arrow::before,
+	&__arrow::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%) rotate(45deg); /* Rotate the lines to form an angle */
+		width: 7px; /* Increase the width for a thicker arrow */
+		height: 7px; /* Increase the height for a thicker arrow */
+		border-top: 2px solid #000; /* Create the top line of the arrow */
+		border-right: 2px solid #000; /* Create the right line of the arrow */
+		border-radius: 1px;
+	}
+
+	&__arrow::before {
+		right: 50%; /* Position the first line to the right */
+		margin-right: -3.5px; /* Adjust the margin to align the lines properly */
+	}
+
+	&__arrow::after {
+		left: 50%; /* Position the second line to the left */
+		margin-left: -3.5px; /* Adjust the margin to align the lines properly */
+	}
+
+	&__body {
+		transition: 0.3s;
+		margin: 0;
+		height: 0;
+		opacity: 0;
+		pointer-events: none;
+		&.active {
+			pointer-events: auto;
+			margin: 15px 0 0 0;
+			height: auto;
+			opacity: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+	}
+}

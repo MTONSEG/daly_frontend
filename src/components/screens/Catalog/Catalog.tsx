@@ -15,7 +15,7 @@ const Catalog: React.FC = () => {
     //getting filters copy from redux
 	const filtersFromRedux = useAppSelector((state) => state.filters.filtersData)
 	console.log('🚀 ~ filtersFromRedux:', filtersFromRedux)
-    //getting the filters from strapi
+    //getting the filters from strapi !!!!!!!!!! make localStorage save for filters
 	useEffect(() => {
 		dispatch(fetchAllFilters(locale))
 		console.log('Fetched the filters')

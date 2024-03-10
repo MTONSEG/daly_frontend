@@ -4,10 +4,12 @@ import { TriangleIcon } from '@/components/ui/icons'
 import Checkbox from '../../../../ui/checkboxes/Checkbox'
 import './FilterDropDown.scss'
 import { IFilter } from '@/types/types'
+import { upperFirstLetter } from '@/utils/upperFirtLetter'
+import PriceRange from '@/components/ui/forms/PriceRange/PriceRange'
 
 interface IFilterDropDownProps {
 	filter: IFilter
-	updateFilter: (updatedFilter: IFilter) => void 
+	updateFilter: (updatedFilter: IFilter) => void
 }
 
 const FilterDropDown: React.FC<IFilterDropDownProps> = ({
@@ -15,46 +17,56 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 	updateFilter
 }) => {
 	const [dropActive, setDropActive] = useState<boolean>(false)
-
+	const [values, setValues] = useState([0, 100])
+	const handleChange = (newValues: number[]) => {
+		setValues(newValues)
+	}
 	const handleToggleCheckbox = (
 		field: 'category' | 'brand' | 'option',
 		optionId: number
 	) => {
-		const updatedFilter: IFilter = JSON.parse(JSON.stringify(filter))
-
-		switch (field) {
-			case 'category':
-				updatedFilter.attributes.categories =
-					updatedFilter.attributes.categories.map((category) => {
+		const fieldHandlers = {
+			category: () => {
+				const updatedCategories = filter.attributes.categories.map(
+					(category) => {
 						if (category.id === optionId) {
 							return { ...category, active: !category.active }
 						}
 						return category
-					})
-				break
-			case 'brand':
-				updatedFilter.attributes.brands = updatedFilter.attributes.brands.map(
-					(brand) => {
-						if (brand.id === optionId) {
-							return { ...brand, active: !brand.active }
-						}
-						return brand
 					}
 				)
-				break
-			case 'option':
-				updatedFilter.attributes.options = updatedFilter.attributes.options.map(
-					(option) => {
-						if (option.id === optionId) {
-							return { ...option, active: !option.active }
-						}
-						return option
+				return {
+					...filter,
+					attributes: { ...filter.attributes, categories: updatedCategories }
+				}
+			},
+			brand: () => {
+				const updatedBrands = filter.attributes.brands.map((brand) => {
+					if (brand.id === optionId) {
+						return { ...brand, active: !brand.active }
 					}
-				)
-				break
-			default:
-				break
+					return brand
+				})
+				return {
+					...filter,
+					attributes: { ...filter.attributes, brands: updatedBrands }
+				}
+			},
+			option: () => {
+				const updatedOptions = filter.attributes.options.map((option) => {
+					if (option.id === optionId) {
+						return { ...option, active: !option.active }
+					}
+					return option
+				})
+				return {
+					...filter,
+					attributes: { ...filter.attributes, options: updatedOptions }
+				}
+			}
 		}
+
+		const updatedFilter = fieldHandlers[field] ? fieldHandlers[field]() : filter
 
 		updateFilter(updatedFilter)
 	}
@@ -65,21 +77,41 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 				className='filter-dropdown__head'
 				onClick={() => {
 					setDropActive(!dropActive)
-				}}
+				}} 
 			>
-				<div className='filter-dropdown__name'></div>
-				<TriangleIcon
-					className={`filter-dropdown__triangle-icon ${dropActive && 'active'}`}
-				/>
+				<div className='filter-dropdown__name'>{upperFirstLetter(filter.attributes.label) }</div>
+				<div className={`filter-dropdown__arrow ${dropActive && "active"}`}></div>
 			</div>
 			<div className={`filter-dropdown__body ${dropActive && 'active'}`}>
+				{filter.attributes.min_price !== null &&
+					filter.attributes.max_price !== null && (
+						<PriceRange
+							maxPrice={filter.attributes.max_price}
+							minPrice={filter.attributes.min_price}
+							values={values}
+							onChange={handleChange}
+						/>
+					)}
 				{filter.attributes.categories.length > 0 &&
 					filter.attributes.categories.map((category, index) => (
 						<Checkbox
 							key={index}
 							label={category.category.data.attributes.label}
 							isActive={category.active}
-							toggleCheckbox={() => handleToggleCheckbox('category', category.id)}
+							toggleCheckbox={() =>
+								handleToggleCheckbox('category', category.id)
+							}
+						/>
+					))}
+				{filter.attributes.categories.length > 0 &&
+					filter.attributes.categories.map((category, index) => (
+						<Checkbox
+							key={index}
+							label={category.category.data.attributes.label}
+							isActive={category.active}
+							toggleCheckbox={() =>
+								handleToggleCheckbox('category', category.id)
+							}
 						/>
 					))}
 				{filter.attributes.brands.length > 0 &&

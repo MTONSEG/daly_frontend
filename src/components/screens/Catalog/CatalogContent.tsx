@@ -14,19 +14,19 @@ interface Props {
 
 const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 	const dispatch: any = useAppDispatch()
-
+	//memoized building of the fetchURL
 	const fetchUrl = useMemo(
 		() => filtersQueryBuilder(filters, locale),
 		[filters, locale]
 	)
-
+	//fetching filtered products if the fetchUrl changed
 	const fetchFilteredProductsMemoized = useCallback(() => {
 		dispatch(fetchFilteredProducts(fetchUrl))
 		console.log('Fetched the filtered Products')
 	}, [dispatch, fetchUrl])
 
+	//chatgpt part for minimizing rerenders
 	const prevFetchUrl = useRef<string>()
-
 	useEffect(() => {
 		if (prevFetchUrl.current !== fetchUrl) {
 			fetchFilteredProductsMemoized()
@@ -34,9 +34,9 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 		}
 	}, [fetchFilteredProductsMemoized, fetchUrl])
 
-	const filteredProductsSelector = (state: RootState) =>
-		state.catalogProducts.catalogProducts
-	const filteredProducts = useAppSelector(filteredProductsSelector)
+	const filteredProducts = useAppSelector(
+		(state: RootState) => state.catalogProducts.catalogProducts
+	)
 	const memoizedFilteredProducts = useMemo(
 		() => filteredProducts,
 		[filteredProducts]

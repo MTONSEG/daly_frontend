@@ -21,7 +21,9 @@
 	"catalog": {
 		"buy-button-not-active": "Купить",
 		"buy-button-active": "В корзину",
-		"favourite-button": "В избранное"
+		"favourite-button": "В избранное",
+		"show-more-button": "Показать еще",
+		"show-less-button": "Показать меньше"
 	},
 	"color-picker": {
 		"color-1": "серый",

@@ -106,6 +106,7 @@ export interface IFilter {
 		createdAt: string
 		updatedAt: string
 		publishedAt: string
+		stock: number
 		locale: string
 		brands: {
 			id: number

@@ -1,5 +1,5 @@
+"use client"
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
-import { IProduct } from '@/types/types'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
 import { fetchFilteredProducts } from '@/store/catalog/slice/catalog.slice'

@@ -21,7 +21,9 @@
 	"catalog": {
 		"buy-button-not-active": "Buy",
 		"buy-button-active": "To basket",
-		"favourite-button": "To favourites"
+		"favourite-button": "To favourites",
+		"show-more-button": "Show more",
+		"show-less-button": "Show less"
 	},
 	"color-picker": {
 		"color-1": "grey",

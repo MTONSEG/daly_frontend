@@ -1,15 +1,24 @@
-'use client'
 import React, { useState } from 'react'
-import { TriangleIcon } from '@/components/ui/icons'
 import Checkbox from '../../../../ui/checkboxes/Checkbox'
 import './FilterDropDown.scss'
 import { IFilter } from '@/types/types'
 import { upperFirstLetter } from '@/utils/upperFirtLetter'
 import PriceRange from '@/components/ui/forms/PriceRange/PriceRange'
+import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
 
 interface IFilterDropDownProps {
 	filter: IFilter
 	updateFilter: (updatedFilter: IFilter) => void
+}
+
+const debounce = (func: Function, delay: number) => {
+	let timer: NodeJS.Timeout
+	return function (this: any, ...args: any[]) {
+		clearTimeout(timer)
+		timer = setTimeout(() => {
+			func.apply(this, args)
+		}, delay)
+	}
 }
 
 const FilterDropDown: React.FC<IFilterDropDownProps> = ({
@@ -17,10 +26,28 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 	updateFilter
 }) => {
 	const [dropActive, setDropActive] = useState<boolean>(false)
-	const [values, setValues] = useState([0, 100])
+	const [values, setValues] = useState([0, 10000])
+	const [showAllItems, setShowAllItems] = useState<boolean>(false)
+
 	const handleChange = (newValues: number[]) => {
 		setValues(newValues)
+		debounce(handleUpdatePriceRange, 1000)(newValues) // Correct invocation
 	}
+
+	const handleUpdatePriceRange = (newValues: number[]) => {
+		const updatedFilter = {
+			...filter,
+			attributes: {
+				...filter.attributes,
+				min_price: newValues[0],
+				max_price: newValues[1]
+			}
+		}
+		updateFilter(updatedFilter)
+
+		console.log('))))))))))))))))))))))))))))')
+	}
+
 	const handleToggleCheckbox = (
 		field: 'category' | 'brand' | 'option',
 		optionId: number
@@ -71,16 +98,27 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 		updateFilter(updatedFilter)
 	}
 
+	const totalItems =
+		filter.attributes.categories.length +
+		filter.attributes.brands.length +
+		filter.attributes.options.length
+	const itemsToShow = showAllItems ? totalItems : 6
+	const shouldShowMoreButton = totalItems > 6
+
 	return (
 		<div className='filter-dropdown'>
 			<div
 				className='filter-dropdown__head'
 				onClick={() => {
 					setDropActive(!dropActive)
-				}} 
+				}}
 			>
-				<div className='filter-dropdown__name'>{upperFirstLetter(filter.attributes.label) }</div>
-				<div className={`filter-dropdown__arrow ${dropActive && "active"}`}></div>
+				<div className='filter-dropdown__name'>
+					{upperFirstLetter(filter.attributes.label)}
+				</div>
+				<div
+					className={`filter-dropdown__arrow ${dropActive && 'active'}`}
+				></div>
 			</div>
 			<div className={`filter-dropdown__body ${dropActive && 'active'}`}>
 				{filter.attributes.min_price !== null &&
@@ -92,46 +130,46 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 							onChange={handleChange}
 						/>
 					)}
-				{filter.attributes.categories.length > 0 &&
-					filter.attributes.categories.map((category, index) => (
-						<Checkbox
-							key={index}
-							label={category.category.data.attributes.label}
-							isActive={category.active}
-							toggleCheckbox={() =>
-								handleToggleCheckbox('category', category.id)
-							}
-						/>
-					))}
-				{filter.attributes.categories.length > 0 &&
-					filter.attributes.categories.map((category, index) => (
-						<Checkbox
-							key={index}
-							label={category.category.data.attributes.label}
-							isActive={category.active}
-							toggleCheckbox={() =>
-								handleToggleCheckbox('category', category.id)
-							}
-						/>
-					))}
-				{filter.attributes.brands.length > 0 &&
-					filter.attributes.brands.map((brand, index) => (
-						<Checkbox
-							key={index}
-							label={brand.brand.data.attributes.name}
-							isActive={brand.active}
-							toggleCheckbox={() => handleToggleCheckbox('brand', brand.id)}
-						/>
-					))}
-				{filter.attributes.options.length > 0 &&
-					filter.attributes.options.map((option, index) => (
-						<Checkbox
-							key={index}
-							label={option.title}
-							isActive={option.active}
-							toggleCheckbox={() => handleToggleCheckbox('option', option.id)}
-						/>
-					))}
+				{filter.attributes.categories !== null &&
+					filter.attributes.categories
+						.slice(0, itemsToShow)
+						.map((category, index) => (
+							<Checkbox
+								key={index}
+								label={category.category.data.attributes.label}
+								isActive={category.active}
+								toggleCheckbox={() =>
+									handleToggleCheckbox('category', category.id)
+								}
+							/>
+						))}
+				{filter.attributes.brands !== null &&
+					filter.attributes.brands
+						.slice(0, itemsToShow)
+						.map((brand, index) => (
+							<Checkbox
+								key={index}
+								label={brand.brand.data.attributes.name}
+								isActive={brand.active}
+								toggleCheckbox={() => handleToggleCheckbox('brand', brand.id)}
+							/>
+						))}
+				{filter.attributes.options !== null &&
+					filter.attributes.options
+						.slice(0, itemsToShow)
+						.map((option, index) => (
+							<Checkbox
+								key={index}
+								label={option.title}
+								isActive={option.active}
+								toggleCheckbox={() => handleToggleCheckbox('option', option.id)}
+							/>
+						))}
+				<ShowBtn
+					showAllItems={showAllItems}
+					setShowAllItems={setShowAllItems}
+					shouldShowMoreButton={shouldShowMoreButton}
+				/>
 			</div>
 		</div>
 	)

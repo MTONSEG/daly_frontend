@@ -26,7 +26,9 @@ const filtersData = createSlice({
 	name: 'filtersData',
 	initialState: filtersState,
 	reducers: {
-		addHistoryProduct: (state, action) => {},
+		updateStateFilters: (state, action:{payload: IFilter[]}) => {
+			state.filtersData = action.payload
+		},
 
 		removeHistoryProduct: (state, action) => {}
 	},
@@ -51,6 +53,6 @@ const filtersData = createSlice({
 	}
 })
 
-export const { removeHistoryProduct, addHistoryProduct } = filtersData.actions
+export const { removeHistoryProduct, updateStateFilters } = filtersData.actions
 
 export default filtersData.reducer

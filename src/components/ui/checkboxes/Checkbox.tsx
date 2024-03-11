@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { CheckIcon } from '@/components/ui/icons'
 import './Checkbox.scss'
@@ -16,6 +16,9 @@ const Checkbox: React.FC<ICheckboxProps> = ({
 	toggleCheckbox
 }) => {
 	const [active, setActive] = useState<boolean>(isActive)
+	useEffect(() => {
+		setActive(isActive);
+	}, [isActive]);
 	return (
 		<div className='check-box'>
 			<label className='check-box__label'>

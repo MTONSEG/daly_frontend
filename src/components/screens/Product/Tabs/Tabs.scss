@@ -1,3 +1,5 @@
+@import '@/media';
+
 .tabs {
 	margin-top: 30px;
 
@@ -30,6 +32,32 @@
 		&.active {
 			color: #fff;
 			background: rgb(0, 198, 94);
+		}
+	}
+}
+
+@include media-max(md) {
+	.tabs {
+		&__btn {
+			padding: 15px 10px;
+		}
+	}
+}
+
+@include media-max(sm) {
+	.tabs__btns-wr {
+		flex-direction: column;
+	}
+
+	.tabs__btn {
+		border-radius: 10px;
+
+		&:first-of-type {
+			border-radius: 10px;
+		}
+
+		&:last-of-type {
+			border-radius: 10px;
 		}
 	}
 }

@@ -10,7 +10,6 @@ import type { ISelectOption } from '@/types/types'
 import { useRouter } from '@/navigation'
 import { PRODUCT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
-import { CSSProperties } from 'react'
 
 const AsyncSelect = dynamic(() => import('react-select/async'))
 
@@ -44,7 +43,7 @@ const SearchHeader = () => {
 			classNamePrefix='search-header'
 			cacheOptions
 			loadOptions={loadOptions}
-			placeholder={t('search')}
+			placeholder={t('search-placeholder')}
 			loadingMessage={() => t('searching')}
 			noOptionsMessage={() => t('no-searched')}
 			onChange={(value) => {
@@ -55,10 +54,15 @@ const SearchHeader = () => {
 				IndicatorSeparator: null
 			}}
 			styles={{
-				control: (base) => ({
+				control: (base, state) => ({
+					...base,
+					cursor: 'pointer',
+					boxShadow: state.isFocused ? '0 0 10px #dadcdc' : ''
+				}),
+				option: (base) => ({
 					...base,
 					cursor: 'pointer'
-				})
+				}),
 			}}
 		/>
 	)

@@ -5,7 +5,7 @@
 		"signup": "Регистрация",
 		"is-empty": "Пусто",
 		"searching": "Поиск...",
-		"search": "Поиск",
+		"search-placeholder": "Я хочу купить",
 		"no-searched": "Ничего не найдено"
 	},
 	"home": {

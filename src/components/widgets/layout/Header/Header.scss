@@ -57,18 +57,19 @@
 }
 
 .bottom-header {
-	padding: 11px 0;
+	padding: 10px 0;
 	background: var(--light-grey);
 	border: 1px solid var(--grey);
 
-	&__right {
-		margin: 0 0 0 auto;
+	&__row {
+		justify-content: space-between;
 	}
 
 	&__support-link,
 	&__delivery-link {
 		font-weight: 500;
 		line-height: 1.5;
+		flex: 0 0 auto;
 
 		&:hover {
 			opacity: 0.7;
@@ -87,6 +88,34 @@
 			margin: 3px 6px 0 0;
 			width: 20px;
 			height: 20px;
+		}
+	}
+}
+
+@include media-max(lg) {
+
+}
+
+@include media-max(md) {
+	.top-header {
+		position: fixed;
+		opacity: 0;
+	}
+
+	.bottom-header {
+		padding: 5px 0;
+
+		&__row {
+			justify-content: flex-start;
+		}
+
+		&__right {
+			margin: 0 0 0 auto;
+		}
+
+		&__support-link,
+		&__delivery-link {
+			display: none;
 		}
 	}
 }

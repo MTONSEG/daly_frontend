@@ -1,7 +1,9 @@
+@import '@/media';
+
 .search-header {
 	width: 100%;
 	max-width: 300px;
-	margin: 0 0 0 auto;
+	margin: 0 20px;
 
 	&__control,
 	&__menu {
@@ -13,16 +15,25 @@
 	&__control {
 		padding: 5px 15px;
 		border-radius: 18px;
+		min-height: 28px !important;
 
-		&.css-cp01gg-control {
-			min-height: 28px;
+		&:hover {
+			box-shadow: 0 0 10px var(--grey);
+		}
+
+		&:focus {
+			box-shadow: 0 0 10px var(--dark-grey);
 		}
 	}
 
 	&__menu {
-		box-shadow: 0 7px 10px var(--dark-grey-03);
+		box-shadow: 0 0 10px var(--dark-grey-03);
 		top: calc(100% + 50px);
 		border-radius: 7px;
+
+		&.css-100ebu3-menu {
+			top: calc(100% + 5px);
+		}
 	}
 
 	&__menu-list {
@@ -46,15 +57,27 @@
 		display: none;
 	}
 
-	
+	&__placeholder {
+		color: var(--dark-grey-03);
+		font-weight: 500;
+	}
 
 	&__option {
 		padding: 5px 10px;
 		cursor: pointer;
+		display: -webkit-box;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+		-moz-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
 
 		&:hover {
-			color: var(--white);
-			background: var(--dark-grey-03);
+			background: var(--grey-04);
 		}
+	}
+
+	@include media-max(md) {
+		
 	}
 }

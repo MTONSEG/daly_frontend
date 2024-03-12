@@ -49,7 +49,10 @@
 		"description": "Description",
 		"accessories": "Accessories",
 		"comments": "Comments",
-		"credit": "Installment and credit",
-		"deliver": "Availability and delivery"
+		"credit": "Credit",
+		"deliver": "Delivery",
+		"cpu": "CPU",
+		"diagonale": "Diagonale",
+		"display": "Display"
 	}
 }

@@ -49,6 +49,7 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 			</div>
 
 			<Tabs
+				properties={properties ? properties : {}}
 				description={
 					data?.data.attributes.description
 						? data?.data.attributes.description

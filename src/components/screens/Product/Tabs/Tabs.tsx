@@ -63,9 +63,6 @@ const Tabs: FC<ITabs> = ({ description, properties }) => {
 					<Button className='tabs__btn'>{t('characteristics')}</Button>
 				</motion.li>
 				<motion.li className='tabs__li'>
-					<Button className='tabs__btn'>{t('accessories')}</Button>
-				</motion.li>
-				<motion.li className='tabs__li'>
 					<Button className='tabs__btn'>{t('comments')}</Button>
 				</motion.li>
 				<motion.li className='tabs__li'>

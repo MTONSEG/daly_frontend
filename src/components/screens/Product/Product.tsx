@@ -48,7 +48,13 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 				{data && properties && <ProductInfoContainer data={data?.data} properties={properties} />}
 			</div>
 
-			<Tabs />
+			<Tabs
+				description={
+					data?.data.attributes.description
+						? data?.data.attributes.description
+						: 'No description have been found'
+				}
+			/>
 		</Container>
 	)
 }

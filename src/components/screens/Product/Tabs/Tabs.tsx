@@ -4,6 +4,10 @@ import Button from '@/components/ui/buttons/Button/Button'
 import TabContainer from './TabContainer/TabContainer'
 import { useTranslations } from 'next-intl'
 
+interface ITabs {
+	description: string
+}
+
 const DescriptionTab: FC<{ description: string }> = ({ description }) => {
 	const t = useTranslations('product')
 
@@ -11,12 +15,12 @@ const DescriptionTab: FC<{ description: string }> = ({ description }) => {
 		<div className='description-tab'>
 			<h2 className='description__title'>{t('description')}</h2>
 
-			{description}
+			<p className='description__text'>{description}</p>
 		</div>
 	)
 }
 
-const Tabs: FC = () => {
+const Tabs: FC<ITabs> = ({ description }) => {
 	const t = useTranslations('product')
 
 	return (
@@ -33,7 +37,7 @@ const Tabs: FC = () => {
 			<TabContainer
 				children={
 					<div>
-						<DescriptionTab description='xxx' />
+						<DescriptionTab description={description} />
 					</div>
 				}
 			/>

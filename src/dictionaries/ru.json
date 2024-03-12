@@ -46,6 +46,11 @@
 		"resolution": "разрешение",
 		"characteristics": "Характеристики",
 		"color": "Цвет",
-		"allCharacteristics": "Все характеристики"
+		"allCharacteristics": "Все характеристики",
+		"description": "Описание",
+		"accessories": "Аксессуары",
+		"comments": "Отзывы",
+		"credit": "Рассрочка и кредит",
+		"deliver": "Наличие и доставка"
 	}
 }

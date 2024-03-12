@@ -36,6 +36,15 @@
 	}
 }
 
+.description__title {
+	color: var(--dark-grey);
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 150%;
+	letter-spacing: 0px;
+	margin-bottom: 40px;
+}
+
 @include media-max(md) {
 	.tabs {
 		&__btn {

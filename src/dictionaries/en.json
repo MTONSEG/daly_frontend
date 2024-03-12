@@ -45,6 +45,11 @@
 		"buy": "buy",
 		"color": "color",
 		"characteristics": "Characteristics",
-		"allCharacteristics": "All characteristics"
+		"allCharacteristics": "All characteristics",
+		"description": "Description",
+		"accessories": "Accessories",
+		"comments": "Comments",
+		"credit": "Installment and credit",
+		"deliver": "Availability and delivery"
 	}
 }

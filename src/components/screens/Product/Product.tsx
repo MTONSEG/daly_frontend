@@ -9,6 +9,7 @@ import { useGetProductQuery } from '@/store/api/productRTKQ.api'
 import { FC, useEffect } from 'react'
 import ProductInfoContainer from './ProductInfoContainer/ProductInfoContainer'
 import { checkArr } from '@/utils/checkArr'
+import Tabs from './Tabs/Tabs'
 
 interface IProduct {
 	id: number
@@ -57,6 +58,8 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 				</div>
 				{data && properties && <ProductInfoContainer data={data?.data} properties={properties} />}
 			</div>
+
+			<Tabs />
 		</Container>
 	)
 }

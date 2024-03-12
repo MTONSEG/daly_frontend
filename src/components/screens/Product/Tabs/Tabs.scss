@@ -1,0 +1,35 @@
+.tabs {
+	margin-top: 30px;
+
+	&__btns-wr {
+		display: flex;
+	}
+
+	&__btn {
+		color: rgb(54, 58, 69);
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 140%;
+		padding: 11px 48px;
+		transition: 0.3s;
+		cursor: pointer;
+		flex-grow: 1;
+		border-left: 0.5px solid rgb(239, 239, 239);
+		border-right: 0.5px solid rgb(239, 239, 239);
+
+		&:first-of-type {
+			border-radius: 10px 0px 0px 10px;
+			border: none;
+		}
+
+		&:last-of-type {
+			border-radius: 0 10px 10px 0px;
+			border: none;
+		}
+
+		&.active {
+			color: #fff;
+			background: rgb(0, 198, 94);
+		}
+	}
+}

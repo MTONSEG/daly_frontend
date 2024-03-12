@@ -4,10 +4,11 @@ import SliderThumbnailFancyApp from '@/components/widgets/SliderThumbnail/Slider
 import './Product.scss'
 import { inter, open_sans } from '@/fonts/fonts'
 import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
-import { usePathname } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import { useGetProductQuery } from '@/store/api/productRTKQ.api'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import ProductInfoContainer from './ProductInfoContainer/ProductInfoContainer'
+import { checkArr } from '@/utils/checkArr'
 
 interface IProduct {
 	id: number
@@ -25,8 +26,12 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 	// кнопки,где нужны кнопки,кнопки - вроде,везде заменил
 	// вынести в отдельную компоненту перебор характеристик - готово
 
+	const { locale } = useParams()
+
 	const { data, isLoading } = useGetProductQuery({ locale: 'ru', id: id })
 	const properties = data && data.data.attributes.properties
+
+	useEffect(() => {})
 
 	const currentPath = usePathname()
 

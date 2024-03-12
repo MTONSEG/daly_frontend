@@ -22,6 +22,7 @@ const ProductInfo: FC<IProductinfo> = (data) => {
 		<div className='product-info'>
 			<div className='product-info__left-top'>
 				<p className='left-top__text'>{t('memory')}</p>
+
 				<div className='left-top__params'>
 					<Button variant='parameter' className='params__btn'>
 						{data.data.memory}

@@ -27,6 +27,7 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price }) => {
 				<p className='price-line__text'>{t('price')}</p>
 				<p className='price-line__number'>{price} ₴</p>
 			</div>
+
 			<div className='action-box__icons-line'>
 				<Button className='icons-line__col' onClick={favouriteHandler}>
 					<p className='icons-line__text'>{t('compare')}</p>
@@ -34,6 +35,7 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price }) => {
 						<CompareIcon />
 					</p>
 				</Button>
+
 				<Button className='icons-line__col' onClick={compareHandler}>
 					<p className='icons-line__text'>{t('favourite')}</p>
 					<p className='icons-line__icon'>
@@ -41,6 +43,7 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price }) => {
 					</p>
 				</Button>
 			</div>
+
 			<Button className='action-box__buy-btn' variant='product' onClick={onBuyHandler}>
 				{t('buy')}
 			</Button>

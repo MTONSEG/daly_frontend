@@ -5,6 +5,7 @@ import TabContainer from './TabContainer/TabContainer'
 import { useTranslations } from 'next-intl'
 import { IProductProperties } from '@/types/types'
 import { motion } from 'framer-motion'
+import TabComponent from './TabComponent/TabComponent.jsx'
 
 interface ITabs {
 	description: string
@@ -47,9 +48,20 @@ const Characteristics: FC<{ properities: IProductProperties }> = ({ properities 
 const Tabs: FC<ITabs> = ({ description, properties }) => {
 	const t = useTranslations('product')
 
+	const tabs = [
+		{
+			title: t('description'),
+			content: <DescriptionTab description={description} />
+		},
+		{
+			title: t('characteristics'),
+			content: <Characteristics properities={properties} />
+		}
+	]
+
 	return (
 		<div className='tabs'>
-			<ul className='tabs__btns-wr'>
+			{/* <ul className='tabs__btns-wr'>
 				<motion.li
 					className='tabs__li active'
 					animate={{
@@ -71,16 +83,9 @@ const Tabs: FC<ITabs> = ({ description, properties }) => {
 				<motion.li className='tabs__li active'>
 					<Button className='tabs__btn active'>{t('deliver')}</Button>
 				</motion.li>
-			</ul>
+			</ul> */}
 
-			<TabContainer
-				children={
-					<div>
-						{/* <DescriptionTab description={description} /> */}
-						<Characteristics properities={properties} />
-					</div>
-				}
-			/>
+			<TabContainer children={<TabComponent tabs={tabs} />} />
 		</div>
 	)
 }

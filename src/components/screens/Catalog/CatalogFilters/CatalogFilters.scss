@@ -7,6 +7,7 @@
 	border-radius: 0px 0px 2px 2px;
 	background: var(--white);
 	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	height: fit-content;
 
 	&__buttons {
 		display: flex;
@@ -29,7 +30,7 @@
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
-transition: 0.2s;
+		transition: 0.2s;
 		&:hover {
 			background: var(--bright-green);
 			color: var(--white);

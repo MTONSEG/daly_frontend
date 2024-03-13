@@ -1,0 +1,17 @@
+.modder {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+	&__icon {
+		width: 17px;
+		height: 14px;
+		stroke: var(--grey-04);
+		fill: var(--white);
+		&.active {
+			fill: var(--bright-green-06);
+			stroke: var(--bright-green-06);
+		}
+		cursor: pointer;
+	}
+}

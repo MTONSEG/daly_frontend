@@ -33,9 +33,10 @@
 		"color-3": "dark",
 		"color-4": "orange"
 	},
-	"sorting":{
-		"publishedAt": "By date",
-		"price": "By price",
-		"rating": "By rating"
+	"sorting": {
+		"sorting-pre-word": "Sort by",
+		"publishedAt": "Date",
+		"price": "Price",
+		"rating": "Rating"
 	}
 }

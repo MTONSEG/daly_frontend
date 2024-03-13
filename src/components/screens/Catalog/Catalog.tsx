@@ -1,4 +1,5 @@
-"use client"
+'use client'
+import './Catalog.scss'
 import React from 'react'
 import { useParams } from 'next/navigation'
 import { useAppSelector } from '@/hooks/useReduxHooks'
@@ -11,10 +12,12 @@ const Catalog: React.FC = () => {
 	const filtersFromRedux = useAppSelector((state) => state.filters)
 
 	return (
-			<Container>
+		<Container>
+			<div className='catalog'>
 				<CatalogFilters />
 				<CatalogContent filters={filtersFromRedux} locale={locale} />
-			</Container>
+			</div>
+		</Container>
 	)
 }
 

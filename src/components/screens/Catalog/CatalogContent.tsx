@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
@@ -18,7 +18,13 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 	const dispatch: any = useAppDispatch()
 	//memoized building of the fetchURL
 	const fetchUrl = useMemo(
-		() => filtersQueryBuilder(filters.filtersData, locale,filters.sortingOption,filters.sortingMethod),
+		() =>
+			filtersQueryBuilder(
+				filters.filtersData,
+				locale,
+				filters.sortingOption,
+				filters.sortingMethod
+			),
 		[filters, locale]
 	)
 	//fetching filtered products if the fetchUrl changed
@@ -49,14 +55,18 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 	}, [memoizedFilteredProducts])
 
 	return (
-		<Container>
-			<CatalogGridHead productsQuantity={memoizedFilteredProducts.length}/>
-			<div className='catalog'>
-				{memoizedFilteredProducts.map((product, index) => {
-					return <ProductCard product={product} variant={filteredProducts.gridMode} key={index} />
-				})}
-			</div>
-		</Container>
+		<div className='catalog-content'>
+			<CatalogGridHead productsQuantity={memoizedFilteredProducts.length} />
+			{memoizedFilteredProducts.map((product, index) => {
+				return (
+					<ProductCard
+						product={product}
+						variant={filteredProducts.gridMode}
+						key={index}
+					/>
+				)
+			})}
+		</div>
 	)
 }
 

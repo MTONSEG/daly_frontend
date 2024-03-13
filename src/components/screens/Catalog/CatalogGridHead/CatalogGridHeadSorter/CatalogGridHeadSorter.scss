@@ -1,0 +1,22 @@
+.sorter {
+	&__head {
+	}
+
+	&__head-arrow {
+		position: relative;
+		width: 10px;
+		height: 10px; /* Adjust the height to match the width for a symmetrical arrow */
+		transition: 0.3s;
+		&.active {
+			transform: rotate(90deg);
+		}
+	}
+
+	&__options {
+		&.active {
+		}
+	}
+
+	&__option {
+	}
+}

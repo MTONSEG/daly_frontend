@@ -8,7 +8,7 @@ import CatalogFilters from './CatalogFilters/CatalogFilters'
 
 const Catalog: React.FC = () => {
 	const { locale } = useParams()
-	const filtersFromRedux = useAppSelector((state) => state.filters.filtersData)
+	const filtersFromRedux = useAppSelector((state) => state.filters)
 
 	return (
 			<Container>

@@ -26,11 +26,21 @@ const filtersData = createSlice({
 	name: 'filtersData',
 	initialState: filtersState,
 	reducers: {
-		updateStateFilters: (state, action:{payload: IFilter[]}) => {
+		updateStateFilters: (state, action: { payload: IFilter[] }) => {
 			state.filtersData = action.payload
 		},
-
-		removeHistoryProduct: (state, action) => {}
+		setSorting: (
+			state,
+			action: {
+				payload: {
+					sortingOption: 'publishedAt' | 'price' | 'rating'
+					sortingMethod: 'asc' | 'desc'
+				}
+			}
+		) => {
+			state.sortingOption = action.payload.sortingOption
+			state.sortingMethod=action.payload.sortingMethod
+		}
 	},
 
 	extraReducers(builder) {
@@ -53,6 +63,6 @@ const filtersData = createSlice({
 	}
 })
 
-export const { removeHistoryProduct, updateStateFilters } = filtersData.actions
+export const { updateStateFilters, setSorting } = filtersData.actions
 
 export default filtersData.reducer

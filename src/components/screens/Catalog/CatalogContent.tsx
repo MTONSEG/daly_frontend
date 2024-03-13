@@ -6,9 +6,11 @@ import { fetchFilteredProducts } from '@/store/catalog/slice/catalog.slice'
 import Container from '@/components/ui/containers/Container/Container'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { RootState } from '@/store/store'
+import CatalogGridHead from './CatalogGridHead/CatalogGridHead'
+import { IFiltersState } from '@/store/states'
 
 interface Props {
-	filters: any
+	filters: IFiltersState
 	locale: string | string[]
 }
 
@@ -16,7 +18,7 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 	const dispatch: any = useAppDispatch()
 	//memoized building of the fetchURL
 	const fetchUrl = useMemo(
-		() => filtersQueryBuilder(filters, locale),
+		() => filtersQueryBuilder(filters.filtersData, locale,filters.sortingOption,filters.sortingMethod),
 		[filters, locale]
 	)
 	//fetching filtered products if the fetchUrl changed
@@ -48,6 +50,7 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 
 	return (
 		<Container>
+			<CatalogGridHead productsQuantity={memoizedFilteredProducts.length}/>
 			<div className='catalog'>
 				{memoizedFilteredProducts.map((product, index) => {
 					return <ProductCard product={product} variant={'card'} key={index} />

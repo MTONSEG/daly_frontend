@@ -34,3 +34,7 @@ export { default as SockIcon } from '@/icons/catalog/sock.svg'
 export { default as TabletIcon } from '@/icons/catalog/tablet.svg'
 export { default as WheelIcon } from '@/icons/catalog/wheel.svg'
 export { default as HeadsetIcon } from '@/icons/catalog/headset.svg'
+
+//catalog
+export { default as CardsModIcon } from '@/icons/cards-mode-icon.svg'
+export { default as ListModIcon } from '@/icons/list-mode-icon.svg'

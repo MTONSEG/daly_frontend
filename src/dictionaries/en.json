@@ -23,12 +23,19 @@
 		"buy-button-active": "To basket",
 		"favourite-button": "To favourites",
 		"show-more-button": "Show more",
-		"show-less-button": "Show less"
+		"show-less-button": "Show less",
+		"save-filters-button": "Save",
+		"default-filters-button": "Defaults"
 	},
 	"color-picker": {
 		"color-1": "grey",
 		"color-2": "green",
 		"color-3": "dark",
 		"color-4": "orange"
+	},
+	"sorting":{
+		"publishedAt": "By date",
+		"price": "By price",
+		"rating": "By rating"
 	}
 }

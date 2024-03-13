@@ -25,7 +25,10 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 	filter,
 	updateFilter
 }) => {
-	const [dropActive, setDropActive] = useState<boolean>(false)
+	const isPrice:boolean = filter.attributes.min_price !== null && filter.attributes.max_price !== null;
+	const [dropActive, setDropActive] = useState<boolean>(
+		isPrice
+	)
 	const [values, setValues] = useState([0, 10000])
 	const [showAllItems, setShowAllItems] = useState<boolean>(false)
 
@@ -44,8 +47,6 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 			}
 		}
 		updateFilter(updatedFilter)
-
-		console.log('))))))))))))))))))))))))))))')
 	}
 
 	const handleToggleCheckbox = (
@@ -110,19 +111,26 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 			<div
 				className='filter-dropdown__head'
 				onClick={() => {
-					setDropActive(!dropActive)
+					if (
+						isPrice
+					) {
+						return
+					} else {
+						setDropActive(!dropActive)
+					}
 				}}
 			>
 				<div className='filter-dropdown__name'>
 					{upperFirstLetter(filter.attributes.label)}
 				</div>
-				<div
-					className={`filter-dropdown__arrow ${dropActive && 'active'}`}
-				></div>
+				{!isPrice && (
+						<div
+							className={`filter-dropdown__arrow ${dropActive && 'active'}`}
+						></div>
+					)}
 			</div>
 			<div className={`filter-dropdown__body ${dropActive && 'active'}`}>
-				{filter.attributes.min_price !== null &&
-					filter.attributes.max_price !== null && (
+				{isPrice && (
 						<PriceRange
 							maxPrice={filter.attributes.max_price}
 							minPrice={filter.attributes.min_price}

@@ -24,9 +24,10 @@ const catalogProducts = createSlice({
 	name: 'catalogProducts',
 	initialState: catalogProductsState,
 	reducers: {
-		addHistoryProduct: (state, action) => {},
+		setGridMode: (state, action: { payload: { mode: "card" | "row" } }) => {
+			state.gridMode = action.payload.mode
+		},
 
-		removeHistoryProduct: (state, action) => {}
 	},
 
 	extraReducers(builder) {
@@ -49,6 +50,6 @@ const catalogProducts = createSlice({
 	}
 })
 
-export const { removeHistoryProduct, addHistoryProduct } =
+export const { setGridMode } =
 	catalogProducts.actions
 export default catalogProducts.reducer

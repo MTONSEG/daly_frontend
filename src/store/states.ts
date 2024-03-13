@@ -19,14 +19,14 @@ export const filtersState: IFiltersState = {
 
 export interface ICatalogProductsState {
 	catalogProducts: IProduct[]
-	gridMode: 'cards' | 'list'
+	gridMode: 'card' | 'row'
 	error: null | string
 	status: 'start' | 'loading' | 'error' | 'success'
 }
 
 export const catalogProductsState: ICatalogProductsState = {
 	catalogProducts: [],
-	gridMode: 'cards',
+	gridMode: 'card',
 	error: null,
 	status: 'start'
 }

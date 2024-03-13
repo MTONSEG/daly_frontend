@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './CatalogGridHead.scss'
 import BasicDrop from '@/components/screens/Catalog/CatalogGridHead/CatalogGridHeadSorter/CatalogGridHeadSorter'
-
+import CatalogGridHeadModder from './CatalogGridHeadModder/CatalogGridHeadModder'
 interface Props {
 	productsQuantity: number
 }
@@ -22,7 +22,7 @@ const CatalogGridHead: React.FC<Props> = ({ productsQuantity }) => {
 						sortingMethods={['asc', 'desc']}
 					/>
 				</div>
-				<div className='catalog-grid-head__mod-choose'></div>
+				<CatalogGridHeadModder/>
 			</div>
 		</div>
 	)

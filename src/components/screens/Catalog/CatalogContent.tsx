@@ -37,11 +37,11 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 	}, [fetchFilteredProductsMemoized, fetchUrl])
 
 	const filteredProducts = useAppSelector(
-		(state: RootState) => state.catalogProducts.catalogProducts
+		(state: RootState) => state.catalogProducts
 	)
 	const memoizedFilteredProducts = useMemo(
-		() => filteredProducts,
-		[filteredProducts]
+		() => filteredProducts.catalogProducts,
+		[filteredProducts.catalogProducts]
 	)
 
 	useEffect(() => {
@@ -53,7 +53,7 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 			<CatalogGridHead productsQuantity={memoizedFilteredProducts.length}/>
 			<div className='catalog'>
 				{memoizedFilteredProducts.map((product, index) => {
-					return <ProductCard product={product} variant={'card'} key={index} />
+					return <ProductCard product={product} variant={filteredProducts.gridMode} key={index} />
 				})}
 			</div>
 		</Container>

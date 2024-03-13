@@ -1,15 +1,18 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import './Tabs.scss'
-import Button from '@/components/ui/buttons/Button/Button'
-import TabContainer from './TabContainer/TabContainer'
 import { useTranslations } from 'next-intl'
 import { IProductProperties } from '@/types/types'
-import { motion } from 'framer-motion'
-import TabComponent from './TabComponent/TabComponent.jsx'
+import TabHead from './TabStructure/TabHead'
+import TabContent from './TabStructure/TabContent'
 
 interface ITabs {
 	description: string
 	properties: IProductProperties
+}
+
+export interface ITab {
+	title: string
+	content: React.ReactNode
 }
 
 const DescriptionTab: FC<{ description: string }> = ({ description }) => {
@@ -47,8 +50,9 @@ const Characteristics: FC<{ properities: IProductProperties }> = ({ properities 
 
 const Tabs: FC<ITabs> = ({ description, properties }) => {
 	const t = useTranslations('product')
+	const [activeTabIndex, setActiveTabIndex] = useState<number>(0)
 
-	const tabs = [
+	const tabs: ITab[] = [
 		{
 			title: t('description'),
 			content: <DescriptionTab description={description} />
@@ -84,8 +88,8 @@ const Tabs: FC<ITabs> = ({ description, properties }) => {
 					<Button className='tabs__btn active'>{t('deliver')}</Button>
 				</motion.li>
 			</ul> */}
-
-			<TabContainer children={<TabComponent tabs={tabs} />} />
+			<TabHead tabs={tabs} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex} />
+			<TabContent tabs={tabs} activeTabIndex={activeTabIndex} />
 		</div>
 	)
 }

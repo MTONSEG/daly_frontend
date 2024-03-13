@@ -70,7 +70,7 @@
 		font-weight: 700;
 		line-height: 150%;
 		text-align: left;
-		margin: 40px 0px;
+		margin: 0 0 40px 0px;
 	}
 
 	&__list {
@@ -94,11 +94,31 @@
 	}
 }
 
+.tab__content-wr {
+	border-radius: 10px;
+	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	background: rgb(255, 255, 255);
+	padding: 40px 50px;
+	margin-top: 20px;
+}
+
+.tab-content {
+	display: none;
+}
+
+.tab-content.active {
+	display: block;
+}
+
 @include media-max(md) {
 	.tabs {
 		&__li {
 			padding: 15px 10px;
 		}
+	}
+
+	.tab__content-wr {
+		padding: 20px;
 	}
 }
 

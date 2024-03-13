@@ -18,10 +18,8 @@ interface IProduct {
 const Product: FC<IProduct> = ({ id = 304 }) => {
 	const { locale } = useParams()
 
-	const { data, isLoading } = useGetProductQuery({ locale: 'ru', id: id })
+	const { data, isLoading } = useGetProductQuery({ locale: locale[0], id: id })
 	const properties = data && data.data.attributes.properties
-
-	useEffect(() => {})
 
 	const currentPath = usePathname()
 

@@ -16,7 +16,6 @@ export type IProductProperties = {
 	display: string
 }
 
-
 export type IProductComments = {
 	id: number
 	attributes: {
@@ -85,7 +84,7 @@ export interface IMapIcons {
 }
 
 export interface ISelectOption {
-	id: string,
+	id: string
 	value: string
 	label: string
 	isFixed?: boolean

@@ -36,6 +36,9 @@ const Characteristics: FC<{ properities: IProductProperties }> = ({ properities 
 
 			<ul className='characteristics__list'>
 				{Object.entries(properities).map((el, index) => {
+					if (el[0] === 'id') {
+						return ''
+					}
 					return (
 						<li key={index} className='characteristics__line'>
 							<p className='characteristics__key'>{t(el[0])}:</p>

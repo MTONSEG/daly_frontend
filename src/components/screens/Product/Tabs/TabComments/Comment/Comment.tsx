@@ -6,7 +6,7 @@ import { StarProduct } from '@/components/ui/icons'
 import noname from '@/images/noname.webp'
 
 const Comment = () => {
-	const myStyles = {
+	const starsStyle = {
 		itemShapes: <StarProduct />,
 		activeFillColor: 'rgb(0, 198, 94)',
 		inactiveFillColor: '#99F6E4'
@@ -22,7 +22,7 @@ const Comment = () => {
 
 				<div className='comment__stars'>
 					<p className='comment__star-amount'>{3}</p>
-					<Rating style={{ width: 65, height: 20 }} value={3} readOnly itemStyles={myStyles} />
+					<Rating style={{ width: 65, height: 20 }} value={3} readOnly itemStyles={starsStyle} />
 				</div>
 			</div>
 

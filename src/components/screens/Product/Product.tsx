@@ -6,9 +6,8 @@ import { inter, open_sans } from '@/fonts/fonts'
 import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useParams, usePathname } from 'next/navigation'
 import { useGetProductQuery } from '@/store/api/productRTKQ.api'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import ProductInfoContainer from './ProductInfoContainer/ProductInfoContainer'
-import { checkArr } from '@/utils/checkArr'
 import Tabs from './Tabs/Tabs'
 
 interface IProduct {

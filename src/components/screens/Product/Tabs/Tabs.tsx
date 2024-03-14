@@ -35,7 +35,7 @@ const Characteristics: FC<{ properities: IProductProperties }> = ({ properities 
 		<div className='characteristics'>
 			<h2 className='characteristics__title'>{t('characteristics')}</h2>
 
-			<ul className='characteristics__list'>
+			<ol className='characteristics__list'>
 				{Object.entries(properities).map((el, index) => {
 					if (el[0] === 'id') {
 						return ''
@@ -47,7 +47,36 @@ const Characteristics: FC<{ properities: IProductProperties }> = ({ properities 
 						</li>
 					)
 				})}
-			</ul>
+			</ol>
+		</div>
+	)
+}
+
+const Credit = () => {
+	return (
+		<div className='credit'>
+			<h1 className='credit__title'>Рассрочка и кредит</h1>
+			<div className='credit-box'>
+				<h2 className='credit-box__title'>Как купить в рассрочку?</h2>
+				<ol className='credit-box__ol'>
+					<li className='credit-box__li'>Добавьте товар в корзину</li>
+					<li className='credit-box__li'>Добавьте товар в корзину</li>
+					<li className='credit-box__li'>Добавьте товар в корзину</li>
+					<li className='credit-box__li'>Добавьте товар в корзину</li>
+					<li className='credit-box__li'>Добавьте товар в корзину</li>
+				</ol>
+			</div>
+
+			<div className='credit-box'>
+				<h2 className='credit-box__title'>Как купить в рассрочку?</h2>
+				<ol className='credit-box__ol_installment '>
+					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
+					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
+					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
+					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
+					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
+				</ol>
+			</div>
 		</div>
 	)
 }
@@ -65,12 +94,13 @@ const Tabs: FC<ITabs> = ({ description, properties, comments }) => {
 			title: t('characteristics'),
 			content: <Characteristics properities={properties} />
 		},
-		{ title: t('comments'), content: <Comments /> }
+		{ title: t('comments'), content: <Comments /> },
+		{ title: t('credit'), content: <Credit /> }
 	]
 
 	return (
 		<div className='tabs'>
-			{/* <ul className='tabs__btns-wr'>
+			{/* <ol className='tabs__btns-wr'>
 				<motion.li
 					className='tabs__li active'
 					animate={{
@@ -92,7 +122,7 @@ const Tabs: FC<ITabs> = ({ description, properties, comments }) => {
 				<motion.li className='tabs__li active'>
 					<Button className='tabs__btn active'>{t('deliver')}</Button>
 				</motion.li>
-			</ul> */}
+			</ol> */}
 			<TabHead tabs={tabs} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex} />
 			<TabContent tabs={tabs} activeTabIndex={activeTabIndex} />
 		</div>

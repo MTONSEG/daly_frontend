@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { IProductProperties } from '@/types/types'
 import TabHead from './TabStructure/TabHead'
 import TabContent from './TabStructure/TabContent'
+import Comments from './TabComments/Comments'
 
 interface ITabs {
 	description: string
@@ -51,7 +52,7 @@ const Characteristics: FC<{ properities: IProductProperties }> = ({ properities 
 	)
 }
 
-const Tabs: FC<ITabs> = ({ description, properties }) => {
+const Tabs: FC<ITabs> = ({ description, properties, comments }) => {
 	const t = useTranslations('product')
 	const [activeTabIndex, setActiveTabIndex] = useState<number>(0)
 
@@ -63,7 +64,8 @@ const Tabs: FC<ITabs> = ({ description, properties }) => {
 		{
 			title: t('characteristics'),
 			content: <Characteristics properities={properties} />
-		}
+		},
+		{ title: t('comments'), content: <Comments /> }
 	]
 
 	return (

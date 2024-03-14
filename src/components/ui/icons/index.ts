@@ -39,3 +39,4 @@ export { default as HeadsetIcon } from '@/icons/catalog/headset.svg'
 // product page
 export { default as LikeIcon } from '@/icons/like-icon.svg'
 export { default as ArrowRight } from '@/icons/arrow-right.svg'
+export { default as StarProduct } from '@/icons/star-product.svg'

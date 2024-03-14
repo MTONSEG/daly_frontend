@@ -1,0 +1,59 @@
+.comment {
+	padding: 20px 20px 35px 20px;
+	border-radius: 10px;
+	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	background: rgb(255, 255, 255);
+	margin-bottom: 20px;
+
+	&__top {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__author {
+		display: flex;
+	}
+
+	&__image {
+		margin-right: 15px;
+	}
+
+	&__name {
+		color: var(--dark-grey);
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 150%;
+	}
+
+	&__date {
+		color: var(--dark-grey);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 120%;
+		margin-top: 10px;
+	}
+
+	&__stars {
+		display: flex;
+		align-items: center;
+	}
+
+	&__star-amount {
+		color: rgb(0, 198, 94);
+		font-weight: 500;
+		line-height: 150%;
+		margin-right: 5px;
+	}
+
+	&__star {
+		fill: red;
+	}
+
+	&__text {
+		margin-top: 20px;
+		color: var(--dark-grey);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 152%;
+	}
+}

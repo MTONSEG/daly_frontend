@@ -3,8 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
 import { fetchFilteredProducts } from '@/store/catalog/slice/catalog.slice'
-import Container from '@/components/ui/containers/Container/Container'
-import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
+import CatalogGrid from './CatalogGrid/CatalogGrid'
 import { RootState } from '@/store/store'
 import CatalogGridHead from './CatalogGridHead/CatalogGridHead'
 import { IFiltersState } from '@/store/states'
@@ -51,21 +50,13 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 	)
 
 	useEffect(() => {
-		console.log('🚀 ~ Catalog ~ filteredProducts:', memoizedFilteredProducts)
+		console.log("Changed the memoized filtered products")
 	}, [memoizedFilteredProducts])
 
 	return (
 		<div className='catalog-content'>
 			<CatalogGridHead productsQuantity={memoizedFilteredProducts.length} />
-			{memoizedFilteredProducts.map((product, index) => {
-				return (
-					<ProductCard
-						product={product}
-						variant={filteredProducts.gridMode}
-						key={index}
-					/>
-				)
-			})}
+			<CatalogGrid products={memoizedFilteredProducts} gridMode={filteredProducts.gridMode}/>
 		</div>
 	)
 }

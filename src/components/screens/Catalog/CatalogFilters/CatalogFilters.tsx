@@ -13,8 +13,8 @@ import { useTranslations } from 'next-intl'
 
 interface Props {}
 
-const CatalogFilters: React.FC<Props> = ({ }) => {
-	const word = useTranslations("catalog");
+const CatalogFilters: React.FC<Props> = ({}) => {
+	const word = useTranslations('catalog')
 	const { locale } = useParams()
 	//state of the filters copy from redux
 	const [filters, setFilters] = useState<IFilter[]>([])
@@ -70,7 +70,7 @@ const CatalogFilters: React.FC<Props> = ({ }) => {
 						className='catalog-filters__button'
 						onClick={handleUpdateFilters}
 					>
-						{word("save-filters-button")}
+						{word('save-filters-button')}
 					</div>
 					<div
 						className='catalog-filters__button'
@@ -78,7 +78,7 @@ const CatalogFilters: React.FC<Props> = ({ }) => {
 							dispatch(fetchAllFilters(locale))
 						}}
 					>
-						{word("default-filters-button")}
+						{word('default-filters-button')}
 					</div>
 				</div>
 			</div>

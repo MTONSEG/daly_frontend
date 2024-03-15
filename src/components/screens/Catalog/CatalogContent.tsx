@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
 import { fetchFilteredProducts } from '@/store/catalog/slice/catalog.slice'
@@ -22,7 +22,9 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 				filters.filtersData,
 				locale,
 				filters.sortingOption,
-				filters.sortingMethod
+				filters.sortingMethod,
+				filters.page,
+				filters.limit
 			),
 		[filters, locale]
 	)
@@ -55,8 +57,8 @@ const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
 
 	return (
 		<div className='catalog-content'>
-			<CatalogGridHead productsQuantity={memoizedFilteredProducts.length} />
-			<CatalogGrid products={memoizedFilteredProducts} gridMode={filteredProducts.gridMode}/>
+			<CatalogGridHead productsQuantity={filteredProducts.meta.pagination.total} />
+			<CatalogGrid products={memoizedFilteredProducts} meta={filteredProducts.meta } gridMode={filteredProducts.gridMode}/>
 		</div>
 	)
 }

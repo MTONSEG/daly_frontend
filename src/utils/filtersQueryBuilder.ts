@@ -6,7 +6,9 @@ export const filtersQueryBuilder = (
 	filters: IFilter[],
 	locale: string | string[],
 	sorting: 'publishedAt' | 'price' | 'rating' = 'publishedAt',
-	sortingWay: 'asc' | 'desc' = 'desc'
+	sortingWay: 'asc' | 'desc' = 'desc',
+	page: number,
+	limit: number
 ): string => {
 	const baseurl = `http://localhost:1337/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
 
@@ -47,8 +49,8 @@ export const filtersQueryBuilder = (
 	})
 
 	const validFilterQueries = filterQueries.filter((query) => query !== '') // Filter out empty queries
-
+	const paginationFilter = `&pagination[page]=${page}&pagination[pageSize]=${limit}`
 	const sortingFilter = `&sort=${sorting}:${sortingWay}`
 
-	return `${baseurl}&${validFilterQueries.join('&')}${sortingFilter}`
+	return `${baseurl}&${validFilterQueries.join('&')}${sortingFilter}${paginationFilter}`
 }

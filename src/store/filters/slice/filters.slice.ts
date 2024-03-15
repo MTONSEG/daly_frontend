@@ -39,7 +39,19 @@ const filtersData = createSlice({
 			}
 		) => {
 			state.sortingOption = action.payload.sortingOption
-			state.sortingMethod=action.payload.sortingMethod
+			state.sortingMethod = action.payload.sortingMethod
+		},
+		setPagination: (
+			state,
+			action: {
+				payload: {
+					page: number
+					limit: number
+				}
+			}
+		) => {
+			state.page = action.payload.page
+			state.limit = action.payload.limit
 		}
 	},
 
@@ -63,6 +75,6 @@ const filtersData = createSlice({
 	}
 })
 
-export const { updateStateFilters, setSorting } = filtersData.actions
+export const { updateStateFilters, setSorting , setPagination} = filtersData.actions
 
 export default filtersData.reducer

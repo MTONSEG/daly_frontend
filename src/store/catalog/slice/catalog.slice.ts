@@ -5,29 +5,29 @@ import { RootState } from '../../store'
 import { getData } from '@/services/axios.config'
 import { catalogProductsState, filtersState } from '@/store/states'
 
-export const fetchFilteredProducts = createAsyncThunk<
-	IProduct[],
-	string,
-	{ state: RootState; rejectValue: string }
->('catalogProducts/fetchFilteredProducts', async (url, { rejectWithValue }) => {
-	try {
-		const data = await getData<IResponse<IProduct[]>>(url)
+export const fetchFilteredProducts =
+	createAsyncThunk <
+	IResponse<IProduct[]>, string, { state: RootState; rejectValue: string }>(
+		'catalogProducts/fetchFilteredProducts',
+		async (url, { rejectWithValue }) => {
+			try {
+				const data = await getData<IResponse<IProduct[]>>(url)
 
-		return data.data
-	} catch (error: any) {
-		console.error('Error getting all product data:', error)
-		return rejectWithValue(error)
-	}
-})
+				return data
+			} catch (error: any) {
+				console.error('Error getting all product data:', error)
+				return rejectWithValue(error)
+			}
+		}
+	)
 
 const catalogProducts = createSlice({
 	name: 'catalogProducts',
 	initialState: catalogProductsState,
 	reducers: {
-		setGridMode: (state, action: { payload: { mode: "card" | "row" } }) => {
+		setGridMode: (state, action: { payload: { mode: 'card' | 'row' } }) => {
 			state.gridMode = action.payload.mode
-		},
-
+		}
 	},
 
 	extraReducers(builder) {
@@ -39,7 +39,8 @@ const catalogProducts = createSlice({
 			.addCase(fetchFilteredProducts.fulfilled, (state, action) => {
 				state.status = 'success'
 				state.error = null
-				state.catalogProducts = action.payload
+				state.catalogProducts = action.payload.data
+				state.meta = action.payload.meta
 				// console.log('🚀 SUCCESSSSSSSSSSSSSSSSS', state.filtersData)
 			})
 
@@ -50,6 +51,5 @@ const catalogProducts = createSlice({
 	}
 })
 
-export const { setGridMode } =
-	catalogProducts.actions
+export const { setGridMode } = catalogProducts.actions
 export default catalogProducts.reducer

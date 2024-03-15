@@ -1,12 +1,26 @@
 .catalog-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	row-gap: 20px;
-	column-gap: 18px;
-	justify-items: center;
-	&.row{
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 60px;
+	&__products {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		row-gap: 20px;
+		column-gap: 18px;
+		justify-items: center;
+		&.row {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+	}
+
+	&__pagination {
+	}
+
+	&__pagination-button {
+		&.active {
+			font-size: 20px;
+		}
 	}
 }

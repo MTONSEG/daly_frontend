@@ -1,6 +1,7 @@
 .catalog-grid {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 30px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	row-gap: 20px;
+	column-gap: 18px;
+	justify-items: center;
 }

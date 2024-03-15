@@ -10,10 +10,13 @@ import {
 import { IFilter } from '@/types/types'
 import FilterDropdown from './FilterDropdown/FilterDropdown'
 import { useTranslations } from 'next-intl'
+import { FilterMobileIcon } from '@/components/ui/icons'
 
 interface Props {}
 
-const CatalogFilters: React.FC<Props> = ({}) => {
+const CatalogFilters: React.FC<Props> = ({ }) => {
+	const [popupActive, setPopupActive] = useState<boolean>(false);
+
 	const word = useTranslations('catalog')
 	const { locale } = useParams()
 	//state of the filters copy from redux
@@ -55,34 +58,32 @@ const CatalogFilters: React.FC<Props> = ({}) => {
 		dispatch(updateStateFilters(filters))
 	}
 	return (
-		<>
-			<div className='catalog-filters'>
-				{filters.length > 0 &&
-					filters.map((filter, index) => (
-						<FilterDropdown
-							filter={filter}
-							updateFilter={updateFilter}
-							key={index}
-						/>
-					))}
-				<div className='catalog-filters__buttons'>
-					<div
-						className='catalog-filters__button'
-						onClick={handleUpdateFilters}
-					>
-						{word('save-filters-button')}
-					</div>
-					<div
-						className='catalog-filters__button'
-						onClick={() => {
-							dispatch(fetchAllFilters(locale))
-						}}
-					>
-						{word('default-filters-button')}
-					</div>
+		<div className='catalog-filters'>
+			<div className='catalog-filters__mobile-button' onClick={()=>{setPopupActive(true)}}>
+				<FilterMobileIcon />
+			</div>
+			{filters.length > 0 &&
+				filters.map((filter, index) => (
+					<FilterDropdown
+						filter={filter}
+						updateFilter={updateFilter}
+						key={index}
+					/>
+				))}
+			<div className='catalog-filters__buttons'>
+				<div className='catalog-filters__button' onClick={handleUpdateFilters}>
+					{word('save-filters-button')}
+				</div>
+				<div
+					className='catalog-filters__button'
+					onClick={() => {
+						dispatch(fetchAllFilters(locale))
+					}}
+				>
+					{word('default-filters-button')}
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

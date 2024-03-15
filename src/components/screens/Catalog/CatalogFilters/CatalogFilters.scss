@@ -1,3 +1,5 @@
+@import '../../../../styles/mixins/media.scss';
+
 .catalog-filters {
 	display: flex;
 	flex-direction: column;
@@ -31,9 +33,36 @@
 		justify-content: center;
 		cursor: pointer;
 		transition: 0.2s;
+
+		width: 100%;
+		max-width: 210px;
 		&:hover {
 			background: var(--bright-green);
 			color: var(--white);
+		}
+	}
+
+	&__mobile-button {
+		display: none;
+	}
+
+	@include media-max(sm) {
+		position: fixed;
+		right: 0;
+		z-index: 5;
+		overflow-x: hidden;
+		overflow-y: auto;
+		max-height: 90vh;
+		padding: 25px 30px 30px 20px;
+
+		&__buttons {
+			position: sticky;
+			bottom: 0;
+			display: flex;
+			flex-direction: row;
+			gap: 20px;
+			width: 215px;
+			margin-top: auto; 
 		}
 	}
 }

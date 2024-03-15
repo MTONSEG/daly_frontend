@@ -38,3 +38,4 @@ export { default as HeadsetIcon } from '@/icons/catalog/headset.svg'
 //catalog
 export { default as CardsModIcon } from '@/icons/cards-mode-icon.svg'
 export { default as ListModIcon } from '@/icons/list-mode-icon.svg'
+export { default as FilterMobileIcon } from '@/icons/filter.svg'

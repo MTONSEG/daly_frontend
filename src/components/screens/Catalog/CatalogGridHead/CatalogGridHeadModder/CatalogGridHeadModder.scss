@@ -3,14 +3,19 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 10px;
-	&__icon {
-		width: 17px;
-		height: 14px;
+	svg {
+		transition: 0.2s;
 		stroke: var(--grey-04);
-		fill: var(--white);
+		&:hover {
+			stroke: var(--bright-green-02);
+		}
+	}
+	&__icon {
+		width: 19px;
+		height: 16px;
+
 		&.active {
-			fill: var(--bright-green-06);
-			stroke: var(--bright-green-06);
+			stroke: var(--bright-green-06) !important;
 		}
 		cursor: pointer;
 	}

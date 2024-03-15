@@ -19,6 +19,18 @@
 	min-width: 164px;
 	max-height: 30px;
 	cursor: pointer;
+	transition: 0.2s;
+	svg {
+		fill: var(--dark-grey) !important;
+	}
+	&:hover {
+		color: var(--bright-green);
+		// border: 1px solid var(--bright-green);
+		box-shadow: 1px 2px 12px 1px var(--dark-grey-03);
+		svg {
+			fill: var(--bright-green) !important;
+		}
+	}
 
 	@include media-max(xs) {
 		border-radius: 10px;

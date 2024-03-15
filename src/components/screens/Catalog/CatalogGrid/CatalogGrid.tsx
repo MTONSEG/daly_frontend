@@ -10,7 +10,7 @@ interface ICatalogGridProps {
 
 const CatalogGrid: React.FC<ICatalogGridProps> = ({products, gridMode}) => {
 	return (
-		<div className='catalog-grid'>
+		<div className={`catalog-grid ${gridMode==="row" && "row"}`}>
 			{products.map((product, index) => {
 				return (
 					<ProductCard

@@ -20,6 +20,9 @@
 		stroke: var(--bright-green);
 		stroke-width: 0.8;
 		transition: fill 0.2s;
+		&:hover {
+			stroke: var(--bright-green-06);
+		}
 		&.active {
 			fill: #00c65e;
 		}

@@ -12,10 +12,10 @@
 
 	&__input {
 		box-sizing: border-box;
-		border: 1px solid rgb(218, 220, 220);
+		border: 1px solid var(--grey);
 		border-radius: 5px;
-		background: rgb(255, 255, 255);
-		color: rgb(218, 220, 220);
+		background: var(--white);
+		color: var(--dark-grey);
 		font-family: var(--inter);
 		font-size: 14px;
 		font-weight: 400;

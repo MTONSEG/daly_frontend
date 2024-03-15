@@ -4,4 +4,9 @@
 	row-gap: 20px;
 	column-gap: 18px;
 	justify-items: center;
+	&.row{
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
 }

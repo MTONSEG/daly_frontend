@@ -90,3 +90,11 @@ export interface ISelectOption {
 	isFixed?: boolean
 	isDisabled?: boolean
 }
+
+export interface IComment {
+	text: string
+	email: string
+	rating: number
+	author: any
+	name: string
+}

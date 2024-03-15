@@ -16,6 +16,25 @@
 	transition: 0.3s;
 }
 
+.closeSign-wr {
+	position: absolute;
+	right: -25px;
+	top: -25px;
+	background: var(--dark-grey);
+
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	svg {
+		fill: rgb(0, 198, 94);
+	}
+}
+
 .comment {
 	padding: 20px 20px 35px 20px;
 	border-radius: 10px;

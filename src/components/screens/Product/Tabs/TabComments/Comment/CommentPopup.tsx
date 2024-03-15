@@ -1,3 +1,4 @@
+'use client'
 import Button from '@/components/ui/buttons/Button/Button'
 import PopupHeader from '@/components/widgets/popups/PopupHeader/PopupHeader'
 import PopupHeaderContainer from '@/components/widgets/popups/PopupHeader/PopupHeaderContainer/PopupHeaderContainer'
@@ -21,8 +22,13 @@ import Input from '@/components/ui/forms/Input/Input'
 import Textarea from '@/components/ui/forms/Textarea/Textarea'
 import useInput from '@/hooks/useInput'
 import { Rating } from '@smastrom/react-rating'
-import { StarProduct } from '@/components/ui/icons'
+import { CloseSign, StarProduct } from '@/components/ui/icons'
 import { RatingChange } from '@smastrom/react-rating'
+import { setActive } from '@/utils/setActive'
+import { usePostCommentMutation } from '@/store/api/postComment.api'
+import { IComment } from '@/types/types'
+import axios from 'axios'
+import { getAuthToken } from '@/services/getAuthToken'
 
 interface ICommentPopup {
 	isActive: boolean
@@ -32,6 +38,8 @@ interface ICommentPopup {
 const CommentPopup = forwardRef(
 	({ isActive, setIsActive }: ICommentPopup, ref: ForwardedRef<HTMLDivElement>) => {
 		const t = useTranslations('product')
+
+		const [addNewComment, commentResponse] = usePostCommentMutation()
 
 		const starsStyle = {
 			itemShapes: <StarProduct />,
@@ -62,6 +70,34 @@ const CommentPopup = forwardRef(
 			setComment(e.target.value)
 		}
 
+		const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+			e.preventDefault()
+			const { name, email } = e.target.elements
+
+			const formData: IComment = {
+				name: 'test',
+				email: 'test',
+				text: 'test',
+				rating: 4,
+				author: 'name'
+			}
+
+			await axios.post('http://localhost:1337/api/product-comments/', {
+				headers: getAuthToken(),
+				body: {
+					name: 'test',
+					email: 'test',
+					text: 'test',
+					rating: 4,
+					author: 'name'
+				}
+			})
+
+			// await addNewComment({ data: formData }).then((error) => {
+			// 	console.log(error)
+			// })
+		}
+
 		return (
 			<AnimatePresence>
 				{isActive && (
@@ -73,7 +109,10 @@ const CommentPopup = forwardRef(
 							exit={{ opacity: 0 }}
 							className='comment-popup'
 						>
-							<form id='user-data'>
+							<div className='closeSign-wr' onClick={() => setIsActive(false)}>
+								<CloseSign />
+							</div>
+							<form id='user-data' onSubmit={onSubmit}>
 								<h3 className='comment-popup__title'>Оставить отзыв</h3>
 								<Rating
 									style={{ width: 140, height: 30 }}
@@ -89,7 +128,7 @@ const CommentPopup = forwardRef(
 										name='Имя'
 										onChange={onNameChangeHandler}
 										error={nameError}
-										label='Имя'
+										label='name'
 										placeholder='Имя'
 									/>
 									<Input
@@ -98,7 +137,7 @@ const CommentPopup = forwardRef(
 										name='E- mail'
 										onChange={onEmailChangeHandler}
 										error=''
-										label='E- mail'
+										label='email'
 										placeholder='name@inbox.ua'
 									/>
 								</div>

@@ -15,11 +15,11 @@ const Comments = () => {
 	const [open, setOpen] = useState(Boolean)
 
 	useEffect(() => {
-		// if (isActive) {
-		// 	document.querySelector('.wrapper').classList.add('underlay')
-		// } else {
-		// 	document.querySelector('.wrapper').classList.remove('underlay')
-		// }
+		if (isActive) {
+			document.body.classList.add('overflow-hidden')
+		} else {
+			document.body.classList.remove('overflow-hidden')
+		}
 	}, [isActive])
 
 	return (
@@ -27,7 +27,7 @@ const Comments = () => {
 			<div className='comments__left'>
 				<h1 className='comment__title'>Отзывы на смартфон Iphon 11</h1>
 				{arr.map((el, index) => {
-					return <Comment />
+					return <Comment key={index} />
 				})}
 			</div>
 			<div className='comments__right'>

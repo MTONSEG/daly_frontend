@@ -22,6 +22,7 @@ import Textarea from '@/components/ui/forms/Textarea/Textarea'
 import useInput from '@/hooks/useInput'
 import { Rating } from '@smastrom/react-rating'
 import { StarProduct } from '@/components/ui/icons'
+import { RatingChange } from '@smastrom/react-rating'
 
 interface ICommentPopup {
 	isActive: boolean
@@ -64,58 +65,58 @@ const CommentPopup = forwardRef(
 		return (
 			<AnimatePresence>
 				{isActive && (
-					<motion.div
-						ref={ref}
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-						className='comment-popup'
-					>
-						<form id='user-data'>
-							<h3 className='comment-popup__title'>Оставить отзыв</h3>
-							<Rating
-								style={{ width: 140, height: 30 }}
-								value={5}
-								itemStyles={starsStyle}
-								onChange={(e) => {
-									setStars(e.target.value)
-								}}
-								className='comment-popup__stars'
-							/>
-							<div className='comment-popup__top'>
-								<Input
-									type='text'
-									value={name}
-									name='Имя'
-									onChange={onNameChangeHandler}
-									error={nameError}
-									label='Имя'
-									placeholder='Имя'
+					<div className='underlay'>
+						<motion.div
+							ref={ref}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							className='comment-popup'
+						>
+							<form id='user-data'>
+								<h3 className='comment-popup__title'>Оставить отзыв</h3>
+								<Rating
+									style={{ width: 140, height: 30 }}
+									value={stars}
+									itemStyles={starsStyle}
+									onChange={setStars}
+									className='comment-popup__stars'
 								/>
-								<Input
-									type='email'
-									value={email}
-									name='E- mail'
-									onChange={onEmailChangeHandler}
-									error=''
-									label='E- mail'
-									placeholder='name@inbox.ua'
-								/>
-							</div>
+								<div className='comment-popup__top'>
+									<Input
+										type='text'
+										value={name}
+										name='Имя'
+										onChange={onNameChangeHandler}
+										error={nameError}
+										label='Имя'
+										placeholder='Имя'
+									/>
+									<Input
+										type='email'
+										value={email}
+										name='E- mail'
+										onChange={onEmailChangeHandler}
+										error=''
+										label='E- mail'
+										placeholder='name@inbox.ua'
+									/>
+								</div>
 
-							<Textarea
-								value={comment}
-								name='Оставить отзыв'
-								onChange={onCommentChangeHandler}
-								error=''
-								label='Оставить отзыв'
-								placeholder='Отзыв'
-							/>
-							<Button variant='product' className='comment-popup__sendBtn'>
-								Отправить
-							</Button>
-						</form>
-					</motion.div>
+								<Textarea
+									value={comment}
+									name='Оставить отзыв'
+									onChange={onCommentChangeHandler}
+									error=''
+									label='Оставить отзыв'
+									placeholder='Отзыв'
+								/>
+								<Button variant='product' className='comment-popup__sendBtn'>
+									Отправить
+								</Button>
+							</form>
+						</motion.div>
+					</div>
 				)}
 			</AnimatePresence>
 		)

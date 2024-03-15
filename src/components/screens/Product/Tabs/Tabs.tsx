@@ -59,23 +59,42 @@ const Credit = () => {
 			<div className='credit-box'>
 				<h2 className='credit-box__title'>Как купить в рассрочку?</h2>
 				<ol className='credit-box__ol'>
-					<li className='credit-box__li'>Добавьте товар в корзину</li>
-					<li className='credit-box__li'>Добавьте товар в корзину</li>
-					<li className='credit-box__li'>Добавьте товар в корзину</li>
-					<li className='credit-box__li'>Добавьте товар в корзину</li>
-					<li className='credit-box__li'>Добавьте товар в корзину</li>
+					<li className='credit-box__li'>
+						<span>1</span>.Добавьте товар в корзину
+					</li>
+					<li className='credit-box__li'>
+						<span>2.</span>Добавьте товар в корзину
+					</li>
+					<li className='credit-box__li'>
+						<span>3.</span>Добавьте товар в корзину
+					</li>
+					<li className='credit-box__li'>
+						<span>4.</span>Добавьте товар в корзину
+					</li>
+					<li className='credit-box__li'>
+						<span>5.</span>Добавьте товар в корзину
+					</li>
 				</ol>
 			</div>
 
-			<div className='credit-box'>
+			<div className='credit-box credit-box_small'>
 				<h2 className='credit-box__title'>Как купить в рассрочку?</h2>
-				<ol className='credit-box__ol_installment '>
-					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
-					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
-					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
-					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
-					<li className='credit-box__li_installment'>Добавьте товар в корзину</li>
-				</ol>
+				<ul className='credit-box__ol_installment '>
+					<li className='credit-box__li_installment'>
+						<p className='credix-box__left-text'>Ежемесячный платежу</p>
+						<p className='credix-box__right-text'>8350 ∞ ₴</p>
+					</li>
+				</ul>
+			</div>
+
+			<div className='credit-box credit-box_small'>
+				<h2 className='credit-box__title'>Как купить в рассрочку?</h2>
+				<ul className='credit-box__ol_installment '>
+					<li className='credit-box__li_installment'>
+						<p className='credix-box__left-text'>Ежемесячный платежу</p>
+						<p className='credix-box__right-text'>8350 ∞ ₴</p>
+					</li>
+				</ul>
 			</div>
 		</div>
 	)

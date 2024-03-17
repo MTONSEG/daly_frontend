@@ -5,9 +5,9 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: 10px;
+		gap: 0px;
 		justify-content: space-between;
-		padding: 0 9px 0 0;
+		padding: 0 0px 0 0;
 		width: 100%;
 	}
 
@@ -59,6 +59,13 @@
 
 	&__r-c-item {
 		gap: 5px;
+	}
+
+	@include media-max(md) {
+		&__price {
+			font-size: 16px;
+			line-height: 100%;
+		}
 	}
 
 	@include media-max(xs) {

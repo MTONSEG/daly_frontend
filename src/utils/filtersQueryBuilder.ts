@@ -48,7 +48,9 @@ export const filtersQueryBuilder = (
 		return handler(filter)
 	})
 
-	const validFilterQueries = filterQueries.filter((query) => query !== '') // Filter out empty queries
+	// remove the empty strings
+	const validFilterQueries = filterQueries.filter((query) => query !== '') 
+	
 	const paginationFilter = `&pagination[page]=${page}&pagination[pageSize]=${limit}`
 	const sortingFilter = `&sort=${sorting}:${sortingWay}`
 

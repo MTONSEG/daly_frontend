@@ -51,6 +51,7 @@
 		position: fixed;
 		right: -100%;
 		transition: 0.2s ease-in-out;
+		z-index: 15;
 		&.active {
 			right: 0;
 			z-index: 15;

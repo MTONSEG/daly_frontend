@@ -1,26 +1,8 @@
 'use client'
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { IFilter, IResponse } from '@/types/types'
-import { RootState } from '../../store'
-import { getData } from '@/services/axios.config'
+import { createSlice } from '@reduxjs/toolkit'
+import { IFilter } from '@/types/types'
 import { filtersState } from '@/store/states'
-
-export const fetchAllFilters = createAsyncThunk<
-	IFilter[],
-	string | string[],
-	{ state: RootState; rejectValue: string }
->('filtersData/fetchAllFilters', async (locale, { rejectWithValue }) => {
-	try {
-		const data = await getData<IResponse<IFilter[]>>(
-			`filters?locale=${locale}&populate[0]=options&populate[1]=categories.category&populate[2]=brands.brand`
-		)
-
-		return data.data
-	} catch (error: any) {
-		console.error('Error getting all product data:', error)
-		return rejectWithValue(error)
-	}
-})
+import { fetchAllFilters } from '../filters.api'
 
 const filtersData = createSlice({
 	name: 'filtersData',
@@ -75,6 +57,7 @@ const filtersData = createSlice({
 	}
 })
 
-export const { updateStateFilters, setSorting , setPagination} = filtersData.actions
+export const { updateStateFilters, setSorting, setPagination } =
+	filtersData.actions
 
 export default filtersData.reducer

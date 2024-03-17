@@ -3,15 +3,14 @@ import React, { useEffect, useState } from 'react'
 import './CatalogFilters.scss'
 import { useParams } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
-import {
-	fetchAllFilters,
-	updateStateFilters
-} from '@/store/filters/slice/filters.slice'
+import { updateStateFilters } from '@/store/filters/slice/filters.slice'
+
 import { IFilter } from '@/types/types'
 import FilterDropdown from './FilterDropdown/FilterDropdown'
 import { useTranslations } from 'next-intl'
 import { FilterMobileIcon } from '@/components/ui/icons'
 import useOutsideClick from '@/hooks/useOutSideClick'
+import { fetchAllFilters } from '@/store/filters/filters.api'
 
 interface Props {}
 

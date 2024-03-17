@@ -56,6 +56,7 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({
 					{1}
 				</button>
 			)
+			
 			buttons.push(<span key='ellipsis1'>...</span>)
 		}
 

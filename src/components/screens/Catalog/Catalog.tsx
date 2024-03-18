@@ -1,21 +1,21 @@
-'use client'
+// 'use client'
 import './Catalog.scss'
 import React from 'react'
-import { useParams } from 'next/navigation'
-import { useAppSelector } from '@/hooks/useReduxHooks'
 import CatalogContent from './CatalogContent'
 import Container from '@/components/ui/containers/Container/Container'
 import CatalogFilters from './CatalogFilters/CatalogFilters'
+import { useTranslations } from 'next-intl'
 
 const Catalog: React.FC = () => {
-	const { locale } = useParams()
-	const filtersFromRedux = useAppSelector((state) => state.filters)
-
+	const word = useTranslations("catalog");
 	return (
 		<Container>
 			<div className='catalog'>
-				<CatalogFilters />
-				<CatalogContent filters={filtersFromRedux} locale={locale} />
+				<div className='catalog__title'>{word("title")}</div>
+				<div className='catalog__content'>
+					<CatalogFilters />
+					<CatalogContent />
+				</div>
 			</div>
 		</Container>
 	)

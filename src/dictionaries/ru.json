@@ -19,6 +19,7 @@
 		"empty-compare": "В сравнении нет товаров, выберите что-нибудь из каталога"
 	},
 	"catalog": {
+		"title": "Каталог",
 		"buy-button-not-active": "Купить",
 		"buy-button-active": "В корзину",
 		"favourite-button": "В избранное",

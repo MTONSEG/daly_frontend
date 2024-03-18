@@ -29,8 +29,9 @@
 		width: 10px;
 		height: 10px; /* Adjust the height to match the width for a symmetrical arrow */
 		transition: 0.3s;
+		transform: rotate(90deg);
 		&.active {
-			transform: rotate(90deg);
+			transform: rotate(-90deg);
 		}
 	}
 
@@ -65,7 +66,7 @@
 		pointer-events: none;
 		&.active {
 			pointer-events: auto;
-			margin: 15px 0 0 0;
+			margin: 11px 0 0 0;
 			height: auto;
 			opacity: 1;
 			display: flex;

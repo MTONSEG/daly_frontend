@@ -26,16 +26,17 @@ const ProductCardMetrics: React.FC<IProductCardMetricsProps> = ({
 						discount && discount > 0 ? 'discounted' : ''
 					}`}
 				>
-					{price} ₴
+					{price}₴
 				</p>
 			</div>
 
 			<div className='product-card__r-c-block'>
 				<div className='product-card__r-c-item'>
-					{rating} <StarIcon/>
+					{rating} <StarIcon />
 				</div>
 				<div className='product-card__r-c-item'>
-					{commsQuantity ? commsQuantity : '0'} <CommentIcon/>
+					<CommentIcon />
+					{commsQuantity ? commsQuantity : '0'}
 				</div>
 			</div>
 		</div>

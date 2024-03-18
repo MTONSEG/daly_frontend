@@ -3,8 +3,8 @@
 .catalog-filters {
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
-	padding: 25px 30px 30px 30px;
+	gap: 27px;
+	padding: 23px 30px 30px 30px;
 	max-width: 270px;
 	border-radius: 0px 0px 2px 2px;
 	background: var(--white);
@@ -15,31 +15,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-	}
-
-	&__button {
-		box-sizing: border-box;
-		border: 1px solid var(--bright-green);
-		border-radius: 10px;
-		background: var(--white);
-		color: var(--bright-green);
-		font-family: var(--inter);
-		font-size: 14px;
-		font-weight: 500;
-		line-height: 120%;
-		height: 40px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		transition: 0.2s;
-
-		width: 100%;
-		max-width: 210px;
-		&:hover {
-			background: var(--bright-green);
-			color: var(--white);
-		}
 	}
 
 	&__mobile-button {

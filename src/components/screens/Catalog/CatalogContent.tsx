@@ -7,13 +7,14 @@ import CatalogGrid from './CatalogGrid/CatalogGrid'
 import { RootState } from '@/store/store'
 import CatalogGridHead from './CatalogGridHead/CatalogGridHead'
 import { IFiltersState } from '@/store/states'
+import { useParams } from 'next/navigation'
+import Loader from '@/components/ui/loaders/Loader'
 
-interface Props {
-	filters: IFiltersState
-	locale: string | string[]
-}
+interface Props {}
 
-const CatalogContent: React.FC<Props> = ({ filters, locale }) => {
+const CatalogContent: React.FC<Props> = ({}) => {
+	const { locale } = useParams()
+	const filters = useAppSelector((state) => state.filters)
 	const dispatch: any = useAppDispatch()
 	//memoized building of the fetchURL
 	const fetchUrl = useMemo(

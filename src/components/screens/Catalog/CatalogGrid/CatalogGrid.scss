@@ -37,7 +37,7 @@
 		font-size: 14px;
 		font-weight: 500;
 		line-height: 120%;
-
+		transition: 0.1s;
 		&.active {
 			color: var(--white);
 			border-radius: 5px;

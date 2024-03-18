@@ -6,7 +6,7 @@
 	box-shadow: 1px 2px 16px 3px var(--dark-grey-03);
 	background: var(--white);
 	display: flex;
-	padding: 20px 20px 30px 20px;
+	padding: 10px 20px 30px 20px;
 
 	&.card {
 		max-width: 250px;
@@ -17,7 +17,7 @@
 		max-width: 100%;
 		flex-direction: row;
 		justify-content: space-between;
-		padding: 20px 20px 20px 20px;
+		padding: 20px 20px 21px 20px;
 
 		.product-card__info-container {
 			flex: 1;
@@ -38,19 +38,20 @@
 
 	&__fav-container {
 		position: absolute;
-		top: 15px;
+		top: 16px;
 		right: 19px;
 		z-index: 2;
 	}
 
 	&__info-container {
+		margin: 1px 0 0 0;
 		display: flex;
 		flex-direction: column;
-		gap: 15px;
+		gap: 0px;
 	}
 
 	&__button-container {
-		margin: 30px 0 0 0;
+		margin: 28px 0 0 0;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -112,7 +113,7 @@
 				width: 100%;
 				justify-content: center;
 				padding: 0 20px;
-				.buy-button{
+				.buy-button {
 					width: 100%;
 					max-width: 100%;
 				}
@@ -154,7 +155,7 @@
 				width: 100%;
 				justify-content: center;
 			}
-			.buy-button{
+			.buy-button {
 				width: 100%;
 			}
 		}

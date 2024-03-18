@@ -19,6 +19,7 @@
 		"empty-compare": "There are no products in comparison, select something from the catalog"
 	},
 	"catalog": {
+		"title": "Catalog",
 		"buy-button-not-active": "Buy",
 		"buy-button-active": "To basket",
 		"favourite-button": "To favourites",

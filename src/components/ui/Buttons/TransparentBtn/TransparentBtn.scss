@@ -1,0 +1,24 @@
+.transparent-btn {
+    box-sizing: border-box;
+    border: 1px solid var(--bright-green);
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--bright-green);
+    font-family: var(--inter);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 120%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+
+    width: 100%;
+    max-width: 210px;
+    &:hover {
+        background: var(--bright-green);
+        color: var(--white);
+    }
+}

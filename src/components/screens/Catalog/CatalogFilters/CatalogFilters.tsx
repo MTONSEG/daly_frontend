@@ -11,12 +11,13 @@ import { useTranslations } from 'next-intl'
 import { FilterMobileIcon } from '@/components/ui/icons'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { fetchAllFilters } from '@/store/filters/filters.api'
+import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
+import Loader from '@/components/ui/loaders/Loader'
 
 interface Props {}
 
 const CatalogFilters: React.FC<Props> = ({}) => {
-	const { ref, isActive, setIsActive } =
-		useOutsideClick<HTMLDivElement>(false)
+	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
 
 	const word = useTranslations('catalog')
 	const { locale } = useParams()
@@ -71,33 +72,31 @@ const CatalogFilters: React.FC<Props> = ({}) => {
 				</div>
 			)}
 			<div className={`catalog-filters ${isActive && 'active'}`} ref={ref}>
-				{filters.length > 0 &&
+				{filters.length > 0 ? (filters.length > 0 &&
 					filters.map((filter, index) => (
 						<FilterDropdown
 							filter={filter}
 							updateFilter={updateFilter}
 							key={index}
 						/>
-					))}
+					))): <Loader/>}
 				<div className='catalog-filters__buttons'>
-					<div
-						className='catalog-filters__button'
+					<TransparentBtn
 						onClick={() => {
 							handleUpdateFilters()
 							setIsActive(false)
 						}}
 					>
 						{word('save-filters-button')}
-					</div>
-					<div
-						className='catalog-filters__button'
+					</TransparentBtn>
+					<TransparentBtn
 						onClick={() => {
 							dispatch(fetchAllFilters(locale))
 							setIsActive(false)
 						}}
 					>
 						{word('default-filters-button')}
-					</div>
+					</TransparentBtn>
 				</div>
 			</div>
 		</>

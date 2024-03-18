@@ -15,7 +15,7 @@ export const filtersState: IFiltersState = {
 	sortingOption: 'publishedAt',
 	sortingMethod: 'asc',
 	page: 1,
-    limit: 8,
+    limit: 20,
 	error: null,
 	status: 'start'
 }

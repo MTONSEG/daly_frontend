@@ -1,108 +1,40 @@
 @import '@/media';
 
-// .slider {
-// 	&-container {
-// 		width: 370px;
-// 	}
+.fancybox-image {
+	object-fit: contain !important;
+	width: auto !important;
+	height: auto !important;
+}
 
-// 	&__slide-wr {
-// 		border: 1px solid rgb(218, 220, 220);
-// 		border-radius: 10px;
-// 		overflow: hidden;
+.fancybox__slide.has-image {
+	margin-top: 60px;
+}
 
-// 		&_top {
-// 			.slider__slide {
-// 				width: 370px;
-// 				height: 460px;
-// 			}
+.fancybox__slide.has-image > .fancybox__content {
+	width: 830px !important;
+	height: 810px !important;
+	background: white !important;
+}
 
-// 			img {
-// 				width: 100%;
-// 				height: 100%;
-// 				object-fit: contain;
-// 			}
-// 		}
-// 	}
-
-// 	&_bottom {
-// 		.slider__slide {
-// 			width: 90px;
-// 			height: 90px;
-// 		}
-
-// 		border: 1px solid rgb(218, 220, 220);
-// 		border-radius: 5px;
-// 		padding: 0 6px;
-
-// 		img {
-// 			width: 100%;
-// 			height: 100%;
-// 			object-fit: contain;
-// 		}
-// 	}
-
-// 	&__bottom {
-// 		margin-top: 21px;
-// 		width: calc(100% - 50px);
-
-// 		.slick-slide > div {
-// 			margin: 0 10px;
-// 		}
-// 		.slick-list {
-// 			margin: 0 -10px;
-// 		}
-
-// 		.slick-current {
-// 			.slider__slide-wr {
-// 				border-color: var(--bright-green);
-// 			}
-// 		}
-// 	}
-
-// 	.slider__slide {
-// 		width: 90px;
-// 		height: 90px;
-
-// 		img {
-// 			color: transparent;
-// 			object-fit: cover;
-// 		}
-// 	}
-// }
-
-// @include media-max(xxs) {
-// 	.slider__top {
-// 		width: 100%;
-// 		height: auto;
-// 	}
-
-// 	.slider__bottom {
-// 		display: none;
-// 	}
-
-// 	.slider-container {
-// 		width: 100%;
-// 	}
-
-// 	.slider__slide-wr_top {
-// 		img {
-// 			object-fit: contain;
-// 		}
-// 	}
-
-// 	.slider-container {
-// 		width: 100%;
-// 	}
-
-// 	.slick-dots {
-// 		bottom: 10px;
-// 	}
-// }
+.fancybox__footer {
+	bottom: 55px;
+	z-index: 9999;
+}
 
 .f-carousel,
 .f-thumbs {
 	width: 100%;
 	height: 100%;
+}
+
+.is-horizontal .f-carousel__nav .f-button.is-next,
+.is-horizontal .fancybox__nav .f-button.is-next {
+	color: var(--bright-green);
+}
+
+.is-horizontal .f-carousel__nav .f-button.is-prev,
+.is-horizontal .fancybox__nav .f-button.is-prev {
+	color: var(--bright-green);
 }
 
 .slider {

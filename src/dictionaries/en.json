@@ -53,6 +53,9 @@
 		"deliver": "Delivery",
 		"cpu": "CPU",
 		"diagonale": "Diagonale",
-		"display": "Display"
+		"display": "Display",
+		"howToBuyCr": "Installments",
+		"addToBusket": "Add item to cart",
+		"mounthlyPayment": "Monthly"
 	}
 }

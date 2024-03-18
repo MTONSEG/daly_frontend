@@ -13,10 +13,10 @@ import React, {
 	MutableRefObject,
 	SetStateAction,
 	forwardRef,
+	useEffect,
 	useState
 } from 'react'
 import Popup from 'reactjs-popup'
-import 'reactjs-popup/dist/index.css'
 import { AnimatePresence, motion } from 'framer-motion'
 import Input from '@/components/ui/forms/Input/Input'
 import Textarea from '@/components/ui/forms/Textarea/Textarea'
@@ -29,6 +29,8 @@ import { usePostCommentMutation } from '@/store/api/postComment.api'
 import { IComment } from '@/types/types'
 import axios from 'axios'
 import { getAuthToken } from '@/services/getAuthToken'
+import { useForm } from 'react-hook-form'
+import CommentForm from '../CommentForm'
 
 interface ICommentPopup {
 	isActive: boolean
@@ -38,6 +40,13 @@ interface ICommentPopup {
 const CommentPopup = forwardRef(
 	({ isActive, setIsActive }: ICommentPopup, ref: ForwardedRef<HTMLDivElement>) => {
 		const t = useTranslations('product')
+
+		const {
+			register,
+			handlerSubmit,
+			watch,
+			formState: { errors }
+		} = useForm()
 
 		const [addNewComment, commentResponse] = usePostCommentMutation()
 
@@ -55,6 +64,7 @@ const CommentPopup = forwardRef(
 			error: nameError,
 			setError: setNameError
 		} = useInput('')
+
 		const { value: email, setValue: setEmail } = useInput('')
 		const { value: comment, setValue: setComment } = useInput('')
 
@@ -82,21 +92,63 @@ const CommentPopup = forwardRef(
 				author: 'name'
 			}
 
-			await axios.post('http://localhost:1337/api/product-comments/', {
-				headers: getAuthToken(),
-				body: {
-					name: 'test',
-					email: 'test',
-					text: 'test',
-					rating: 4,
-					author: 'name'
-				}
-			})
+			await axios
+				.post('http://localhost:1337/api/product-comments/', {
+					headers: {
+						Authorization: `Bearer 5a23fab774dfd8f9462b560402b2526166265a115052aa4ce678fb366f006ad3258eef5ed974cd8ad744c4007a383ad94305df411f6d6271e80bf0d4149c3aa1e77c5e3652fdcc3aa32f3c90b99dca4083b5bbdaf6e798714a34c7a97c128e58554a3c41906b0f0428dd559b91fe74b0c5e37801ee351957c474b1ab9ca774d1`
+					},
+					body: {
+						data: {
+							text: 'x'
+						}
+					}
+				})
+				.then((res) => console.log(res))
+
+			// await axios.get('http://localhost:1337/api/product-comments/').then((res) => console.log(res))
 
 			// await addNewComment({ data: formData }).then((error) => {
 			// 	console.log(error)
 			// })
 		}
+
+		useEffect(() => {
+			const onSubmit = async () => {
+				// const formData: IComment = {
+				// 	name: 'test',
+				// 	email: 'test',
+				// 	text: 'test',
+				// 	rating: 4,
+				// 	author: 'name'
+				// }
+
+				// await axios
+				// 	.post(
+				// 		'http://localhost:1337/api/product-comments/',
+				// 		{
+				// 			data: {
+				// 				text: 'x'
+				// 			}
+				// 		},
+				// 		{
+				// 			headers: {
+				// 				Authorization: `Bearer 5a23fab774dfd8f9462b560402b2526166265a115052aa4ce678fb366f006ad3258eef5ed974cd8ad744c4007a383ad94305df411f6d6271e80bf0d4149c3aa1e77c5e3652fdcc3aa32f3c90b99dca4083b5bbdaf6e798714a34c7a97c128e58554a3c41906b0f0428dd559b91fe74b0c5e37801ee351957c474b1ab9ca774d1`
+				// 			}
+				// 		}
+				// 	)
+				// 	.then((res) => console.log(res))
+
+				// await axios.get('http://localhost:1337/api/product-comments/').then((res) => console.log(res))
+
+				// await addNewComment({ data: formData }).then((error) => {
+				// 	console.log(error)
+				// })
+
+				addNewComment({ data: { text: 'posted from rtkq' } })
+			}
+
+			onSubmit()
+		}, [])
 
 		return (
 			<AnimatePresence>
@@ -112,48 +164,8 @@ const CommentPopup = forwardRef(
 							<div className='closeSign-wr' onClick={() => setIsActive(false)}>
 								<CloseSign />
 							</div>
-							<form id='user-data' onSubmit={onSubmit}>
-								<h3 className='comment-popup__title'>Оставить отзыв</h3>
-								<Rating
-									style={{ width: 140, height: 30 }}
-									value={stars}
-									itemStyles={starsStyle}
-									onChange={setStars}
-									className='comment-popup__stars'
-								/>
-								<div className='comment-popup__top'>
-									<Input
-										type='text'
-										value={name}
-										name='Имя'
-										onChange={onNameChangeHandler}
-										error={nameError}
-										label='name'
-										placeholder='Имя'
-									/>
-									<Input
-										type='email'
-										value={email}
-										name='E- mail'
-										onChange={onEmailChangeHandler}
-										error=''
-										label='email'
-										placeholder='name@inbox.ua'
-									/>
-								</div>
 
-								<Textarea
-									value={comment}
-									name='Оставить отзыв'
-									onChange={onCommentChangeHandler}
-									error=''
-									label='Оставить отзыв'
-									placeholder='Отзыв'
-								/>
-								<Button variant='product' className='comment-popup__sendBtn'>
-									Отправить
-								</Button>
-							</form>
+							<CommentForm />
 						</motion.div>
 					</div>
 				)}

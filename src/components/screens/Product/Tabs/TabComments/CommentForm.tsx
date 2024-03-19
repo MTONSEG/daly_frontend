@@ -13,10 +13,15 @@ const CommentForm = () => {
 
 	const {
 		register,
+		getFieldState,
 		handleSubmit,
 		watch,
 		formState: { errors }
-	} = useForm<IComment>()
+	} = useForm<IComment>({
+		defaultValues: {
+			text: ''
+		}
+	})
 
 	const [addNewComment] = usePostCommentMutation()
 
@@ -51,12 +56,13 @@ const CommentForm = () => {
 					// value={name}
 					name='Имя'
 					// onChange={onNameChangeHandler}
-					error={'nameError'}
+					// error={'nameError'}
 					label='name'
 					placeholder='Имя'
 				/>
 
-				{/* <Input
+				<Input
+					{...register('email', { required: true })}
 					type='email'
 					// value={email}
 					name='E- mail'
@@ -64,17 +70,19 @@ const CommentForm = () => {
 					error=''
 					label='email'
 					placeholder='name@inbox.ua'
-				/> */}
+				/>
 			</div>
 
-			{/* <Textarea
+			<Textarea
 				// value={comment}
 				// name='Оставить отзыв'
 				// onChange={onCommentChangeHandler}
+				// value={}
+				{...register('text', { required: true })}
 				error=''
 				label='Оставить отзыв'
 				placeholder='Отзыв'
-			/> */}
+			/>
 			<Button variant='product' className='comment-popup__sendBtn'>
 				Отправить
 			</Button>

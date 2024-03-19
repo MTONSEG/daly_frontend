@@ -1,9 +1,6 @@
 import { useEffect } from 'react'
 
-const useAutosizeTextArea = (
-	textAreaRef: HTMLTextAreaElement | null,
-	value: string | number
-) => {
+const useAutosizeTextArea = (textAreaRef: HTMLTextAreaElement | null, value: string | number) => {
 	useEffect(() => {
 		if (textAreaRef) {
 			textAreaRef.style.height = '0px'

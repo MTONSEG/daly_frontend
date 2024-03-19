@@ -21,6 +21,8 @@
 		line-height: 150%;
 		letter-spacing: 0px;
 		transition: 0.1s;
+		resize: none;
+
 		&::placeholder {
 			font-size: 16px;
 			font-weight: 400;

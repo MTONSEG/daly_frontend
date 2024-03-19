@@ -95,6 +95,7 @@ export interface IComment {
 	text: string
 	email: string
 	rating: number
-	author: any
+	author: object
 	name: string
+	product: number[]
 }

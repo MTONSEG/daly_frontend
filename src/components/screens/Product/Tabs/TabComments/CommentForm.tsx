@@ -9,6 +9,7 @@ import React, { useState, useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 const CommentForm = () => {
+	const productId = 304
 	const t = useTransition('product')
 
 	const { register, handleSubmit, watch } = useForm<IComment>()
@@ -24,8 +25,8 @@ const CommentForm = () => {
 	const [stars, setStars] = useState<number>(5)
 
 	const onSubmit: SubmitHandler<IComment> = (data) => {
-		addNewComment({ ...data, rating: stars })
-		console.log({ ...data, rating: stars })
+		addNewComment({ ...data, rating: stars, product: [productId] })
+		console.log({ ...data, rating: stars, product: [productId] })
 	}
 
 	return (

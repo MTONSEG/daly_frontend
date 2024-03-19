@@ -27,7 +27,7 @@ export const postCommentApi = createApi({
 					url: 'product-comments',
 					method: 'POST',
 					body: {
-						data
+						data: data
 					}
 				}
 			}

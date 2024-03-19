@@ -27,10 +27,6 @@ const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>(
 
 		useAutosizeTextArea(textareaRef.current, value ? value : currValue)
 
-		useEffect(() => {
-			console.log(textareaRef.current?.value)
-		}, [textareaRef])
-
 		return (
 			<label className={`${textareaClassName ? textareaClassName : ''} textarea`}>
 				{label && <p className='textarea__title'>{label}</p>}

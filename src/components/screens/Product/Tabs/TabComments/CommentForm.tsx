@@ -11,17 +11,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 const CommentForm = () => {
 	const t = useTransition('product')
 
-	const {
-		register,
-		getFieldState,
-		handleSubmit,
-		watch,
-		formState: { errors }
-	} = useForm<IComment>({
-		defaultValues: {
-			text: ''
-		}
-	})
+	const { register, handleSubmit, watch } = useForm<IComment>()
 
 	const [addNewComment] = usePostCommentMutation()
 
@@ -34,8 +24,8 @@ const CommentForm = () => {
 	const [stars, setStars] = useState<number>(5)
 
 	const onSubmit: SubmitHandler<IComment> = (data) => {
-		console.log(data)
-		addNewComment(data)
+		addNewComment({ ...data, rating: stars })
+		console.log({ ...data, rating: stars })
 	}
 
 	return (
@@ -49,41 +39,24 @@ const CommentForm = () => {
 				className='comment-popup__stars'
 			/>
 			<div className='comment-popup__top'>
-				{/* <input {...register('text', { required: true, maxLength: 20 })} placeholder='xxx' /> */}
-				<Input
-					{...register('text', { required: true })}
-					type='text'
-					// value={name}
-					name='Имя'
-					// onChange={onNameChangeHandler}
-					// error={'nameError'}
-					label='name'
-					placeholder='Имя'
-				/>
+				<Input {...register('name')} type='text' label='name' placeholder='Имя' />
 
 				<Input
-					{...register('email', { required: true })}
+					{...register('email')}
 					type='email'
-					// value={email}
-					name='E- mail'
-					// onChange={onEmailChangeHandler}
 					error=''
 					label='email'
 					placeholder='name@inbox.ua'
 				/>
 			</div>
 
-			<Textarea
-				// value={comment}
-				// name='Оставить отзыв'
-				// onChange={onCommentChangeHandler}
-				// value={}
-				{...register('text', { required: true })}
-				error=''
-				label='Оставить отзыв'
-				placeholder='Отзыв'
-			/>
-			<Button variant='product' className='comment-popup__sendBtn'>
+			<Textarea {...register('text')} error='' label='Оставить отзыв' placeholder='Отзыв' />
+			<Button
+				variant='product'
+				className='comment-popup__sendBtn'
+				type='submit'
+				onClick={() => console.log('sent')}
+			>
 				Отправить
 			</Button>
 		</form>

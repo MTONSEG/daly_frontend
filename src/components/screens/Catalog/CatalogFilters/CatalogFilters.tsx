@@ -56,6 +56,14 @@ const CatalogFilters: React.FC<Props> = ({}) => {
 		})
 	}
 
+	useEffect(() => {
+		if (isActive && window.innerWidth < 768) {
+			document.body.classList.add('open')
+		} else {
+			document.body.classList.remove('open')
+		}
+	}, [isActive])
+
 	const handleUpdateFilters = () => {
 		dispatch(updateStateFilters(filters))
 	}
@@ -72,14 +80,18 @@ const CatalogFilters: React.FC<Props> = ({}) => {
 				</div>
 			)}
 			<div className={`catalog-filters ${isActive && 'active'}`} ref={ref}>
-				{filters.length > 0 ? (filters.length > 0 &&
+				{filters.length > 0 ? (
+					filters.length > 0 &&
 					filters.map((filter, index) => (
 						<FilterDropdown
 							filter={filter}
 							updateFilter={updateFilter}
 							key={index}
 						/>
-					))): <Loader/>}
+					))
+				) : (
+					<Loader />
+				)}
 				<div className='catalog-filters__buttons'>
 					<TransparentBtn
 						onClick={() => {

@@ -28,11 +28,12 @@
 		transition: 0.2s ease-in-out;
 		z-index: 15;
 		&.active {
+			bottom: 0;
 			right: 0;
 			z-index: 15;
 			overflow-x: hidden;
 			overflow-y: auto;
-			max-height: 90vh;
+			height: 100vh;
 		}
 
 		&__buttons {

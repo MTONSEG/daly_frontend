@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import "./ShowBtn.scss";
+import Arrow from '../../arrows/Arrow';
 
 interface IShowBtnProps {
     showAllItems: boolean;
@@ -20,6 +21,7 @@ const ShowBtn: React.FC<IShowBtnProps> = ({ showAllItems, setShowAllItems, shoul
         return (
             <button className='show-button' onClick={handleClick}>
                 {buttonText}
+                <Arrow state={showAllItems}/>
             </button>
         );
     } else {

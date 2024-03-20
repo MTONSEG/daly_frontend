@@ -1,3 +1,5 @@
+@import "../../../../styles/mixins/media.scss";
+
 .catalog-grid-head {
 	width: 100%;
 	display: flex;
@@ -25,5 +27,11 @@
 
 	&__sort {
         gap: 7px;
+	}
+
+	@include media-max(sm){
+		&__word {
+			font-size: 12px;
+		}
 	}
 }

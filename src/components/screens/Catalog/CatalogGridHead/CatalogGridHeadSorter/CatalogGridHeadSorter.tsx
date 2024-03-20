@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import './CatalogGridHeadSorter.scss'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { setSorting } from '@/store/filters/slice/filters.slice'
 import { useTranslations } from 'next-intl'
 import useOutsideClick from '@/hooks/useOutSideClick'
+import Arrow from '@/components/ui/arrows/Arrow'
 
 type SortingOption = 'publishedAt' | 'price' | 'rating'
 type SortingMethod = 'asc' | 'desc'
@@ -43,11 +44,7 @@ const CatalogGridHeadSorter: React.FC<ICatalogGridHeadSorterProps> = ({
 		<div className='sorter' ref={ref}>
 			<div className='sorter__head' onClick={() => setIsActive(!isActive)}>
 				{word(sortingOption)}
-				<div
-					className={`sorter__arrow ${
-						isActive && 'desc'
-					}`}
-				></div>
+				<Arrow state={isActive} />
 			</div>
 			<div className={`sorter__options ${isActive && 'active'}`}>
 				{sortingOptions.map((option, index) => (
@@ -58,11 +55,7 @@ const CatalogGridHeadSorter: React.FC<ICatalogGridHeadSorterProps> = ({
 					>
 						{word(option)}
 						{sortingOption === option && (
-							<div
-								className={`sorter__arrow ${
-									sortingMethod === 'asc' ? 'asc' : 'desc'
-								}`}
-							></div>
+							<Arrow state={sortingMethod === 'asc' ? true : false} />
 						)}
 					</div>
 				))}

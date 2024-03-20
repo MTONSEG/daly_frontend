@@ -1,7 +1,6 @@
 .catalog-grid {
 	display: flex;
 	flex-direction: column;
-	gap: 60px;
 	&__products {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -13,6 +12,13 @@
 			flex-direction: column;
 			gap: 20px;
 		}
+	}
+
+	&__show-button {
+		margin: 20px 0;
+		width: 100%;
+		display: flex;
+		justify-content: center;
 	}
 
 	&__pagination,

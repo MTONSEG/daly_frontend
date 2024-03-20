@@ -5,6 +5,7 @@ import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { setPagination } from '@/store/filters/slice/filters.slice'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import Loader from '@/components/ui/loaders/Loader'
+import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
 
 interface ICatalogGridProps {
 	products: IProduct[]
@@ -21,6 +22,7 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({
 	const dispatch = useAppDispatch()
 
 	const [currentPage, setCurrentPage] = useState(page)
+	const [visibleProducts, setVisibleProducts] = useState<boolean>(false)
 
 	const paginate = (pageNumber: number) => {
 		if (pageNumber > 0 && pageNumber <= pageCount) {
@@ -37,7 +39,7 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({
 		const buttons: JSX.Element[] = []
 
 		let start = Math.max(1, currentPage - Math.floor(maxButtons / 2))
-		let end = Math.min(start + maxButtons - 1, pageCount)
+		const end = Math.min(start + maxButtons - 1, pageCount)
 
 		if (end - start < maxButtons - 1) {
 			start = Math.max(1, end - maxButtons + 1)
@@ -93,31 +95,43 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({
 
 		return buttons
 	}
-
 	return (
 		<div className='catalog-grid'>
 			<div className={`catalog-grid__products ${gridMode === 'row' && 'row'}`}>
 				{products.length > 0 ? (
-					products.map((product, index) => (
-						<ProductCard product={product} variant={gridMode} key={index} />
-					))
+					products
+						.slice(0, visibleProducts ? 20 : 12)
+						.map((product, index) => (
+							<ProductCard product={product} variant={gridMode} key={index} />
+						))
 				) : (
 					<Loader />
 				)}
 			</div>
-			<div className='catalog-grid__pagination'>
-				<button
-					key='prev'
-					className='catalog-grid__arrow left'
-					onClick={() => paginate(currentPage - 1)}
-				></button>
-				{renderPageButtons()}
-				<button
-					key='next'
-					className='catalog-grid__arrow right'
-					onClick={() => paginate(currentPage + 1)}
-				></button>
-			</div>
+			{products.length > 0 && (
+				<div className='catalog-grid__show-button'>
+					<ShowBtn
+						showAllItems={visibleProducts}
+						setShowAllItems={setVisibleProducts}
+						shouldShowMoreButton={true}
+					/>
+				</div>
+			)}
+			{products.length > 0 && (
+				<div className='catalog-grid__pagination'>
+					<button
+						key='prev'
+						className='catalog-grid__arrow left'
+						onClick={() => paginate(currentPage - 1)}
+					></button>
+					{renderPageButtons()}
+					<button
+						key='next'
+						className='catalog-grid__arrow right'
+						onClick={() => paginate(currentPage + 1)}
+					></button>
+				</div>
+			)}
 		</div>
 	)
 }

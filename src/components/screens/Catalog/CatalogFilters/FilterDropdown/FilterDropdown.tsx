@@ -5,6 +5,7 @@ import { IFilter } from '@/types/types'
 import { upperFirstLetter } from '@/utils/upperFirtLetter'
 import PriceRange from '@/components/ui/forms/PriceRange/PriceRange'
 import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
+import Arrow from '@/components/ui/arrows/Arrow'
 
 interface IFilterDropDownProps {
 	filter: IFilter
@@ -124,9 +125,7 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 					{upperFirstLetter(filter.attributes.label)}
 				</div>
 				{!isPrice && (
-						<div
-							className={`filter-dropdown__arrow ${dropActive && 'active'}`}
-						></div>
+						<Arrow state={dropActive}/>
 					)}
 			</div>
 			<div className={`filter-dropdown__body ${dropActive && 'active'}`}>

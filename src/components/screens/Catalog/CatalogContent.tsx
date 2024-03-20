@@ -1,18 +1,15 @@
 'use client'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef} from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
 import { fetchFilteredProducts } from '@/store/catalog/catalog.api'
 import CatalogGrid from './CatalogGrid/CatalogGrid'
 import { RootState } from '@/store/store'
 import CatalogGridHead from './CatalogGridHead/CatalogGridHead'
-import { IFiltersState } from '@/store/states'
 import { useParams } from 'next/navigation'
-import Loader from '@/components/ui/loaders/Loader'
 
-interface Props {}
 
-const CatalogContent: React.FC<Props> = ({}) => {
+const CatalogContent: React.FC = () => {
 	const { locale } = useParams()
 	const filters = useAppSelector((state) => state.filters)
 	const dispatch: any = useAppDispatch()

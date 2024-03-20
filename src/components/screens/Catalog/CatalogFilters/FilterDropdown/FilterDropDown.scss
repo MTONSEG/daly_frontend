@@ -24,39 +24,7 @@
 		transition: 0.3s;
 	}
 
-	&__arrow {
-		position: relative;
-		width: 10px;
-		height: 10px; /* Adjust the height to match the width for a symmetrical arrow */
-		transition: 0.3s;
-		transform: rotate(90deg);
-		&.active {
-			transform: rotate(-90deg);
-		}
-	}
-
-	&__arrow::before,
-	&__arrow::after {
-		content: '';
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%) rotate(45deg); /* Rotate the lines to form an angle */
-		width: 7px; /* Increase the width for a thicker arrow */
-		height: 7px; /* Increase the height for a thicker arrow */
-		border-top: 2px solid #000; /* Create the top line of the arrow */
-		border-right: 2px solid #000; /* Create the right line of the arrow */
-		border-radius: 1px;
-	}
-
-	&__arrow::before {
-		right: 50%; /* Position the first line to the right */
-		margin-right: -3.5px; /* Adjust the margin to align the lines properly */
-	}
-
-	&__arrow::after {
-		left: 50%; /* Position the second line to the left */
-		margin-left: -3.5px; /* Adjust the margin to align the lines properly */
-	}
+	
 
 	&__body {
 		transition: 0.3s;

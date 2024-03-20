@@ -1,18 +1,18 @@
 import './Comments.scss'
 import Comment from './Comment/Comment'
 import Button from '@/components/ui/buttons/Button/Button'
-import PopupCatalog from '@/components/widgets/popups/PopupCatalog/PopupCatalog'
 import CommentPopup from './Comment/CommentPopup'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { createPortal } from 'react-dom'
+import { useTranslations } from 'next-intl'
+import { useGetCommentsQuery } from '@/store/api/comment.api'
 
 const Comments = () => {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
+	const t = useTranslations('product')
 
-	const arr = [1, 2, 3]
-
-	const [open, setOpen] = useState(Boolean)
+	const { data, refetch } = useGetCommentsQuery({ id: 304 })
 
 	useEffect(() => {
 		if (isActive) {
@@ -25,22 +25,45 @@ const Comments = () => {
 	return (
 		<div className='tab__comments'>
 			<div className='comments__left'>
-				<h1 className='comment__title'>Отзывы на смартфон Iphon 11</h1>
-				{arr.map((el, index) => {
-					return <Comment key={index} />
-				})}
+				<h1
+					className='comment__title'
+					onClick={() => {
+						refetch()
+						console.log(data)
+					}}
+				>
+					{t('review')}
+				</h1>
+				{data &&
+					data.data.attributes.product_comments.data.map((el, index) => {
+						return (
+							<Comment
+								key={index}
+								name={el.attributes.name}
+								text={el.attributes.text}
+								rating={el.attributes.rating}
+								date={
+									el.attributes.updatedAt?.replace(/T.*/, '')
+										? el.attributes.updatedAt?.replace(/T.*/, '')
+										: ''
+								}
+							/>
+						)
+					})}
 			</div>
+
 			<div className='comments__right'>
 				<Button
 					variant='product'
 					className='comments__add-btn'
 					onClick={() => setIsActive(!isActive)}
 				>
-					Оставить отзыв
+					{t('leftReview')}
 				</Button>
 			</div>
+
 			{createPortal(
-				<CommentPopup ref={ref} isActive={isActive} setIsActive={setIsActive} />,
+				<CommentPopup ref={ref} isActive={isActive} setIsActive={setIsActive} refetch={refetch} />,
 				document.body
 			)}
 		</div>

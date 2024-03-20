@@ -56,6 +56,8 @@
 		"display": "Display",
 		"howToBuyCr": "Installments",
 		"addToBusket": "Add item to cart",
-		"mounthlyPayment": "Monthly"
+		"mounthlyPayment": "Monthly",
+		"review": "Review",
+		"leftReview": "Add review"
 	}
 }

@@ -55,7 +55,9 @@
 		"cpu": "Процессор",
 		"diagonale": "Диагональ",
 		"display": "Дисплей",
-		"addToBusket" : "Добавить товар в корзину",
-		"mounthlyPayment": "Ежемесячный платеж"
+		"addToBusket": "Добавить товар в корзину",
+		"mounthlyPayment": "Ежемесячный платеж",
+		"review": "Отзывы",
+		"leftReview": "Оставить отзыв"
 	}
 }

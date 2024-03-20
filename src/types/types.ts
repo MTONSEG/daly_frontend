@@ -25,7 +25,8 @@ export type IProductComments = {
 		author: string
 		email: string
 		name: string
-	}[]
+		updatedAt?: string
+	}
 }
 
 export interface IProduct {
@@ -98,4 +99,5 @@ export interface IComment {
 	author: object
 	name: string
 	product: number[]
+	updatedAt?: string
 }

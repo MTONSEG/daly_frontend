@@ -20,6 +20,8 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 	const { data, isLoading } = useGetProductQuery({ locale: locale[0], id: id })
 	const properties = data && data.data.attributes.properties
 
+	console.log(data)
+
 	const currentPath = usePathname()
 
 	const breadcrumbArr: IBreadcrumb[] = [
@@ -46,7 +48,7 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 			</div>
 
 			<Tabs
-				properties={properties ? properties : {}}
+				properties={properties}
 				description={
 					data?.data.attributes.description
 						? data?.data.attributes.description

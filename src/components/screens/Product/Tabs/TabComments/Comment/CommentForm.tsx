@@ -2,17 +2,17 @@ import Button from '@/components/ui/buttons/Button/Button'
 import Input from '@/components/ui/forms/Input/Input'
 import Textarea from '@/components/ui/forms/Textarea/Textarea'
 import { StarProduct } from '@/components/ui/icons'
-import { usePostCommentMutation } from '@/store/api/postComment.api'
+import { useGetCommentsQuery, usePostCommentMutation } from '@/store/api/comment.api'
 import { IComment, IResponse } from '@/types/types'
 import { Rating } from '@smastrom/react-rating'
-import React, { useState, useTransition } from 'react'
+import React, { FC, useState, useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-const CommentForm = () => {
+const CommentForm = ({ refetch }: { refetch: () => void }) => {
 	const productId = 304
 	const t = useTransition('product')
 
-	const { register, handleSubmit, watch } = useForm<IComment>()
+	const { register, handleSubmit } = useForm<IComment>()
 
 	const [addNewComment] = usePostCommentMutation()
 
@@ -24,9 +24,9 @@ const CommentForm = () => {
 
 	const [stars, setStars] = useState<number>(5)
 
-	const onSubmit: SubmitHandler<IComment> = (data) => {
-		addNewComment({ ...data, rating: stars, product: [productId] })
-		console.log({ ...data, rating: stars, product: [productId] })
+	const onSubmit: SubmitHandler<IComment> = async (data) => {
+		await addNewComment({ ...data, rating: stars, product: [productId] })
+		refetch()
 	}
 
 	return (

@@ -1,14 +1,15 @@
 import { FC, useState } from 'react'
 import './Tabs.scss'
 import { useTranslations } from 'next-intl'
-import { IProductProperties } from '@/types/types'
+import { IComment, IProductProperties } from '@/types/types'
 import TabHead from './TabStructure/TabHead'
 import TabContent from './TabStructure/TabContent'
 import Comments from './TabComments/Comments'
 
 interface ITabs {
 	description: string
-	properties: IProductProperties
+	properties: IProductProperties | undefined
+	comments: IComment[]
 }
 
 export interface ITab {
@@ -28,26 +29,32 @@ const DescriptionTab: FC<{ description: string }> = ({ description }) => {
 	)
 }
 
-const Characteristics: FC<{ properities: IProductProperties }> = ({ properities }) => {
+const Characteristics: FC<{ properities: IProductProperties | undefined }> = ({ properities }) => {
 	const t = useTranslations('product')
 
 	return (
 		<div className='characteristics'>
-			<h2 className='characteristics__title'>{t('characteristics')}</h2>
+			{properities ? (
+				<>
+					<h2 className='characteristics__title'>{t('characteristics')}</h2>
 
-			<ol className='characteristics__list'>
-				{Object.entries(properities).map((el, index) => {
-					if (el[0] === 'id') {
-						return ''
-					}
-					return (
-						<li key={index} className='characteristics__line'>
-							<p className='characteristics__key'>{t(el[0])}:</p>
-							<p className='characteristics__value'>{el[1]}</p>
-						</li>
-					)
-				})}
-			</ol>
+					<ol className='characteristics__list'>
+						{Object.entries(properities).map((el, index) => {
+							if (el[0] === 'id') {
+								return ''
+							}
+							return (
+								<li key={index} className='characteristics__line'>
+									<p className='characteristics__key'>{t(el[0])}:</p>
+									<p className='characteristics__value'>{el[1]}</p>
+								</li>
+							)
+						})}
+					</ol>
+				</>
+			) : (
+				<h1>error</h1>
+			)}
 		</div>
 	)
 }
@@ -107,7 +114,7 @@ const Credit = () => {
 	)
 }
 
-const Tabs: FC<ITabs> = ({ description, properties, comments }) => {
+const Tabs: FC<ITabs> = ({ description, properties }) => {
 	const t = useTranslations('product')
 	const [activeTabIndex, setActiveTabIndex] = useState<number>(0)
 

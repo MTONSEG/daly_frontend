@@ -9,9 +9,9 @@ export const getProductApi = createApi({
 		headers: getAuthToken()
 	}),
 	endpoints: (builder) => ({
-		getProduct: builder.query<IResponse<IProduct>, { locale: 'string'; id: number }>({
+		getProduct: builder.query<IResponse<IProduct>, { locale: string; id: number }>({
 			query: ({ locale, id }) => {
-				return `products/${id}?locale=${locale}&populate=images,properties`
+				return `products/${id}?locale=${locale}&populate=images,properties,product_comments`
 			}
 		})
 	})

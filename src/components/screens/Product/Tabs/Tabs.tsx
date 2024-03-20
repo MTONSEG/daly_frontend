@@ -5,11 +5,11 @@ import { IComment, IProductProperties } from '@/types/types'
 import TabHead from './TabStructure/TabHead'
 import TabContent from './TabStructure/TabContent'
 import Comments from './TabComments/Comments'
+import Delivery from './Delivery/Delivery'
 
 interface ITabs {
 	description: string
 	properties: IProductProperties | undefined
-	comments: IComment[]
 }
 
 export interface ITab {
@@ -128,7 +128,8 @@ const Tabs: FC<ITabs> = ({ description, properties }) => {
 			content: <Characteristics properities={properties} />
 		},
 		{ title: t('comments'), content: <Comments /> },
-		{ title: t('credit'), content: <Credit /> }
+		{ title: t('credit'), content: <Credit /> },
+		{ title: t('deliver'), content: <Delivery /> }
 	]
 
 	return (

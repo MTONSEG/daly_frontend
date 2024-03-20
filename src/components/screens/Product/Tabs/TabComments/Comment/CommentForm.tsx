@@ -2,10 +2,10 @@ import Button from '@/components/ui/buttons/Button/Button'
 import Input from '@/components/ui/forms/Input/Input'
 import Textarea from '@/components/ui/forms/Textarea/Textarea'
 import { StarProduct } from '@/components/ui/icons'
-import { useGetCommentsQuery, usePostCommentMutation } from '@/store/api/comment.api'
-import { IComment, IResponse } from '@/types/types'
+import { usePostCommentMutation } from '@/store/api/comment.api'
+import { IComment } from '@/types/types'
 import { Rating } from '@smastrom/react-rating'
-import React, { FC, useState, useTransition } from 'react'
+import React, { useState, useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 const CommentForm = ({ refetch }: { refetch: () => void }) => {

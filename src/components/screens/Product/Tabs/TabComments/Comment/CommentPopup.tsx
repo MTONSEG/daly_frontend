@@ -2,9 +2,7 @@
 
 import React, { Dispatch, ForwardedRef, SetStateAction, forwardRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-
 import { CloseSign } from '@/components/ui/icons'
-
 import CommentForm from './CommentForm'
 
 interface ICommentPopup {

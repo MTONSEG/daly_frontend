@@ -31,7 +31,6 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 					placeholder={placeholder}
 					onChange={onChange}
 					disabled={disabled}
-					// {...register(label, { required })}
 				/>
 				{error && <p className='input__error'>{error}</p>}
 			</label>

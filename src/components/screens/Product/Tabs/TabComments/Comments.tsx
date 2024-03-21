@@ -29,7 +29,6 @@ const Comments = () => {
 					className='comment__title'
 					onClick={() => {
 						refetch()
-						console.log(data)
 					}}
 				>
 					{t('review')}

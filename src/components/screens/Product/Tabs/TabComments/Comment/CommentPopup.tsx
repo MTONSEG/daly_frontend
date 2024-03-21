@@ -1,9 +1,10 @@
 'use client'
 
-import React, { Dispatch, ForwardedRef, SetStateAction, forwardRef } from 'react'
+import React, { Dispatch, ForwardedRef, SetStateAction, forwardRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { CloseSign } from '@/components/ui/icons'
 import CommentForm from './CommentForm'
+import useOutsideClick from '@/hooks/useOutSideClick'
 
 interface ICommentPopup {
 	isActive: boolean
@@ -13,26 +14,40 @@ interface ICommentPopup {
 
 const CommentPopup = forwardRef(
 	({ isActive, setIsActive, refetch }: ICommentPopup, ref: ForwardedRef<HTMLDivElement>) => {
-		return (
-			<AnimatePresence>
-				{isActive && (
-					<div className='underlay'>
-						<motion.div
-							ref={ref}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							className='comment-popup'
-						>
-							<div className='closeSign-wr' onClick={() => setIsActive(false)}>
-								<CloseSign />
-							</div>
+		const {
+			ref: thanksRef,
+			isActive: thanksPopup,
+			setIsActive: setThanksPopup
+		} = useOutsideClick<HTMLDivElement>(false)
 
-							<CommentForm refetch={refetch} />
-						</motion.div>
-					</div>
-				)}
-			</AnimatePresence>
+		return (
+			<>
+				<AnimatePresence>
+					{isActive && (
+						<div className='underlay'>
+							<motion.div
+								ref={ref}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+								className={`comment-popup ${thanksPopup && 'comment-popup__thanks'}`}
+							>
+								<div className='closeSign-wr' onClick={() => setIsActive(false)}>
+									<CloseSign />
+								</div>
+
+								<CommentForm
+									refetch={refetch}
+									isActive={isActive}
+									setIsActive={setIsActive}
+									thanksPopup={thanksPopup}
+									setThanksPopup={setThanksPopup}
+								/>
+							</motion.div>
+						</div>
+					)}
+				</AnimatePresence>
+			</>
 		)
 	}
 )

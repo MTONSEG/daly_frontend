@@ -66,7 +66,7 @@ const Credit = () => {
 		<div className='credit'>
 			<h1 className='credit__title'>{t('credit')}</h1>
 			<div className='credit-box'>
-				<h2 className='credit-box__title'>Как купить в рассрочку?</h2>
+				<h2 className='credit-box__title'>{t('howToBuyCr')}</h2>
 				<ol className='credit-box__ol'>
 					<li className='credit-box__li'>
 						<span>1.</span>

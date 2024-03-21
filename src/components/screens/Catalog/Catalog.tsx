@@ -1,6 +1,4 @@
-// 'use client'
 import './Catalog.scss'
-import React from 'react'
 import CatalogContent from './CatalogContent'
 import Container from '@/components/ui/containers/Container/Container'
 import CatalogFilters from './CatalogFilters/CatalogFilters'

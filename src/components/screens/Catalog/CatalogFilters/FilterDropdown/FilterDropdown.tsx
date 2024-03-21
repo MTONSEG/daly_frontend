@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import Checkbox from '../../../../ui/checkboxes/Checkbox'
 import './FilterDropDown.scss'
 import { IFilter } from '@/types/types'
 import { upperFirstLetter } from '@/utils/upperFirtLetter'
-import PriceRange from '@/components/ui/forms/PriceRange/PriceRange'
-import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
 import Arrow from '@/components/ui/arrows/Arrow'
+
+// probable dynamic import
+import PriceRange from '@/components/ui/forms/PriceRange/PriceRange'
+import Checkbox from '../../../../ui/checkboxes/Checkbox'
+import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
 
 interface IFilterDropDownProps {
 	filter: IFilter

@@ -1,12 +1,12 @@
 'use client'
-import React, { useCallback, useEffect, useMemo, useRef} from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef} from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
 import { fetchFilteredProducts } from '@/store/catalog/catalog.api'
-import CatalogGrid from './CatalogGrid/CatalogGrid'
 import { RootState } from '@/store/store'
-import CatalogGridHead from './CatalogGridHead/CatalogGridHead'
 import { useParams } from 'next/navigation'
+import CatalogGrid from './CatalogGrid/CatalogGrid'
+import CatalogGridHead from './CatalogGridHead/CatalogGridHead'
 
 
 const CatalogContent: React.FC = () => {
@@ -67,4 +67,4 @@ const CatalogContent: React.FC = () => {
 	)
 }
 
-export default React.memo(CatalogContent)
+export default memo(CatalogContent)

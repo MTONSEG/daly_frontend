@@ -1,27 +1,31 @@
-.catalog-grid {
+.pagination,
+.pagination__button {
 	display: flex;
-	flex-direction: column;
-	&__products {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-		row-gap: 20px;
-		column-gap: 18px;
-		justify-items: center;
-		&.row {
-			display: flex;
-			flex-direction: column;
-			gap: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination {
+	width: 100%;
+	flex-direction: row;
+	gap: 6px;
+
+	&__button {
+		width: 30px;
+		height: 30px;
+		background: transparent;
+		color: var(--dark-grey);
+		font-family: var(--inter);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 120%;
+		transition: 0.1s;
+		&.active {
+			color: var(--white);
+			border-radius: 5px;
+			background: var(--bright-green);
 		}
 	}
-
-	&__show-button {
-		margin: 20px 0;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-	}
-
-
 
 	&__arrow {
 		position: relative;

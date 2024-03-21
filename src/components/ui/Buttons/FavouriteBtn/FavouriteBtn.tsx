@@ -32,12 +32,12 @@ const FavouriteBtn: React.FC<IFavouriteBtnProps> = ({ id, isLabeled }) => {
 	const buttonText = t('favourite-button')
 
 	return (
-		<div className='favourite-button__container' onClick={handleClick}>
+		<button className='favourite-button__container' onClick={handleClick} aria-label='favourite-button'>
 			{isLabeled && buttonText}
 			<FavoriteIconGreen
 				className={`favourite-button__favourite-icon ${isFavorite && 'active'}`}
 			/>
-		</div>
+		</button>
 	)
 }
 

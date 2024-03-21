@@ -8,11 +8,13 @@ import { updateStateFilters } from '@/store/filters/slice/filters.slice'
 import { IFilter } from '@/types/types'
 import FilterDropdown from './FilterDropdown/FilterDropdown'
 import { useTranslations } from 'next-intl'
-import { FilterMobileIcon } from '@/components/ui/icons'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { fetchAllFilters } from '@/store/filters/filters.api'
 import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
 import Loader from '@/components/ui/loaders/Loader'
+
+// probalbe dynamic import 
+import { FilterMobileIcon } from '@/components/ui/icons'
 
 interface Props {}
 

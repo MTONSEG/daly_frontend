@@ -42,7 +42,7 @@ const CatalogGridHeadSorter: React.FC<ICatalogGridHeadSorterProps> = ({
 
 	return (
 		<div className='sorter' ref={ref}>
-			<div className='sorter__head' onClick={() => setIsActive(!isActive)}>
+			<div className='sorter__head' onClick={() => setIsActive(!isActive)} aria-label='sort-drop-head'>
 				{word(sortingOption)}
 				<Arrow state={isActive} />
 			</div>

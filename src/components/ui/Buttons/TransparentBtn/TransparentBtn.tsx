@@ -10,9 +10,9 @@ const TransparentBtn: React.FC<TransparentBtnProps> = ({
 	children
 }) => {
 	return (
-		<div className='transparent-btn' onClick={onClick}>
+		<button className='transparent-btn' onClick={onClick} aria-label='filter-save-default-button'>
 			{children}
-		</div>
+		</button>
 	)
 }
 

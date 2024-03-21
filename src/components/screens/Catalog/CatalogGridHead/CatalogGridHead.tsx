@@ -1,4 +1,3 @@
-import React from 'react'
 import './CatalogGridHead.scss'
 import BasicDrop from '@/components/screens/Catalog/CatalogGridHead/CatalogGridHeadSorter/CatalogGridHeadSorter'
 import CatalogGridHeadModder from './CatalogGridHeadModder/CatalogGridHeadModder'

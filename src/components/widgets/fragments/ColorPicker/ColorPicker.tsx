@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { CheckIcon } from '@/components/ui/icons'
 import './ColorPicker.scss'
 import { useTranslations } from 'next-intl'
@@ -39,6 +39,7 @@ const ColorPicker: React.FC<IColorPickerProps> = ({ variant }) => {
 						style={{ background: colors[index].hex }}
 						key={index}
 						onClick={() => handleColorSelection(color.hex)}
+						aria-label={`color-circle ${color.name}`}
 					>
 						{selectedColor === color.hex && (
 							<CheckIcon className='color-picker__icon' />

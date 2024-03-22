@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import './CatalogGridHeadModder.scss'
+import './GridHeadModder.scss'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { setGridMode } from '@/store/catalog/slice/catalog.slice'
 import { CardsModIcon } from '@/components/ui/icons'
 import { ListModIcon } from '@/components/ui/icons'
 type gridMode = 'card' | 'row'
-const CatalogGridHeadModder = () => {
+const GridHeadModder = () => {
 	const dispatch = useAppDispatch()
 	const [gridType, setGridType] = useState<gridMode>('card')
 	
@@ -27,4 +27,4 @@ const CatalogGridHeadModder = () => {
 	</div>
 }
 
-export default CatalogGridHeadModder
+export default GridHeadModder

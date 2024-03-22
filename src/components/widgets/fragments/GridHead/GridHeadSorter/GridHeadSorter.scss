@@ -71,18 +71,34 @@
 			pointer-events: auto;
 			display: flex;
 			flex-direction: column;
-			gap: 5px;
-			padding: 7px;
-			border: 1px solid var(--grey);
-			border-radius: 3px;
+			border-radius: 7px;
 			background: var(--white);
 		}
 	}
 
 	&__option {
+		padding: 7px;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		cursor: pointer;
+		transition: 0.3s;
+		&.active,
+		&:hover {
+			.arrow::before,
+			.arrow::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%) rotate(45deg); /* Rotate the lines to form an angle */
+				width: 7px; /* Increase the width for a thicker arrow */
+				height: 7px; /* Increase the height for a thicker arrow */
+				border-top: 2px solid var(--white); /* Create the top line of the arrow */
+				border-right: 2px solid var(--white); /* Create the right line of the arrow */
+				border-radius: 1px;
+			}
+			color: var(--white);
+			background: var(--bright-green);
+		}
 	}
 }

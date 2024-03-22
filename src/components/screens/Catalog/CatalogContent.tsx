@@ -1,13 +1,12 @@
 'use client'
-import { memo, useCallback, useEffect, useMemo, useRef} from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
 import { fetchFilteredProducts } from '@/store/catalog/catalog.api'
 import { RootState } from '@/store/store'
 import { useParams } from 'next/navigation'
 import CatalogGrid from './CatalogGrid/CatalogGrid'
-import CatalogGridHead from './CatalogGridHead/CatalogGridHead'
-
+import GridHead from '../../widgets/fragments/GridHead/GridHead'
 
 const CatalogContent: React.FC = () => {
 	const { locale } = useParams()
@@ -55,7 +54,7 @@ const CatalogContent: React.FC = () => {
 
 	return (
 		<div className='catalog-content'>
-			<CatalogGridHead
+			<GridHead
 				productsQuantity={filteredProducts.meta.pagination.total}
 			/>
 			<CatalogGrid

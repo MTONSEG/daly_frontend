@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './CatalogGridHeadSorter.scss'
+import './GridHeadSorter.scss'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { setSorting } from '@/store/filters/slice/filters.slice'
 import { useTranslations } from 'next-intl'
@@ -9,12 +9,12 @@ import Arrow from '@/components/ui/arrows/Arrow'
 type SortingOption = 'publishedAt' | 'price' | 'rating'
 type SortingMethod = 'asc' | 'desc'
 
-interface ICatalogGridHeadSorterProps {
+interface IGridHeadSorterProps {
 	sortingOptions: SortingOption[]
 	sortingMethods: SortingMethod[]
 }
 
-const CatalogGridHeadSorter: React.FC<ICatalogGridHeadSorterProps> = ({
+const GridHeadSorter: React.FC<IGridHeadSorterProps> = ({
 	sortingOptions,
 	sortingMethods
 }) => {
@@ -50,7 +50,7 @@ const CatalogGridHeadSorter: React.FC<ICatalogGridHeadSorterProps> = ({
 				{sortingOptions.map((option, index) => (
 					<div
 						key={index}
-						className='sorter__option'
+						className={`sorter__option ${sortingOption === option && "active"}`}
 						onClick={() => handleOptionClick(option)}
 					>
 						{word(option)}
@@ -64,4 +64,4 @@ const CatalogGridHeadSorter: React.FC<ICatalogGridHeadSorterProps> = ({
 	)
 }
 
-export default CatalogGridHeadSorter
+export default GridHeadSorter

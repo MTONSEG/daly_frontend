@@ -5,7 +5,7 @@ export interface IFavoritesData {
 }
 
 const initialState: IFavoritesData = {
-	products: []
+	products: [323, 327, 311, 322]
 }
 
 const favoritesData = createSlice({
@@ -16,6 +16,7 @@ const favoritesData = createSlice({
 			const productId = action.payload
 			if (!state.products.includes(productId)) {
 				state.products.push(productId)
+				console.log(state.products)
 			}
 		},
 		removeFavorite: (state, action: PayloadAction<number>) => {

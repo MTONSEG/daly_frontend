@@ -28,6 +28,9 @@
 		"save-filters-button": "Save",
 		"default-filters-button": "Defaults"
 	},
+	"favourites": {
+		"title": "Favourites"
+	},
 	"color-picker": {
 		"color-1": "grey",
 		"color-2": "green",

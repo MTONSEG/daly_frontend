@@ -10,7 +10,7 @@ import { getData } from '@/services/axios.config'
 import { IProduct, IResponse } from '@/types/types'
 
 const Favourites: React.FC = () => {
-	const word = useTranslations('catalog')
+	const word = useTranslations('favourites')
 	const productIds = useAppSelector((state) => state.favourites.products)
 	const gridMode = useAppSelector((state) => state.catalogProducts.gridMode)
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)

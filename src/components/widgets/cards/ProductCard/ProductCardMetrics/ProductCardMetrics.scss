@@ -44,7 +44,7 @@
 	&__r-c-item {
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+		// align-items: center;
 	}
 
 	&__r-c-block {
@@ -60,6 +60,10 @@
 
 	&__r-c-item {
 		gap: 5px;
+	}
+
+	&__r-c-icon {
+		margin: 1px 0 0 0;
 	}
 
 	@include media-max(md) {

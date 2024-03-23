@@ -28,6 +28,9 @@
 		"save-filters-button": "Применить",
 		"default-filters-button": "Сбросить фильтры"
 	},
+	"favourites": {
+		"title": "Избранное"
+	},
 	"color-picker": {
 		"color-1": "серый",
 		"color-2": "зеленый",

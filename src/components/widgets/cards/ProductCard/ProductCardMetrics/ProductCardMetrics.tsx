@@ -32,10 +32,10 @@ const ProductCardMetrics: React.FC<IProductCardMetricsProps> = ({
 
 			<div className='product-card__r-c-block'>
 				<div className='product-card__r-c-item'>
-					{rating} <StarIcon />
+					{rating} <StarIcon className="product-card__r-c-icon"/>
 				</div>
 				<div className='product-card__r-c-item'>
-					<CommentIcon />
+					<CommentIcon className="product-card__r-c-icon"/>
 					{commsQuantity ? commsQuantity : '0'}
 				</div>
 			</div>

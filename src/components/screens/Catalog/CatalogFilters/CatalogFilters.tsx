@@ -13,7 +13,7 @@ import { fetchAllFilters } from '@/store/filters/filters.api'
 import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
 import Loader from '@/components/ui/loaders/Loader'
 
-// probalbe dynamic import 
+// probalbe dynamic import
 import { FilterMobileIcon } from '@/components/ui/icons'
 
 interface Props {}

@@ -5,7 +5,8 @@ export interface IFiltersState {
 	sortingOption: 'publishedAt' | 'price' | 'rating'
 	sortingMethod: 'asc' | 'desc'
 	page: number
-    limit: number
+	limit: number
+	start: number | undefined
 	error: null | string
 	status: 'start' | 'loading' | 'error' | 'success'
 }
@@ -15,7 +16,8 @@ export const filtersState: IFiltersState = {
 	sortingOption: 'publishedAt',
 	sortingMethod: 'asc',
 	page: 1,
-    limit: 20,
+	limit: 12,
+	start: undefined,
 	error: null,
 	status: 'start'
 }

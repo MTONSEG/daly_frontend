@@ -28,10 +28,9 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 	filter,
 	updateFilter
 }) => {
-	const isPrice:boolean = filter.attributes.min_price !== null && filter.attributes.max_price !== null;
-	const [dropActive, setDropActive] = useState<boolean>(
-		isPrice
-	)
+	const isPrice: boolean =
+		filter.attributes.min_price !== null && filter.attributes.max_price !== null
+	const [dropActive, setDropActive] = useState<boolean>(isPrice)
 	const [values, setValues] = useState([0, 10000])
 	const [showAllItems, setShowAllItems] = useState<boolean>(false)
 
@@ -109,14 +108,16 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 	const itemsToShow = showAllItems ? totalItems : 6
 	const shouldShowMoreButton = totalItems > 6
 
+	const handleShowAllItems = () => {
+		setShowAllItems(!showAllItems)
+	}
+
 	return (
 		<div className='filter-dropdown'>
 			<div
 				className='filter-dropdown__head'
 				onClick={() => {
-					if (
-						isPrice
-					) {
+					if (isPrice) {
 						return
 					} else {
 						setDropActive(!dropActive)
@@ -126,19 +127,17 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 				<div className='filter-dropdown__name'>
 					{upperFirstLetter(filter.attributes.label)}
 				</div>
-				{!isPrice && (
-						<Arrow state={dropActive}/>
-					)}
+				{!isPrice && <Arrow state={dropActive} />}
 			</div>
 			<div className={`filter-dropdown__body ${dropActive && 'active'}`}>
 				{isPrice && (
-						<PriceRange
-							maxPrice={filter.attributes.max_price}
-							minPrice={filter.attributes.min_price}
-							values={values}
-							onChange={handleChange}
-						/>
-					)}
+					<PriceRange
+						maxPrice={filter.attributes.max_price}
+						minPrice={filter.attributes.min_price}
+						values={values}
+						onChange={handleChange}
+					/>
+				)}
 				{filter.attributes.categories !== null &&
 					filter.attributes.categories
 						.slice(0, itemsToShow)
@@ -176,7 +175,7 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 						))}
 				<ShowBtn
 					showAllItems={showAllItems}
-					setShowAllItems={setShowAllItems}
+					setShowAllItems={handleShowAllItems}
 					shouldShowMoreButton={shouldShowMoreButton}
 				/>
 			</div>

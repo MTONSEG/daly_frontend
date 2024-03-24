@@ -29,11 +29,17 @@ const filtersData = createSlice({
 				payload: {
 					page: number
 					limit: number
+					start?: number
 				}
 			}
 		) => {
 			state.page = action.payload.page
 			state.limit = action.payload.limit
+			if (action.payload.start !== undefined) {
+				state.start = action.payload.start
+			} else {
+				state.start = undefined
+			}
 		}
 	},
 

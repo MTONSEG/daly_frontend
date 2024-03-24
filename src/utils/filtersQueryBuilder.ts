@@ -8,7 +8,8 @@ export const filtersQueryBuilder = (
 	sorting: 'publishedAt' | 'price' | 'rating' = 'publishedAt',
 	sortingWay: 'asc' | 'desc' = 'desc',
 	page: number,
-	limit: number
+	limit: number,
+	start?: number
 ): string => {
 	const baseurl = `http://localhost:1337/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
 
@@ -49,10 +50,17 @@ export const filtersQueryBuilder = (
 	})
 
 	// remove the empty strings
-	const validFilterQueries = filterQueries.filter((query) => query !== '') 
-	
-	const paginationFilter = `&pagination[page]=${page}&pagination[pageSize]=${limit}`
+	const validFilterQueries = filterQueries.filter((query) => query !== '')
+
+	const paginationFilter = `${
+		start
+			? `&pagination[start]=${start}&pagination[limit]=${limit}`
+			: `&pagination[page]=${page}&pagination[pageSize]=${limit}`
+	}`
+
 	const sortingFilter = `&sort=${sorting}:${sortingWay}`
 
-	return `${baseurl}&${validFilterQueries.join('&')}${sortingFilter}${paginationFilter}`
+	return `${baseurl}&${validFilterQueries.join(
+		'&'
+	)}${sortingFilter}${paginationFilter}`
 }

@@ -21,14 +21,15 @@ const CatalogContent: React.FC = () => {
 				filters.sortingOption,
 				filters.sortingMethod,
 				filters.page,
-				filters.limit
+				filters.limit,
+				filters.start
 			),
 		[filters, locale]
 	)
 	//fetching filtered products if the fetchUrl changed
 	const fetchFilteredProductsMemoized = useCallback(() => {
 		dispatch(fetchFilteredProducts(fetchUrl))
-		console.log('Fetched the filtered Products')
+		console.log('Fetched the filtered Products'+ filters.start)
 	}, [dispatch, fetchUrl])
 
 	//chatgpt part for minimizing rerenders

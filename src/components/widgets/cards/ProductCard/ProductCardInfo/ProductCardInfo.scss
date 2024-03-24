@@ -11,6 +11,14 @@
 		max-width: 200px;
 	}
 
+	&__category,
+	&__name {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		-webkit-line-clamp: 1;
+	}
+
 	&__category {
 		color: var(--grey);
 		font-size: 12px;

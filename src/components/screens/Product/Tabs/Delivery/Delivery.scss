@@ -1,3 +1,5 @@
+@import '@/media';
+
 .courier {
 	display: flex;
 	padding-bottom: 40px;
@@ -10,6 +12,8 @@
 
 	&__form {
 		padding: 30px;
+		max-width: 554px;
+		padding: 30px;
 	}
 
 	&__link {
@@ -19,6 +23,20 @@
 		line-height: 150%;
 		text-decoration-line: underline;
 		margin-top: 20px;
+	}
+
+	.select-container {
+		width: 100%;
+	}
+
+	.select-label {
+		color: var(--dark-grey);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 152%;
+		letter-spacing: 0px;
+		text-align: left;
+		margin-bottom: 5px;
 	}
 
 	&__right {
@@ -37,6 +55,8 @@
 }
 
 .selects-line {
+	display: flex;
+	gap: 30px;
 }
 
 .pickup {
@@ -68,6 +88,7 @@
 		font-size: 14px;
 		font-weight: 400;
 		line-height: 150%;
+		margin-top: 20px;
 	}
 
 	&__tel {
@@ -83,8 +104,30 @@
 	}
 
 	&__iframe {
-		width: 100%;
 		height: 405px;
 		margin-left: 107px;
+		max-width: 670px;
+		width: 100%;
+		margin-top: 20px;
+	}
+}
+
+@include media-max(sm) {
+	.delivery {
+		.tabs__btns-wr {
+			flex-direction: row;
+		}
+	}
+
+	.pickup {
+		&__content {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__iframe {
+			margin-left: 0px;
+			height: 305px;
+		}
 	}
 }

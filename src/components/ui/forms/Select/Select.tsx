@@ -40,23 +40,16 @@ const Select: FC<ISelect> = ({ value, setValue, className, valuesArr }) => {
 	}, [])
 
 	return (
-		<div
-			className={`select ${className}`}
-			onClick={() => onRootClickHandler()}
-			ref={rootRef}
-		>
+		<div className={`select ${className}`} onClick={() => onRootClickHandler()} ref={rootRef}>
 			<div className='select__title__wr'>
 				<p className='select__title'>{value}</p>
 				<DropDownIcon className={`arrow_down ${open ? ' active' : ''}`} />
 			</div>
+
 			<ul className={`select__ul  ${open ? ' active' : ''}`}>
 				<div style={{ minHeight: '0px' }}>
 					{valuesArr.map((el) => (
-						<li
-							onClick={() => onElementClickHandler(el)}
-							key={el}
-							className='select__li'
-						>
+						<li onClick={() => onElementClickHandler(el)} key={el} className='select__li'>
 							{el}
 						</li>
 					))}

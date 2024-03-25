@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TabHead from '../TabStructure/TabHead'
 import TabContent from '../TabStructure/TabContent'
 import { ITab } from '../Tabs'
@@ -11,21 +11,36 @@ import './Delivery.scss'
 // product-card
 
 const Courier = () => {
+	const [city, setCity] = useState('Выберите город')
+	const [date, setDate] = useState('')
+	const [time, setTime] = useState('')
+
 	return (
 		<div className='courier'>
-			{/* <div className='courier__left'>
+			<div className='courier__left'>
 				<form id='courier-form' className='courier__form'>
-					<Select></Select>
+					<div className='select-container'>
+						<p className='select-label'>Город доставки</p>
+						<Select value={city} setValue={setCity} valuesArr={['1', '2', '3']}></Select>
+					</div>
+
 					<div className='selects-line'>
-						<Select></Select>
-						<Select></Select>
+						<div className='select-container'>
+							<p className='select-label'>Дата</p>
+							<Select value={date} setValue={setDate} valuesArr={['1', '2', '3']}></Select>
+						</div>
+
+						<div className='select-container'>
+							<p className='select-label'>Время</p>
+							<Select value={time} setValue={setTime} valuesArr={['1', '2', '3']}></Select>
+						</div>
 					</div>
 				</form>
 				<LinkBtn href='' className='courier__link'>
 					Полные условия доставки
 				</LinkBtn>
 			</div>
-			<div className='courier__right'>
+			{/* <div className='courier__right'>
 				<div className='courier__right-line'>
 					<h2 className='courier__price'>Стоимость доставки</h2>
 					<p className='courier__price_text'>Бесплатно</p>
@@ -40,6 +55,51 @@ const Courier = () => {
 }
 
 const Pickup = () => {
+	const getPostData = async (city: string) => {
+		const apiKey = '9fcce71e3d084a1fdaefeadde3261f11'
+		const apiUrl = 'https://api.novaposhta.ua/v2.0/json/'
+
+		const requestData = {
+			apiKey: apiKey,
+			modelName: 'Address',
+			calledMethod: 'getWarehouses',
+			methodProperties: {
+				Limit: 50,
+				CityName: city
+			}
+		}
+
+		const requestOptions = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+				'User-Agent': 'Mozilla/5.0'
+			},
+			body: JSON.stringify(requestData)
+		}
+
+		await fetch(apiUrl, requestOptions)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`Failed to fetch departments. Status code: ${response.status}`)
+				}
+				return response.json()
+			})
+			.then((data) => {
+				const departments = data.data
+				console.log(departments)
+			})
+			.catch((error) => {
+				console.error('Error:', error)
+			})
+	}
+
+	useEffect(() => {
+		getPostData('харків')
+		getPostData('київ')
+	}, [])
+
 	return (
 		<div className='pickup'>
 			<h2 className='pickup__title'>Товар доступен в нашем магазине</h2>

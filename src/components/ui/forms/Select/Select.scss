@@ -18,6 +18,9 @@
 		justify-content: space-between;
 		width: 100%;
 		flex-shrink: 0;
+
+		svg {
+		}
 	}
 
 	&__title {
@@ -34,6 +37,8 @@
 		grid-template-rows: 0fr;
 		overflow: hidden;
 		z-index: 2;
+		transition: 0.3s;
+
 		&.active {
 			grid-template-rows: 1fr;
 		}
@@ -47,6 +52,7 @@
 		border-radius: 10px;
 		align-items: center;
 		border: 1px solid rgb(218, 220, 220);
+		background-color: white;
 	}
 
 	&__li:first-of-type {
@@ -56,6 +62,8 @@
 
 .arrow_down {
 	transition: 0.3s;
+	z-index: 1;
+
 	&.active {
 		transform: rotate(180deg);
 	}

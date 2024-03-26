@@ -192,9 +192,9 @@ const Courier = () => {
 							styles={colourStyles}
 							defaultValue={{ value: 'Adress', label: 'Выберете Адресс' }}
 							loadOptions={() => {
-								new Promise((resolve) => {
+								return new Promise((resolve) => {
 									setTimeout(() => {
-										resolve([{ value: 'x', label: 'z' }])
+										resolve({})
 									}, 1000)
 								})
 							}}

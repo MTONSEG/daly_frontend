@@ -1,10 +1,9 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import './CatalogFilters.scss'
 import { useParams } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { updateStateFilters } from '@/store/filters/slice/filters.slice'
-
 import { IFilter } from '@/types/types'
 import FilterDropdown from './FilterDropdown/FilterDropdown'
 import { useTranslations } from 'next-intl'
@@ -13,38 +12,32 @@ import { fetchAllFilters } from '@/store/filters/filters.api'
 import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
 import Loader from '@/components/ui/loaders/Loader'
 
-// probalbe dynamic import
+// probable dynamic import
 import { FilterMobileIcon } from '@/components/ui/icons'
 
 interface Props {}
 
-const CatalogFilters: React.FC<Props> = ({}) => {
+const CatalogFilters: React.FC<Props> = () => {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
-
-	const word = useTranslations('catalog')
 	const { locale } = useParams()
-	//state of the filters copy from redux
-	const [filters, setFilters] = useState<IFilter[]>([])
-	console.log('🚀 ~ filters:', filters)
-	const dispatch: any = useAppDispatch()
-	//getting filters copy from redux
+	const dispatch = useAppDispatch()
+	const word = useTranslations('catalog')
+
 	const filtersFromRedux = useAppSelector((state) => state.filters.filtersData)
-	console.log('🚀 ~ filtersFromRedux:', filtersFromRedux)
-	//getting the filters from strapi !!!!!!!!!! make localStorage save for filters
+	const [filters, setFilters] = useState<IFilter[]>([])
+
 	useEffect(() => {
 		dispatch(fetchAllFilters(locale))
 		console.log('Fetched default filters and their names')
-	}, [locale])
-	//setting the copied filters to the copy storage
+	}, [dispatch, locale])
+
 	useEffect(() => {
-		const copiedFilters = filtersFromRedux.map((filter: IFilter) => ({
-			...filter
-		}))
-		setFilters(copiedFilters)
+		if (filtersFromRedux) {
+			setFilters([...filtersFromRedux])
+		}
 	}, [filtersFromRedux])
 
-	//func for filter update
-	const updateFilter = (updatedFilter: IFilter) => {
+	const updateFilter = useCallback((updatedFilter: IFilter) => {
 		setFilters((prevFilters) => {
 			const index = prevFilters.findIndex(
 				(filter) => filter.id === updatedFilter.id
@@ -56,7 +49,7 @@ const CatalogFilters: React.FC<Props> = ({}) => {
 			}
 			return prevFilters
 		})
-	}
+	}, [])
 
 	useEffect(() => {
 		if (isActive && window.innerWidth < 768) {
@@ -68,7 +61,14 @@ const CatalogFilters: React.FC<Props> = ({}) => {
 
 	const handleUpdateFilters = () => {
 		dispatch(updateStateFilters(filters))
+		setIsActive(false)
 	}
+
+	const handleFetchDefaultFilters = () => {
+		dispatch(fetchAllFilters(locale))
+		setIsActive(false)
+	}
+
 	return (
 		<>
 			{!isActive && (
@@ -81,9 +81,8 @@ const CatalogFilters: React.FC<Props> = ({}) => {
 					<FilterMobileIcon className='catalog-filters__mobile-icon' />
 				</div>
 			)}
-			<div className={`catalog-filters ${isActive && 'active'}`} ref={ref}>
+			<div className={`catalog-filters ${isActive ? 'active' : ''}`} ref={ref}>
 				{filters.length > 0 ? (
-					filters.length > 0 &&
 					filters.map((filter, index) => (
 						<FilterDropdown
 							filter={filter}
@@ -95,20 +94,10 @@ const CatalogFilters: React.FC<Props> = ({}) => {
 					<Loader />
 				)}
 				<div className='catalog-filters__buttons'>
-					<TransparentBtn
-						onClick={() => {
-							handleUpdateFilters()
-							setIsActive(false)
-						}}
-					>
+					<TransparentBtn onClick={handleUpdateFilters}>
 						{word('save-filters-button')}
 					</TransparentBtn>
-					<TransparentBtn
-						onClick={() => {
-							dispatch(fetchAllFilters(locale))
-							setIsActive(false)
-						}}
-					>
+					<TransparentBtn onClick={handleFetchDefaultFilters}>
 						{word('default-filters-button')}
 					</TransparentBtn>
 				</div>

@@ -8,10 +8,10 @@ export const fetchAllFilters = createAsyncThunk<
 	IFilter[],
 	string | string[],
 	{ rejectValue: string }
->('filtersData/fetchAllFilters', async (locale, { rejectWithValue }) => {
+>('filtersData/fetchAllFilters', async (locale) => {
 	try {
-		let savedFilters = localStorage.getItem('filters')
-		let savedFiltersTimestamp = localStorage.getItem('filtersTimestamp')
+		const savedFilters = localStorage.getItem('filters')
+		const savedFiltersTimestamp = localStorage.getItem('filtersTimestamp')
 
 		if (
 			savedFilters &&
@@ -29,8 +29,7 @@ export const fetchAllFilters = createAsyncThunk<
 
 			return data.data
 		}
-	} catch (error: any) {
+	} catch (error) {
 		console.error('Error getting all product data:', error)
-		return rejectWithValue(error)
 	}
 })

@@ -8,6 +8,8 @@ import CatalogGrid from '../Catalog/CatalogGrid/CatalogGrid'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { getData } from '@/services/axios.config'
 import { IProduct, IResponse } from '@/types/types'
+import listImage from '@/assets/images/list-image.png'
+import Image from 'next/image'
 
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
@@ -27,9 +29,8 @@ const Favourites: React.FC = () => {
 				})
 
 				const fetchedProducts = await Promise.all(productRequests)
-				let sortedProducts = [...fetchedProducts]
+				const sortedProducts = [...fetchedProducts]
 
-				// Define comparison functions for different sorting options and ways
 				const comparisonFunctions = {
 					publishedAt: {
 						asc: (a: IProduct, b: IProduct) =>
@@ -53,11 +54,9 @@ const Favourites: React.FC = () => {
 					}
 				}
 
-				// Get the appropriate comparison function based on sorting option and way
 				const comparisonFunction =
 					comparisonFunctions[sortingOption][sortingWay]
 
-				// Sort the products using the selected comparison function
 				sortedProducts.sort(comparisonFunction)
 
 				setProducts(sortedProducts)
@@ -72,10 +71,29 @@ const Favourites: React.FC = () => {
 	return (
 		<Container>
 			<div className='favourites'>
-				<div className='favourites__title'>{word('title')}</div>
 				<div className='favourites__content'>
-					<GridHead productsQuantity={productIds.length} />
-					<CatalogGrid products={products} gridMode={gridMode} />
+					<div className='favourites__head'>
+						<div className='favourites__title'>{word('title')}</div>
+						<GridHead />
+					</div>
+					{products.length > 0 ? (
+						<CatalogGrid products={products} gridMode={gridMode} />
+					) : (
+						<div className='favourites__empty'>
+							<div className='favourites__empty-text'>В избранном пусто</div>
+							<div className='favourites__empty-text'>
+								Добавляйте товары в избранное,чтобы просмотреть или купить их
+								позже
+							</div>
+							<Image
+								src={listImage}
+								alt='list-image'
+								className='filters__empty-image'
+								width={81}
+								height={89}
+							></Image>
+						</div>
+					)}
 				</div>
 			</div>
 		</Container>

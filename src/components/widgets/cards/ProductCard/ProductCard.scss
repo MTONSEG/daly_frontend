@@ -27,12 +27,23 @@
 		}
 
 		.product-card__button-container {
+			margin: 10px 0 0 0;
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
 			width: fit-content;
-
 			justify-content: center;
+		}
+	}
+
+	&__fav-container,
+	&__info-container,
+	&__button-container {
+		&.placeholder {
+			width: 100%;
+			height: 30px;
+			background: var(--grey-04);
+			border-radius: 5px;
 		}
 	}
 

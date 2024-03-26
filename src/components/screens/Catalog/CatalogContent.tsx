@@ -1,5 +1,5 @@
 'use client'
-import { memo, useCallback, useEffect, useMemo, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
 import { fetchFilteredProducts } from '@/store/catalog/catalog.api'
@@ -11,28 +11,23 @@ import GridHead from '../../widgets/fragments/GridHead/GridHead'
 const CatalogContent: React.FC = () => {
 	const { locale } = useParams()
 	const filters = useAppSelector((state) => state.filters)
-	const dispatch: any = useAppDispatch()
-	//memoized building of the fetchURL
-	const fetchUrl = useMemo(
-		() =>
-			filtersQueryBuilder(
-				filters.filtersData,
-				locale,
-				filters.sortingOption,
-				filters.sortingMethod,
-				filters.page,
-				filters.limit,
-				filters.start
-			),
-		[filters, locale]
+	const dispatch = useAppDispatch()
+
+	const fetchUrl = filtersQueryBuilder(
+		filters.filtersData,
+		locale,
+		filters.sortingOption,
+		filters.sortingMethod,
+		filters.page,
+		filters.limit,
+		filters.start
 	)
-	//fetching filtered products if the fetchUrl changed
+
 	const fetchFilteredProductsMemoized = useCallback(() => {
 		dispatch(fetchFilteredProducts(fetchUrl))
-		console.log('Fetched the filtered Products'+ filters.start)
-	}, [dispatch, fetchUrl])
+		console.log('Fetched the filtered Products' + filters.start)
+	}, [dispatch, fetchUrl, filters.start])
 
-	//chatgpt part for minimizing rerenders
 	const prevFetchUrl = useRef<string>()
 	useEffect(() => {
 		if (prevFetchUrl.current !== fetchUrl) {
@@ -44,22 +39,16 @@ const CatalogContent: React.FC = () => {
 	const filteredProducts = useAppSelector(
 		(state: RootState) => state.catalogProducts
 	)
-	const memoizedFilteredProducts = useMemo(
-		() => filteredProducts.catalogProducts,
-		[filteredProducts.catalogProducts]
-	)
 
 	useEffect(() => {
 		console.log('Changed the memoized filtered products')
-	}, [memoizedFilteredProducts])
+	}, [filteredProducts.catalogProducts])
 
 	return (
 		<div className='catalog-content'>
-			<GridHead
-				productsQuantity={filteredProducts.meta.pagination.total}
-			/>
+			<GridHead productsQuantity={filteredProducts.meta.pagination.total} />
 			<CatalogGrid
-				products={memoizedFilteredProducts}
+				products={filteredProducts.catalogProducts}
 				meta={filteredProducts.meta}
 				gridMode={filteredProducts.gridMode}
 			/>
@@ -67,4 +56,4 @@ const CatalogContent: React.FC = () => {
 	)
 }
 
-export default memo(CatalogContent)
+export default CatalogContent

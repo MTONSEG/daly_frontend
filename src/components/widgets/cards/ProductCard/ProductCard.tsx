@@ -11,41 +11,57 @@ import ProductCardMetrics from './ProductCardMetrics/ProductCardMetrics'
 import BuyButton from '@/components/ui/buttons/BuyBtn/BuyBtn'
 
 interface IProductCardProps {
-	product: IProduct
+	product?: IProduct
 	variant: 'card' | 'row'
 }
 
 const ProductCard: React.FC<IProductCardProps> = ({ product, variant }) => {
 	return (
-		<div className={`product-card ${variant && variant}`}>
+		<div
+			className={`product-card ${variant && variant} ${
+				!product && 'placeholder'
+			}`}
+		>
 			<div className='product-card__fav-container'>
-				<ProductCardFav id={product.id} isLabeled={false} />
+				{product && <ProductCardFav id={product.id} isLabeled={false} />}
 			</div>
 
 			<ProductCardImg
 				variant={variant}
-				urls={product.attributes.images && product.attributes.images}
+				urls={product && product.attributes.images && product.attributes.images}
 			/>
 
-			<div className='product-card__info-container'>
-				<ProductCardInfo
-					category={product.attributes.category?.data.attributes.label}
-					name={product.attributes.title}
-				/>
+			<div
+				className={`product-card__info-container ${!product && 'placeholder'}`}
+			>
+				{product && (
+					<>
+						<ProductCardInfo
+							category={product.attributes.category?.data.attributes.label}
+							name={product.attributes.title}
+						/>
 
-				<ColorPicker variant='forCard' />
+						<ColorPicker variant='forCard' />
+					</>
+				)}
 			</div>
 
-			<div className='product-card__button-container'>
-				<ProductCardMetrics
-					price={product.attributes.price}
-					rating={product.attributes.rating}
-					commsQuantity={
-						product.attributes.product_comments &&
-						product.attributes.product_comments.data.length
-					}
-				/>
-				<BuyButton id={product.id} />
+			<div
+				className={`product-card__button-container ${
+					!product && 'placeholder'
+				}`}
+			>
+				{product && (
+					<ProductCardMetrics
+						price={product.attributes.price}
+						rating={product.attributes.rating}
+						commsQuantity={
+							product.attributes.product_comments &&
+							product.attributes.product_comments.data.length
+						}
+					/>
+				)}
+				{product && <BuyButton id={product.id} />}
 			</div>
 		</div>
 	)

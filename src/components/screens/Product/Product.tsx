@@ -55,6 +55,8 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 						: 'No description have been found'
 				}
 			/>
+
+			<div className='goods'>{/* <Prod */}</div>
 		</Container>
 	)
 }

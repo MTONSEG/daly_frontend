@@ -19,6 +19,8 @@ const Courier = () => {
 	// const [time, setTime] = useState('')
 	const [adresses, setAdresses] = useState<{ DescriptionRu: 'string' }[]>([])
 
+	const { data, isLoading } = useNovaPost
+
 	const getPostData = async (city: string) => {
 		const apiKey = '9fcce71e3d084a1fdaefeadde3261f11'
 		const apiUrl = 'https://api.novaposhta.ua/v2.0/json/'
@@ -43,7 +45,7 @@ const Courier = () => {
 			body: JSON.stringify(requestData)
 		}
 
-		await fetch(apiUrl, requestOptions)
+		const res = await fetch(apiUrl, requestOptions)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error(`Failed to fetch departments. Status code: ${response.status}`)
@@ -57,6 +59,8 @@ const Courier = () => {
 			.catch((error) => {
 				console.error('Error:', error)
 			})
+
+		return res
 	}
 
 	useEffect(() => {
@@ -96,14 +100,15 @@ const Courier = () => {
 					<div className='select-container'>
 						<p className='select-label'>Город доставки</p>
 						<Select
+							onChange={(e) => getPostData(e.value)}
 							styles={colourStyles}
 							className='select'
 							components={animatedComponents}
 							defaultValue={{ value: 'choose_city', label: 'choose city' }}
 							options={[
-								{ value: 'Kharkiv', label: 'Харьков' },
-								{ value: 'Dnepr', label: 'Днепр' },
-								{ value: 'Kiev', label: 'Киев' }
+								{ value: 'харків', label: 'Харьков' },
+								{ value: 'дніпро', label: 'Днепр' },
+								{ value: 'київ', label: 'Киев' }
 							]}
 						/>
 					</div>
@@ -141,7 +146,7 @@ const Courier = () => {
 						<div className='select-container'>
 							<p className='select-label'>Адресс</p>
 							<AsyncSelect
-								loadOptions={promiseOptions}
+								// loadOptions={promiseOptions}
 								styles={colourStyles}
 								defaultValue={{ value: 'Adress', label: 'Выберете Адресс' }}
 								options={[

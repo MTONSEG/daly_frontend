@@ -8,6 +8,7 @@ import { getProductApi } from './api/productRTKQ.api'
 // import productSlice from './slices/productRTK.slice'
 import productSlice from '@/store/slices/product.slice'
 import { commentApi } from './api/comment.api'
+import { getNovaPostAdressesApi } from './api/novaPost.api'
 
 export const store = configureStore({
 	reducer: {
@@ -18,13 +19,15 @@ export const store = configureStore({
 		// productSlice: productSlice,
 		[catalogHeaderApi.reducerPath]: catalogHeaderApi.reducer,
 		[getProductApi.reducerPath]: getProductApi.reducer,
-		[commentApi.reducerPath]: commentApi.reducer
+		[commentApi.reducerPath]: commentApi.reducer,
+		[getNovaPostAdressesApi.reducerPath]: getNovaPostAdressesApi.reducer
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware()
 			.concat(catalogHeaderApi.middleware)
 			.concat(getProductApi.middleware)
 			.concat(commentApi.middleware)
+			.concat(getNovaPostAdressesApi.middleware)
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -9,6 +9,7 @@ import './Delivery.scss'
 import Select, { StylesConfig } from 'react-select'
 import makeAnimated from 'react-select/animated'
 import AsyncSelect from 'react-select/async'
+import { useGetAdressesMutation } from '../../../../../store/api/novaPost.api'
 // import './Select.scss'
 
 // product-card
@@ -17,8 +18,23 @@ const Courier = () => {
 	// const [city, setCity] = useState('Выберите город')
 	// const [date, setDate] = useState('')
 	// const [time, setTime] = useState('')
+	const [getAdresses] = useGetAdressesMutation()
 
-	// const { data, isLoading } = useNovaPostQU
+	const [isChoosen, setIsChosen] = useState({
+		city: false,
+		date: false,
+		time: false,
+		adress: false
+	})
+
+	const onCityChangeHandler = async () => {
+		const res = await getAdresses({ city: 'харків' })
+		console.log(res)
+	}
+
+	useEffect(() => {
+		onCityChangeHandler()
+	}, [])
 
 	const getPostData = async (city: string) => {
 		const apiKey = '9fcce71e3d084a1fdaefeadde3261f11'
@@ -62,14 +78,14 @@ const Courier = () => {
 		return res
 	}
 
-	useEffect(() => {
-		const getAdresses = async () => {
-			const adresses = await getPostData('харків')
-			// setAdresses(adresses)
-		}
+	// useEffect(() => {
+	// 	const getAdresses = async () => {
+	// 		const adresses = await getPostData('харків')
+	// 		// setAdresses(adresses)
+	// 	}
 
-		getAdresses()
-	}, [])
+	// 	getAdresses()
+	// }, [])
 
 	const animatedComponents = makeAnimated()
 
@@ -80,17 +96,26 @@ const Courier = () => {
 				transform: props.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
 				transition: '0.3s'
 			}
+		},
+		control: (base) => {
+			return { ...base, borderRadius: '10px' }
+		},
+		singleValue: (base) => {
+			return { ...base, color: 'rgb(54, 58, 69)', fontSize: '14px' }
+		},
+		valueContainer: (base) => {
+			return { ...base, padding: '12px 15px' }
 		}
 	}
 
-	const filterAdress = (inputValue: string) => {
-		return adresses.filter((i) => i.DescriptionRu.toLowerCase().includes(inputValue.toLowerCase()))
-	}
+	// const filterAdress = (inputValue: string) => {
+	// 	return adresses.filter((i) => i.DescriptionRu.toLowerCase().includes(inputValue.toLowerCase()))
+	// }
 
-	const promiseOptions = (inputValue: string) =>
-		new Promise((resolve) => {
-			resolve(filterAdress(inputValue))
-		})
+	// const promiseOptions = (inputValue: string) =>
+	// 	new Promise((resolve) => {
+	// 		resolve(filterAdress(inputValue))
+	// 	})
 
 	return (
 		<div className='courier'>
@@ -99,7 +124,12 @@ const Courier = () => {
 					<div className='select-container'>
 						<p className='select-label'>Город доставки</p>
 						<Select
-							onChange={(e) => getPostData(e.value)}
+							required
+							onChange={() => {
+								setIsChosen((prev) => {
+									return { ...prev, city: true }
+								})
+							}}
 							styles={colourStyles}
 							className='select'
 							components={animatedComponents}
@@ -116,6 +146,11 @@ const Courier = () => {
 						<div className='select-container'>
 							<p className='select-label'>Дата</p>
 							<Select
+								onChange={() => {
+									setIsChosen((prev) => {
+										return { ...prev, date: true }
+									})
+								}}
 								styles={colourStyles}
 								defaultValue={{ value: 'Date', label: 'Дата' }}
 								options={[
@@ -131,6 +166,11 @@ const Courier = () => {
 						<div className='select-container'>
 							<p className='select-label'>Время</p>
 							<Select
+								onChange={() => {
+									setIsChosen((prev) => {
+										return { ...prev, time: true }
+									})
+								}}
 								styles={colourStyles}
 								defaultValue={{ value: 'Time', label: 'Время' }}
 								options={[
@@ -141,37 +181,39 @@ const Courier = () => {
 								]}
 							/>
 						</div>
-
-						<div className='select-container'>
-							<p className='select-label'>Адресс</p>
-							<AsyncSelect
-								// loadOptions={promiseOptions}
-								styles={colourStyles}
-								defaultValue={{ value: 'Adress', label: 'Выберете Адресс' }}
-								options={[
-									{
-										value: '10-14',
-										label: '10-14'
-									}
-								]}
-							/>
-						</div>
 					</div>
+
+					<div className='select-container'>
+						<p className='select-label'>Адресс</p>
+						<AsyncSelect
+							// loadOptions={promiseOptions}
+							// onChange={onCityChangeHandler}
+							// isDisabled={isChoosen.city && isChoosen.date && isChoosen.time ? false : true}
+							styles={colourStyles}
+							defaultValue={{ value: 'Adress', label: 'Выберете Адресс' }}
+							loadOptions={() => {
+								new Promise((resolve) => {
+									setTimeout(() => {
+										resolve([{ value: 'x', label: 'z' }])
+									}, 1000)
+								})
+							}}
+						/>
+					</div>
+
+					<Button
+						disabled={
+							isChoosen.adress && isChoosen.city && isChoosen.date && isChoosen.time ? false : true
+						}
+						variant='product'
+					>
+						Купить
+					</Button>
 				</form>
 				<LinkBtn href='' className='courier__link'>
 					Полные условия доставки
 				</LinkBtn>
 			</div>
-			{/* <div className='courier__right'>
-				<div className='courier__right-line'>
-					<h2 className='courier__price'>Стоимость доставки</h2>
-					<p className='courier__price_text'>Бесплатно</p>
-				</div>
-
-				<Button>Купить</Button>
-
-				<p className='courier__etc'>Оплата онлайн, картой или наличными при получении</p>
-			</div> */}
 		</div>
 	)
 }

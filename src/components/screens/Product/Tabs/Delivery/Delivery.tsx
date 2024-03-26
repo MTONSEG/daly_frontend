@@ -17,9 +17,8 @@ const Courier = () => {
 	// const [city, setCity] = useState('Выберите город')
 	// const [date, setDate] = useState('')
 	// const [time, setTime] = useState('')
-	const [adresses, setAdresses] = useState<{ DescriptionRu: 'string' }[]>([])
 
-	const { data, isLoading } = useNovaPost
+	// const { data, isLoading } = useNovaPostQU
 
 	const getPostData = async (city: string) => {
 		const apiKey = '9fcce71e3d084a1fdaefeadde3261f11'
@@ -66,7 +65,7 @@ const Courier = () => {
 	useEffect(() => {
 		const getAdresses = async () => {
 			const adresses = await getPostData('харків')
-			setAdresses(adresses)
+			// setAdresses(adresses)
 		}
 
 		getAdresses()

@@ -1,18 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query'
 import { apiKey, apiUrl } from '@/services/novaPostApiKey'
+import { IResponse } from '@/types/types'
 
 export const novaPostAdressesApi = createApi({
-	reducerPath: 'novaPostAdressesApi',
+	reducerPath: 'novaPostAdressesReducerApi',
 	baseQuery: fetchBaseQuery({
 		baseUrl: apiUrl
 	}),
 	endpoints: (builder) => ({
-		getAdresses: builder.query<object, { city: string }>({
+		getAdresses: builder.query<IResponse<{ DescriptionRu: string }[]>, { city: string }>({
 			query: ({ city }) => {
 				return {
 					method: 'GET',
 					url: '',
-					body: JSON.stringify({
+					body: {
 						apiKey: apiKey,
 						modelName: 'Address',
 						calledMethod: 'getWarehouses',
@@ -20,11 +21,11 @@ export const novaPostAdressesApi = createApi({
 							Limit: 50,
 							city: city
 						}
-					})
+					}
 				}
 			}
 		})
 	})
 })
 
-export const { getAdresses } = novaPostAdressesApi
+export const { useGet } = novaPostAdressesApi

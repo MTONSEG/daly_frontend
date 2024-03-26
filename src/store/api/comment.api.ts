@@ -1,5 +1,5 @@
 import { getAuthToken } from '@/services/getAuthToken'
-import { IComment, IProductComments, IResponse } from '@/types/types'
+import { IComment } from '@/types/types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 interface ICommentResponse {

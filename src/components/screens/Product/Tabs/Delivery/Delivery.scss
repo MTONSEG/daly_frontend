@@ -4,6 +4,10 @@
 	display: flex;
 	padding-bottom: 40px;
 
+	.css-1u9des2-indicatorSeparator {
+		display: none;
+	}
+
 	&__left {
 		width: 100%;
 		margin-right: 40px;

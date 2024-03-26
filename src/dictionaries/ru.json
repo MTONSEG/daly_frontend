@@ -1,6 +1,6 @@
 {
 	"shared": {
-		"not-found-page": "This page is not found",
+		"not-found-page": "Страница не найдена",
 		"signin": "Вход",
 		"signup": "Регистрация",
 		"is-empty": "Пусто",
@@ -11,12 +11,18 @@
 	"home": {
 		"title": "Привет, Мир!",
 		"delivery-pay": "Доставка и оплата",
+		"deliveryAndPay": "Доставка и оплата",
 		"catalog": "Каталог товаров",
 		"support": "Поддержка",
 		"find": "Find",
 		"empty-cart": "В корзине нет товаров, выберите что-нибудь из каталога",
 		"empty-favorite": "В избранном нет товаров, выберите что-нибудь из каталога",
 		"empty-compare": "В сравнении нет товаров, выберите что-нибудь из каталога"
+	},
+	"inputErrors": {
+		">length": "мало",
+		"<length": "много",
+		"ok": "ok"
 	},
 	"catalog": {
 		"title": "Каталог",
@@ -42,5 +48,34 @@
 		"publishedAt": "Новизне",
 		"price": "Цене",
 		"rating": "Рейтингу"
+	},
+	"product": {
+		"buy-button": "Подробнее про доставку и оплату",
+		"price": "Цена",
+		"compare": "сравнить",
+		"favourite": "В избранное",
+		"buy": "купить",
+		"memory": "Обьем памяти",
+		"ram": "Обьем оперативной памяти",
+		"resolution": "разрешение",
+		"characteristics": "Характеристики",
+		"color": "Цвет",
+		"allCharacteristics": "Все характеристики",
+		"description": "Описание",
+		"accessories": "Аксессуары",
+		"comments": "Отзывы",
+		"credit": "Рассрочка и кредит",
+		"deliver": "Наличие и доставка",
+		"cpu": "Процессор",
+		"diagonale": "Диагональ",
+		"display": "Дисплей",
+		"addToBusket": "Добавить товар в корзину",
+		"howToBuyCr": "Как купить в рассрочку?",
+		"mounthlyPayment": "Ежемесячный платеж",
+		"email": "Електронная почта",
+		"name": "Имя",
+		"review": "Отзывы",
+		"leftReview": "Оставить отзыв",
+		"send": "Отправить"
 	}
 }

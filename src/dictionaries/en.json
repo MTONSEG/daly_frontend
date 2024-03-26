@@ -42,5 +42,39 @@
 		"publishedAt": "Date",
 		"price": "Price",
 		"rating": "Rating"
+	},
+	"inputErrors": {
+		">length": "not enough",
+		"<length": "too much",
+		"ok": "ok"
+	},
+	"product": {
+		"buy-button": "About delivery and payment",
+		"price": "Price",
+		"compare": "compare",
+		"favourite": "In favourite",
+		"memory": "Memory",
+		"resolution": "resolution",
+		"ram": "ram",
+		"buy": "buy",
+		"color": "color",
+		"characteristics": "Characteristics",
+		"allCharacteristics": "All characteristics",
+		"description": "Description",
+		"accessories": "Accessories",
+		"comments": "Comments",
+		"credit": "Credit",
+		"deliver": "Delivery",
+		"cpu": "CPU",
+		"diagonale": "Diagonale",
+		"display": "Display",
+		"howToBuyCr": "Installments",
+		"addToBusket": "Add item to cart",
+		"name": "Name",
+		"email": "Email",
+		"mounthlyPayment": "Monthly",
+		"review": "Review",
+		"leftReview": "Add review",
+		"send": "Send"
 	}
 }

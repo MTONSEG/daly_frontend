@@ -17,10 +17,7 @@ interface RootLayoutProps {
 	params: { local: string }
 }
 
-export default function RootLayout({
-	children,
-	params: { local }
-}: Readonly<RootLayoutProps>) {
+export default function RootLayout({ children, params: { local } }: Readonly<RootLayoutProps>) {
 	const messages = useMessages()
 
 	return (
@@ -29,9 +26,9 @@ export default function RootLayout({
 				<NextIntlClientProvider messages={messages}>
 					<ReduxProvider>
 						<div className='wrapper'>
-							<Header />
+							{/* <Header /> */}
 							<main className='main'>{children}</main>
-							<Footer />
+							{/* <Footer /> */}
 						</div>
 					</ReduxProvider>
 				</NextIntlClientProvider>

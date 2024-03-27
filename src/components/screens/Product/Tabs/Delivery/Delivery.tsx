@@ -224,13 +224,15 @@ const Courier = () => {
 }
 
 const Pickup = () => {
+	const tD = useTranslations('delivery')
+
 	return (
 		<div className='pickup'>
-			<h2 className='pickup__title'>Товар доступен в нашем магазине</h2>
+			<h2 className='pickup__title'>{tD('goodAvailibility')}</h2>
 			<div className='pickup__content'>
 				<div className='pickup__adress'>
-					<p className='pickup__city'>Днепр, ул. Тепличная 8к3</p>
-					<div className='pickup__time'>Пн.-Пт: с 10.00 до 21.00 Сб: с 10.00 до 21.00</div>
+					<p className='pickup__city'>{tD('templateAdress')}</p>
+					<div className='pickup__time'>{tD('workWeek')}</div>
 					<a className='pickup__tel' href='tel:+38 (968) 430-88-20'>
 						<TelIcon /> <span>+38 (968) 430-88-20</span>
 					</a>
@@ -246,13 +248,15 @@ const Pickup = () => {
 }
 
 const Delivery = () => {
+	const tD = useTranslations('delivery')
+
 	const tabs: ITab[] = [
 		{
-			title: 'Доставка ',
+			title: tD('delivery'),
 			content: <Courier />
 		},
 		{
-			title: 'Самовывоз',
+			title: tD('pickup'),
 			content: <Pickup />
 		}
 	]

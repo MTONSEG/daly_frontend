@@ -76,5 +76,21 @@
 		"review": "Review",
 		"leftReview": "Add review",
 		"send": "Send"
+	},
+	"delivery": {
+		"delivery": "Delivery",
+		"pickup": "Pickup",
+		"chooseCity": "Choose city",
+		"destinationCity": "Destination City",
+		"destinationCityKh": "Kharkiv",
+		"destinationCityDn": "Dnipro",
+		"destinationCityKiev": "Kiev",
+		"date": "Date",
+		"time": "Time",
+		"adress": "Adress",
+		"buyBtn": "Buy",
+		"linkText": "Full delivery terms",
+		"workWeek": "Mon-Fri: from 10.00 to 21.00 Sat: from 10.00 to 21.00",
+		"templateAdress": "Kyiv, st. Teplychnaya 8k3"
 	}
 }

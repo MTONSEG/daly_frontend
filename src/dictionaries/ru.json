@@ -43,7 +43,7 @@
 		"color-3": "темный",
 		"color-4": "оранжевый"
 	},
-	"sorting":{
+	"sorting": {
 		"sorting-pre-word": "Сортировать по",
 		"publishedAt": "Новизне",
 		"price": "Цене",
@@ -77,5 +77,21 @@
 		"review": "Отзывы",
 		"leftReview": "Оставить отзыв",
 		"send": "Отправить"
+	},
+	"delivery": {
+		"delivery": "Доставка",
+		"pickup": "Самовывоз",
+		"chooseCity": "Выберите город",
+		"destinationCity": "Город доставки",
+		"destinationCityKh": "Харьков",
+		"destinationCityDn": "Днепр",
+		"destinationCityKiev": "Київ",
+		"date": "Дата",
+		"time": "Время",
+		"adress": "Адрес",
+		"buyBtn": "купить",
+		"linkText": "Полные условия доставки",
+		"workWeek": "Пн.-Пт: с 10.00 до 21.00 Сб: с 10.00 до 21.00",
+		"templateAdress": "Киев, ул. Тепличная 8к3"
 	}
 }

@@ -9,6 +9,7 @@ import { useGetProductQuery } from '@/store/api/productRTKQ.api'
 import { FC } from 'react'
 import ProductInfoContainer from './ProductInfoContainer/ProductInfoContainer'
 import Tabs from './Tabs/Tabs'
+import AdditionalGoods from './AdditionalGoods/AdditionalGoods'
 
 interface IProduct {
 	id: number
@@ -33,7 +34,7 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 		return <div>loading...</div>
 	}
 	return (
-		<Container>
+		<Container variant='product'>
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 
 			<div className={`${open_sans.className} ${inter.className} product`}>
@@ -56,7 +57,7 @@ const Product: FC<IProduct> = ({ id = 304 }) => {
 				}
 			/>
 
-			<div className='goods'>{/* <Prod */}</div>
+			<AdditionalGoods />
 		</Container>
 	)
 }

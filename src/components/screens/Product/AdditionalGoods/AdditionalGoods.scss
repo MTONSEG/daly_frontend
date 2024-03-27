@@ -1,0 +1,33 @@
+@import '@/media';
+
+.goods {
+	margin-top: 80px;
+
+	&__title {
+		color: var(--dark-grey);
+		font-size: 22px;
+		font-weight: 700;
+		line-height: 150%;
+		letter-spacing: 0.5px;
+	}
+
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.product-card {
+		margin-top: 30px;
+	}
+}
+
+@include media-max(xs) {
+	.goods {
+		&__row {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+	}
+}

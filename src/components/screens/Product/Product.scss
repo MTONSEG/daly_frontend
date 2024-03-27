@@ -1,10 +1,10 @@
 @import '@/media';
 
 .product {
-	border-radius: 10px;
-	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
-	background: rgb(255, 255, 255);
-	padding: 30px 50px;
+	// border-radius: 10px;
+	// box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	// background: rgb(255, 255, 255);
+	// padding: 30px 50px;
 	margin-top: 20px;
 	display: grid;
 	grid-template-columns: 370px 1fr;
@@ -103,7 +103,7 @@
 
 @include media-max(xs) {
 	.product {
-		padding: 30px 15px;
+		// padding: 30px 15px;
 		grid-template-columns: 1fr;
 
 		&__right {

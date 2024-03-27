@@ -6,18 +6,23 @@ import Button from '@/components/ui/buttons/Button/Button'
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { PhoneIcon, TelIcon } from '@/components/ui/icons'
 import './Delivery.scss'
-import Select, { StylesConfig } from 'react-select'
+import Select, { ActionMeta, OnChangeValue, StylesConfig } from 'react-select'
 import makeAnimated from 'react-select/animated'
 import AsyncSelect from 'react-select/async'
 import { useGetAdressesMutation } from '../../../../../store/api/novaPost.api'
+import Option from 'react-select'
+import { IResponse } from '@/types/types'
+import { useTranslations } from 'next-intl'
 // import './Select.scss'
 
 // product-card
 
 const Courier = () => {
+	const t = useTranslations('shared')
 	// const [city, setCity] = useState('Выберите город')
 	// const [date, setDate] = useState('')
 	// const [time, setTime] = useState('')
+	const [adresses, setAdresses] = useState<{ value: string; label: string }[]>()
 	const [getAdresses] = useGetAdressesMutation()
 
 	const [isChoosen, setIsChosen] = useState({
@@ -27,67 +32,15 @@ const Courier = () => {
 		adress: false
 	})
 
-	const onCityChangeHandler = async () => {
-		const res = await getAdresses({ city: 'харків' })
-		console.log(res)
+	const onCityChangeHandler = async (city: string) => {
+		const res = await getAdresses({ city: city }).unwrap()
+
+		setAdresses(() =>
+			res.data.map((el) => {
+				return { value: el.DescriptionRu, label: el.DescriptionRu }
+			})
+		)
 	}
-
-	useEffect(() => {
-		onCityChangeHandler()
-	}, [])
-
-	const getPostData = async (city: string) => {
-		const apiKey = '9fcce71e3d084a1fdaefeadde3261f11'
-		const apiUrl = 'https://api.novaposhta.ua/v2.0/json/'
-
-		const requestData = {
-			apiKey: apiKey,
-			modelName: 'Address',
-			calledMethod: 'getWarehouses',
-			methodProperties: {
-				Limit: 50,
-				CityName: city
-			}
-		}
-
-		const requestOptions = {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json',
-				'User-Agent': 'Mozilla/5.0'
-			},
-			body: JSON.stringify(requestData)
-		}
-
-		const res = await fetch(apiUrl, requestOptions)
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error(`Failed to fetch departments. Status code: ${response.status}`)
-				}
-				return response.json()
-			})
-			.then((data) => {
-				const departments = data.data
-				console.log(departments)
-			})
-			.catch((error) => {
-				console.error('Error:', error)
-			})
-
-		return res
-	}
-
-	// useEffect(() => {
-	// 	const getAdresses = async () => {
-	// 		const adresses = await getPostData('харків')
-	// 		// setAdresses(adresses)
-	// 	}
-
-	// 	getAdresses()
-	// }, [])
-
-	const animatedComponents = makeAnimated()
 
 	const colourStyles: StylesConfig = {
 		dropdownIndicator: (base, props) => {
@@ -117,6 +70,16 @@ const Courier = () => {
 	// 		resolve(filterAdress(inputValue))
 	// 	})
 
+	const filterAdresses = (inputValue: string) => {
+		return (
+			adresses && adresses.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()))
+		)
+	}
+
+	const loadOptions = (inputValue: string, callback: (options: any[]) => void) => {
+		callback(filterAdresses(inputValue))
+	}
+
 	return (
 		<div className='courier'>
 			<div className='courier__left'>
@@ -125,14 +88,16 @@ const Courier = () => {
 						<p className='select-label'>Город доставки</p>
 						<Select
 							required
-							onChange={() => {
+							onChange={(newValue) => {
 								setIsChosen((prev) => {
 									return { ...prev, city: true }
 								})
+								const val = newValue as { value: string; label: string }
+
+								onCityChangeHandler(val.value)
 							}}
 							styles={colourStyles}
 							className='select'
-							components={animatedComponents}
 							defaultValue={{ value: 'choose_city', label: 'choose city' }}
 							options={[
 								{ value: 'харків', label: 'Харьков' },
@@ -189,15 +154,13 @@ const Courier = () => {
 							// loadOptions={promiseOptions}
 							// onChange={onCityChangeHandler}
 							// isDisabled={isChoosen.city && isChoosen.date && isChoosen.time ? false : true}
+							placeholder={t('search-placeholder')}
+							loadingMessage={() => t('searching')}
+							noOptionsMessage={() => t('no-searched')}
 							styles={colourStyles}
-							defaultValue={{ value: 'Adress', label: 'Выберете Адресс' }}
-							loadOptions={() => {
-								return new Promise((resolve) => {
-									setTimeout(() => {
-										resolve({})
-									}, 1000)
-								})
-							}}
+							defaultValue={{ value: 'Adress', label: 'Выберете Адрес' }}
+							loadOptions={loadOptions}
+							defaultOptions={adresses}
 						/>
 					</div>
 

@@ -9,6 +9,7 @@ import ProductCardInfo from './ProductCardInfo/ProductCardInfo'
 import ColorPicker from '../../fragments/ColorPicker/ColorPicker'
 import ProductCardMetrics from './ProductCardMetrics/ProductCardMetrics'
 import BuyButton from '@/components/ui/buttons/BuyBtn/BuyBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 
 interface IProductCardProps {
 	product: IProduct
@@ -27,22 +28,23 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant }) => {
 				urls={product.attributes.images && product.attributes.images}
 			/>
 
-			<div className='product-card__info-container'>
-				<ProductCardInfo
-					category={product.attributes.category?.data.attributes.label}
-					name={product.attributes.title}
-				/>
+			<LinkBtn href={`/product/${product.id}`}>
+				<div className='product-card__info-container'>
+					<ProductCardInfo
+						category={product.attributes.category?.data.attributes.label}
+						name={product.attributes.title}
+					/>
 
-				<ColorPicker variant='forCard' />
-			</div>
+					<ColorPicker variant='forCard' />
+				</div>
+			</LinkBtn>
 
 			<div className='product-card__button-container'>
 				<ProductCardMetrics
 					price={product.attributes.price}
 					rating={product.attributes.rating}
 					commsQuantity={
-						product.attributes.product_comments &&
-						product.attributes.product_comments.data.length
+						product.attributes.product_comments && product.attributes.product_comments.data.length
 					}
 				/>
 				<BuyButton id={product.id} />

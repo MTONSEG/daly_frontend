@@ -75,7 +75,9 @@
 		"mounthlyPayment": "Monthly",
 		"review": "Review",
 		"leftReview": "Add review",
-		"send": "Send"
+		"send": "Send",
+		"showMore": "show more",
+		"showLess": "show less"
 	},
 	"delivery": {
 		"delivery": "Delivery",

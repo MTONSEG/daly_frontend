@@ -76,7 +76,9 @@
 		"name": "Имя",
 		"review": "Отзывы",
 		"leftReview": "Оставить отзыв",
-		"send": "Отправить"
+		"send": "Отправить",
+		"showMore": "развернуть",
+		"showLess": "свернуть"
 	},
 	"delivery": {
 		"delivery": "Доставка",

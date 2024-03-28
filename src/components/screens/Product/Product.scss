@@ -101,6 +101,45 @@
 	}
 }
 
+.lorem {
+	margin-top: 100px;
+
+	&__title {
+		color: rgb(129, 129, 135);
+		font-size: 14px;
+		line-height: 150%;
+		margin-bottom: 8px;
+	}
+
+	&__text {
+		color: rgb(129, 129, 135);
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 130%;
+		transition: 0.3;
+	}
+
+	&__show-more {
+		display: flex;
+		margin-top: 17px;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	&__show-more-text {
+		color: rgb(129, 129, 135);
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 130%;
+		cursor: pointer;
+		margin-right: 10px;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
 @include media-max(xs) {
 	.product {
 		// padding: 30px 15px;
@@ -109,6 +148,10 @@
 		&__right {
 			margin-top: 20px;
 		}
+	}
+
+	.lorem {
+		margin-top: 50px;
 	}
 
 	.info {

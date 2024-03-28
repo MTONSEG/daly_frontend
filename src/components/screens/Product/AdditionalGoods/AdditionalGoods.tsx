@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react'
 import './AdditionalGoods.scss'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
-import { IProduct } from '@/types/types'
-import { useGetProductQuery, useGetProductsQuery } from '@/store/api/productRTKQ.api'
-import { useParams } from 'next/navigation'
-
-interface IAdditionalGoods {
-	// products: IProduct[]
-}
+import { useGetProductsQuery } from '@/store/api/productRTKQ.api'
 
 const AdditionalGoods = () => {
-	const { locale } = useParams()
-
-	const { data, isLoading } = useGetProductsQuery({ locale: 'ru', page: 3 })
+	const { data, isLoading } = useGetProductsQuery({
+		locale: 'ru',
+		page: Math.floor(Math.random() * 26)
+	})
 
 	useEffect(() => {
 		console.log(data?.data)
 	}, [data])
 
 	if (isLoading) {
-		return <div>...loading</div>
+		return (
+			<div className='goods'>
+				<h2 className='goods__title'>Loading...</h2>
+			</div>
+		)
 	}
 	return (
 		<div className='goods'>

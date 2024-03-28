@@ -1,5 +1,6 @@
 @import '../../../styles/mixins/media.scss';
 .favourites {
+	margin: 15px 0 0 0;
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
@@ -22,8 +23,10 @@
 		gap: 40px;
 		display: flex;
 		flex-direction: column;
+		min-height: 516px;
 	}
 	&__empty {
+		margin: 78px 0 0 0;
 		display: flex;
 		flex-direction: column;
 		gap: 15px;
@@ -36,6 +39,7 @@
 		font-size: 16px;
 		font-weight: 500;
 		line-height: 152%;
+		text-align: center;
 	}
 
 	@include media-max(xs) {

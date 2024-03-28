@@ -76,7 +76,7 @@ const Favourites: React.FC = () => {
 						<div className='favourites__title'>{word('title')}</div>
 						<GridHead />
 					</div>
-					{products.length > 0 ? (
+					{productIds.length > 0 ? (
 						<CatalogGrid products={products} gridMode={gridMode} />
 					) : (
 						<div className='favourites__empty'>

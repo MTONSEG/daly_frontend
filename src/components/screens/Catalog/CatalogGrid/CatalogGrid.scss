@@ -5,7 +5,7 @@
 
 	&__products {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(190px, 250px));
 		justify-items: start;
 		row-gap: 20px;
 		column-gap: 18px;

@@ -44,3 +44,5 @@ export const catalogProductsState: ICatalogProductsState = {
 	error: null,
 	status: 'start'
 }
+
+

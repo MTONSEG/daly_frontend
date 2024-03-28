@@ -14,9 +14,8 @@ export const open_sans = Open_Sans({
 	display: 'swap'
 })
 
-
 export const inter = Inter({
-	weight: ['400', '500', '600', '700','800'],
+	weight: ['400', '500', '600', '700', '800'],
 	subsets: ['latin', 'cyrillic'],
 	variable: '--inter',
 	display: 'swap'

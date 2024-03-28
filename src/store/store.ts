@@ -9,6 +9,12 @@ import { catalogHeaderApi } from '@/store/header/header.api'
 import headerSlice from '@/store/header/header.slice'
 import filtersSlice from './filters/slice/filters.slice'
 import catalogProductsSlice from './catalog/slice/catalog.slice'
+import { getProductApi } from './api/productRTKQ.api'
+// import productSlice from './slices/productRTK.slice'
+import productSlice from '@/store/slices/product.slice'
+import { commentApi } from './api/comment.api'
+import { novaPostAdressesApi } from './api/novaPost.api'
+
 
 const persistConfig = {
 	key: 'root',
@@ -25,14 +31,22 @@ const persistedReducer = persistReducer(
 		header: headerSlice,
 		filters: filtersSlice,
 		catalogProducts: catalogProductsSlice,
-		[catalogHeaderApi.reducerPath]: catalogHeaderApi.reducer
+		[catalogHeaderApi.reducerPath]: catalogHeaderApi.reducer,
+		product: productSlice,
+		[getProductApi.reducerPath]: getProductApi.reducer,
+		[commentApi.reducerPath]: commentApi.reducer,
+		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer
 	})
 )
 
 export const store = configureStore({
 	reducer: persistedReducer,
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(catalogHeaderApi.middleware)
+	getDefaultMiddleware()
+		.concat(catalogHeaderApi.middleware)
+		.concat(getProductApi.middleware)
+		.concat(commentApi.middleware)
+		.concat(novaPostAdressesApi.middleware)
 })
 
 export const persistor = persistStore(store)

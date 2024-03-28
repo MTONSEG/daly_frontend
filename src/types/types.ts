@@ -16,7 +16,11 @@ export type IProductProperties = {
 	display: string
 }
 
-export type IComment = {
+// export type IComment = {
+
+// }
+
+export type IProductComments = {
 	id: number
 	attributes: {
 		text: string
@@ -133,9 +137,19 @@ export interface IFilter {
 }
 
 export interface ISelectOption {
-	id: string,
+	id: string
 	value: string
 	label: string
 	isFixed?: boolean
 	isDisabled?: boolean
+}
+
+export interface IComment {
+	text: string
+	email: string
+	rating: number
+	author: object
+	name: string
+	product: number[]
+	updatedAt?: string
 }

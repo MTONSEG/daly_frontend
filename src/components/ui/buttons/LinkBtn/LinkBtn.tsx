@@ -10,6 +10,7 @@ interface PropsType extends LinkProps {
 	children: ReactNode | string
 	text?: string
 	href: string
+	children?: React.ReactNode
 	className?: string
 }
 

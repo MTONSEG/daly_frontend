@@ -41,6 +41,7 @@ const CatalogContent: React.FC = () => {
 	)
 
 	useEffect(() => {
+		console.log("🚀 ~ filteredProducts:", filteredProducts)
 		console.log('Changed the memoized filtered products')
 	}, [filteredProducts.catalogProducts])
 

@@ -13,11 +13,7 @@ interface ICatalogGridProps {
 	meta?: IMetaData
 }
 
-const CatalogGrid: React.FC<ICatalogGridProps> = ({
-	products,
-	gridMode,
-	meta
-}) => {
+const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) => {
 	const dispatch = useAppDispatch()
 
 	const calculatePageSize = (size: number): number => (size === 12 ? 20 : 12)
@@ -29,16 +25,12 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({
 		}
 	}
 
-	const [currentPage, setCurrentPage] = useState<number>(
-		meta?.pagination?.page ?? 1
-	)
+	const [currentPage, setCurrentPage] = useState<number>(meta?.pagination?.page ?? 1)
 	const [visibleProducts, setVisibleProducts] = useState<boolean>(false)
 
 	const paginate = (pageNumber: number): void => {
 		if (
-			(meta?.pagination &&
-				pageNumber > 0 &&
-				pageNumber <= meta.pagination.pageCount) ||
+			(meta?.pagination && pageNumber > 0 && pageNumber <= meta.pagination.pageCount) ||
 			meta?.pagination.total
 		) {
 			setCurrentPage(pageNumber)
@@ -74,7 +66,11 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({
 
 	return (
 		<div className='catalog-grid'>
-			<div className={`catalog-grid__products ${gridMode === 'row' && 'row'}`}>
+			<div
+				className={`catalog-grid__products ${gridMode === 'row' && 'row'} ${
+					(meta && meta.pagination.pageCount > 4) || products.length >= 4 ? '' : 'lesser'
+				}`}
+			>
 				{products.length > 0
 					? products
 							.slice(0, visibleProducts ? 20 : 12)
@@ -82,7 +78,7 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({
 								<ProductCard product={product} variant={gridMode} key={index} />
 							))
 					: Array.from({ length: 12 }).map((_, index) => (
-						<ProductCard variant={gridMode} key={index} />
+							<ProductCard variant={gridMode} key={index} />
 					))}
 			</div>
 			{products.length > 0 && meta && (

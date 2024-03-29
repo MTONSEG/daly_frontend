@@ -10,6 +10,7 @@ import { getData } from '@/services/axios.config'
 import { IProduct, IResponse } from '@/types/types'
 import listImage from '@/assets/images/list-image.png'
 import Image from 'next/image'
+import { useParams } from 'next/navigation'
 
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
@@ -18,12 +19,13 @@ const Favourites: React.FC = () => {
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
 	const [products, setProducts] = useState<IProduct[]>([])
+	const { locale } = useParams()
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
 				const productRequests = productIds.map(async (productId) => {
 					const product = await getData<IResponse<IProduct>>(
-						`/products/${productId}?locale=en&populate=images,properties,category,brand,product_comments`
+						`/products/${productId}?locale=${locale}&populate=images,properties,category,brand,product_comments`
 					)
 					return product.data
 				})

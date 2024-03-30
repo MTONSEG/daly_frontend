@@ -9,10 +9,6 @@ const AdditionalGoods = () => {
 		page: Math.floor(Math.random() * 26)
 	})
 
-	useEffect(() => {
-		console.log(data?.data)
-	}, [data])
-
 	if (isLoading) {
 		return (
 			<div className='goods'>

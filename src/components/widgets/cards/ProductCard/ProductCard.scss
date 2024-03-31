@@ -40,7 +40,8 @@
 	&__info-container,
 	&__button-container {
 		&.placeholder {
-			width: 100%;
+			margin: 10px 0 0 0;
+			width: 96%;
 			height: 30px;
 			background: var(--grey-04);
 			border-radius: 5px;
@@ -68,6 +69,14 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 15px;
+	}
+
+	&__buttons {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		align-items: center;
 	}
 
 	@include media-max(md) {

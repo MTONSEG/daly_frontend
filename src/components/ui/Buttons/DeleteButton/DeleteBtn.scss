@@ -1,0 +1,42 @@
+.delete-btn {
+	height: 30px;
+	width: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+
+	&__icon {
+		width: 14px;
+		height: 17px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: transform 0.2s ease;
+	}
+
+	@keyframes iconJump {
+		0% {
+			transform: translate(-50%, -50%);
+		}
+		25% {
+			transform: translate(-50%, -60%);
+		}
+		50% {
+			transform: translate(-50%, -50%);
+		}
+		75% {
+			transform: translate(-50%, -40%);
+		}
+		100% {
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&:hover {
+		.delete-btn__icon {
+			animation: iconJump 0.3s forwards;
+		}
+	}
+}

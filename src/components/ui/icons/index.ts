@@ -46,3 +46,5 @@ export { default as ArrowRight } from '@/icons/arrow-right.svg'
 export { default as StarProduct } from '@/icons/star-product.svg'
 export { default as CloseSign } from '@/icons/btn-close_off.svg'
 export { default as TelIcon } from '@/icons/phone.svg'
+// comparison
+export { default as TrashIcon } from '@/icons/trash-can.svg'

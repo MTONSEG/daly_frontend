@@ -37,6 +37,9 @@
 	"favourites": {
 		"title": "Избранное"
 	},
+	"comparison": {
+		"title": "Сравнение"
+	},
 	"color-picker": {
 		"color-1": "серый",
 		"color-2": "зеленый",

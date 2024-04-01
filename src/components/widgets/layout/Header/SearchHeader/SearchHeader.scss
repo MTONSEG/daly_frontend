@@ -16,6 +16,7 @@
 		padding: 5px 15px;
 		border-radius: 18px;
 		min-height: 28px !important;
+		box-shadow: 0 0 1px var(--dark-grey);
 
 		&:hover {
 			box-shadow: 0 0 10px var(--grey);
@@ -78,6 +79,6 @@
 	}
 
 	@include media-max(md) {
-		
+		max-width: 100%;
 	}
 }

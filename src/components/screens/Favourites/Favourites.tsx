@@ -82,11 +82,8 @@ const Favourites: React.FC = () => {
 						<CatalogGrid products={products} gridMode={gridMode} />
 					) : (
 						<div className='favourites__empty'>
-							<div className='favourites__empty-text'>В избранном пусто</div>
-							<div className='favourites__empty-text'>
-								Добавляйте товары в избранное,чтобы просмотреть или купить их
-								позже
-							</div>
+							<div className='favourites__empty-text'>{word("empty-text-1")}</div>
+							<div className='favourites__empty-text'>{word("empty-text-2")}</div>
 							<Image
 								src={listImage}
 								alt='list-image'

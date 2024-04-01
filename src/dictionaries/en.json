@@ -29,10 +29,16 @@
 		"default-filters-button": "Defaults"
 	},
 	"favourites": {
-		"title": "Favourites"
+		"title": "Favourites",
+		"empty-text-1": "Your Favourites are empty",
+		"empty-text-2": "Add products into yuor favourites to check them out or buy some later"
 	},
 	"comparison": {
-		"title": "Сomparison"
+		"title": "Сomparison",
+		"controls-all": "All",
+		"controls-dif": "Only diffrences",
+		"empty-text-1": "Your Comparisons are empty",
+		"empty-text-2": "Add products into your comparisons to compare them with others and buy later"
 	},
 	"color-picker": {
 		"color-1": "grey",

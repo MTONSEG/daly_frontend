@@ -10,9 +10,11 @@ import listImage from '@/assets/images/list-image.png'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
+import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
 
 const Comparison: React.FC = () => {
-	const word = useTranslations('favourites')
+	const [comparisonDisplayType, setComparisonDisplayType] = useState<'all' | 'diff'>('all')
+	const word = useTranslations('comparison')
 	const productIds = useAppSelector((state) => state.favourites.products)
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
@@ -39,6 +41,10 @@ const Comparison: React.FC = () => {
 
 	const isMobile = window.innerWidth < 568
 
+	const handleControlClick = (comparisonType: 'all' | 'diff') => {
+		setComparisonDisplayType(comparisonType)
+	}
+
 	return (
 		<Container>
 			<div className='comparison'>
@@ -47,22 +53,20 @@ const Comparison: React.FC = () => {
 					<div className='comparison__head-cards'>
 						<div className='comparison__head-cards-costyl'></div>
 						{products.length > 0 ? (
-							products.map((product, index) => {
+							products.map((product) => {
 								return (
 									<ProductCard
-										product={products[index]}
+										product={product}
 										variant={isMobile ? 'row' : 'card'}
 										isCompared={true}
-										key={index}
+										key={product.id}
 									/>
 								)
 							})
 						) : (
 							<div className='comparison__empty'>
-								<div className='comparison__empty-text'>В избранном пусто</div>
-								<div className='comparison__empty-text'>
-									Добавляйте товары в избранное,чтобы просмотреть или купить их позже
-								</div>
+								<div className='comparison__empty-text'>{word('empty-text-1')}</div>
+								<div className='comparison__empty-text'>{word('empty-text-2')}</div>
 								<Image
 									src={listImage}
 									alt='list-image'
@@ -73,7 +77,22 @@ const Comparison: React.FC = () => {
 							</div>
 						)}
 					</div>
-					<div className='comparison__controls'></div>
+					<div className='comparison__controls'>
+						<TransparentBtn
+							onClick={() => {
+								handleControlClick('all')
+							}}
+						>
+							{word('controls-all')}
+						</TransparentBtn>
+						<TransparentBtn
+							onClick={() => {
+								handleControlClick('diff')
+							}}
+						>
+							{word('controls-diff')}
+						</TransparentBtn>
+					</div>
 				</div>
 				<div className='comparison__characteristics'></div>
 			</div>

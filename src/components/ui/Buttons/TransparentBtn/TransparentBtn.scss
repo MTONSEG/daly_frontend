@@ -25,6 +25,10 @@
 		color: var(--white);
 	}
 
+	&.active {
+		//add active styles
+	}
+
 	@include media-max(sm) {
 		font-size: 12px;
 	}

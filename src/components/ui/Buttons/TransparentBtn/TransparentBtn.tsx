@@ -3,14 +3,16 @@ import "./TransparentBtn.scss"
 interface TransparentBtnProps {
 	onClick: () => void
 	children: React.ReactNode
+	isActive?: boolean
 }
 
 const TransparentBtn: React.FC<TransparentBtnProps> = ({
 	onClick,
-	children
+	children,
+	isActive
 }) => {
 	return (
-		<button className='transparent-btn' onClick={onClick} aria-label='filter-save-default-button'>
+		<button className={`transparent-btn ${isActive && "active" }`} onClick={onClick} aria-label='filter-save-default-button'>
 			{children}
 		</button>
 	)

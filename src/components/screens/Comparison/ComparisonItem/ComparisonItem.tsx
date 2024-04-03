@@ -16,8 +16,12 @@ const ComparisonItem: React.FC<IComparisonItemProps> = ({ propertyName, property
 	return (
 		<div className='comparison-item'>
 			<div className='comparison-item__prop'>{upperFirstLetter(propertyName)}</div>
-			{propertyValues.map((value) => {
-				return <div className='comparison-item__prop'>{value}</div>
+			{propertyValues.map((value, index) => {
+				return (
+					<div key={index} className='comparison-item__prop'>
+						{value}
+					</div>
+				)
 			})}
 		</div>
 	)

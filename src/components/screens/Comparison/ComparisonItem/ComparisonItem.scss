@@ -1,10 +1,12 @@
 @import '../../../../styles/mixins/media.scss';
 
 .comparison-item {
+	border-top: 1px solid var(--medium-grey);
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	column-gap: 70px;
+	padding: 15px;
 	&__prop {
 		color: var(--dark-grey);
 		font-family: var(--inter);

@@ -62,7 +62,13 @@ const Comments = ({ id }: { id: number }) => {
 			</div>
 
 			{createPortal(
-				<CommentPopup ref={ref} isActive={isActive} setIsActive={setIsActive} refetch={refetch} />,
+				<CommentPopup
+					ref={ref}
+					isActive={isActive}
+					setIsActive={setIsActive}
+					refetch={refetch}
+					id={id}
+				/>,
 				document.body
 			)}
 		</div>

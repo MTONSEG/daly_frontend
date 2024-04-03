@@ -34,9 +34,11 @@ const Pickup = () => {
 				<div className='pickup__adress'>
 					<p className='pickup__city'>{tD('templateAdress')}</p>
 					<div className='pickup__time'>{tD('workWeek')}</div>
-					<a className='pickup__tel' href='tel:+38 (968) 430-88-20'>
-						<TelIcon /> <span>+38 (968) 430-88-20</span>
-					</a>
+					<div className='pickup__tel-wr'>
+						<a className='pickup__tel' href='tel:+38 (968) 430-88-20'>
+							<TelIcon /> <span>+38 (968) 430-88-20</span>
+						</a>
+					</div>
 				</div>
 
 				<iframe

@@ -128,7 +128,7 @@ const Tabs: FC<ITabs> = ({ description, properties }) => {
 			content: <Characteristics properities={properties} />
 		},
 		{ title: t('comments'), content: <Comments id={properties?.id ? properties?.id : 0} /> },
-		{ title: t('credit'), content: <Credit /> },
+		// { title: t('credit'), content: <Credit /> },
 		{ title: t('deliver'), content: <Delivery /> }
 	]
 

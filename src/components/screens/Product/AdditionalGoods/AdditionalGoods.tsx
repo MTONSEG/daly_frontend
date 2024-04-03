@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './AdditionalGoods.scss'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { useGetProductsQuery } from '@/store/api/productRTKQ.api'

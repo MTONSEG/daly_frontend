@@ -42,6 +42,10 @@
 	box-sizing: border-box;
 }
 
+.f-thumbs.is-horizontal .f-thumbs__track {
+	padding: 20px 0 12px 0;
+}
+
 .f-thumbs.is-horizontal .f-thumbs__slide {
 	width: 90px;
 	height: 90px;

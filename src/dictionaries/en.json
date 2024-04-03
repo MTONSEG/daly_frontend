@@ -51,12 +51,12 @@
 	"product": {
 		"buy-button": "About delivery and payment",
 		"price": "Price",
-		"compare": "compare",
+		"compare": "Compare",
 		"favourite": "In favourite",
 		"memory": "Memory",
-		"resolution": "resolution",
+		"resolution": "Resolution",
 		"ram": "ram",
-		"buy": "buy",
+		"buy": "Buy",
 		"color": "color",
 		"characteristics": "Characteristics",
 		"allCharacteristics": "All characteristics",
@@ -77,7 +77,9 @@
 		"leftReview": "Add review",
 		"send": "Send",
 		"showMore": "show more",
-		"showLess": "show less"
+		"showLess": "show less",
+		"loremTitle": "Do you want to sell or buy something quickly and profitably?",
+		"loremText": "Free classifieds board Daly.ua is at your service. On our portal you will find everything from small household appliances to real estate and cars. And if you sell goods, services, rent or rent housing, we will help you solve your problem quickly and efficiently, just add an ad for free! A wide range of goods and services. Clothes and footwear, electronics and household appliances, real estate, cars, work, collectibles - here you will find ads for every taste! A huge audience. Thousands of your potential clients visit our site every day. Don't miss them, submit an ad now! Ease of use. A well-thought-out structure of sections and an ad search will help you quickly find the right offers. And you can place an ad in just a few clicks."
 	},
 	"delivery": {
 		"delivery": "Delivery",

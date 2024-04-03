@@ -2,6 +2,7 @@
 
 .goods {
 	margin-top: 80px;
+	margin-bottom: 70px;
 
 	&__title {
 		color: var(--dark-grey);
@@ -24,6 +25,8 @@
 
 @include media-max(xs) {
 	.goods {
+		margin-bottom: 20px;
+
 		&__row {
 			display: flex;
 			justify-content: center;

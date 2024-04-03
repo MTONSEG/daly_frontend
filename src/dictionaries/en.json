@@ -38,7 +38,8 @@
 		"controls-all": "All",
 		"controls-dif": "Only diffrences",
 		"empty-text-1": "Your Comparisons are empty",
-		"empty-text-2": "Add products into your comparisons to compare them with others and buy later"
+		"empty-text-2": "Add products into your comparisons to compare them with others and buy later",
+		"characteristics-title": "Characteristics"
 	},
 	"color-picker": {
 		"color-1": "grey",

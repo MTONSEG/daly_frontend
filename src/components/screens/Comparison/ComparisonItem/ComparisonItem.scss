@@ -1,0 +1,27 @@
+@import '../../../../styles/mixins/media.scss';
+
+.comparison-item {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	column-gap: 70px;
+	&__prop {
+		color: var(--dark-grey);
+		font-family: var(--inter);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 150%;
+	}
+
+	@include media-max(xs) {
+		grid-template-columns: 1fr 1fr 1fr;
+		column-gap: 10px;
+		&__prop {
+			color: var(--dark-grey);
+			font-family: var(--inter);
+			font-size: 12px;
+			font-weight: 500;
+			line-height: 150%;
+		}
+	}
+}

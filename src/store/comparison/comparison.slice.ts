@@ -5,7 +5,7 @@ export interface IComparisonData {
 }
 
 const initialState: IComparisonData = {
-	products: [323, 327, 311, 322]
+	products: [ 311, 322]
 	// products: []
 }
 

@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import { setupListeners } from '@reduxjs/toolkit/query'
 import basketSlice from './basket/basket.slice'
 import favouritesSlice from './favourites/favourites.slice'
+import comparisonSLice from './comparison/comparison.slice'
 import { catalogHeaderApi } from '@/store/header/header.api'
 import headerSlice from '@/store/header/header.slice'
 import filtersSlice from './filters/slice/filters.slice'
@@ -18,7 +19,7 @@ import { novaPostAdressesApi } from './api/novaPost.api'
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['basket', 'favourites'],
+	whitelist: ['basket', 'favourites', 'comparison'],
 	blacklist: ['header', 'filters', 'catalogProducts']
 }
 
@@ -27,6 +28,7 @@ const persistedReducer = persistReducer(
 	combineReducers({
 		basket: basketSlice,
 		favourites: favouritesSlice,
+		comparison: comparisonSLice,
 		header: headerSlice,
 		filters: filtersSlice,
 		catalogProducts: catalogProductsSlice,

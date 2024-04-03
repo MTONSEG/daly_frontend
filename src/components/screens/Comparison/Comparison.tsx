@@ -11,11 +11,13 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
+import ComparisonBlock from './ComparisonBlock/ComparisonBlock'
+import Loader from '@/components/ui/loaders/Loader'
 
 const Comparison: React.FC = () => {
 	const [comparisonDisplayType, setComparisonDisplayType] = useState<'all' | 'diff'>('all')
 	const word = useTranslations('comparison')
-	const productIds = useAppSelector((state) => state.favourites.products)
+	const productIds = useAppSelector((state) => state.comparison.products)
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
 	useEffect(() => {
@@ -50,51 +52,64 @@ const Comparison: React.FC = () => {
 			<div className='comparison'>
 				<div className='comparison__head'>
 					<div className='comparison__title'>{word('title')}</div>
-					<div className='comparison__head-cards'>
-						<div className='comparison__head-cards-costyl'></div>
-						{products.length > 0 ? (
-							products.map((product) => {
-								return (
-									<ProductCard
-										product={product}
-										variant={isMobile ? 'row' : 'card'}
-										isCompared={true}
-										key={product.id}
-									/>
-								)
-							})
-						) : (
-							<div className='comparison__empty'>
-								<div className='comparison__empty-text'>{word('empty-text-1')}</div>
-								<div className='comparison__empty-text'>{word('empty-text-2')}</div>
-								<Image
-									src={listImage}
-									alt='list-image'
-									className='comparison__empty-image'
-									width={81}
-									height={89}
-								></Image>
+					{productIds ? (
+						<>
+							<div className='comparison__head-cards'>
+								<div className='comparison__head-cards-costyl'></div>
+								{products.length > 0 ? (
+									products.map((product) => {
+										return (
+											<ProductCard
+												product={product}
+												variant={isMobile ? 'row' : 'card'}
+												isCompared={true}
+												key={product.id}
+											/>
+										)
+									})
+								) : (
+									<Loader />
+								)}
 							</div>
-						)}
-					</div>
-					<div className='comparison__controls'>
-						<TransparentBtn
-							onClick={() => {
-								handleControlClick('all')
-							}}
-						>
-							{word('controls-all')}
-						</TransparentBtn>
-						<TransparentBtn
-							onClick={() => {
-								handleControlClick('diff')
-							}}
-						>
-							{word('controls-diff')}
-						</TransparentBtn>
-					</div>
+							<div className='comparison__controls'>
+								<TransparentBtn
+									onClick={() => {
+										handleControlClick('all')
+									}}
+									isActive={comparisonDisplayType === 'all' && true}
+								>
+									{word('controls-all')}
+								</TransparentBtn>
+								<TransparentBtn
+									onClick={() => {
+										handleControlClick('diff')
+									}}
+									isActive={comparisonDisplayType === 'diff' && true}
+								>
+									{word('controls-diff')}
+								</TransparentBtn>
+							</div>
+						</>
+					) : (
+						<div className='comparison__empty'>
+							<div className='comparison__empty-text'>{word('empty-text-1')}</div>
+							<div className='comparison__empty-text'>{word('empty-text-2')}</div>
+							<Image
+								src={listImage}
+								alt='list-image'
+								className='comparison__empty-image'
+								width={81}
+								height={89}
+							></Image>
+						</div>
+					)}
 				</div>
-				<div className='comparison__characteristics'></div>
+
+				<div className='comparison__characteristics'>
+					{products.length > 0 && products[0].attributes.properties && (
+						<ComparisonBlock products={products} displayType={comparisonDisplayType} />
+					)}
+				</div>
 			</div>
 		</Container>
 	)

@@ -46,10 +46,12 @@
 	&__controls {
 		display: flex;
 		flex-direction: row;
+		flex-wrap: wrap;
 		gap: 40px;
 	}
 
 	&__characteristics {
+		width: 100%;
 	}
 
 	@include media-max(xs) {
@@ -66,6 +68,26 @@
 
 		&__head-cards-costyl {
 			display: none;
+		}
+
+		&__controls {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 20px;
+		}
+	}
+
+	@include media-max(xxs) {
+		&__head-cards {
+			width: 100%;
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: 330px 330px;
+			justify-content: center;
+			column-gap: 10px;
+			row-gap: 20px;
 		}
 	}
 }

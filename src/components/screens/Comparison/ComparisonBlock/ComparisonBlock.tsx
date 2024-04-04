@@ -1,9 +1,8 @@
 import React from 'react'
 import './ComparisonBlock.scss'
 import { useTranslations } from 'next-intl'
-import Container from '@/components/ui/containers/Container/Container'
 import ComparisonItem from '../ComparisonItem/ComparisonItem'
-import { IProduct, IProductProperties } from '@/types/types'
+import { IProduct } from '@/types/types'
 
 interface IComparisonBlockProps {
 	displayType: 'all' | 'diff'

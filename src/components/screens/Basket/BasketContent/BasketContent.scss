@@ -1,0 +1,24 @@
+@import '../../../../styles/mixins/media.scss';
+.basket-content {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	&__products {
+		width: 100%;
+		display: flex;
+		max-width: 720px;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__calculator {
+	}
+
+	@include media-max(md) {
+		flex-direction: column;
+		justify-content: start;
+		align-items: center;
+		gap: 40px;
+	}
+}

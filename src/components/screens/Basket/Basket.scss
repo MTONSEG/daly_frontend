@@ -1,94 +1,46 @@
 @import '../../../styles/mixins/media.scss';
-.comparison {
-	margin: 53px 0 0 0;
+
+.basket {
+	margin: 40px 0 0 0;
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
-	padding: 30px 30px 80px 50px;
-	border-radius: 10px;
-	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
-	background: rgb(255, 255, 255);
-
-	&__head {
-		display: flex;
-		flex-direction: column;
-		gap: 40px;
-		width: 100%;
-	}
-
+	gap: 9px;
 	&__title {
 		color: var(--dark-grey);
-		font-family: var(--inter);
-		font-size: 24px;
+		font-family: var(--sans);
+		font-size: 30px;
 		font-weight: 700;
-		line-height: 150%;
-	}
-
-	&__head-cards {
+		line-height: 120%;
 		width: 100%;
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-		justify-content: center;
-		column-gap: 70px;
+		text-align: left;
 	}
 
-	&__head-cards-costyl {
-	}
-
-	&__empty {
-	}
-
-	&__empty-text {
-	}
-
-	&__empty-image {
-	}
-
-	&__controls {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		gap: 40px;
-	}
-
-	&__characteristics {
+	&__content {
 		width: 100%;
 	}
 
-	@include media-max(xs) {
-		padding: 20px 10px 30px 10px;
-		&__head-cards {
-			width: 100%;
-			display: grid;
-			grid-template-columns: 1fr;
-			grid-template-rows: 230px 230px;
-			justify-content: center;
-			column-gap: 10px;
-			row-gap: 20px;
-		}
-
-		&__head-cards-costyl {
-			display: none;
-		}
-
-		&__controls {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 20px;
+	&__order-button {
+		border-radius: 10px;
+		background: var(--bright-green);
+		width: fit-content;
+		height: 41px;
+		color: var(--white);
+		font-family: var(--inter);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 120%;
+		padding: 0 56px 0 56px;
+		transition: 0.2s;
+		&:hover {
+			background: var(--dark-green);
 		}
 	}
 
-	@include media-max(xxs) {
-		&__head-cards {
-			width: 100%;
-			display: grid;
-			grid-template-columns: 1fr;
-			grid-template-rows: 330px 330px;
-			justify-content: center;
-			column-gap: 10px;
-			row-gap: 20px;
+	@include media-max(md){
+		gap: 20px;
+		align-items: center;
+		&__title {
+			max-width: 720px;
 		}
 	}
 }

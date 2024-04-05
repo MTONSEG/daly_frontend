@@ -1,8 +1,18 @@
+@import '../../../../../styles/mixins/media.scss';
 .basket-row {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 40px;
+
+	&__photo-info-box{
+		width: 100%;
+		max-width: 346px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 10px;
+	}
 
 	&__image-container {
 		width: 95px;
@@ -15,7 +25,7 @@
 	}
 
 	&__info {
-		margin: 0 0 0 -30px;
+		margin: -5px 0 0 0px;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -70,5 +80,24 @@
         }
 	}
 
-	
+	@include media-max(sm){
+		gap: 5px;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		&__info {
+			margin: -5px 0 0 0px;
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			max-width: fit-content;
+		}
+		&__photo-info-box{
+			width: 100%;
+			max-width: 100%;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 30px;
+		}
+	}
 }

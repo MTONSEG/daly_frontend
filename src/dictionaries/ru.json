@@ -47,6 +47,14 @@
 		"empty-text-2": "Добавьте продукты в сравнения чтобы сравнить их и купить лучший",
 		"characteristics-title": "Характеристики"
 	},
+	"basket":{
+		"title": "Корзина",
+		"promo-placeholder":"Промокод",
+		"order-button": "Перейти к оформлению",
+		"use-promo-button": "Применить",
+		"discount-price": "Скидки и бонусы",
+		"whole-price": "Всего"
+	},
 	"color-picker": {
 		"color-1": "серый",
 		"color-2": "зеленый",

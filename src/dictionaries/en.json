@@ -41,6 +41,14 @@
 		"empty-text-2": "Add products into your comparisons to compare them with others and buy later",
 		"characteristics-title": "Characteristics"
 	},
+	"basket": {
+		"title": "Basket",
+		"promo-placeholder": "Promocode",
+		"order-button": "Go to ordering",
+		"use-promo-button": "Confirm",
+		"discount-price": "Discounts",
+		"whole-price": "Price"
+	},
 	"color-picker": {
 		"color-1": "grey",
 		"color-2": "green",

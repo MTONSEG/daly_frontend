@@ -11,6 +11,7 @@ import { IProduct, IResponse } from '@/types/types'
 import listImage from '@/assets/images/list-image.png'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
+import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
@@ -43,21 +44,16 @@ const Favourites: React.FC = () => {
 							new Date(a.attributes.publishedAt).getTime()
 					},
 					rating: {
-						asc: (a: IProduct, b: IProduct) =>
-							a.attributes.rating - b.attributes.rating,
-						desc: (a: IProduct, b: IProduct) =>
-							b.attributes.rating - a.attributes.rating
+						asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
+						desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
 					},
 					price: {
-						asc: (a: IProduct, b: IProduct) =>
-							a.attributes.price - b.attributes.price,
-						desc: (a: IProduct, b: IProduct) =>
-							b.attributes.price - a.attributes.price
+						asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
+						desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
 					}
 				}
 
-				const comparisonFunction =
-					comparisonFunctions[sortingOption][sortingWay]
+				const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
 
 				sortedProducts.sort(comparisonFunction)
 
@@ -81,17 +77,7 @@ const Favourites: React.FC = () => {
 					{productIds.length > 0 ? (
 						<CatalogGrid products={products} gridMode={gridMode} />
 					) : (
-						<div className='favourites__empty'>
-							<div className='favourites__empty-text'>{word("empty-text-1")}</div>
-							<div className='favourites__empty-text'>{word("empty-text-2")}</div>
-							<Image
-								src={listImage}
-								alt='list-image'
-								className='filters__empty-image'
-								width={81}
-								height={89}
-							></Image>
-						</div>
+						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 					)}
 				</div>
 			</div>

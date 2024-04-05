@@ -13,6 +13,7 @@ import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
 import ComparisonBlock from './ComparisonBlock/ComparisonBlock'
 import Loader from '@/components/ui/loaders/Loader'
+import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 
 const Comparison: React.FC = () => {
 	const [comparisonDisplayType, setComparisonDisplayType] = useState<'all' | 'diff'>('all')
@@ -91,17 +92,7 @@ const Comparison: React.FC = () => {
 							</div>
 						</>
 					) : (
-						<div className='comparison__empty'>
-							<div className='comparison__empty-text'>{word('empty-text-1')}</div>
-							<div className='comparison__empty-text'>{word('empty-text-2')}</div>
-							<Image
-								src={listImage}
-								alt='list-image'
-								className='comparison__empty-image'
-								width={81}
-								height={89}
-							></Image>
-						</div>
+						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 					)}
 				</div>
 

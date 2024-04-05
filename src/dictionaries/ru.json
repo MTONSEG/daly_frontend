@@ -53,7 +53,9 @@
 		"order-button": "Перейти к оформлению",
 		"use-promo-button": "Применить",
 		"discount-price": "Скидки и бонусы",
-		"whole-price": "Всего"
+		"whole-price": "Всего",
+		"empty-text-1": "В корзине пусто",
+		"empty-text-2": "Добавьте продукты в корзину чтобы купить позже"
 	},
 	"color-picker": {
 		"color-1": "серый",

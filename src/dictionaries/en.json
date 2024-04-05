@@ -47,7 +47,9 @@
 		"order-button": "Go to ordering",
 		"use-promo-button": "Confirm",
 		"discount-price": "Discounts",
-		"whole-price": "Price"
+		"whole-price": "Price",
+		"empty-text-1": "Your basket is empty",
+		"empty-text-2": "Add products into your basket to buy later"
 	},
 	"color-picker": {
 		"color-1": "grey",

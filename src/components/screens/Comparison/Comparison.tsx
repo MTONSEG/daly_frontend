@@ -14,6 +14,7 @@ import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBt
 import ComparisonBlock from './ComparisonBlock/ComparisonBlock'
 import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
+import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 
 const Comparison: React.FC = () => {
 	const [comparisonDisplayType, setComparisonDisplayType] = useState<'all' | 'diff'>('all')
@@ -47,9 +48,14 @@ const Comparison: React.FC = () => {
 	const handleControlClick = (comparisonType: 'all' | 'diff') => {
 		setComparisonDisplayType(comparisonType)
 	}
+	const breadcrumbArr: IBreadcrumb[] = [
+		{ label: 'Home', href: '/', active: false },
+		{ label: 'Comparison', href: 'comparison', active: true }
+	]
 
 	return (
 		<Container>
+			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 			<div className='comparison'>
 				<div className='comparison__head'>
 					<div className='comparison__title'>{word('title')}</div>

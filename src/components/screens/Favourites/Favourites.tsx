@@ -12,6 +12,7 @@ import listImage from '@/assets/images/list-image.png'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
+import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
@@ -66,9 +67,15 @@ const Favourites: React.FC = () => {
 		fetchProducts()
 	}, [productIds, sortingWay, sortingOption])
 
+	const breadcrumbArr: IBreadcrumb[] = [
+		{ label: 'Home', href: '/', active: false },
+		{ label: 'Favourites', href: 'favourites', active: true }
+	]
+
 	return (
 		<Container>
 			<div className='favourites'>
+				<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 				<div className='favourites__content'>
 					<div className='favourites__head'>
 						<div className='favourites__title'>{word('title')}</div>

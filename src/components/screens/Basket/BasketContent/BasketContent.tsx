@@ -12,7 +12,7 @@ import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
 
 const BasketContent: React.FC = () => {
-	const word = useTranslations('basket');
+	const word = useTranslations('basket')
 	const productIds = useAppSelector((state) => state.basket.products)
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()

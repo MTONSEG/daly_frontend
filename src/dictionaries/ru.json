@@ -32,7 +32,9 @@
 		"show-more-button": "Показать еще",
 		"show-less-button": "Показать меньше",
 		"save-filters-button": "Применить",
-		"default-filters-button": "Сбросить фильтры"
+		"default-filters-button": "Сбросить фильтры",
+		"empty-text-1": "Таких продуктов нет",
+		"empty-text-2": "Выберите меньше фильтров чтобы видеть больше продуктов"
 	},
 	"favourites": {
 		"title": "Избранное",

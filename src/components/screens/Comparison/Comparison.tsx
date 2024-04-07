@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import React, { useEffect, useState } from 'react'
 import './Comparison.scss'
 import { useTranslations } from 'next-intl'
@@ -6,8 +6,6 @@ import Container from '@/components/ui/containers/Container/Container'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { getData } from '@/services/axios.config'
 import { IProduct, IResponse } from '@/types/types'
-import listImage from '@/assets/images/list-image.png'
-import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
@@ -22,6 +20,11 @@ const Comparison: React.FC = () => {
 	const productIds = useAppSelector((state) => state.comparison.products)
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
+
+	const updateIsMobile = () => {
+		setIsMobile(window.innerWidth < 578)
+	}
+
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
@@ -41,9 +44,16 @@ const Comparison: React.FC = () => {
 		}
 
 		fetchProducts()
-	}, [productIds])
 
-	const isMobile = window.innerWidth < 568
+		updateIsMobile() // Initial check for mobile
+		window.addEventListener('resize', updateIsMobile)
+
+		return () => {
+			window.removeEventListener('resize', updateIsMobile)
+		}
+	}, [productIds, locale])
+
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 568)
 
 	const handleControlClick = (comparisonType: 'all' | 'diff') => {
 		setComparisonDisplayType(comparisonType)
@@ -84,6 +94,7 @@ const Comparison: React.FC = () => {
 										handleControlClick('all')
 									}}
 									isActive={comparisonDisplayType === 'all' && true}
+									variant='comparison'
 								>
 									{word('controls-all')}
 								</TransparentBtn>
@@ -92,6 +103,7 @@ const Comparison: React.FC = () => {
 										handleControlClick('diff')
 									}}
 									isActive={comparisonDisplayType === 'diff' && true}
+									variant='comparison'
 								>
 									{word('controls-diff')}
 								</TransparentBtn>

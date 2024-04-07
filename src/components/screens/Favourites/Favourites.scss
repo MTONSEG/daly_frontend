@@ -42,6 +42,18 @@
 		text-align: center;
 	}
 
+	@include media-max(xs){
+		&__content{
+			align-items: center;
+		}
+		&__head {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
 	@include media-max(xs) {
 		display: flex;
 		flex-direction: column;

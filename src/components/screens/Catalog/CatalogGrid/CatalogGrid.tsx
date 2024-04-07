@@ -6,6 +6,8 @@ import { setPagination } from '@/store/filters/slice/filters.slice'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import Pagination from '@/components/widgets/fragments/Pagination/Pagination'
 import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
+import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
+import { useTranslations } from 'next-intl'
 
 interface ICatalogGridProps {
 	products: IProduct[]
@@ -15,6 +17,7 @@ interface ICatalogGridProps {
 
 const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) => {
 	const dispatch = useAppDispatch()
+	const word = useTranslations('catalog')
 
 	const calculatePageSize = (size: number): number => (size === 12 ? 20 : 12)
 	const calculateOffsetStart = (currentPage: number, pageSize: number) => {
@@ -71,17 +74,21 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) 
 					(meta && meta.pagination.pageCount > 4) || products.length >= 4 ? '' : 'lesser'
 				}`}
 			>
-				{products.length > 0
-					? products
-							.slice(0, visibleProducts ? 20 : 12)
-							.map((product, index) => (
-								<ProductCard product={product} variant={gridMode} key={index} />
-							))
-					: Array.from({ length: 12 }).map((_, index) => (
-							<ProductCard variant={gridMode} key={index} />
-					))}
+				{products.length > 0 ? (
+					products
+						.slice(0, visibleProducts ? 20 : 12)
+						.map((product, index) => (
+							<ProductCard product={product} variant={gridMode} key={index} />
+						))
+				) : meta && meta?.pagination.total > 0 ? (
+					Array.from({ length: 12 }).map((_, index) => (
+						<ProductCard variant={gridMode} key={index} />
+					))
+				) : (
+					<EmptyList emptyText1={word("empty-text-1")} emptyText2={word("empty-text-2")} />
+				)}
 			</div>
-			{products.length > 0 && meta && (
+			{products.length > 0 && meta && meta.pagination.pageCount > 1 && (
 				<div className='catalog-grid__show-button'>
 					<ShowBtn
 						showAllItems={visibleProducts}

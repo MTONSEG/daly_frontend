@@ -5,11 +5,7 @@ interface IPaginationProps {
 	paginate: (pageNumber: number) => void
 }
 
-const Pagination: React.FC<IPaginationProps> = ({
-	currentPage,
-	pageCount,
-	paginate
-}) => {
+const Pagination: React.FC<IPaginationProps> = ({ currentPage, pageCount, paginate }) => {
 	const renderPageButtons = () => {
 		const maxButtons = 3
 		const buttons: JSX.Element[] = []
@@ -55,9 +51,7 @@ const Pagination: React.FC<IPaginationProps> = ({
 			buttons.push(
 				<button
 					key='last'
-					className={`pagination__button ${
-						pageCount === currentPage ? 'active' : ''
-					}`}
+					className={`pagination__button ${pageCount === currentPage ? 'active' : ''}`}
 					onClick={() => paginate(pageCount)}
 				>
 					{pageCount}
@@ -69,21 +63,23 @@ const Pagination: React.FC<IPaginationProps> = ({
 	}
 
 	return (
-		<div className='pagination'>
-			<button
-				key='prev'
-				className='pagination__arrow left'
-                onClick={() => paginate(currentPage - 1)}
-                aria-label="pagination-arrow-left"
-			></button>
-			{renderPageButtons()}
-			<button
-				key='next'
-				className='pagination__arrow right'
-                onClick={() => paginate(currentPage + 1)}
-                aria-label="pagination-arrow-right"
-			></button>
-		</div>
+		pageCount > 1 && (
+			<div className='pagination'>
+				<button
+					key='prev'
+					className='pagination__arrow left'
+					onClick={() => paginate(currentPage - 1)}
+					aria-label='pagination-arrow-left'
+				></button>
+				{renderPageButtons()}
+				<button
+					key='next'
+					className='pagination__arrow right'
+					onClick={() => paginate(currentPage + 1)}
+					aria-label='pagination-arrow-right'
+				></button>
+			</div>
+		)
 	)
 }
 

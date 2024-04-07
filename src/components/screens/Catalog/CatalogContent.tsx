@@ -7,10 +7,13 @@ import { RootState } from '@/store/store'
 import { useParams } from 'next/navigation'
 import CatalogGrid from './CatalogGrid/CatalogGrid'
 import GridHead from '../../widgets/fragments/GridHead/GridHead'
+import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
+import { useTranslations } from 'next-intl'
 
 const CatalogContent: React.FC = () => {
+	const word = useTranslations("catalog");
 	const { locale } = useParams()
-	const filters = useAppSelector((state) => state.filters)
+	const filters = useAppSelector((state: { filters: any }) => state.filters)
 	const dispatch = useAppDispatch()
 
 	const fetchUrl = filtersQueryBuilder(
@@ -36,15 +39,7 @@ const CatalogContent: React.FC = () => {
 		}
 	}, [fetchFilteredProductsMemoized, fetchUrl])
 
-	const filteredProducts = useAppSelector(
-		(state: RootState) => state.catalogProducts
-	)
-
-	useEffect(() => {
-		console.log("🚀 ~ filteredProducts:", filteredProducts)
-		console.log('Changed the memoized filtered products')
-	}, [filteredProducts.catalogProducts])
-
+	const filteredProducts = useAppSelector((state: RootState) => state.catalogProducts)
 	return (
 		<div className='catalog-content'>
 			<GridHead productsQuantity={filteredProducts.meta.pagination.total} />
@@ -53,6 +48,7 @@ const CatalogContent: React.FC = () => {
 				meta={filteredProducts.meta}
 				gridMode={filteredProducts.gridMode}
 			/>
+			
 		</div>
 	)
 }

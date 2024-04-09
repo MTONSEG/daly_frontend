@@ -30,3 +30,4 @@ export const putData = async <T>(endpoint: string, body: T): Promise<T> => {
 export const deleteData = async (endpoint: string): Promise<void> => {
 	await instanceAxios.delete(endpoint, auth)
 }
+

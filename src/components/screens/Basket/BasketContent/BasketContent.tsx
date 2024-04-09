@@ -10,6 +10,7 @@ import BasketPriceCalculator from './BasketPriceCalculator/BasketPriceCalculator
 import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
+import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
 
 const BasketContent: React.FC = () => {
 	const word = useTranslations('basket')
@@ -19,22 +20,11 @@ const BasketContent: React.FC = () => {
 	const [totalPrice, setTotalPrice] = useState<number>(0)
 	const [totalDiscount, setTotalDiscount] = useState<number>(0)
 
+	const productPlainIds = productIds.map((productId)=>{return productId.id});
 	useEffect(() => {
 		const fetchProducts = async () => {
-			try {
-				const productRequests = productIds.map(async (productId) => {
-					const product = await getData<IResponse<IProduct>>(
-						`/products/${productId.id}?locale=${locale}&populate=images,properties,category,brand,product_comments`
-					)
-					return product.data
-				})
-
-				const fetchedProducts = await Promise.all(productRequests)
-
-				setProducts(fetchedProducts)
-			} catch (error) {
-				console.error('Error fetching products:', error)
-			}
+			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
+			setProducts(fetchedProducts)
 		}
 
 		fetchProducts()

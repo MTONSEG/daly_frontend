@@ -51,7 +51,9 @@
 		"discount-price": "Discounts",
 		"whole-price": "Price",
 		"empty-text-1": "Your basket is empty",
-		"empty-text-2": "Add products into your basket to buy later"
+		"empty-text-2": "Add products into your basket to buy later",
+		"deletion-text": "Your product is going to be deleted in:",
+		"revert-deletion-text": "Cancel deletion"
 	},
 	"color-picker": {
 		"color-1": "grey",

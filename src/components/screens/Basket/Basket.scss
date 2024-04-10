@@ -36,6 +36,10 @@
 		}
 	}
 
+	&__order-button-box{
+		width: fit-content;
+	}
+
 	@include media-max(md){
 		gap: 20px;
 		align-items: center;

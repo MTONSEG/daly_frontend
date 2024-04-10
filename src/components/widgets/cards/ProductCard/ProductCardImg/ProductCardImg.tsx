@@ -8,11 +8,12 @@ import { IProductImage } from '@/types/types'
 interface IProductCardImgProps {
 	variant: 'card' | 'row'
 	urls: IProductImage[] | undefined
+	onClick: ()=>void
 }
 
-const ProductCardImg: React.FC<IProductCardImgProps> = ({ variant, urls }) => {
+const ProductCardImg: React.FC<IProductCardImgProps> = ({ variant, urls , onClick}) => {
 	return (
-		<div className={`product-card__image-container ${variant}`}>
+		<div className={`product-card__image-container ${variant}`} onClick={onClick}>
 			{/* Add a undefined img */}
 			{urls ? (
 				<Image

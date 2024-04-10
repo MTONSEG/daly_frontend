@@ -7,7 +7,7 @@ export const useFetchMultipleByIds = async (
 ): Promise<IProduct[]> => {
 	const productRequests = productIds.map(async (productId) => {
 		const product = await getData<IResponse<IProduct>>(
-			`/products/${productId}?locale=${locale}&populate=images,properties,category,brand,product_comments`
+			`/products/${productId}?locale=${locale}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`
 		)
 		return product.data
 	})

@@ -61,6 +61,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0px;
+		cursor: pointer;
 	}
 
 	&__button-container {
@@ -121,7 +122,7 @@
 
 			flex-wrap: wrap;
 
-			.product-card__image-container{
+			.product-card__image-container {
 				max-width: 100px;
 			}
 
@@ -166,9 +167,9 @@
 			max-width: 100%;
 			flex-direction: row;
 			justify-content: space-between;
-			padding: 7px ;
+			padding: 7px;
 
-			.product-card__image-container{
+			.product-card__image-container {
 				max-width: 100%;
 			}
 

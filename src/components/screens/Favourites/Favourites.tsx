@@ -15,6 +15,7 @@ import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
 	const productIds = useAppSelector((state) => state.favourites.products)
+	console.log('🚀 ~ productIds:', productIds)
 	const gridMode = useAppSelector((state) => state.catalogProducts.gridMode)
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)

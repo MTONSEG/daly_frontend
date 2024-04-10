@@ -80,6 +80,14 @@
         }
 	}
 
+	&__delete-text{
+		color: var(--dark-grey);
+		font-family: var(--inter);
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 150%;
+	}
+
 	@include media-max(sm){
 		gap: 5px;
 		justify-content: space-between;

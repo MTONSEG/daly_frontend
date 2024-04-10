@@ -69,6 +69,7 @@ const Comparison: React.FC = () => {
 												variant={isMobile ? 'row' : 'card'}
 												isCompared={true}
 												key={product.id}
+												locale={ locale}
 											/>
 										)
 									})

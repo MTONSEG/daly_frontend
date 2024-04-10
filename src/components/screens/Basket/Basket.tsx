@@ -19,9 +19,11 @@ const Basket: React.FC = () => {
 				<div className='basket__content'>
 					<BasketContent />
 				</div>
-				<Link href='/order'>
-					<Button className='basket__order-button'>{word('order-button')}</Button>
-				</Link>
+				<div className='basket__order-button-box'>
+					<Link href='/order'>
+						<Button className='basket__order-button'>{word('order-button')}</Button>
+					</Link>
+				</div>
 			</div>
 		</Container>
 	)

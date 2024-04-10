@@ -20,7 +20,9 @@ const BasketContent: React.FC = () => {
 	const [totalPrice, setTotalPrice] = useState<number>(0)
 	const [totalDiscount, setTotalDiscount] = useState<number>(0)
 
-	const productPlainIds = productIds.map((productId)=>{return productId.id});
+	const productPlainIds = productIds.map((productId) => {
+		return productId.id
+	})
 	useEffect(() => {
 		const fetchProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
@@ -50,24 +52,22 @@ const BasketContent: React.FC = () => {
 	return (
 		<div className='basket-content'>
 			<div className='basket-content__products'>
-				{productIds ? (
-					products.length > 0 ? (
-						products.map((product, index) => {
-							if (productIds[index]) {
-								return (
-									<BasketRow
-										product={product}
-										quantity={productIds[index].quantity}
-										key={product.id}
-									/>
-								)
-							}
-						})
-					) : (
-						<Loader />
-					)
-				) : (
+				{productIds.length > 0 && products.length > 0 ? (
+					products.map((product, index) => {
+						if (productIds[index]) {
+							return (
+								<BasketRow
+									product={product}
+									quantity={productIds[index].quantity}
+									key={product.id}
+								/>
+							)
+						}
+					})
+				) : productIds.length === 0 ? (
 					<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
+				) : (
+					<Loader />
 				)}
 			</div>
 			<div className='basket-content__calculator'>

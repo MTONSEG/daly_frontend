@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './BasketRow.scss'
 import { IProduct } from '@/types/types'
 import Image from 'next/image'
@@ -17,38 +17,45 @@ interface IBasketRowProps {
 const BasketRow: React.FC<IBasketRowProps> = ({ product, quantity }) => {
 	const word = useTranslations('basket')
 	const [isDeleting, setIsDeleting] = useState<boolean>(false)
+	const [counter, setCounter] = useState<number>(5)
 	const dispatch = useAppDispatch()
+
+	useEffect(() => {
+		let timeout: NodeJS.Timeout | null = null
+
+		if (isDeleting) {
+			timeout = setInterval(() => {
+				setCounter((prevCounter) => prevCounter - 1)
+			}, 1000)
+
+			if (counter === 0) {
+				dispatch(deleteProduct({ id: product.id }))
+				setIsDeleting(false)
+			}
+		}
+
+		return () => {
+			if (timeout) {
+				clearInterval(timeout)
+			}
+		}
+	}, [isDeleting, dispatch, product.id, counter])
 
 	const handleincrement = (): void => {
 		dispatch(addProduct({ id: product.id }))
 	}
+
 	const handledecrement = (): void => {
 		if (quantity === 1) {
 			setIsDeleting(true)
-			const timeout = setTimeout(() => {
-				dispatch(removeProduct({ id: product.id }))
-			}, 5000)
-			if (!isDeleting) {
-				clearTimeout(timeout)
-			}
 		} else {
 			dispatch(removeProduct({ id: product.id }))
 		}
 	}
 
-	const handleDelete = (): void => {
-		setIsDeleting(true)
-		const timeout = setTimeout(() => {
-			dispatch(deleteProduct({ id: product.id }))
-			clearTimeout(timeout)
-		}, 5000)
-		if (!isDeleting) {
-			clearTimeout(timeout)
-		}
-	}
-
 	const handleRevert = (): void => {
 		setIsDeleting(false)
+		setCounter(5)
 	}
 
 	return (
@@ -82,12 +89,14 @@ const BasketRow: React.FC<IBasketRowProps> = ({ product, quantity }) => {
 						<Counter quantity={quantity} increment={handleincrement} decrement={handledecrement} />
 					</div>
 					<div className='basket-row__price'>{product.attributes.price}₴</div>
-					<TrashIcon className='basket-row__delete-icon' onClick={handleDelete} />
+					<TrashIcon className='basket-row__delete-icon' onClick={() => setIsDeleting(true)} />
 				</div>
 			) : (
 				<div className='basket-row'>
-					{/* ADD COUNTER HERE */}
-					<div className='basket-row__delete-text'>{word('deletion-text')}</div>
+					<div className='basket-row__delete-text'>
+						{word('deletion-text')}
+						{counter} sec
+					</div>
 					<TransparentBtn onClick={handleRevert}>{word('revert-deletion-text')}</TransparentBtn>
 				</div>
 			)}

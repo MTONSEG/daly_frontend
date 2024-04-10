@@ -46,6 +46,10 @@ export type IBrand = {
 	}
 }
 
+export type IProductLocales = {
+	data:IProduct[]
+}
+
 export interface IProduct {
 	id: number
 	attributes: {
@@ -66,6 +70,7 @@ export interface IProduct {
 		category?: { data: ICategory }
 		product_comments?: { data: IComment[] }
 		brand?: { data: IBrand }
+		localizations?: IProductLocales
 	}
 }
 

@@ -7,31 +7,51 @@ import ColorPicker from '../../fragments/ColorPicker/ColorPicker'
 import ProductCardMetrics from './ProductCardMetrics/ProductCardMetrics'
 import BuyButton from '@/components/ui/buttons/BuyBtn/BuyBtn'
 import DeleteBtn from '@/components/ui/buttons/DeleteButton/DeleteBtn'
+import { useRouter } from 'next/navigation'
 
 interface IProductCardProps {
 	product?: IProduct
-	variant: 'card' | 'row';
-	isCompared?: boolean;
+	variant: 'card' | 'row'
+	isCompared?: boolean
+	locale: string[] | string
 }
 
-const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared }) => {
+const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared, locale }) => {
+	const displayProduct =
+		locale === product?.attributes.locale
+			? product
+			: product &&
+			  product.attributes.localizations &&
+			  product.attributes.localizations.data.length > 0
+			? product.attributes.localizations.data[0]
+			: product
+	const router = useRouter()
+	const handleRouteClick = () => {
+		router.push(`/product/${displayProduct && displayProduct.id}`)
+	}
 	return (
-		<div className={`product-card ${variant && variant} ${!product && 'placeholder'}`}>
+		<div className={`product-card ${variant && variant} ${!displayProduct && 'placeholder'}`}>
 			<div className='product-card__fav-container'>
-				{product && <ProductCardFav id={product.id} isLabeled={false} />}
+				{displayProduct && <ProductCardFav id={displayProduct.id} isLabeled={false} />}
 			</div>
 
 			<ProductCardImg
 				variant={variant}
-				urls={product && product.attributes.images && product.attributes.images}
+				urls={
+					displayProduct && displayProduct.attributes.images && displayProduct.attributes.images
+				}
+				onClick={handleRouteClick}
 			/>
 
-			<div className={`product-card__info-container ${!product && 'placeholder'}`}>
-				{product && (
+			<div
+				className={`product-card__info-container ${!product && 'placeholder'}`}
+				onClick={handleRouteClick}
+			>
+				{displayProduct && (
 					<>
 						<ProductCardInfo
-							category={product.attributes.category?.data.attributes.label}
-							name={product.attributes.title}
+							category={displayProduct.attributes.category?.data.attributes.label}
+							name={displayProduct.attributes.title}
 						/>
 
 						<ColorPicker variant='forCard' />
@@ -40,19 +60,20 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 			</div>
 
 			<div className={`product-card__button-container ${!product && 'placeholder'}`}>
-				{product && (
+				{displayProduct && (
 					<ProductCardMetrics
-						price={product.attributes.price}
-						rating={product.attributes.rating}
+						price={displayProduct.attributes.price}
+						rating={displayProduct.attributes.rating}
 						commsQuantity={
-							product.attributes.product_comments && product.attributes.product_comments.data.length
+							displayProduct.attributes.product_comments &&
+							displayProduct.attributes.product_comments.data.length
 						}
 					/>
 				)}
-				{product && (
+				{displayProduct && (
 					<div className='product-card__buttons'>
-						<BuyButton id={product.id} />
-						{isCompared && <DeleteBtn productId={product.id} />}
+						<BuyButton id={displayProduct.id} />
+						{isCompared && <DeleteBtn productId={displayProduct.id} />}
 					</div>
 				)}
 			</div>

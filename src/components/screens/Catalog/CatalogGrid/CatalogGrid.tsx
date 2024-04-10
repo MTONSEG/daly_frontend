@@ -8,6 +8,7 @@ import Pagination from '@/components/widgets/fragments/Pagination/Pagination'
 import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
+import { useParams } from 'next/navigation'
 
 interface ICatalogGridProps {
 	products: IProduct[]
@@ -18,6 +19,8 @@ interface ICatalogGridProps {
 const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) => {
 	const dispatch = useAppDispatch()
 	const word = useTranslations('catalog')
+
+	const {locale} = useParams();
 
 	const calculatePageSize = (size: number): number => (size === 12 ? 20 : 12)
 	const calculateOffsetStart = (currentPage: number, pageSize: number) => {
@@ -78,11 +81,11 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) 
 					products
 						.slice(0, visibleProducts ? 20 : 12)
 						.map((product, index) => (
-							<ProductCard product={product} variant={gridMode} key={index} />
+							<ProductCard product={product} variant={gridMode} key={index} locale={locale}/>
 						))
 				) : meta && meta?.pagination.total > 0 ? (
 					Array.from({ length: 12 }).map((_, index) => (
-						<ProductCard variant={gridMode} key={index} />
+						<ProductCard variant={gridMode} key={index} locale={locale}/>
 					))
 				) : (
 					<EmptyList emptyText1={word("empty-text-1")} emptyText2={word("empty-text-2")} />

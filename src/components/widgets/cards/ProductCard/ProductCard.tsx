@@ -21,8 +21,8 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 		locale === product?.attributes.locale
 			? product
 			: product &&
-			  product.attributes.localizations &&
-			  product.attributes.localizations.data.length > 0
+			product.attributes.localizations &&
+			product.attributes.localizations.data.length > 0
 			? product.attributes.localizations.data[0]
 			: product
 	const router = useRouter()

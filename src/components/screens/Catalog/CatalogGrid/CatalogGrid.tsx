@@ -111,4 +111,4 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) 
 	)
 }
 
-export default React.memo(CatalogGrid)
+export default CatalogGrid

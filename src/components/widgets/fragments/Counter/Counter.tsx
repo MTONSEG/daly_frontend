@@ -1,6 +1,5 @@
 import React from 'react'
 import './Counter.scss'
-import { IProduct } from '@/types/types'
 
 interface ICounterProps {
 	quantity: number

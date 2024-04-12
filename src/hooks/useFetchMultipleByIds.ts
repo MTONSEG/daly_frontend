@@ -6,13 +6,25 @@ export const useFetchMultipleByIds = async (
 	locale: string | string[]
 ): Promise<IProduct[]> => {
 	const productRequests = productIds.map(async (productId) => {
-		const product = await getData<IResponse<IProduct>>(
-			`/products/${productId}?locale=${locale}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`
-		)
-		return product.data
+		try {
+			const product = await getData<IResponse<IProduct>>(
+				`/products/${productId}?locale=${locale}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`
+			)
+			return product.data
+		} catch (e: unknown) {
+			if (typeof e === 'string') {
+				console.error(e.toUpperCase())
+			} else if (e instanceof Error) {
+				console.error(e.message)
+			}
+			// Return a placeholder value (e.g., null) when an error occurs
+			return null
+		}
 	})
 
 	const fetchedProducts = await Promise.all(productRequests)
 
-	return fetchedProducts
+	const validProducts = fetchedProducts.filter((product) => product !== null) as IProduct[]
+
+	return validProducts
 }

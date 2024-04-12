@@ -28,7 +28,7 @@ export default function RootLayout({ children, params: { local } }: Readonly<Roo
 						<div className='wrapper'>
 							<Header />
 							<main className='main'>{children}</main>
-							{/* <Footer /> */}
+							<Footer />
 						</div>
 					</ReduxProvider>
 				</NextIntlClientProvider>

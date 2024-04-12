@@ -7,11 +7,8 @@ import { RootState } from '@/store/store'
 import { useParams } from 'next/navigation'
 import CatalogGrid from './CatalogGrid/CatalogGrid'
 import GridHead from '../../widgets/fragments/GridHead/GridHead'
-import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
-import { useTranslations } from 'next-intl'
 
 const CatalogContent: React.FC = () => {
-	const word = useTranslations("catalog");
 	const { locale } = useParams()
 	const filters = useAppSelector((state: { filters: any }) => state.filters)
 	const dispatch = useAppDispatch()

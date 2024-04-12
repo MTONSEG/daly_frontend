@@ -1,5 +1,4 @@
 import './DeleteBtn.scss'
-import Image from 'next/image'
 import { TrashIcon } from '../../icons'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { removeComparisonProduct } from '@/store/comparison/comparison.slice'

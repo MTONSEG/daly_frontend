@@ -26,12 +26,12 @@ const Comparison: React.FC = () => {
 	}
 
 	useEffect(() => {
-		const fetchProducts = async () => {
+		const FetchProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
 			setProducts(fetchedProducts)
 		}
 
-		fetchProducts()
+		FetchProducts()
 
 		updateIsMobile() // Initial check for mobile
 		window.addEventListener('resize', updateIsMobile)

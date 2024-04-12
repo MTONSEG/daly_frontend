@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './BasketPriceCalculator.scss'
 import Input from '@/components/ui/forms/Input/Input'
 import { useTranslations } from 'next-intl'

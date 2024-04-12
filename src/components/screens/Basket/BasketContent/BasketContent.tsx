@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './BasketContent.scss'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useParams } from 'next/navigation'
-import { IProduct, IResponse } from '@/types/types'
-import { getData } from '@/services/axios.config'
+import { IProduct } from '@/types/types'
 import BasketRow from './BasketRow/BasketRow'
 import BasketPriceCalculator from './BasketPriceCalculator/BasketPriceCalculator'
 import Loader from '@/components/ui/loaders/Loader'
@@ -24,13 +23,13 @@ const BasketContent: React.FC = () => {
 		return productId.id
 	})
 	useEffect(() => {
-		const fetchProducts = async () => {
+		const FetchProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
 			setProducts(fetchedProducts)
 		}
 
-		fetchProducts()
-	}, [productIds])
+		FetchProducts()
+	}, [productIds, locale, productPlainIds])
 
 	useEffect(() => {
 		let totalPrice = 0

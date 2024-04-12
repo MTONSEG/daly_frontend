@@ -23,7 +23,7 @@ const Favourites: React.FC = () => {
 	const { locale } = useParams()
 
 	useEffect(() => {
-		const fetchAllProducts = async () => {
+		const FetchAllProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
 			const sortedProducts = [...fetchedProducts]
 
@@ -53,8 +53,8 @@ const Favourites: React.FC = () => {
 			setProducts(sortedProducts)
 		}
 
-		fetchAllProducts()
-	}, [productIds, sortingWay, sortingOption])
+		FetchAllProducts()
+	}, [productIds, sortingWay, sortingOption, locale])
 
 	const breadcrumbArr: IBreadcrumb[] = [
 		{ label: 'Home', href: '/', active: false },

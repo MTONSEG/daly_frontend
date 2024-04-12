@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { getAuthToken } from '@/services/getAuthToken'
 
 import { IProduct, IResponse } from '@/types/types'
 

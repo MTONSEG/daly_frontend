@@ -24,7 +24,7 @@ import { getProductApi } from './api/productRTKQ.api'
 import productSlice from '@/store/slices/product.slice'
 import { commentApi } from './api/comment.api'
 import { novaPostAdressesApi } from './api/novaPost.api'
-import { homeApi } from './api/home.api'
+import { homeApi } from '@/store/api/home.api'
 
 const persistConfig = {
 	key: 'root',
@@ -48,7 +48,11 @@ const persistedReducer = persistReducer(
 		[commentApi.reducerPath]: commentApi.reducer,
 		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer,
 		[homeApi.reducerPath]: homeApi.reducer
-	},
+	})
+)
+
+export const store = configureStore({
+	reducer: persistedReducer,
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
 			serializableCheck: {
@@ -59,7 +63,6 @@ const persistedReducer = persistReducer(
 			.concat(getProductApi.middleware)
 			.concat(commentApi.middleware)
 			.concat(novaPostAdressesApi.middleware)
-			.concat(homeApi.middleware)
 })
 
 export const persistor = persistStore(store)

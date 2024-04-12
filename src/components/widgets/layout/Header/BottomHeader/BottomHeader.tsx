@@ -36,6 +36,7 @@ export default function BottomHeader() {
 						<LinkBtn
 							href={`/${SUPPORT_PATH}`}
 							className='bottom-header__support-link'
+							// eslint-disable-next-line react/no-children-prop
 							children={t('support')}
 						/>
 

@@ -13,8 +13,13 @@ export const getProductApi = createApi({
 			query: ({ locale, id }) => {
 				return `products/${id}?locale=${locale}&populate=images,properties,product_comments`
 			}
+		}),
+		getProducts: builder.query<IResponse<IProduct[]>, { locale: string; page: number }>({
+			query: ({ locale, page }) => {
+				return `http://localhost:1337/api/products?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=4&populate=images`
+			}
 		})
 	})
 })
 
-export const { useGetProductQuery } = getProductApi
+export const { useGetProductQuery, useGetProductsQuery } = getProductApi

@@ -10,10 +10,11 @@ interface ICommentPopup {
 	isActive: boolean
 	setIsActive: Dispatch<SetStateAction<boolean>>
 	refetch: () => void
+	id: number
 }
 
 const CommentPopup = forwardRef(
-	({ isActive, setIsActive, refetch }: ICommentPopup, ref: ForwardedRef<HTMLDivElement>) => {
+	({ isActive, setIsActive, refetch, id }: ICommentPopup, ref: ForwardedRef<HTMLDivElement>) => {
 		const {
 			ref: thanksRef,
 			isActive: thanksPopup,
@@ -42,6 +43,7 @@ const CommentPopup = forwardRef(
 									setIsActive={setIsActive}
 									thanksPopup={thanksPopup}
 									setThanksPopup={setThanksPopup}
+									id={id}
 								/>
 							</motion.div>
 						</div>

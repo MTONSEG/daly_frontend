@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import './Tabs.scss'
 import { useTranslations } from 'next-intl'
-import { IComment, IProductProperties } from '@/types/types'
+import { IProductProperties } from '@/types/types'
 import TabHead from './TabStructure/TabHead'
 import TabContent from './TabStructure/TabContent'
 import Comments from './TabComments/Comments'
@@ -127,36 +127,13 @@ const Tabs: FC<ITabs> = ({ description, properties }) => {
 			title: t('characteristics'),
 			content: <Characteristics properities={properties} />
 		},
-		{ title: t('comments'), content: <Comments /> },
-		{ title: t('credit'), content: <Credit /> },
+		{ title: t('comments'), content: <Comments id={properties?.id ? properties?.id : 0} /> },
+		// { title: t('credit'), content: <Credit /> },
 		{ title: t('deliver'), content: <Delivery /> }
 	]
 
 	return (
 		<div className='tabs'>
-			{/* <ol className='tabs__btns-wr'>
-				<motion.li
-					className='tabs__li active'
-					animate={{
-						left: '-100px'
-					}}
-					transition={{ repeat: Infinity }}
-				>
-					<Button className='tabs__btn '>{t('description')}</Button>
-				</motion.li>
-				<motion.li className='tabs__li'>
-					<Button className='tabs__btn'>{t('characteristics')}</Button>
-				</motion.li>
-				<motion.li className='tabs__li'>
-					<Button className='tabs__btn'>{t('comments')}</Button>
-				</motion.li>
-				<motion.li className='tabs__li'>
-					<Button className='tabs__btn'>{t('credit')}</Button>
-				</motion.li>
-				<motion.li className='tabs__li active'>
-					<Button className='tabs__btn active'>{t('deliver')}</Button>
-				</motion.li>
-			</ol> */}
 			<TabHead tabs={tabs} activeTabIndex={activeTabIndex} setActiveTabIndex={setActiveTabIndex} />
 			<TabContent tabs={tabs} activeTabIndex={activeTabIndex} />
 		</div>

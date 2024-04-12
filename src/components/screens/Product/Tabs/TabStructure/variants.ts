@@ -1,12 +1,10 @@
 export const tabVariant = {
 	active: {
-		opacity: 1,
 		transition: {
 			duration: 1
 		}
 	},
 	inactive: {
-		opacity: 0.5,
 		transition: {
 			duration: 1
 		}

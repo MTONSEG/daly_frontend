@@ -6,8 +6,6 @@ import ProductCardInfo from './ProductCardInfo/ProductCardInfo'
 import ColorPicker from '../../fragments/ColorPicker/ColorPicker'
 import ProductCardMetrics from './ProductCardMetrics/ProductCardMetrics'
 import BuyButton from '@/components/ui/buttons/BuyBtn/BuyBtn'
-import DeleteBtn from '@/components/ui/buttons/DeleteButton/DeleteBtn'
-import { useRouter } from 'next/navigation'
 
 interface IProductCardProps {
 	product?: IProduct
@@ -43,39 +41,25 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 				onClick={handleRouteClick}
 			/>
 
-			<div
-				className={`product-card__info-container ${!product && 'placeholder'}`}
-				onClick={handleRouteClick}
-			>
-				{displayProduct && (
-					<>
-						<ProductCardInfo
-							category={displayProduct.attributes.category?.data.attributes.label}
-							name={displayProduct.attributes.title}
-						/>
+			<div className='product-card__info-container'>
+				<ProductCardInfo
+					category={product.attributes.category?.data.attributes.label}
+					name={product.attributes.title}
+				/>
 
-						<ColorPicker variant='forCard' />
-					</>
-				)}
+				<ColorPicker variant='forCard' />
 			</div>
 
-			<div className={`product-card__button-container ${!product && 'placeholder'}`}>
-				{displayProduct && (
-					<ProductCardMetrics
-						price={displayProduct.attributes.price}
-						rating={displayProduct.attributes.rating}
-						commsQuantity={
-							displayProduct.attributes.product_comments &&
-							displayProduct.attributes.product_comments.data.length
-						}
-					/>
-				)}
-				{displayProduct && (
-					<div className='product-card__buttons'>
-						<BuyButton id={displayProduct.id} />
-						{isCompared && <DeleteBtn productId={displayProduct.id} />}
-					</div>
-				)}
+			<div className='product-card__button-container'>
+				<ProductCardMetrics
+					price={product.attributes.price}
+					rating={product.attributes.rating}
+					commsQuantity={
+						product.attributes.product_comments &&
+						product.attributes.product_comments.data.length
+					}
+				/>
+				<BuyButton id={product.id} />
 			</div>
 		</div>
 	)

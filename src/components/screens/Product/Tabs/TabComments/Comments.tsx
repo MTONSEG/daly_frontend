@@ -8,11 +8,11 @@ import { createPortal } from 'react-dom'
 import { useTranslations } from 'next-intl'
 import { useGetCommentsQuery } from '@/store/api/comment.api'
 
-const Comments = () => {
+const Comments = ({ id }: { id: number }) => {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
 	const t = useTranslations('product')
 
-	const { data, refetch } = useGetCommentsQuery({ id: 304 })
+	const { data, refetch } = useGetCommentsQuery({ id })
 
 	useEffect(() => {
 		if (isActive) {
@@ -62,7 +62,13 @@ const Comments = () => {
 			</div>
 
 			{createPortal(
-				<CommentPopup ref={ref} isActive={isActive} setIsActive={setIsActive} refetch={refetch} />,
+				<CommentPopup
+					ref={ref}
+					isActive={isActive}
+					setIsActive={setIsActive}
+					refetch={refetch}
+					id={id}
+				/>,
 				document.body
 			)}
 		</div>

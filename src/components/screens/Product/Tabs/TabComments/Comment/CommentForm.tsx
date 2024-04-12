@@ -15,6 +15,7 @@ interface ICommentForm {
 	setIsActive: Dispatch<SetStateAction<boolean>>
 	thanksPopup: boolean
 	setThanksPopup: Dispatch<SetStateAction<boolean>>
+	id: number
 }
 
 const CommentForm: FC<ICommentForm> = ({
@@ -22,9 +23,9 @@ const CommentForm: FC<ICommentForm> = ({
 	isActive,
 	setIsActive,
 	thanksPopup,
-	setThanksPopup
+	setThanksPopup,
+	id
 }) => {
-	const productId = 304
 	const t = useTranslations('product')
 
 	const { register, handleSubmit } = useForm<IComment>()
@@ -40,7 +41,7 @@ const CommentForm: FC<ICommentForm> = ({
 	const [stars, setStars] = useState<number>(5)
 
 	const onSubmit: SubmitHandler<IComment> = async (data) => {
-		await addNewComment({ ...data, rating: stars, product: [productId] }).then(() => {
+		await addNewComment({ ...data, rating: stars, product: [id] }).then(() => {
 			setThanksPopup(!thanksPopup)
 
 			setTimeout(() => {

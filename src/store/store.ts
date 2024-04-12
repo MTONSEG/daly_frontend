@@ -63,6 +63,7 @@ export const store = configureStore({
 			.concat(getProductApi.middleware)
 			.concat(commentApi.middleware)
 			.concat(novaPostAdressesApi.middleware)
+			.concat(homeApi.middleware)
 })
 
 export const persistor = persistStore(store)

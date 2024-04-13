@@ -1,0 +1,60 @@
+.mainBanner {
+	height: 390px;
+
+	& > div {
+		height: 100%;
+	}
+}
+
+.f-carousel {
+	height: 100%;
+}
+
+.mainBanner-slide {
+	background: rgba(255, 183, 98, 0.4);
+
+	&__image {
+		object-fit: contain;
+		display: block;
+		margin: 0 auto;
+		max-width: 1440px;
+	}
+
+	&__text-wr {
+		margin-top: 97px;
+		position: absolute;
+		left: 22.7%;
+		z-index: 1;
+
+		svg {
+			height: 47px;
+			width: 100px;
+		}
+	}
+
+	&__text {
+		color: rgb(255, 183, 98);
+		font-size: 36px;
+		font-weight: 700;
+		line-height: 150%;
+		letter-spacing: 0.5px;
+
+		&_top {
+			margin-bottom: 21px;
+		}
+
+		&_bottom {
+			margin-left: 30%;
+		}
+	}
+}
+
+.f-carousel__dots {
+	bottom: 21px !important;
+	gap: 5px !important;
+}
+
+.f-carousel__dot {
+	width: 10px !important;
+	height: 10px !important;
+}

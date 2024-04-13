@@ -28,7 +28,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 	
 	const router = useRouter()
 	const handleRouteClick = () => {
-		router.push(`/product/${displayProduct && displayProduct.id}`)
+		router.push(`/${locale}/product/${displayProduct && displayProduct.id}`)
 	}
 	return (
 		<div className={`product-card ${variant && variant} ${!displayProduct && 'placeholder'}`}>

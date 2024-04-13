@@ -19,9 +19,9 @@
 	&__favourite-icon {
 		stroke: var(--bright-green);
 		stroke-width: 0.8;
-		transition: fill 0.2s;
+		transition: 0.2s;
 		&:hover {
-			stroke: var(--bright-green-06);
+			transform: scale(1.2);
 		}
 		&.active {
 			fill: #00c65e;

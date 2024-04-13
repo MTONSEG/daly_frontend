@@ -32,10 +32,34 @@
 		"show-more-button": "Показать еще",
 		"show-less-button": "Показать меньше",
 		"save-filters-button": "Применить",
-		"default-filters-button": "Сбросить фильтры"
+		"default-filters-button": "Сбросить фильтры",
+		"empty-text-1": "Таких продуктов нет",
+		"empty-text-2": "Выберите меньше фильтров чтобы видеть больше продуктов"
 	},
 	"favourites": {
-		"title": "Избранное"
+		"title": "Избранное",
+		"empty-text-1": "В избранном пусто",
+		"empty-text-2": "Добавляйте товары в избранное,чтобы просмотреть или купить их позже"
+	},
+	"comparison": {
+		"title": "Сравнение",
+		"controls-all": "Все",
+		"controls-diff": "Только отличия",
+		"empty-text-1": "В сравнениях пусто",
+		"empty-text-2": "Добавьте продукты в сравнения чтобы сравнить их и купить лучший",
+		"characteristics-title": "Характеристики"
+	},
+	"basket":{
+		"title": "Корзина",
+		"promo-placeholder":"Промокод",
+		"order-button": "Перейти к оформлению",
+		"use-promo-button": "Применить",
+		"discount-price": "Скидки и бонусы",
+		"whole-price": "Всего",
+		"empty-text-1": "В корзине пусто",
+		"empty-text-2": "Добавьте продукты в корзину чтобы купить позже",
+		"deletion-text": "Продукт будет удален через:",
+		"revert-deletion-text": "Отменить удаление"
 	},
 	"color-picker": {
 		"color-1": "серый",

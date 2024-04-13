@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import Breadcrumbs from './Breadcrumbs';
 
 const meta: Meta<typeof Breadcrumbs> = {

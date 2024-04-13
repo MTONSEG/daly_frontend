@@ -5,7 +5,8 @@ export interface IProductImage {
 	url: string
 }
 
-export type IProductProperties = {
+// Update the IProductProperties type definition
+export interface IProductProperties {
 	id: number
 	memory: string
 	ram: string
@@ -14,6 +15,7 @@ export type IProductProperties = {
 	cpu: string
 	diagonale: string
 	display: string
+	[key: string]: string | number // Index signature to allow any string as property name
 }
 
 // export type IComment = {
@@ -44,6 +46,10 @@ export type IBrand = {
 	}
 }
 
+export type IProductLocales = {
+	data:IProduct[]
+}
+
 export interface IProduct {
 	id: number
 	attributes: {
@@ -64,6 +70,7 @@ export interface IProduct {
 		category?: { data: ICategory }
 		product_comments?: { data: IComment[] }
 		brand?: { data: IBrand }
+		localizations?: IProductLocales
 	}
 }
 

@@ -5,7 +5,8 @@ export interface IFavoritesData {
 }
 
 const initialState: IFavoritesData = {
-	products: [323, 327, 311, 322]
+	// products: [323, 327, 311, 322]
+	products: []
 }
 
 const favoritesData = createSlice({

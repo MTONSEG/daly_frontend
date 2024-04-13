@@ -14,6 +14,10 @@
 			flex-direction: column;
 			gap: 20px;
 		}
+
+		&.lesser{
+			grid-template-columns: repeat(auto-fit, minmax(190px, 250px));
+		}
 		@include media-max(lg) {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));

@@ -26,10 +26,34 @@
 		"show-more-button": "Show more",
 		"show-less-button": "Show less",
 		"save-filters-button": "Save",
-		"default-filters-button": "Defaults"
+		"default-filters-button": "Defaults",
+		"empty-text-1": "There are no such products",
+		"empty-text-2": "Loosen down your filters and save to load more products"
 	},
 	"favourites": {
-		"title": "Favourites"
+		"title": "Favourites",
+		"empty-text-1": "Your Favourites are empty",
+		"empty-text-2": "Add products into yuor favourites to check them out or buy some later"
+	},
+	"comparison": {
+		"title": "Сomparison",
+		"controls-all": "All",
+		"controls-diff": "Only diffrences",
+		"empty-text-1": "Your Comparisons are empty",
+		"empty-text-2": "Add products into your comparisons to compare them with others and buy later",
+		"characteristics-title": "Characteristics"
+	},
+	"basket": {
+		"title": "Basket",
+		"promo-placeholder": "Promocode",
+		"order-button": "Go to ordering",
+		"use-promo-button": "Confirm",
+		"discount-price": "Discounts",
+		"whole-price": "Price",
+		"empty-text-1": "Your basket is empty",
+		"empty-text-2": "Add products into your basket to buy later",
+		"deletion-text": "Your product is going to be deleted in:",
+		"revert-deletion-text": "Cancel deletion"
 	},
 	"color-picker": {
 		"color-1": "grey",

@@ -19,7 +19,7 @@ const GridHeadModder = () => {
 
 	useEffect(() => {
 		dispatch(setGridMode({mode: gridType}))
-	}, [gridType]);
+	}, [gridType, dispatch]);
 
 	return <div className='modder'>
 		<CardsModIcon className={`modder__icon ${gridType === "card" && "active"} `} onClick={()=>{handleModeClick(1)}}/>

@@ -1,5 +1,6 @@
 .mainBanner {
 	height: 390px;
+	margin-top: 50px;
 
 	& > div {
 		height: 100%;
@@ -21,10 +22,12 @@
 	}
 
 	&__text-wr {
-		margin-top: 97px;
 		position: absolute;
 		left: 22.7%;
 		z-index: 1;
+		margin-top: 98px;
+
+		width: 600px;
 
 		svg {
 			height: 47px;
@@ -40,12 +43,20 @@
 		letter-spacing: 0.5px;
 
 		&_top {
-			margin-bottom: 21px;
+			margin-right: 20px;
+			margin-bottom: 20px;
 		}
 
 		&_bottom {
-			margin-left: 30%;
+			font-size: 28px;
+			margin-left: 35%;
 		}
+	}
+
+	&__btn {
+		margin-top: 40px;
+		width: 196px;
+		margin-left: -13px;
 	}
 }
 

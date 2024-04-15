@@ -1,14 +1,16 @@
 'use client'
+import Button from '@/components/ui/buttons/Button/Button'
 import { LogoBanner } from '@/components/ui/icons'
 import Carousel from '@/components/widgets/SliderThumbnail/SliderComp/Carousel'
 import Fancybox from '@/components/widgets/SliderThumbnail/SliderComp/Fancybox'
 import { useGetBannersQuery } from '@/store/api/home.api'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useEffect } from 'react'
-import Slider from 'react-slick'
 
 const MainBanner = () => {
 	const { data, isLoading } = useGetBannersQuery({ bannerType: 'hero_banners' })
+	const t = useTranslations('home')
 
 	useEffect(() => {
 		console.log(data, data?.data.attributes.hero_banners[0].banner.data.attributes.url)
@@ -35,13 +37,20 @@ const MainBanner = () => {
 							data-src={el.banner.data.attributes.url}
 						>
 							<div className='mainBanner-slide__text-wr'>
-								<span className='mainBanner-slide__text mainBanner-slide__text_top'>Скидки от</span>
-								<LogoBanner />
-								<br />
-								<span className='mainBanner-slide__text mainBanner-slide__text_bottom'>
-									На смартфоны Samsung
-								</span>
+								<div style={{ display: 'flex' }}>
+									<span className='mainBanner-slide__text mainBanner-slide__text_top'>
+										{t('sales1')}
+									</span>
+									<LogoBanner />
+								</div>
+								<p className='mainBanner-slide__text mainBanner-slide__text_bottom'>
+									{t('sales2')}
+								</p>
+								<Button className='mainBanner-slide__btn' variant={'product'}>
+									{t('about')}
+								</Button>
 							</div>
+
 							<Image
 								src={el.banner.data.attributes.url}
 								fill

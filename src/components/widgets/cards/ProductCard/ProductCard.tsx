@@ -21,11 +21,11 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 		locale === product?.attributes.locale
 			? product
 			: product &&
-			product.attributes.localizations &&
-			product.attributes.localizations.data.length > 0
+			  product.attributes.localizations &&
+			  product.attributes.localizations.data.length > 0
 			? product.attributes.localizations.data[0]
-				: product
-	
+			: product
+
 	const router = useRouter()
 	const handleRouteClick = () => {
 		router.push(`/product/${displayProduct && displayProduct.id}`)

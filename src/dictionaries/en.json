@@ -19,7 +19,12 @@
 		"empty-compare": "There are no products in comparison, select something from the catalog",
 		"about": "About",
 		"sales1": "Sale from",
-		"sales2": "to smartphones"
+		"sales2": "to smartphones",
+		"seeAll": "See more",
+		"hits": "Hits",
+		"new": "New",
+		"disconts": "Disconts",
+		"popular": "Popular"
 	},
 	"catalog": {
 		"title": "Catalog",

@@ -24,7 +24,10 @@
 		"hits": "Hits",
 		"new": "New",
 		"disconts": "Disconts",
-		"popular": "Popular"
+		"popular": "Popular",
+		"cashBack": "Cashback for every purchase",
+		"fastDelivery": "Express delivery for",
+		"hours": "2 hours"
 	},
 	"catalog": {
 		"title": "Catalog",

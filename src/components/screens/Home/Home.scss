@@ -110,6 +110,53 @@
 	}
 }
 
+.middleBanner {
+	display: flex;
+	justify-content: space-between;
+	max-width: 100%;
+	margin-top: 80px;
+	height: 200px;
+
+	img {
+		width: 570px;
+		height: 100%;
+	}
+
+	&__block {
+		cursor: pointer;
+		position: relative;
+	}
+
+	&__text {
+		position: absolute;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 150%;
+		left: 30px;
+		top: 30px;
+		max-width: 250px;
+	}
+
+	.highlight {
+		color: rgb(0, 198, 94);
+		margin-left: 4px;
+		font-size: 36px;
+	}
+}
+
+@include media-max(lg) {
+	.middleBanner {
+		&__block:first-of-type {
+			margin-right: 10px;
+		}
+
+		img {
+			width: 100%;
+		}
+	}
+}
+
 @include media-max(md) {
 	.mainBanner-slide {
 		&__text-wr {

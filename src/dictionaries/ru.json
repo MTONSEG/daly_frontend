@@ -25,7 +25,10 @@
 		"hits": "Хиты",
 		"new": "Новинки",
 		"disconts": "Скидки",
-		"popular": "Популярное"
+		"popular": "Популярное",
+		"cashBack": "Кешбек за любую покупку!",
+		"fastDelivery": "Экспресс доставка за",
+		"hours": "2 часа"
 	},
 	"inputErrors": {
 		">length": "мало",

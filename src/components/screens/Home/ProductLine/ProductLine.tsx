@@ -19,10 +19,6 @@ const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum }) => {
 
 	const t = useTranslations('home')
 
-	useEffect(() => {
-		console.log(data?.data[0].attributes)
-	}, [data])
-
 	return (
 		<div className='product-line'>
 			<div className='product-line__top'>

@@ -6,15 +6,10 @@ import Fancybox from '@/components/widgets/SliderThumbnail/SliderComp/Fancybox'
 import { useGetBannersQuery } from '@/store/api/home.api'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { useEffect } from 'react'
 
 const MainBanner = () => {
 	const { data, isLoading } = useGetBannersQuery({ bannerType: 'hero_banners' })
 	const t = useTranslations('home')
-
-	useEffect(() => {
-		console.log(data, data?.data.attributes.hero_banners[0].banner.data.attributes.url)
-	}, [isLoading, data])
 
 	if (isLoading) {
 		return <div>...loading</div>

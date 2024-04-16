@@ -10,10 +10,10 @@ export default function Home() {
 
 	return (
 		<>
-			<MainBanner />
+			{/* <MainBanner /> */}
 			<Container>
 				<ProductLine title={t('hits')} tag='hit' tagValue={true} />
-				<ProductLine title={t('new')} tag='hit' tagValue={false} sort='sort[0]=publishedAt:desc' />
+				{/* <ProductLine title={t('new')} tag='hit' tagValue={false} sort='sort[0]=publishedAt:desc' />
 				<MiddleBanner />
 				<ProductLine title={t('disconts')} tag='hit' tagValue={false} pageNum={3} />
 				<ProductLine
@@ -22,7 +22,7 @@ export default function Home() {
 					tagValue={false}
 					sort='sort[0]=publishedAt:asc'
 					pageNum={4}
-				/>
+				/> */}
 			</Container>
 		</>
 	)

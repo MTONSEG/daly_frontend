@@ -4,7 +4,10 @@ import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 interface IProductLine {
 	title: string
@@ -27,11 +30,27 @@ const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum }) => {
 					{t('seeAll')}
 				</LinkBtn>
 			</div>
-
-			<div className='product-line__bottom'>
-				{data?.data.map((el, key) => (
-					<ProductCard product={el} key={key} variant='card' locale={'ru'} />
-				))}
+			<div className='product-line__bottom '>
+				<div className='slider-container'>
+					<Slider
+						slidesToShow={5}
+						arrows={false}
+						responsive={[
+							{ breakpoint: 375, settings: { dots: true, slidesToShow: 1 } },
+							{ breakpoint: 576, settings: { dots: true, slidesToShow: 1, centerMode: true } },
+							{ breakpoint: 768, settings: { dots: true, slidesToShow: 2 } },
+							{ breakpoint: 1220, settings: { slidesToShow: 4 } },
+							{ breakpoint: 1024, settings: { slidesToShow: 3 } }
+						]}
+						infinite={false}
+					>
+						{data?.data.map((el, key) => (
+							<div style={{ width: '215px' }} key={key}>
+								<ProductCard product={el} variant='card' locale={'ru'} />
+							</div>
+						))}
+					</Slider>
+				</div>
 			</div>
 		</div>
 	)

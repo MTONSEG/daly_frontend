@@ -25,35 +25,33 @@ const MainBanner = () => {
 				}}
 			>
 				<Carousel options={{ Dots: true, Navigation: false }}>
-					{data?.data.attributes.hero_banners.map((el, index) => (
-						<div
-							key={index}
-							className='mainBanner-slide f-carousel__slide slider__slide-w'
-							data-src={el.banner.data.attributes.url}
-						>
-							<div className='mainBanner-slide__text-wr'>
-								<div style={{ display: 'flex' }}>
-									<span className='mainBanner-slide__text mainBanner-slide__text_top'>
-										{t('sales1')}
-									</span>
-									<LogoBanner />
+					{data &&
+						data.data.attributes.hero_banners &&
+						data?.data.attributes.hero_banners.map((el, index) => (
+							<div key={index} className='mainBanner-slide f-carousel__slide'>
+								<div className='mainBanner-slide__text-wr'>
+									<div style={{ display: 'flex' }}>
+										<span className='mainBanner-slide__text mainBanner-slide__text_top'>
+											{t('sales1')}
+										</span>
+										<LogoBanner />
+									</div>
+									<p className='mainBanner-slide__text mainBanner-slide__text_bottom'>
+										{t('sales2')}
+									</p>
+									<Button className='mainBanner-slide__btn' variant={'product'}>
+										{t('about')}
+									</Button>
 								</div>
-								<p className='mainBanner-slide__text mainBanner-slide__text_bottom'>
-									{t('sales2')}
-								</p>
-								<Button className='mainBanner-slide__btn' variant={'product'}>
-									{t('about')}
-								</Button>
-							</div>
 
-							<Image
-								src={el.banner.data.attributes.url}
-								fill
-								alt='mainBanner'
-								className='mainBanner-slide__image'
-							/>
-						</div>
-					))}
+								<Image
+									src={el.banner.data.attributes.url}
+									fill
+									alt='mainBanner'
+									className='mainBanner-slide__image'
+								/>
+							</div>
+						))}
 				</Carousel>
 			</Fancybox>
 		</div>

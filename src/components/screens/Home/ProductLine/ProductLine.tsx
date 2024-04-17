@@ -8,6 +8,7 @@ import { FC } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import Image from 'next/image'
 
 interface IProductLine {
 	title: string
@@ -15,9 +16,10 @@ interface IProductLine {
 	tagValue: boolean
 	pageNum?: number
 	sort?: string
+	brands?: boolean
 }
 
-const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum }) => {
+const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum, brands }) => {
 	const { data } = useGetProductsByTagQuery({ tag: tag, tagValue: tagValue, pageNum: pageNum })
 
 	const t = useTranslations('home')
@@ -44,11 +46,21 @@ const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum }) => {
 						]}
 						infinite={false}
 					>
-						{data?.data.map((el, key) => (
-							<div style={{ width: '215px' }} key={key}>
-								<ProductCard product={el} variant='card' locale={'ru'} />
-							</div>
-						))}
+						{!brands
+							? data?.data.map((el, key) => (
+									<div style={{ width: '215px' }} key={key}>
+										<ProductCard product={el} variant='card' locale={'ru'} />
+									</div>
+							  ))
+							: data?.data.map((el, index) => (
+									<div style={{ width: '175px' }} key={index}>
+										<Image
+											fill
+											alt='brand'
+											src={el.attributes.images ? el.attributes.images[index].url : ''}
+										/>
+									</div>
+							  ))}
 					</Slider>
 				</div>
 			</div>

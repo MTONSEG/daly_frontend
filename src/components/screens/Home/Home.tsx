@@ -25,6 +25,7 @@ export default function Home() {
 					pageNum={4}
 				/>
 				<BottomBanner />
+				<ProductLine brands={true} title='' tag='false' tagValue='' />
 			</Container>
 		</>
 	)

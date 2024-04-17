@@ -18,7 +18,7 @@ const BottomBanner = () => {
 		return <div>...loading</div>
 	}
 	return (
-		<div className='bottomBanner mainBanner'>
+		<div className='bottomBanner'>
 			<Fancybox
 				options={{
 					Carousel: {

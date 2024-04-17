@@ -171,8 +171,9 @@
 	padding: 30px 0 0 70px;
 	width: 99%;
 	position: relative;
+	z-index: 1;
 
-	&__text_wr {
+	&__text-wr {
 		z-index: 1;
 	}
 

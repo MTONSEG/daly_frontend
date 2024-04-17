@@ -4,16 +4,17 @@ import MainBanner from './MainBanner/MainBanner'
 import ProductLine from './ProductLine/ProductLine'
 import Container from '@/components/ui/containers/Container/Container'
 import MiddleBanner from './MiddleBanner/MiddleBanner'
+import BottomBanner from './BottomBanner/BottomBanner'
 
 export default function Home() {
 	const t = useTranslations('home')
 
 	return (
 		<>
-			{/* <MainBanner /> */}
+			<MainBanner />
 			<Container>
 				<ProductLine title={t('hits')} tag='hit' tagValue={true} />
-				{/* <ProductLine title={t('new')} tag='hit' tagValue={false} sort='sort[0]=publishedAt:desc' />
+				<ProductLine title={t('new')} tag='hit' tagValue={false} sort='sort[0]=publishedAt:desc' />
 				<MiddleBanner />
 				<ProductLine title={t('disconts')} tag='hit' tagValue={false} pageNum={3} />
 				<ProductLine
@@ -22,7 +23,8 @@ export default function Home() {
 					tagValue={false}
 					sort='sort[0]=publishedAt:asc'
 					pageNum={4}
-				/> */}
+				/>
+				<BottomBanner />
 			</Container>
 		</>
 	)

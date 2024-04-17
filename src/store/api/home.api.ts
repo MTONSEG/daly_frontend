@@ -26,6 +26,17 @@ interface IBannerResponse {
 				}
 			}
 		}[]
+		bottom_bunners?: {
+			id: number
+			url: string
+			banner: {
+				data: {
+					attributes: {
+						url: string
+					}
+				}
+			}
+		}[]
 	}
 }
 

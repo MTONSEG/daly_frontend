@@ -49,3 +49,6 @@ export { default as TelIcon } from '@/icons/phone.svg'
 export { default as ArrowDown } from '@/icons/downArrow.svg'
 // comparison
 export { default as TrashIcon } from '@/icons/trash-can.svg'
+// order
+export { default as ArrowLeft } from '@/icons/arrow-left-big.svg'
+export { default as GreyCross } from '@/icons/grey-cross.svg'

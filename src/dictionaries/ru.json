@@ -122,5 +122,11 @@
 		"linkText": "Полные условия доставки",
 		"workWeek": "Пн.-Пт: с 10.00 до 21.00 Сб: с 10.00 до 21.00",
 		"templateAdress": "Киев, ул. Тепличная 8к3"
+	},
+	"order":{
+		"title": "Оформление заказа",
+		"order-chosen-title": "Состав заказа",
+		"order-chosen-change-button": "Изменить",
+		"order-chosen-word": "Всего"
 	}
 }

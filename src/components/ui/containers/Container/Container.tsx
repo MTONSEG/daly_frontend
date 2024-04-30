@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import './Container.scss'
 
 interface PropsType {
-	variant?: 'default' | 'fullscreen' | 'product'
+	variant?: 'default' | 'fullscreen' | 'product' | 'block'
 	children: ReactNode
 }
 

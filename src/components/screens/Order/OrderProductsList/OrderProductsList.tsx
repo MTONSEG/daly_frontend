@@ -8,6 +8,7 @@ import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { GreyCross } from '@/components/ui/icons'
 import Loader from '@/components/ui/loaders/Loader'
+import { Link } from '@/navigation'
 
 interface ExtendedProduct extends IProduct {
 	name: string
@@ -54,9 +55,11 @@ const OrderProductsList: FC = () => {
 		<div className='order-products-list'>
 			<div className='order-products-list__top-bottom'>
 				<div className='order-products-list__item bold s18'>{word('order-chosen-title')}</div>
-				<div className='order-products-list__item underline'>
-					{word('order-chosen-change-button')}
-				</div>
+				<Link href={'/basket'}>
+					<div className='order-products-list__item underline'>
+						{word('order-chosen-change-button')}
+					</div>
+				</Link>
 			</div>
 			<div className='order-products-list__list'>
 				{products.length > 0 ? (

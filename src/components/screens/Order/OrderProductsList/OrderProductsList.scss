@@ -73,6 +73,7 @@
 	}
 
 	&__quantity {
+		gap: 5px;
 	}
 
 	@include media-max(lg) {

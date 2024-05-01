@@ -16,7 +16,18 @@
 		"find": "Find",
 		"empty-cart": "There are no items in your cart, please select something from the catalog",
 		"empty-favorite": "There are no products in your favorites, select something from the catalog",
-		"empty-compare": "There are no products in comparison, select something from the catalog"
+		"empty-compare": "There are no products in comparison, select something from the catalog",
+		"about": "About",
+		"sales1": "Sale from",
+		"sales2": "to smartphones",
+		"seeAll": "See more",
+		"hits": "Hits",
+		"new": "New",
+		"disconts": "Disconts",
+		"popular": "Popular",
+		"cashBack": "Cashback for every purchase",
+		"fastDelivery": "Express delivery for",
+		"hours": "2 hours"
 	},
 	"catalog": {
 		"title": "Catalog",

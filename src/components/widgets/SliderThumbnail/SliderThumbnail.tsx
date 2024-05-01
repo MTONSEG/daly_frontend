@@ -6,9 +6,10 @@ import Slider from 'react-slick'
 import Image from 'next/image'
 import './SliderThumbnail.scss'
 import Container from '@/components/ui/containers/Container/Container'
+import { IProductImage } from '@/types/types'
 
 interface ISliderThumbnail {
-	images: IImage[]
+	images: IProductImage[]
 }
 
 const SliderThumbNail: FC<ISliderThumbnail> = ({ images }) => {

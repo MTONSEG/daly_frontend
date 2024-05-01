@@ -19,6 +19,7 @@ const Comparison: React.FC = () => {
 	const word = useTranslations('comparison')
 	const productIds = useAppSelector((state) => state.comparison.products)
 	const [products, setProducts] = useState<IProduct[]>([])
+	console.log("🚀 ~ products:", products)
 	const { locale } = useParams()
 
 	const updateIsMobile = () => {

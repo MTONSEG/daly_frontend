@@ -132,5 +132,11 @@
 		"linkText": "Full delivery terms",
 		"workWeek": "Mon-Fri: from 10.00 to 21.00 Sat: from 10.00 to 21.00",
 		"templateAdress": "Kyiv, st. Teplychnaya 8k3"
+	},
+	"order":{
+		"title": "Placing an order",
+		"order-chosen-title": "Order list",
+		"order-chosen-change-button": "Edit",
+		"order-chosen-word": "Total"
 	}
 }

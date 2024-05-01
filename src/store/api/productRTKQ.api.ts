@@ -18,8 +18,16 @@ export const getProductApi = createApi({
 			query: ({ locale, page }) => {
 				return `http://localhost:1337/api/products?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=4&populate=images`
 			}
+		}),
+		getProductsByTag: builder.query<
+			IResponse<Omit<IProduct[], 'brand'>>,
+			{ tag: string; tagValue: boolean; pageNum?: number; sort?: string }
+		>({
+			query: ({ tag, tagValue, pageNum = 1, sort }) => {
+				return `products?filters[${tag}][$eq]=${tagValue}&pagination[page]=${pageNum}&pagination[pageSize]=5&populate=images&${sort}`
+			}
 		})
 	})
 })
 
-export const { useGetProductQuery, useGetProductsQuery } = getProductApi
+export const { useGetProductQuery, useGetProductsQuery, useGetProductsByTagQuery } = getProductApi

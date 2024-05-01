@@ -1,0 +1,328 @@
+@import '@/media';
+
+.mainBanner {
+	height: 390px;
+	margin-top: 50px;
+
+	& > div {
+		height: 100%;
+	}
+}
+
+.f-carousel {
+	height: 100%;
+}
+
+.mainBanner-slide {
+	background: rgba(255, 183, 98, 0.4);
+
+	&__image {
+		object-fit: contain;
+		display: block;
+		margin: 0 auto;
+		max-width: 1440px;
+	}
+
+	&__text-wr {
+		position: absolute;
+		left: 22.7%;
+		z-index: 1;
+		margin-top: 98px;
+
+		width: 600px;
+
+		svg {
+			height: 47px;
+			width: 100px;
+		}
+	}
+
+	&__text {
+		color: rgb(255, 183, 98);
+		font-size: 36px;
+		font-weight: 700;
+		line-height: 150%;
+		letter-spacing: 0.5px;
+
+		&_top {
+			margin-right: 20px;
+			margin-bottom: 20px;
+		}
+
+		&_bottom {
+			font-size: 28px;
+			margin-left: 35%;
+		}
+	}
+
+	&__btn {
+		margin-top: 40px;
+		width: 196px;
+		margin-left: -13px;
+	}
+}
+
+.f-carousel__dots {
+	bottom: 21px !important;
+	gap: 5px !important;
+}
+
+.f-carousel__dot {
+	width: 10px !important;
+	height: 10px !important;
+}
+
+.product-line {
+	margin-top: 80px;
+	height: 465px;
+
+	&__top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 30px;
+	}
+
+	&__title {
+		font-size: 32px;
+		font-weight: 700;
+		line-height: 120%;
+		color: black;
+	}
+
+	&__text {
+		color: var(--dark-grey);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 150%;
+		opacity: 0.5;
+	}
+
+	&__bottom {
+		// display: flex;
+		height: 210px;
+		// width: 1200px;
+		max-width: 100%;
+
+		.product-card {
+			margin-right: 25px;
+			height: 100%;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.product-card {
+		width: 214px;
+	}
+
+	.slick-list {
+		height: 400px;
+		padding-top: 5px;
+		padding-left: 5px;
+	}
+}
+
+.middleBanner {
+	display: flex;
+	justify-content: space-between;
+	max-width: 100%;
+	margin-top: 80px;
+	height: 200px;
+
+	img {
+		width: 570px;
+		height: 100%;
+	}
+
+	&__block {
+		cursor: pointer;
+		position: relative;
+	}
+
+	&__text {
+		position: absolute;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 150%;
+		left: 30px;
+		top: 30px;
+		max-width: 250px;
+	}
+
+	.highlight {
+		color: rgb(0, 198, 94);
+		margin-left: 4px;
+		font-size: 36px;
+	}
+}
+
+.bottomBanner-slide {
+	height: 270px;
+	margin: 80px 0;
+	display: flex;
+	justify-content: space-between;
+	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	border-radius: 10px;
+	background-color: transparent;
+	padding: 30px 0 0 70px;
+	width: 99%;
+	position: relative;
+	z-index: 1;
+
+	&__text-wr {
+		z-index: 1;
+	}
+
+	&__title {
+		color: var(--bright-green);
+		font-size: 36px;
+		font-weight: 700;
+		line-height: 150%;
+		letter-spacing: 0.5px;
+		margin-bottom: 15px;
+	}
+
+	&__text {
+		color: var(--dark-grey);
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 150%;
+		text-align: left;
+	}
+
+	&__text2 {
+		color: var(--dark-grey);
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 150%;
+	}
+
+	&__btn {
+		margin-top: 30px;
+	}
+
+	&__image {
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 0;
+	}
+}
+
+.f-button {
+	color: rgb(0, 198, 94);
+	box-shadow: 0px 4.22px 12.67px 0px rgba(54, 58, 69, 0.2);
+	background: rgb(255, 255, 255);
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+
+	svg {
+		width: 18px;
+		height: 18px;
+	}
+}
+
+@include media-max(lg) {
+	.middleBanner {
+		&__block:first-of-type {
+			margin-right: 10px;
+		}
+
+		img {
+			width: 100%;
+		}
+	}
+}
+
+@include media-max(md) {
+	.mainBanner-slide {
+		&__text-wr {
+			width: 60%;
+			left: 40px;
+		}
+
+		&__text_bottom {
+			margin-left: 5%;
+		}
+	}
+}
+
+@include media-max(sm) {
+	.mainBanner-slide {
+		&__text-wr {
+			width: 100%;
+			margin: 10px auto;
+		}
+
+		&__text_bottom {
+			margin-left: 0;
+		}
+
+		&__image {
+			object-fit: fill;
+		}
+	}
+
+	.middleBanner {
+		flex-direction: column;
+		height: 420px;
+
+		&__block {
+			margin-bottom: 20px;
+		}
+	}
+}
+
+@include media-max(xs) {
+	.mainBanner {
+		height: 250px;
+	}
+
+	.mainBanner-slide {
+		&__text-wr {
+			left: 0;
+			padding: 0 10px;
+		}
+
+		&__text_top {
+			margin-right: 10px;
+			font-size: 28px;
+		}
+
+		&__text_bottom {
+			display: none;
+		}
+
+		&__btn {
+			max-width: 320px;
+			margin: 20px auto;
+			margin-left: 0;
+		}
+	}
+
+	.product-line {
+		.slick-list {
+			height: 320px;
+		}
+	}
+}
+
+@include media-max(xxs) {
+	.product-line {
+		&__title {
+			font-size: 28px;
+		}
+
+		.product-card {
+			margin: 0 auto !important;
+		}
+	}
+}

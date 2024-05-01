@@ -4,7 +4,29 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 interface IBannerResponse {
 	attributes: {
-		hero_banners: {
+		hero_banners?: {
+			id: number
+			url: string
+			banner: {
+				data: {
+					attributes: {
+						url: string
+					}
+				}
+			}
+		}[]
+		middle_banners?: {
+			id: number
+			url: string
+			banner: {
+				data: {
+					attributes: {
+						url: string
+					}
+				}
+			}
+		}[]
+		bottom_bunners?: {
 			id: number
 			url: string
 			banner: {

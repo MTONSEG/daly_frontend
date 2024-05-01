@@ -28,6 +28,10 @@ const Order: FC<IOrder> = ({}) => {
 						{/* <Delivery></Delivery> */}
 					</div>
 				</Container>
+
+				<div className="order__personal-info">
+					dfpiosajfg[piodsafj[goi]]
+				</div>
 				ghfdh
 			</div>
 		</Container>

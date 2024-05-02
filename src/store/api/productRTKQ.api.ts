@@ -1,5 +1,5 @@
 import { getAuthToken } from '@/services/getAuthToken'
-import { IProduct, IResponse } from '@/types/types'
+import { IProduct, IResponse, ILogos } from '@/types/types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const getProductApi = createApi({
@@ -19,6 +19,11 @@ export const getProductApi = createApi({
 				return `http://localhost:1337/api/products?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=4&populate=images`
 			}
 		}),
+		getLogos: builder.query<ILogos,{}>({
+            query: () => 
+                "home?populate=brandsLogo.data.attributes.url*"
+            
+           }),
 		getProductsByTag: builder.query<
 			IResponse<Omit<IProduct[], 'brand'>>,
 			{ tag: string; tagValue: boolean; pageNum?: number; sort?: string }
@@ -30,4 +35,4 @@ export const getProductApi = createApi({
 	})
 })
 
-export const { useGetProductQuery, useGetProductsQuery, useGetProductsByTagQuery } = getProductApi
+export const { useGetProductQuery, useGetProductsQuery, useGetLogosQuery, useGetProductsByTagQuery } = getProductApi

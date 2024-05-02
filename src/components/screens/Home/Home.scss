@@ -73,9 +73,11 @@
 }
 
 .product-line {
+	flex: 1 1;
 	margin-top: 80px;
-	height: 465px;
-
+	min-height: 465px;
+	height: auto;
+	
 	&__top {
 		display: flex;
 		justify-content: space-between;
@@ -96,6 +98,15 @@
 		font-weight: 500;
 		line-height: 150%;
 		opacity: 0.5;
+	}
+
+	&__logos {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		row-gap: 24px;
+		margin-bottom: 80px;
 	}
 
 	&__bottom {
@@ -160,6 +171,9 @@
 	}
 }
 
+.bottomBanner {
+	margin-top: 160px;
+}
 .bottomBanner-slide {
 	height: 270px;
 	margin: 80px 0;
@@ -181,7 +195,7 @@
 		color: var(--bright-green);
 		font-size: 36px;
 		font-weight: 700;
-		line-height: 150%;
+		line-height: 1.5;
 		letter-spacing: 0.5px;
 		margin-bottom: 15px;
 	}

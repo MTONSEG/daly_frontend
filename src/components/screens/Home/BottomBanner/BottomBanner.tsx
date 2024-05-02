@@ -12,8 +12,7 @@ const BottomBanner = () => {
 	const { data, isLoading } = useGetBannersQuery({ bannerType: 'bottom_bunners' })
 	const t = useTranslations('home')
 
-	console.log(data)
-
+	
 	if (isLoading) {
 		return <div>...loading</div>
 	}

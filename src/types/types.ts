@@ -160,3 +160,17 @@ export interface IComment {
 	product: number[]
 	updatedAt?: string
 }
+
+export interface ILogos {
+	data: {
+		attributes: {
+			brandsLogo: {
+				data: {
+					attributes: {
+						url: string
+					}
+				}[]
+			}
+		}
+	}
+}

@@ -137,6 +137,28 @@
 		"title": "Placing an order",
 		"order-chosen-title": "Order list",
 		"order-chosen-change-button": "Edit",
-		"order-chosen-word": "Total"
+		"order-chosen-word": "Total",
+		"order-payment-title": "Payment method"
+	},
+	"payment":{
+		"title-1":"Online",
+		"title-2":"Installment plan online",
+		"title-3":"Upon receipt",
+		"title-4":"Digital wallet",
+		"description-1":"Visa, Mastercard",
+		"description-2":"List of partner banks",
+		"description-3":"Cash or card",
+		"description-4":"IBox,  TRUST Wallet",
+		"link-2":"Fill out the form on the website"
+	},
+	"personal-info":{
+		"title-1":"Name",
+		"title-2":"Surname",
+		"title-3":"Phone number",
+		"title-4":"E-mail",
+		"placeholder-1":"John",
+		"placeholder-2":"Deer",
+		"placeholder-3":"+38 (123)-456-78-90",
+		"placeholder-4":"name@inbox.ua"
 	}
 }

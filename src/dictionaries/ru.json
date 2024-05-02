@@ -134,10 +134,32 @@
 		"workWeek": "Пн.-Пт: с 10.00 до 21.00 Сб: с 10.00 до 21.00",
 		"templateAdress": "Киев, ул. Тепличная 8к3"
 	},
-	"order":{
+	"order": {
 		"title": "Оформление заказа",
 		"order-chosen-title": "Состав заказа",
 		"order-chosen-change-button": "Изменить",
-		"order-chosen-word": "Всего"
+		"order-chosen-word": "Всего",
+		"order-payment-title": "Способ оплаты"
+	},
+	"payment": {
+		"title-1": "Онлайн",
+		"title-2": "Рассрочка онлайн",
+		"title-3": "При получении",
+		"title-4": "Электронными деньгами",
+		"description-1": "Картами Visa, Mastercard",
+		"description-2": "Список банков партнеров",
+		"description-3": "Наличными или картой ",
+		"description-4": "IBox,  TRUST Wallet",
+		"link-2":"Заполнить анкету на сайте"
+	},
+	"personal-info":{
+		"title-1":"Имя",
+		"title-2":"Фамилия",
+		"title-3":"Телефон",
+		"title-4":"E-mail",
+		"placeholder-1":"Петр",
+		"placeholder-2":"Иванов",
+		"placeholder-3":"+38 (123)-456-78-90",
+		"placeholder-4":"name@inbox.ua"
 	}
 }

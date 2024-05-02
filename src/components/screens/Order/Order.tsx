@@ -3,36 +3,33 @@ import './Order.scss'
 import { FC } from 'react'
 import { useTranslations } from 'next-intl'
 import OrderProductsList from './OrderProductsList/OrderProductsList'
-import Delivery from '../Product/Tabs/Delivery/Delivery'
 import OrderTitle from './OrderTitle/OrderTitle'
+import OrderDelivery from './OrderDelivery/OrderDelivery'
+import OrderPayment from './OrderPayment/OrderPayment'
 
 interface IOrder {}
 
 const Order: FC<IOrder> = ({}) => {
 	const word = useTranslations('order')
 
-
-
 	return (
 		<Container>
 			<div className='order'>
-
-				<OrderTitle/>
+				<OrderTitle />
 				<Container variant='block'>
 					<div className='order__chosen-list'>
 						<OrderProductsList />
 					</div>
 				</Container>
+				{/* <Container>
+					<OrderDelivery />
+				</Container> */}
+
 				<Container variant='block'>
-					<div className='order__delivery'>
-						{/* <Delivery></Delivery> */}
+					<div className='order__payment'>
+						<OrderPayment />
 					</div>
 				</Container>
-
-				<div className="order__personal-info">
-					dfpiosajfg[piodsafj[goi]]
-				</div>
-				ghfdh
 			</div>
 		</Container>
 	)

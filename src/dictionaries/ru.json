@@ -136,10 +136,15 @@
 	},
 	"order": {
 		"title": "Оформление заказа",
-		"order-chosen-title": "Состав заказа",
-		"order-chosen-change-button": "Изменить",
-		"order-chosen-word": "Всего",
-		"order-payment-title": "Способ оплаты"
+		"chosen-title": "Состав заказа",
+		"chosen-change-button": "Изменить",
+		"chosen-word": "Всего",
+		"payment-title": "Способ оплаты",
+		"personal-title": "Данные получателя",
+		"next-button": "Далее",
+		"buy-button": "Оформить заказ",
+		"buy-aggreement": "Нажимая кнопку оформить вы подтверждаете свое согласие с ",
+		"buy-aggreement-link": "условиями продажи в интернет-магазине Daly"
 	},
 	"payment": {
 		"title-1": "Онлайн",
@@ -150,16 +155,16 @@
 		"description-2": "Список банков партнеров",
 		"description-3": "Наличными или картой ",
 		"description-4": "IBox,  TRUST Wallet",
-		"link-2":"Заполнить анкету на сайте"
+		"link-2": "Заполнить анкету на сайте"
 	},
-	"personal-info":{
-		"title-1":"Имя",
-		"title-2":"Фамилия",
-		"title-3":"Телефон",
-		"title-4":"E-mail",
-		"placeholder-1":"Петр",
-		"placeholder-2":"Иванов",
-		"placeholder-3":"+38 (123)-456-78-90",
-		"placeholder-4":"name@inbox.ua"
+	"personal-info": {
+		"title-1": "Имя",
+		"title-2": "Фамилия",
+		"title-3": "Телефон",
+		"title-4": "E-mail",
+		"placeholder-1": "Петр",
+		"placeholder-2": "Иванов",
+		"placeholder-3": "+38 (123)-456-78-90",
+		"placeholder-4": "name@inbox.ua"
 	}
 }

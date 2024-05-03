@@ -54,10 +54,10 @@ const OrderProductsList: FC = () => {
 	return (
 		<div className='order-products-list'>
 			<div className='order-products-list__top-bottom'>
-				<div className='order-products-list__item bold s18'>{word('order-chosen-title')}</div>
+				<div className='order-products-list__item bold s18'>{word('chosen-title')}</div>
 				<Link href={'/basket'}>
 					<div className='order-products-list__item underline'>
-						{word('order-chosen-change-button')}
+						{word('chosen-change-button')}
 					</div>
 				</Link>
 			</div>
@@ -80,7 +80,7 @@ const OrderProductsList: FC = () => {
 				)}
 			</div>
 			<div className='order-products-list__top-bottom'>
-				<div className='order-products-list__item'>{word('order-chosen-word')}</div>
+				<div className='order-products-list__item'>{word('chosen-word')}</div>
 				<div className='order-products-list__item bold s16'>{Math.ceil(wholePrice)} ₴</div>
 			</div>
 		</div>

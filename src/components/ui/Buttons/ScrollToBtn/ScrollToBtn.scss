@@ -1,0 +1,20 @@
+.scroll-to-button {
+	border-radius: 10px;
+	width: 220px;
+	height: 40px;
+	box-shadow: 1px 0px 16px 3px var(--dark-grey-008);
+	background: var(--white);
+	font-family: var(--inter);
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 152%;
+	color: var(--bright-green);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.3s ease-in-out;
+	&:hover {
+		color: var(--white);
+		background: var(--bright-green);
+	}
+}

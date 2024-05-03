@@ -1,13 +1,20 @@
 'use client'
 import ComplexRadio from '@/components/ui/radios/ComplexRadio'
 import './OrderPayment.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useAppDispatch } from '@/hooks/useReduxHooks'
+import { fillPaymentData } from '@/store/order/order.slice'
 
 const OrderPayment = ({}) => {
 	const w = useTranslations('order')
 	const word = useTranslations('payment')
 	const [activeRadio, setActiveRadio] = useState<string>(word('title-1'))
+	const dispatch = useAppDispatch()
+	useEffect(() => {
+		dispatch(fillPaymentData({ paymentMethod: activeRadio }))
+	}, [activeRadio])
+
 	const radios = {
 		payments: [
 			{
@@ -34,7 +41,7 @@ const OrderPayment = ({}) => {
 	}
 	return (
 		<div className='order-block'>
-			<div className='order-block__title'>{w("order-payment-title")}</div>
+			<div className='order-block__title'>{w('payment-title')}</div>
 			<div className='order-block__content'>
 				{radios.payments.map((radio, index) => (
 					<ComplexRadio

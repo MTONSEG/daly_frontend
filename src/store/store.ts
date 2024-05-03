@@ -25,6 +25,7 @@ import productSlice from '@/store/slices/product.slice'
 import { commentApi } from './api/comment.api'
 import { novaPostAdressesApi } from './api/novaPost.api'
 import { homeApi } from '@/store/api/home.api'
+import orderSlice from './order/order.slice'
 
 const persistConfig = {
 	key: 'root',
@@ -47,7 +48,8 @@ const persistedReducer = persistReducer(
 		[getProductApi.reducerPath]: getProductApi.reducer,
 		[commentApi.reducerPath]: commentApi.reducer,
 		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer,
-		[homeApi.reducerPath]: homeApi.reducer
+		[homeApi.reducerPath]: homeApi.reducer,
+		order: orderSlice
 	})
 )
 

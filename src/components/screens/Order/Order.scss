@@ -28,6 +28,43 @@
 		position: relative;
 	}
 
+	&__bottom {
+		display: flex;
+		flex-direction: row;
+		gap: 56px;
+		align-items: center;
+	}
+
+	&__order-button {
+		border-radius: 10px;
+		width: 226px;
+		height: 41px;
+		background: var(--bright-green);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--inter);
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 120%;
+		color: var(--white);
+		width: 100%;
+		max-width: 226px;
+	}
+
+	&__aggreement {
+		width: 100%;
+		max-width: 378px;
+		font-family: var(--inter);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 150%;
+		color: var(--dark-grey);
+		span {
+			color: var(--bright-green);
+		}
+	}
+
 	@include media-max(xs) {
 		&__title {
 			font-weight: 700;

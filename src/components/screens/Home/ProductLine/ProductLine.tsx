@@ -2,7 +2,7 @@
 
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
-import { useGetProductsByTagQuery, useGetLogosQuery } from '@/store/api/productRTKQ.api'
+import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'
 import { FC } from 'react'
 import Slider from 'react-slick'
@@ -22,9 +22,7 @@ interface IProductLine {
 
 const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum, brands, logos }) => {
 	const { data } = useGetProductsByTagQuery({ tag: tag, tagValue: tagValue, pageNum: pageNum })
-	const { data: logosData } = useGetLogosQuery({})
-	const logosArray = logosData?.data.attributes.brandsLogo.data
-
+	
 	const t = useTranslations('home')
 
 	return (
@@ -35,23 +33,6 @@ const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum, brands, 
 					{t('seeAll')}
 				</LinkBtn>
 			</div>
-			{logos && (
-				<div className={logos ? 'product-line__logos' : ''}>
-					{logosArray &&
-						logos &&
-						logosArray.map((item: any, index: number) => (
-							<div key={index} style={{ width: '175px' }}>
-								<Image
-									alt='brand'
-									src={item.attributes.url ? item.attributes.url : ''}
-									width={175}
-									height={80}
-									style={{ minWidth: '100%', objectFit: 'cover' }}
-								/>
-							</div>
-						))}
-				</div>
-			)}
 			<div className='product-line__bottom '>
 				<div className='slider-container'>
 					<Slider

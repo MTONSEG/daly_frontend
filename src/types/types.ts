@@ -174,3 +174,16 @@ export interface ILogos {
 		}
 	}
 }
+export interface ITerms {
+	data: {
+		attributes: {
+			termsImage: {
+				data: {
+					attributes: {
+						url: string
+					}
+				}[]
+			}
+		}
+	}
+}

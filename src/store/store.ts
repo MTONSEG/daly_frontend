@@ -30,8 +30,8 @@ import orderSlice from './order/order.slice'
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['basket', 'favourites', 'comparison'],
-	blacklist: ['header', 'filters', 'catalogProducts']
+	whitelist: ['basket', 'favourites', 'comparison', 'order'],
+	// blacklist: ['header', 'filters', 'catalogProducts']
 }
 
 const persistedReducer = persistReducer(

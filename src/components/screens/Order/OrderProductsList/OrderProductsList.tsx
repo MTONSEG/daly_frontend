@@ -1,9 +1,8 @@
-'use client'
+"use client"
 import './OrderProductsList.scss'
 import { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/hooks/useReduxHooks'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { GreyCross } from '@/components/ui/icons'
@@ -21,11 +20,22 @@ const OrderProductsList: FC = () => {
 	const word = useTranslations('order')
 	const { locale } = useParams()
 	const [products, setProducts] = useState<ExtendedProduct[]>([])
-	const chosenProducts = useAppSelector((state: { basket: any }) => state.basket)
-	const fetchProducts = async (productIds: number[]) => {
-		const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
-		const extendedProducts: ExtendedProduct[] = fetchedProducts.map((product) => {
-			const chosenProduct = chosenProducts.products.find(
+	const chosenProducts = useAppSelector((state) => state.basket.products)
+	const productsData = useAppSelector((state) => state.order.order.products)
+	console.log("🚀 ~ productsData:", productsData)
+
+	useEffect(() => {
+		// Extract product IDs and quantities from chosenProducts
+		const productIds = chosenProducts.map(
+			(product: { id: number; quantity: number }) => product.id
+		)
+
+		// Filter productsData to get only the needed products by ID
+		const filteredProducts = productsData.filter((product: IProduct) => productIds.includes(product.id))
+
+		// Build the extended products array
+		const extendedProducts: ExtendedProduct[] = filteredProducts.map((product: IProduct) => {
+			const chosenProduct = chosenProducts.find(
 				(chosenProduct: { id: number }) => chosenProduct.id === product.id
 			)
 			return {
@@ -37,15 +47,9 @@ const OrderProductsList: FC = () => {
 				quantity: chosenProduct ? chosenProduct.quantity : 0
 			}
 		})
-		setProducts(extendedProducts)
-	}
 
-	useEffect(() => {
-		const productIds = chosenProducts.products.map(
-			(product: { id: number; quantity: number }) => product.id
-		)
-		fetchProducts(productIds)
-	}, [chosenProducts, locale])
+		setProducts(extendedProducts)
+	}, [chosenProducts, productsData, locale])
 
 	const wholePrice = useMemo(() => {
 		return products.reduce((acc, product) => acc + product.price * product.quantity, 0)

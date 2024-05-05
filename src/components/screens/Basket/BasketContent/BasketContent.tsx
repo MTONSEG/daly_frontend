@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import './BasketContent.scss'
-import { useAppSelector } from '@/hooks/useReduxHooks'
+import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import BasketRow from './BasketRow/BasketRow'
@@ -10,10 +10,12 @@ import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
 import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+import { fillProductsData } from '@/store/order/order.slice'
 
 const BasketContent: React.FC = () => {
 	const word = useTranslations('basket')
 	const productIds = useAppSelector((state) => state.basket.products)
+	const dispatch: any = useAppDispatch()
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
 	const [totalPrice, setTotalPrice] = useState<number>(0)
@@ -26,10 +28,11 @@ const BasketContent: React.FC = () => {
 		const FetchProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
 			setProducts(fetchedProducts)
+			dispatch(fillProductsData({products: fetchedProducts}));
+			// console.log("🚀 ~ FetchProducts ~ dispatch(fillProductsData({products: fetchedProducts})):", dispatch(fillProductsData({products: fetchedProducts})))
 		}
-
 		FetchProducts()
-	}, [productIds, locale, productPlainIds])
+	}, [productIds])
 
 	useEffect(() => {
 		let totalPrice = 0

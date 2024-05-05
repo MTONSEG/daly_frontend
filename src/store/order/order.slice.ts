@@ -1,5 +1,6 @@
 'use client'
 
+import { IProduct } from '@/types/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface IBasketData {
@@ -16,6 +17,7 @@ export interface IBasketData {
 		deliveryAddress: string | null
 		deliveryApartment: string | null
 		deliveryComment: string | null
+		products: IProduct[]
 	}
 }
 
@@ -32,7 +34,8 @@ const initialState: IBasketData = {
 		deliveryTime: null,
 		deliveryAddress: null,
 		deliveryApartment: null,
-		deliveryComment: null
+		deliveryComment: null,
+		products: []
 	}
 }
 
@@ -81,10 +84,18 @@ const orderData = createSlice({
 			state.order.deliveryAddress = action.payload.deliveryAddress
 			state.order.deliveryApartment = action.payload.deliveryApartment
 			state.order.deliveryComment = action.payload.deliveryComment
-		}
+		},
+		fillProductsData: (
+			state,
+			action: PayloadAction<{
+				products: IProduct[]
+			}>
+		) => {
+			state.order.products = action.payload.products
+		},
 	}
 })
 
-export const { fillPersonalData, fillPaymentData,fillDeliveryData } = orderData.actions
+export const { fillPersonalData, fillPaymentData,fillDeliveryData, fillProductsData } = orderData.actions
 
 export default orderData.reducer

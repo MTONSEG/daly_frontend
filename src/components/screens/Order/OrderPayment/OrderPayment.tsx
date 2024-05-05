@@ -18,21 +18,25 @@ const OrderPayment = ({}) => {
 	const radios = {
 		payments: [
 			{
+				label: 'online',
 				title: word('title-1'),
 				description: word('description-1'),
 				link: undefined
 			},
 			{
+				label: 'installment payment',
 				title: word('title-2'),
 				description: word('description-2'),
 				link: word('link-2')
 			},
 			{
+				label: 'upon receipt',
 				title: word('title-3'),
 				description: word('description-3'),
 				link: undefined
 			},
 			{
+				label: 'digital wallet',
 				title: word('title-4'),
 				description: word('description-4'),
 				link: undefined
@@ -45,12 +49,13 @@ const OrderPayment = ({}) => {
 			<div className='order-block__content'>
 				{radios.payments.map((radio, index) => (
 					<ComplexRadio
-						key={index}
+						label={radio.label}
 						title={radio.title}
 						description={radio.description}
 						link={radio.link}
 						radioActive={activeRadio}
 						setActive={setActiveRadio}
+						key={index}
 					/>
 				))}
 			</div>

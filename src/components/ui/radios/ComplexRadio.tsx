@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from 'react'
 import './ComplexRadio.scss'
 import Link from 'next/link'
 interface IComplexRadio {
+	label: string
 	title: string
 	description: string
 	link?: string
@@ -11,6 +12,7 @@ interface IComplexRadio {
 }
 
 const ComplexRadio: React.FC<IComplexRadio> = ({
+	label,
 	title,
 	description,
 	link,
@@ -19,9 +21,9 @@ const ComplexRadio: React.FC<IComplexRadio> = ({
 }) => {
 	return (
 		<div
-			className={`complex-radio ${radioActive === title && 'active'}`}
+			className={`complex-radio ${radioActive === label && 'active'}`}
 			onClick={() => {
-				setActive(title)
+				setActive(label)
 			}}
 		>
 			<div className='complex-radio__title'>

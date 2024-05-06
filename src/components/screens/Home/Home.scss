@@ -145,16 +145,16 @@
 		grid-auto-flow: dense;
 		row-gap: 24px;
 		transition: all 0.2 ease-in;
-		}
+	}
 
-		&__logos-item {
-			cursor: pointer;
-			transition: all 0.2s ease-in;
-		}
+	&__logos-item {
+		cursor: pointer;
+		transition: all 0.2s ease-in;
+	}
 
-		&__logos-item:hover {
-         transform: scale(105%);
-		}
+	&__logos-item:hover {
+		transform: scale(105%);
+	}
 }
 
 .middleBanner {
@@ -318,18 +318,18 @@
 		rgba(0, 198, 94, 0.21) 106.128%
 	);
 	padding: 50px 0 70px;
-	
+
 	&__container {
 		width: 100%;
 		max-width: 1170px;
 		margin: auto;
-		}
+	}
 
-		&__grid {
-			display: grid;
-			grid-template-columns: minmax(auto, 314px) minmax(auto, 610px);
-			column-gap: 70px;
-		}
+	&__grid {
+		display: grid;
+		grid-template-columns: minmax(auto, 314px) minmax(auto, 610px);
+		column-gap: 70px;
+	}
 
 	&__description {
 		display: flex;
@@ -349,6 +349,98 @@
 		font-size: 16px;
 		font-weight: 500;
 		line-height: 1.52;
+	}
+}
+
+.subscribe-form {
+	display: flex;
+	align-items: flex-start;
+	column-gap: 60px;
+
+	&__inputs {
+		width: 100%;
+		max-width: 349px;
+		display: flex;
+		flex-direction: column;
+		row-gap: 8px;
+	}
+
+	.MuiInputBase-input {
+		width: 100%;
+		max-width: 100%;
+		box-sizing: border-box;
+		border: 1px solid rgb(218, 220, 220) !important;
+		border-radius: 10px;
+		background: rgb(255, 255, 255);
+		padding: 12px 15px 12px 15px;
+		height: 41px;
+	}
+
+	.MuiInputBase-input::after {
+		border-bottom: none !important;
+	}
+
+	.MuiInputBase-input::placeholder {
+		color: rgb(167, 170, 177);
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+
+	&__terms {
+		display: flex;
+		align-items: center;
+		column-gap: 13px;
+	}
+
+	&__terms-mark-active,
+	&__terms-mark-nonactive {
+		min-width: 15px;
+		min-height: 15px;
+		border-radius: 100%;
+		border: 2px solid #1f1b1b;
+		cursor: pointer;
+		position: relative;
+	}
+
+	&__terms-mark-active div {
+		position: absolute;
+		min-width: 8px;
+		min-height: 8px;
+		background-color: rgb(0, 198, 94);
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-40%, -40%);
+	}
+
+	&__terms-text {
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+
+	&__terms-text span {
+		color: rgb(0, 198, 94);
+	}
+
+	&__button {
+		min-width: 201px;
+		min-height: 41px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 10px;
+		background: rgb(0, 198, 94);
+		color: rgb(255, 255, 255);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 1.2;
+		transition: all 0.2s ease-in;
+	}
+
+	&__button:hover {
+		transform: scale(102%);
 	}
 }
 

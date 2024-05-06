@@ -2,21 +2,22 @@
 
 import '../Home.scss'
 import { useGetTermsQuery } from '@/store/api/productRTKQ.api'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 const Terms = () => {
+	const word = useTranslations('terms')
 	const titles: Array<string | JSX.Element> = [
-		'Удобная доставка',
-		<span>Оплата любым<br />способом</span>,
-		<span>Гарантийное<br />обслуживание</span>,
-		<span>Быстрый обмен<br />и возврат</span>,
-		'Экспресс доставка',
-		'Выгодные цены'
+		<span>{word("title-1")}</span>,
+		<span>{word("title-2")}</span>,
+		<span>{word("title-3")}</span>,
+		<span>{word("title-4")}</span>,
+		<span>{word("title-5")}</span>,
+		<span>{word("title-6")}</span>,
 	]
 	const { data: termsData } = useGetTermsQuery({})
 	const termsArray = termsData?.data.attributes.termsImage.data
 
-   
 	return (
 		<div className='main-terms'>
 			{titles.map((item, index) => (
@@ -29,7 +30,8 @@ const Terms = () => {
 						width={65}
 						height={65}
 						alt='icon'
-                  style={{objectFit: "cover"}}
+						style={{ objectFit: 'cover' }}
+						loading='lazy'
 					/>
 				</div>
 			))}

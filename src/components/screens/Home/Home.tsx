@@ -8,6 +8,7 @@ import Subscribe from './Subscribe/Subscribe'
 import Container from '@/components/ui/containers/Container/Container'
 import MiddleBanner from './MiddleBanner/MiddleBanner'
 import BottomBanner from './BottomBanner/BottomBanner'
+import Header from '@/components/widgets/layout/Header/Header'
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
 
 	return (
 		<>
+		<Header />
 			<MainBanner />
 			<Container>
 				<ProductLine title={t('hits')} tag='hit' tagValue={true} />

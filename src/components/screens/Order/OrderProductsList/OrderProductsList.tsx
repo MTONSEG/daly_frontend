@@ -21,7 +21,7 @@ const OrderProductsList: FC = () => {
 	const { locale } = useParams()
 	const [products, setProducts] = useState<ExtendedProduct[]>([])
 	const chosenProducts = useAppSelector((state) => state.basket.products)
-	const productsData = useAppSelector((state) => state.order.order.products)
+	const productsData = useAppSelector((state) => state.order.order.productsData)
 	console.log("🚀 ~ productsData:", productsData)
 
 	useEffect(() => {

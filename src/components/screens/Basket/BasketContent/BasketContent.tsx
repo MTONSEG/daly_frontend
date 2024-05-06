@@ -28,7 +28,7 @@ const BasketContent: React.FC = () => {
 		const FetchProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
 			setProducts(fetchedProducts)
-			dispatch(fillProductsData({products: fetchedProducts}));
+			dispatch(fillProductsData({productsData: fetchedProducts}));
 			// console.log("🚀 ~ FetchProducts ~ dispatch(fillProductsData({products: fetchedProducts})):", dispatch(fillProductsData({products: fetchedProducts})))
 		}
 		FetchProducts()

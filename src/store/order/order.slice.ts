@@ -17,7 +17,11 @@ export interface IBasketData {
 		deliveryAddress: string | null
 		deliveryApartment: string | null
 		deliveryComment: string | null
-		products: IProduct[]
+		productsData: IProduct[]
+		productsSets: {
+			id: number
+			quantity: number
+		}[]
 	}
 }
 
@@ -35,7 +39,8 @@ const initialState: IBasketData = {
 		deliveryAddress: null,
 		deliveryApartment: null,
 		deliveryComment: null,
-		products: []
+		productsData: [],
+		productsSets: []
 	}
 }
 
@@ -88,14 +93,31 @@ const orderData = createSlice({
 		fillProductsData: (
 			state,
 			action: PayloadAction<{
-				products: IProduct[]
+				productsData: IProduct[]
 			}>
 		) => {
-			state.order.products = action.payload.products
+			state.order.productsData = action.payload.productsData
 		},
+		fillProductsSets: (
+			state,
+			action: PayloadAction<{
+				productsSets: {
+					id: number
+					quantity: number
+				}[]
+			}>
+		) => {
+			state.order.productsSets = action.payload.productsSets
+		}
 	}
 })
 
-export const { fillPersonalData, fillPaymentData,fillDeliveryData, fillProductsData } = orderData.actions
+export const {
+	fillPersonalData,
+	fillPaymentData,
+	fillDeliveryData,
+	fillProductsData,
+	fillProductsSets
+} = orderData.actions
 
 export default orderData.reducer

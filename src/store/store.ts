@@ -26,6 +26,7 @@ import { commentApi } from './api/comment.api'
 import { novaPostAdressesApi } from './api/novaPost.api'
 import { homeApi } from '@/store/api/home.api'
 import orderSlice from './order/order.slice'
+import { subscribeApi } from './api/subscribe.api'
 
 const persistConfig = {
 	key: 'root',
@@ -49,6 +50,7 @@ const persistedReducer = persistReducer(
 		[commentApi.reducerPath]: commentApi.reducer,
 		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer,
 		[homeApi.reducerPath]: homeApi.reducer,
+		[subscribeApi.reducerPath]: subscribeApi.reducer,
 		order: orderSlice
 	})
 )

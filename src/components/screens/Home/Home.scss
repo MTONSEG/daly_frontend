@@ -144,6 +144,16 @@
 		grid-auto-rows: auto;
 		grid-auto-flow: dense;
 		row-gap: 24px;
+		transition: all 0.2 ease-in;
+		}
+
+		&__logos-item {
+			cursor: pointer;
+			transition: all 0.2s ease-in;
+		}
+
+		&__logos-item:hover {
+         transform: scale(105%);
 		}
 }
 
@@ -277,6 +287,13 @@
 		border-radius: 10px;
 		box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
 		background: rgb(255, 255, 255);
+		cursor: pointer;
+		transition: all 0.2s ease-in;
+	}
+
+	&__item:hover {
+		margin-top: -5px;
+		box-shadow: 5px 4px 16px 5px rgba(54, 58, 69, 0.15);
 	}
 
 	&__item-title {
@@ -286,7 +303,7 @@
 		line-height: 1.5;
 		letter-spacing: 0.5px;
 		text-align: center;
-		white-space: nowrap;
+		white-space: wrap;
 	}
 }
 

@@ -165,5 +165,17 @@
 		"placeholder-2": "Deer",
 		"placeholder-3": "+38 (123)-456-78-90",
 		"placeholder-4": "name@inbox.ua"
+	},
+	"terms": {
+		"title-1":"Convenient delivery",
+		"title-2":"Payment in any way",
+		"title-3":"Warranty service",
+		"title-4":"Quick exchange and return",
+		"title-5":"Express delivery",
+		"title-6":"Better prices"
+	},
+	"subscribe": {
+		"main-title": "Be the first !",
+		"description": "Subscribe to the latest updates and learn about new products and special offers first"
 	}
 }

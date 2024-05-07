@@ -366,6 +366,17 @@
 		row-gap: 8px;
 	}
 
+	&__input {
+		width: 100%;
+		max-width: 100%;
+		box-sizing: border-box;
+		border: 1px solid rgb(218, 220, 220) !important;
+		border-radius: 10px;
+		background: rgb(255, 255, 255);
+		padding: 12px 15px 12px 15px;
+		height: 41px;
+	}
+
 	.MuiInputBase-input {
 		width: 100%;
 		max-width: 100%;
@@ -455,6 +466,7 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	overflow-x: hidden;
 
 	&__text-wrapper {
 		display: flex;
@@ -507,7 +519,7 @@
 
 	&__icon {
 		position: absolute;
-		right: -55px;
+		right: 0;
 		bottom: 20px;
 		width: 50px;
 		height: 50px;
@@ -517,15 +529,15 @@
 
 	@keyframes pulse {
 		0% {
-		  transform: scale(1); 
+			transform: scale(1);
 		}
 		50% {
-		  transform: scale(1.2); 
+			transform: scale(1.2);
 		}
 		100% {
-		  transform: scale(1); 
+			transform: scale(1);
 		}
-	  }
+	}
 }
 
 @include media-max(lg) {
@@ -575,6 +587,10 @@
 	.subscribe-form {
 		flex-direction: column;
 		row-gap: 16px;
+	}
+
+	.faq {
+		padding: 40px 0;
 	}
 }
 
@@ -642,6 +658,31 @@
 			height: 320px;
 		}
 	}
+
+	.brands {
+		&__logos {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			column-gap: 24px;
+			row-gap: 32px;
+		}
+
+		&__logos-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 100%;
+		}
+	}
+
+	.main-terms {
+		display: grid;
+		grid-template-columns: 1fr;
+
+		&__item {
+			min-width: 100%;
+		}
+	}
 }
 
 @include media-max(xxs) {
@@ -652,6 +693,15 @@
 
 		.product-card {
 			margin: 0 auto !important;
+		}
+	}
+
+	.main-terms {
+		display: grid;
+		grid-template-columns: 1fr;
+
+		&__item {
+			min-width: 100%;
 		}
 	}
 }

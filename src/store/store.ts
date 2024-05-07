@@ -51,7 +51,7 @@ const persistedReducer = persistReducer(
 		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer,
 		[homeApi.reducerPath]: homeApi.reducer,
 		[subscribeApi.reducerPath]: subscribeApi.reducer,
-		order: orderSlice
+		order: orderSlice,
 	})
 )
 

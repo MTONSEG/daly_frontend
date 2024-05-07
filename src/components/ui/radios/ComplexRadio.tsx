@@ -2,13 +2,14 @@
 import { Dispatch, SetStateAction } from 'react'
 import './ComplexRadio.scss'
 import Link from 'next/link'
+import { PaymentType } from '@/components/screens/Order/OrderPayment/OrderPayment'
 interface IComplexRadio {
-	label: string
+	label: PaymentType
 	title: string
 	description: string
 	link?: string
-	radioActive: string
-	setActive: Dispatch<SetStateAction<string>>
+	radioActive: PaymentType
+	setActive: Dispatch<SetStateAction<PaymentType>>
 }
 
 const ComplexRadio: React.FC<IComplexRadio> = ({

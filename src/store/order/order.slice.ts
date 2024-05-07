@@ -3,7 +3,7 @@
 import { IProduct } from '@/types/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export interface IBasketData {
+export interface IOrderData {
 	order: {
 		name: string
 		surname: string
@@ -25,12 +25,12 @@ export interface IBasketData {
 	}
 }
 
-const initialState: IBasketData = {
+const initialState: IOrderData = {
 	order: {
 		name: '',
 		surname: '',
 		email: '',
-		phoneNumber: undefined,
+		phoneNumber: 0,
 		paymentMethod: '',
 		deliveryType: '',
 		deliveryTown: null,

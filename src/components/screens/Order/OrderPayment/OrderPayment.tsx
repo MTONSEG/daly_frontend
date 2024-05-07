@@ -5,11 +5,14 @@ import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { fillPaymentData } from '@/store/order/order.slice'
-
+export type PaymentType = 'online' | 'installment payment' | 'upon receipt' | 'digital wallet'
 const OrderPayment = ({}) => {
 	const w = useTranslations('order')
 	const word = useTranslations('payment')
-	const [activeRadio, setActiveRadio] = useState<string>(word('title-1'))
+	const [activeRadio, setActiveRadio] = useState<
+		'online' | 'installment payment' | 'upon receipt' | 'digital wallet'
+	>('online')
+	console.log('🚀 ~ OrderPayment ~ activeRadio:', activeRadio)
 	const dispatch = useAppDispatch()
 	useEffect(() => {
 		dispatch(fillPaymentData({ paymentMethod: activeRadio }))
@@ -18,25 +21,25 @@ const OrderPayment = ({}) => {
 	const radios = {
 		payments: [
 			{
-				label: 'online',
+				label: 'online' as PaymentType,
 				title: word('title-1'),
 				description: word('description-1'),
 				link: undefined
 			},
 			{
-				label: 'installment payment',
+				label: 'installment payment' as PaymentType,
 				title: word('title-2'),
 				description: word('description-2'),
 				link: word('link-2')
 			},
 			{
-				label: 'upon receipt',
+				label: 'upon receipt' as PaymentType,
 				title: word('title-3'),
 				description: word('description-3'),
 				link: undefined
 			},
 			{
-				label: 'digital wallet',
+				label: 'digital wallet' as PaymentType,
 				title: word('title-4'),
 				description: word('description-4'),
 				link: undefined

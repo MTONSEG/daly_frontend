@@ -1,6 +1,6 @@
 import '../Home.scss'
 import { useForm } from 'react-hook-form'
-import { TextField } from '@mui/material'
+// import { TextField } from '@mui/material'
 import { ISubscribe } from '@/types/types'
 import { useEffect, useState } from 'react'
 import { subscribeApi } from '@/store/api/subscribe.api'
@@ -21,7 +21,7 @@ const SubscribeForm = () => {
 	return (
 		<form onSubmit={handleSubmit(subscribeApi())} className='subscribe-form'>
 			<div className='subscribe-form__inputs'>
-				<TextField
+				{/* <TextField
 					id='standard-basic'
 					placeholder='Ваш e-mail'
 					variant='outlined'
@@ -32,7 +32,7 @@ const SubscribeForm = () => {
 					})}
 					error={!!errors.data?.subscriber}
 					helperText={errors.data?.subscriber?.message}
-				/>
+				/> */}
 				<div className='subscribe-form__terms'>
 					<div
 						className={

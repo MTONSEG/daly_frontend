@@ -48,9 +48,8 @@ const persistedReducer = persistReducer(
 		[getProductApi.reducerPath]: getProductApi.reducer,
 		[commentApi.reducerPath]: commentApi.reducer,
 		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer,
-		[homeApi.reducerPath]: homeApi.reducer,
-		[subscribeApi.reducerPath]: subscribeApi.reducer
-	})
+		[homeApi.reducerPath]: homeApi.reducer
+		})
 )
 
 export const store = configureStore({

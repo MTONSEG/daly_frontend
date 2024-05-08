@@ -47,7 +47,7 @@ export type IBrand = {
 }
 
 export type IProductLocales = {
-	data:IProduct[]
+	data: IProduct[]
 }
 
 export interface IProduct {
@@ -189,7 +189,26 @@ export interface ITerms {
 }
 
 export interface ISubscribe {
-    data: {
-     subscriber: string
-    }
- }
+	data: {
+		subscriber: string
+	}
+}
+
+export interface IOrder {
+	name: string| undefined
+	surname: string| undefined
+	email: string | undefined
+	phoneNumber: number | undefined
+	paymentMethod: string| undefined
+	deliveryType: string| undefined
+	deliveryTown: string | undefined
+	deliveryDate: string | undefined
+	deliveryTime: string | undefined
+	deliveryAddress: string | undefined
+	deliveryApartment: string | undefined
+	deliveryComment: string | undefined
+	productsSets: {
+		id: number
+		quantity: number
+	}[]
+}

@@ -3,14 +3,13 @@ import './OrderProductsList.scss'
 import { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/hooks/useReduxHooks'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { GreyCross } from '@/components/ui/icons'
 import Loader from '@/components/ui/loaders/Loader'
 import { Link } from '@/navigation'
 
-interface ExtendedProduct extends IProduct {
+interface IExtendedProduct extends IProduct {
 	name: string
 	price: number
 	id: number
@@ -20,32 +19,39 @@ interface ExtendedProduct extends IProduct {
 const OrderProductsList: FC = () => {
 	const word = useTranslations('order')
 	const { locale } = useParams()
-	const [products, setProducts] = useState<ExtendedProduct[]>([])
-	const chosenProducts = useAppSelector((state: { basket: any }) => state.basket)
-	const fetchProducts = async (productIds: number[]) => {
-		const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
-		const extendedProducts: ExtendedProduct[] = fetchedProducts.map((product) => {
-			const chosenProduct = chosenProducts.products.find(
-				(chosenProduct: { id: number }) => chosenProduct.id === product.id
-			)
-			return {
-				...product,
-				name: product.attributes.title,
-				price: product.attributes.discount
-					? product.attributes.price - product.attributes.discount
-					: product.attributes.price,
-				quantity: chosenProduct ? chosenProduct.quantity : 0
-			}
-		})
-		setProducts(extendedProducts)
-	}
+	const [products, setProducts] = useState<IExtendedProduct[]>([])
+	const chosenProducts = useAppSelector((state) => state.basket.products)
+	const productsData = useAppSelector((state) => state.order.order.productsData)
+	console.log('🚀 ~ productsData:', productsData)
 
 	useEffect(() => {
-		const productIds = chosenProducts.products.map(
-			(product: { id: number; quantity: number }) => product.id
+		// Extract product IDs and quantities from chosenProducts
+		const productIds = chosenProducts.map((product: { id: number; quantity: number }) => product.id)
+
+		// Filter productsData to get only the needed products by ID
+		const filteredProducts = productsData?.filter((product: IProduct) =>
+			productIds.includes(product.id)
 		)
-		fetchProducts(productIds)
-	}, [chosenProducts, locale])
+
+		// Build the extended products array
+		const extendedProducts: IExtendedProduct[] | undefined = filteredProducts?.map(
+			(product: IProduct) => {
+				const chosenProduct = chosenProducts.find(
+					(chosenProduct: { id: number }) => chosenProduct.id === product.id
+				)
+				return {
+					...product,
+					name: product.attributes.title,
+					price: product.attributes.discount
+						? product.attributes.price - product.attributes.discount
+						: product.attributes.price,
+					quantity: chosenProduct ? chosenProduct.quantity : 0
+				}
+			}
+		)
+
+		extendedProducts && setProducts(extendedProducts)
+	}, [chosenProducts, productsData, locale])
 
 	const wholePrice = useMemo(() => {
 		return products.reduce((acc, product) => acc + product.price * product.quantity, 0)
@@ -54,11 +60,9 @@ const OrderProductsList: FC = () => {
 	return (
 		<div className='order-products-list'>
 			<div className='order-products-list__top-bottom'>
-				<div className='order-products-list__item bold s18'>{word('order-chosen-title')}</div>
+				<div className='order-products-list__item bold s18'>{word('chosen-title')}</div>
 				<Link href={'/basket'}>
-					<div className='order-products-list__item underline'>
-						{word('order-chosen-change-button')}
-					</div>
+					<div className='order-products-list__item underline'>{word('chosen-change-button')}</div>
 				</Link>
 			</div>
 			<div className='order-products-list__list'>
@@ -80,7 +84,7 @@ const OrderProductsList: FC = () => {
 				)}
 			</div>
 			<div className='order-products-list__top-bottom'>
-				<div className='order-products-list__item'>{word('order-chosen-word')}</div>
+				<div className='order-products-list__item'>{word('chosen-word')}</div>
 				<div className='order-products-list__item bold s16'>{Math.ceil(wholePrice)} ₴</div>
 			</div>
 		</div>

@@ -1,10 +1,14 @@
 import '../Home.scss'
 import { useForm } from 'react-hook-form'
-// import { TextField } from '@mui/material'
 import { ISubscribe } from '@/types/types'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { subscribeApi } from '@/store/api/subscribe.api'
-import Button from '@/components/ui/buttons/Button/Button'
+import Checkbox from '@/components/ui/checkboxes/Checkbox'
+import Input from '@/components/ui/forms/Input/Input'
+import { useTranslations } from 'next-intl'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 const SubscribeForm = () => {
 	//useForm-------------------------------------------------
@@ -12,43 +16,38 @@ const SubscribeForm = () => {
 	const { register, handleSubmit, formState, reset } = form
 	const { errors } = formState
 
-	useEffect(() => {
-		reset()
-	}, [])
+	const onSubmit = handleSubmit(subscribeApi(reset))
 
 	const [choosed, setChoosed] = useState<boolean>(false)
 
+	useEffect(() => {
+		if (formState.isDirty === false) {
+			setChoosed(false)
+		}
+	}, [formState.isDirty])
+
+	//---------------------------------------------------
+	const word = useTranslations("subscribe")
+
+
 	return (
-		<form onSubmit={handleSubmit(subscribeApi())} className='subscribe-form'>
+		<form onSubmit={onSubmit} className='subscribe-form'>
 			<div className='subscribe-form__inputs'>
-				{/* <TextField
-					id='standard-basic'
-					placeholder='Ваш e-mail'
-					variant='outlined'
-					style={{ minWidth: '100%' }}
-					type='text'
-					{...register('data.subscriber', {
-						required: 'Email is required'
-					})}
-					error={!!errors.data?.subscriber}
-					helperText={errors.data?.subscriber?.message}
-				/> */}
+				<Input type='email' placeholder={word("placeholder")}/>
 				<div className='subscribe-form__terms'>
-					<div
-						className={
-							choosed ? 'subscribe-form__terms-mark-active' : 'subscribe-form__terms-mark-nonactive'
-						}
-						onClick={() => setChoosed(!choosed)}
-					><div></div></div>
+					<Checkbox label="" isActive={choosed} toggleCheckbox={() => setChoosed(!choosed)}/>
 					<div className='subscribe-form__terms-text'>
-						Я согласен с условиями обработки <span>персональных данных</span>, а также с{' '}
-						<span>условиями подписки</span>
+						{word("agreement-text1")} <span>{word("agreement-text2")} </span>, {word("agreement-text3")}{' '}
+						<span>{word("agreement-text4")}</span>
 					</div>
 				</div>
 			</div>
 			<div>
-			<button className='subscribe-form__button'>Подписаться</button>
+				<button className='subscribe-form__button' type='submit'>
+				{word("button-value")}
+				</button>
 			</div>
+			<ToastContainer />
 		</form>
 	)
 }

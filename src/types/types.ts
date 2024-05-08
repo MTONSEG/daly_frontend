@@ -190,6 +190,7 @@ export interface ITerms {
 
 export interface ISubscribe {
     data: {
-     subscriber: string
+     subscriber: string,
+	 subscribe: boolean
     }
  }

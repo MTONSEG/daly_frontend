@@ -403,7 +403,14 @@
 		display: flex;
 		align-items: center;
 		column-gap: 13px;
+		position: relative;
 	}
+
+	&__terms-error {
+		position: absolute;
+		left: -120px;
+		top: 0;
+		}
 
 	&__terms-mark-active,
 	&__terms-mark-nonactive {
@@ -606,7 +613,9 @@
 		}
 
 		&__image {
-			object-fit: fill;
+			min-width: 100%;
+			min-height: 100%;
+			object-fit: cover;
 		}
 	}
 
@@ -659,6 +668,10 @@
 		}
 	}
 
+	.slick-list {
+		padding: 0 !important;
+	}
+
 	.brands {
 		&__logos {
 			display: grid;
@@ -671,7 +684,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			min-width: 100%;
+			max-width: 50%;
 		}
 	}
 

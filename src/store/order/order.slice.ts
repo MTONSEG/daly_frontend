@@ -3,44 +3,53 @@
 import { IProduct } from '@/types/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+export interface OrderProductsSets {
+	productsSets: {
+		id: number
+		quantity: number
+	}[]
+}
+
 export interface IOrderData {
 	order: {
-		name: string
-		surname: string
+		name: string | undefined
+		surname: string | undefined
 		email: string | undefined
 		phoneNumber: number | undefined
-		paymentMethod: string
-		deliveryType: string
-		deliveryTown: string | null
-		deliveryDate: string | null
-		deliveryTime: string | null
-		deliveryAddress: string | null
-		deliveryApartment: string | null
-		deliveryComment: string | null
-		productsData: IProduct[]
-		productsSets: {
-			id: number
-			quantity: number
-		}[]
+		paymentMethod: string | undefined
+		deliveryType: string | undefined
+		deliveryTown: string | undefined
+		deliveryDate: string | undefined
+		deliveryTime: string | undefined
+		deliveryAddress: string | undefined
+		deliveryApartment: string | undefined
+		deliveryComment: string | undefined
+		productsData: IProduct[] | undefined
+		productsSets:
+			| undefined
+			| {
+					id: number
+					quantity: number
+			  }[]
 	}
 }
 
 const initialState: IOrderData = {
 	order: {
-		name: '',
-		surname: '',
-		email: '',
-		phoneNumber: 0,
-		paymentMethod: '',
-		deliveryType: '',
-		deliveryTown: null,
-		deliveryDate: null,
-		deliveryTime: null,
-		deliveryAddress: null,
-		deliveryApartment: null,
-		deliveryComment: null,
-		productsData: [],
-		productsSets: []
+		name: undefined,
+		surname: undefined,
+		email: undefined,
+		phoneNumber: undefined,
+		paymentMethod: undefined,
+		deliveryType: undefined,
+		deliveryTown: undefined,
+		deliveryDate: undefined,
+		deliveryTime: undefined,
+		deliveryAddress: undefined,
+		deliveryApartment: undefined,
+		deliveryComment: undefined,
+		productsData: undefined,
+		productsSets: undefined
 	}
 }
 
@@ -74,12 +83,12 @@ const orderData = createSlice({
 			state,
 			action: PayloadAction<{
 				deliveryType: string
-				deliveryTown: string | null
-				deliveryDate: string | null
-				deliveryTime: string | null
-				deliveryAddress: string | null
-				deliveryApartment: string | null
-				deliveryComment: string | null
+				deliveryTown: string | undefined
+				deliveryDate: string | undefined
+				deliveryTime: string | undefined
+				deliveryAddress: string | undefined
+				deliveryApartment: string | undefined
+				deliveryComment: string | undefined
 			}>
 		) => {
 			state.order.deliveryType = action.payload.deliveryType
@@ -98,15 +107,7 @@ const orderData = createSlice({
 		) => {
 			state.order.productsData = action.payload.productsData
 		},
-		fillProductsSets: (
-			state,
-			action: PayloadAction<{
-				productsSets: {
-					id: number
-					quantity: number
-				}[]
-			}>
-		) => {
+		fillProductsSets: (state, action: PayloadAction<OrderProductsSets>) => {
 			state.order.productsSets = action.payload.productsSets
 		}
 	}

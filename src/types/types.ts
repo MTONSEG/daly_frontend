@@ -195,18 +195,18 @@ export interface ISubscribe {
 }
 
 export interface IOrder {
-	name: string
-	surname: string
+	name: string| undefined
+	surname: string| undefined
 	email: string | undefined
 	phoneNumber: number | undefined
-	paymentMethod: string
-	deliveryType: string
-	deliveryTown: string | null
-	deliveryDate: string | null
-	deliveryTime: string | null
-	deliveryAddress: string | null
-	deliveryApartment: string | null
-	deliveryComment: string | null
+	paymentMethod: string| undefined
+	deliveryType: string| undefined
+	deliveryTown: string | undefined
+	deliveryDate: string | undefined
+	deliveryTime: string | undefined
+	deliveryAddress: string | undefined
+	deliveryApartment: string | undefined
+	deliveryComment: string | undefined
 	productsSets: {
 		id: number
 		quantity: number

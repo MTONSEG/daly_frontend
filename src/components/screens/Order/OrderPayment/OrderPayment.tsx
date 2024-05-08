@@ -16,6 +16,8 @@ const OrderPayment = ({}) => {
 	const dispatch = useAppDispatch()
 	useEffect(() => {
 		dispatch(fillPaymentData({ paymentMethod: activeRadio }))
+	console.log('🚀 filled ~ activeRadio:', activeRadio)
+
 	}, [activeRadio])
 
 	const radios = {

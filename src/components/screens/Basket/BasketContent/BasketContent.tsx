@@ -10,7 +10,7 @@ import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
 import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
-import { fillProductsData } from '@/store/order/order.slice'
+import { fillProductsData, fillProductsSets } from '@/store/order/order.slice'
 
 const BasketContent: React.FC = () => {
 	const word = useTranslations('basket')
@@ -28,7 +28,8 @@ const BasketContent: React.FC = () => {
 		const FetchProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
 			setProducts(fetchedProducts)
-			dispatch(fillProductsData({productsData: fetchedProducts}));
+			dispatch(fillProductsData({ productsData: fetchedProducts }));
+			dispatch(fillProductsSets({productsSets: productIds}));
 			// console.log("🚀 ~ FetchProducts ~ dispatch(fillProductsData({products: fetchedProducts})):", dispatch(fillProductsData({products: fetchedProducts})))
 		}
 		FetchProducts()

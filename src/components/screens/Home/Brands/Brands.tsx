@@ -24,7 +24,7 @@ const Brands = () => {
 			<div className={'brands__logos'}>
 				{logosArray &&
 					logosArray.map((item: { attributes: { url: string } }, index: number) => (
-						<div key={index} style={{ width: '175px' }} className='brands__logos-item'>
+						<div key={index} className='brands__logos-item'>
 							<Image
 								alt='brand'
 								src={item.attributes.url ? item.attributes.url : ''}

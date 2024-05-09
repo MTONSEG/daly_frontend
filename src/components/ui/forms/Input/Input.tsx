@@ -9,7 +9,7 @@ export interface IInputProps {
 	value?: string | number
 	name?: string
 	placeholder?: string
-	error?: string
+	error?: string 
 	required?: string | boolean
 	disabled?: boolean
 	onChange?: (e: ChangeEvent<HTMLInputElement>) => void

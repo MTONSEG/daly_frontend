@@ -12,12 +12,10 @@ const OrderPayment = ({}) => {
 	const [activeRadio, setActiveRadio] = useState<
 		'online' | 'installment payment' | 'upon receipt' | 'digital wallet'
 	>('online')
-	console.log('🚀 ~ OrderPayment ~ activeRadio:', activeRadio)
 	const dispatch = useAppDispatch()
+
 	useEffect(() => {
 		dispatch(fillPaymentData({ paymentMethod: activeRadio }))
-	console.log('🚀 filled ~ activeRadio:', activeRadio)
-
 	}, [activeRadio])
 
 	const radios = {

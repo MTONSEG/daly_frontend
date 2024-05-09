@@ -13,21 +13,25 @@
 
 	&__content {
         display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(170px, 297px));
+		grid-template-columns: repeat(auto-fill, minmax(170px, 297px));
 		row-gap: 11px;
 		column-gap: 30px;
 	}
+
+    &__input{
+        width: 100%;
+    }
     @include media-max(md) {
         &__content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(245px, 100%));
             justify-items: center;
         }
     }
     @include media-max(xxs) {
         &__content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 100%));
             justify-items: center;
         }
     }

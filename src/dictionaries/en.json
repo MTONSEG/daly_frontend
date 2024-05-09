@@ -145,6 +145,10 @@
 		"buy-aggreement": "By clicking the submit button you confirm your agreement with the ",
 		"buy-aggreement-link": "terms of sale in the Daly online store"
 	},
+	"order-delivery":{
+		"nav-1": "Delivery",
+		"nav-2": "Takeout"
+	},
 	"payment": {
 		"title-1": "Online",
 		"title-2": "Installment plan online",

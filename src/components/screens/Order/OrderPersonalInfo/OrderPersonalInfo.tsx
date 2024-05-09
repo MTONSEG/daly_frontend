@@ -20,9 +20,9 @@ const OrderPersonalInfo = () => {
 	const [email, setEmail] = useState<string | undefined>()
 
 	const debouncedName = useDebounce(name, 1000)
-	const debouncedSurname = useDebounce(surname,1000)
-	const debouncedPhoneNumber = useDebounce(phoneNumber,1000)
-	const debouncedEmail = useDebounce(email,1000)
+	const debouncedSurname = useDebounce(surname, 1000)
+	const debouncedPhoneNumber = useDebounce(phoneNumber, 1000)
+	const debouncedEmail = useDebounce(email, 1000)
 
 	useEffect(() => {
 		dispatch(
@@ -50,42 +50,34 @@ const OrderPersonalInfo = () => {
 				<Input
 					type={'text'}
 					label={word('title-1')}
-					// value={name}
 					name='name'
 					placeholder={word('placeholder-1')}
-					error=''
 					onChange={onChange(setName)}
-					inputClassName=''
+					inputClassName='order-block__input'
 				/>
 				<Input
 					type={'text'}
 					label={word('title-2')}
-					// value={surname}
 					name='phone number'
 					placeholder={word('placeholder-2')}
-					error=''
 					onChange={onChange(setSurname)}
-					inputClassName=''
+					inputClassName='order-block__input'
 				/>
 				<Input
 					type={'number'}
 					label={word('title-3')}
-					// value={phoneNumber !== undefined ? phoneNumber.toString() : ''}
 					name='phone number'
 					placeholder={word('placeholder-3')}
-					error=''
 					onChange={onChange(setPhoneNumber)}
-					inputClassName=''
+					inputClassName='order-block__input'
 				/>
 				<Input
 					type='email'
 					label={word('title-4')}
-					// value={email}
 					name='phone number'
 					placeholder={word('placeholder-4')}
-					error=''
 					onChange={onChange(setEmail)}
-					inputClassName=''
+					inputClassName='order-block__input'
 				/>
 			</div>
 		</div>

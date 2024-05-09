@@ -66,6 +66,7 @@
 	}
 
 	@include media-max(xs) {
+		align-items: center;
 		&__title {
 			font-weight: 700;
 			font-size: 22px;
@@ -75,5 +76,19 @@
 			width: 10px;
 			height: 20px;
 		}
+
+
+		&__bottom {
+			display: flex;
+			flex-direction: column;
+			gap: 25px;
+			align-items: center;
+			justify-content: center;
+		}
+	
+		&__aggreement {
+			text-align: center;
+		}
+	
 	}
 }

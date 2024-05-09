@@ -47,7 +47,7 @@ export type IBrand = {
 }
 
 export type IProductLocales = {
-	data:IProduct[]
+	data: IProduct[]
 }
 
 export interface IProduct {

@@ -25,13 +25,14 @@ import productSlice from '@/store/slices/product.slice'
 import { commentApi } from './api/comment.api'
 import { novaPostAdressesApi } from './api/novaPost.api'
 import { homeApi } from '@/store/api/home.api'
+import orderSlice from './order/order.slice'
 import { subscribeApi } from './api/subscribe.api'
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['basket', 'favourites', 'comparison'],
-	blacklist: ['header', 'filters', 'catalogProducts']
+	whitelist: ['basket', 'favourites', 'comparison', 'order'],
+	// blacklist: ['header', 'filters', 'catalogProducts']
 }
 
 const persistedReducer = persistReducer(
@@ -48,7 +49,8 @@ const persistedReducer = persistReducer(
 		[getProductApi.reducerPath]: getProductApi.reducer,
 		[commentApi.reducerPath]: commentApi.reducer,
 		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer,
-		[homeApi.reducerPath]: homeApi.reducer
+		[homeApi.reducerPath]: homeApi.reducer,
+		order: orderSlice,
 		})
 )
 

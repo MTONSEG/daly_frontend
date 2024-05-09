@@ -10,6 +10,7 @@ import Container from '@/components/ui/containers/Container/Container'
 import MiddleBanner from './MiddleBanner/MiddleBanner'
 import BottomBanner from './BottomBanner/BottomBanner'
 import Header from '@/components/widgets/layout/Header/Header'
+import Footer from '@/components/widgets/layout/Footer/Footer'
 
 export default function Home() {
 	const t = useTranslations('home')

@@ -22,7 +22,6 @@ const OrderProductsList: FC = () => {
 	const [products, setProducts] = useState<IExtendedProduct[]>([])
 	const chosenProducts = useAppSelector((state) => state.basket.products)
 	const productsData = useAppSelector((state) => state.order.order.productsData)
-	console.log('🚀 ~ productsData:', productsData)
 
 	useEffect(() => {
 		// Extract product IDs and quantities from chosenProducts

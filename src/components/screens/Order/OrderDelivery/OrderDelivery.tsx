@@ -1,11 +1,13 @@
 'use client'
 import Container from '@/components/ui/containers/Container/Container'
 import './OrderDelivery.scss'
-import '../../Product/Tabs/Delivery/Delivery.scss';
-import { useState } from 'react'
+import '../../Product/Tabs/Delivery/Delivery.scss'
+import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import DeliveryForm from '../../Product/Tabs/Delivery/DeliveryForm/DeliveryForm'
 import { TelIcon } from '@/components/ui/icons'
+import { useAppDispatch } from '@/hooks/useReduxHooks'
+import { fillDeliveryData } from '@/store/order/order.slice'
 
 const Pickup = () => {
 	const tD = useTranslations('delivery')
@@ -34,42 +36,53 @@ const Pickup = () => {
 	)
 }
 
-
 const OrderDelivery = ({}) => {
+	const dispatch = useAppDispatch()
 	const w = useTranslations('order-delivery')
 	const [deliveryType, setDeliveryType] = useState<'delivery' | 'takeout'>('delivery')
-
+	useEffect(() => {
+		dispatch(
+			fillDeliveryData({
+				deliveryType: deliveryType
+			})
+		)
+	}, [deliveryType, dispatch])
 	const handleDeliveryChange = (deliveryType: 'delivery' | 'takeout') => {
 		setDeliveryType(deliveryType)
 	}
 
 	return (
-		<Container variant='fullscreen'>
-			<div className='order-delivery'>
-				<div className='order-delivery__nav'>
-					<div
-						className={`order-delivery__nav-item ${deliveryType === 'delivery' && 'active'}`}
-						onClick={() => {
-							handleDeliveryChange('delivery')
-						}}
-					>
-						{w('nav-1')}
-					</div>
-					<div
-						className={`order-delivery__nav-item ${deliveryType === 'takeout' && 'active'}`}
-						onClick={() => {
-							handleDeliveryChange('takeout')
-						}}
-					>
-						{w('nav-2')}
-					</div>
+		<div className='order-delivery'>
+			<div className='order-delivery__title'>{w('title')}</div>
+			<div className='order-delivery__nav'>
+				<div
+					className={`order-delivery__nav-item ${deliveryType === 'delivery' && 'active'}`}
+					onClick={() => {
+						handleDeliveryChange('delivery')
+					}}
+				>
+					{w('nav-1')}
 				</div>
-				<div className='order-delivery__content'>
-					{deliveryType === 'delivery' && <DeliveryForm/>}
-					{deliveryType === 'takeout' && <Pickup />}
+				<div
+					className={`order-delivery__nav-item ${deliveryType === 'takeout' && 'active'}`}
+					onClick={() => {
+						handleDeliveryChange('takeout')
+					}}
+				>
+					{w('nav-2')}
 				</div>
 			</div>
-		</Container>
+			<div className='order-delivery__content'>
+				{deliveryType === 'delivery' && (
+					<div className='courier'>
+						<div className='courier__left'>
+							<DeliveryForm buttonDisabled={true} type='order' />
+						</div>
+					</div>
+				)}
+				{deliveryType === 'takeout' && <Pickup />}
+			</div>
+		</div>
 	)
 }
 

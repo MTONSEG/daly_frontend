@@ -19,10 +19,10 @@ const OrderPersonalInfo = () => {
 	const [phoneNumber, setPhoneNumber] = useState<number | undefined>()
 	const [email, setEmail] = useState<string | undefined>()
 
-	const debouncedName = useDebounce(name, 1000)
-	const debouncedSurname = useDebounce(surname, 1000)
-	const debouncedPhoneNumber = useDebounce(phoneNumber, 1000)
-	const debouncedEmail = useDebounce(email, 1000)
+	const debouncedName = useDebounce(name, 500)
+	const debouncedSurname = useDebounce(surname, 500)
+	const debouncedPhoneNumber = useDebounce(phoneNumber, 500)
+	const debouncedEmail = useDebounce(email, 500)
 
 	useEffect(() => {
 		dispatch(

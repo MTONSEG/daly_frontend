@@ -143,9 +143,12 @@
 		"next-button": "Next",
 		"buy-button": "Make order",
 		"buy-aggreement": "By clicking the submit button you confirm your agreement with the ",
-		"buy-aggreement-link": "terms of sale in the Daly online store"
+		"buy-aggreement-link": "terms of sale in the Daly online store",
+		"fill-popup-text": "Some of the fields are empty. Fill them up to proceed with the order creation",
+		"fill-popup-close-button": "Close"
 	},
 	"order-delivery":{
+		"title": "Way of shipment",
 		"nav-1": "Delivery",
 		"nav-2": "Takeout"
 	},

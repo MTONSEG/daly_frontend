@@ -1,10 +1,13 @@
 import { useGetAdressesMutation } from '@/store/api/novaPost.api'
 import { useTranslations } from 'next-intl'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AsyncSelect from 'react-select/async'
 import Select, { StylesConfig } from 'react-select'
 import Button from '@/components/ui/buttons/Button/Button'
 import { generateDate } from '@/utils/generateDate'
+import { useAppDispatch } from '@/hooks/useReduxHooks'
+import { fillDeliveryData } from '@/store/order/order.slice'
+import { useDebounce } from '@/hooks/useDebounce'
 
 const workingHours = [
 	{ value: '10.00', label: '10.00 - 14.00' },
@@ -36,7 +39,13 @@ const availibleDate = [
 	}
 ]
 
-const DeliveryForm = () => {
+const DeliveryForm = ({
+	buttonDisabled = false,
+	type = 'default'
+}: {
+	buttonDisabled?: boolean
+	type?: 'default' | 'order'
+}) => {
 	const loadOptions = (
 		inputValue: string,
 		callback: (options: { label: string; value: string }[]) => void
@@ -56,6 +65,30 @@ const DeliveryForm = () => {
 		time: false,
 		adress: false
 	})
+
+	const dispatch = useAppDispatch()
+
+	const [selectedCity, setSelectedCity] = useState<string>('choose_city')
+	const [selectedDate, setSelectedDate] = useState<string>('Date')
+	const [selectedTime, setSelectedTime] = useState<string>('Time')
+	const [selectedAddress, setSelectedAddress] = useState<string>('Adress')
+
+	const debouncedCity = useDebounce(selectedCity, 1000)
+	const debouncedDate = useDebounce(selectedDate, 1000)
+	const debouncedTime = useDebounce(selectedTime, 1000)
+	const debouncedAddress = useDebounce(selectedAddress, 1000)
+
+	useEffect(() => {
+		dispatch(
+			fillDeliveryData({
+				deliveryType: 'delivery',
+				deliveryTown: debouncedCity,
+				deliveryDate: debouncedDate,
+				deliveryTime: debouncedTime,
+				deliveryAddress: debouncedAddress
+			})
+		)
+	}, [debouncedCity, debouncedDate, debouncedTime, debouncedAddress, dispatch])
 
 	const onCityChangeHandler = async (city: string) => {
 		const res = await getAdresses({ city: city }).unwrap()
@@ -95,7 +128,7 @@ const DeliveryForm = () => {
 	return (
 		<form
 			id='courier-form'
-			className='courier__form'
+			className={`courier__form ${type === 'order' && 'order-form'}`}
 			onSubmit={() => {
 				// не понимаю,куда оно должно вести
 			}}
@@ -109,6 +142,8 @@ const DeliveryForm = () => {
 							return { ...prev, city: true }
 						})
 						const val = newValue as { value: string; label: string }
+
+						setSelectedCity(val.value)
 
 						onCityChangeHandler(val.value)
 					}}
@@ -127,7 +162,9 @@ const DeliveryForm = () => {
 				<div className='select-container'>
 					<p className='select-label'>{tD('date')}</p>
 					<Select
-						onChange={() => {
+						onChange={(newValue) => {
+							const val = newValue as { value: string; label: string }
+							setSelectedDate(val.label)
 							setIsChosen((prev) => {
 								return { ...prev, date: true }
 							})
@@ -141,7 +178,9 @@ const DeliveryForm = () => {
 				<div className='select-container'>
 					<p className='select-label'>{tD('time')}</p>
 					<Select
-						onChange={() => {
+						onChange={(newValue) => {
+							const val = newValue as { value: string; label: string }
+							setSelectedTime(val.value)
 							setIsChosen((prev) => {
 								return { ...prev, time: true }
 							})
@@ -157,11 +196,13 @@ const DeliveryForm = () => {
 				<p className='select-label'>{tD('adress')}</p>
 				<AsyncSelect
 					isDisabled={isChoosen.city && isChoosen.date && isChoosen.time ? false : true}
-					onChange={() =>
+					onChange={(newValue) => {
+						const val = newValue as { value: string; label: string }
+						setSelectedAddress(val.value)
 						setIsChosen((prev) => {
 							return { ...prev, adress: true }
 						})
-					}
+					}}
 					placeholder={t('search-placeholder')}
 					loadingMessage={() => t('searching')}
 					noOptionsMessage={() => t('no-searched')}
@@ -172,18 +213,20 @@ const DeliveryForm = () => {
 				/>
 			</div>
 
-			<Button
-				disabled={
-					isChoosen.adress && isChoosen.city && isChoosen.date && isChoosen.time ? false : true
-				}
-				variant='product'
-				type='submit'
-				onClick={(e) => {
-					e.preventDefault()
-				}}
-			>
-				{tD('buyBtn')}
-			</Button>
+			{!buttonDisabled && (
+				<Button
+					disabled={
+						isChoosen.adress && isChoosen.city && isChoosen.date && isChoosen.time ? false : true
+					}
+					variant='product'
+					type='submit'
+					onClick={(e) => {
+						e.preventDefault()
+					}}
+				>
+					{tD('buyBtn')}
+				</Button>
+			)}
 		</form>
 	)
 }

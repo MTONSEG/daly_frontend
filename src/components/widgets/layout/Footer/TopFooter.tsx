@@ -1,22 +1,37 @@
+'use client'
+
 import './Footer.scss'
 import Logo from '@/components/ui/icons/Logo/Logo'
 import Image from 'next/image'
 import cityIcon from '@/icons/footer-location-icon.webp'
 import fbIcon from '@/icons/footer-fb.webp'
 import igIcon from '@/icons/footer-ig.webp'
+import { ArrowDown } from '@/components/ui/icons'
 import PopupList from '../../popups/PopupList/PopupList'
+import { useState } from 'react'
 
 const TopFooter = () => {
-	const cities = ["Одесса", "Днепр","Киев","Харьков","Херсон","Тернополь"]
+	const cities = ['Одесса', 'Днепр', 'Киев', 'Харьков', 'Херсон', 'Тернополь']
+	const [popup, setPopup] = useState<boolean>(false)
+	const closePopup = () => {
+		setPopup(false)
+	}
+
 	return (
 		<div className='top-footer'>
 			<div className='container container_dafault top-footer__content'>
 				<div className='top-footer__location-wrapper'>
 					<Logo />
 					<div className='top-footer__city'>
-						<p className='top-footer__city-text'>Днепр</p>
 						<Image src={cityIcon} width={12} height={12} alt='city' />
-						<PopupList data={cities}/>
+						<p className='top-footer__city-text'>{cities[0]}</p>
+						<div
+							className={popup ? 'top-footer__city-arrow_up' : 'top-footer__city-arrow'}
+							onClick={() => setPopup(!popup)}
+						>
+							<ArrowDown />
+						</div>
+						{popup && <PopupList data={cities} close={closePopup} />}
 					</div>
 				</div>
 				<div className='top-footer__socialmedia'>

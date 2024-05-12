@@ -1,5 +1,6 @@
 'use client'
 
+import "../../../widgets/SliderThumbnail/SliderThumbnail.scss"
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'

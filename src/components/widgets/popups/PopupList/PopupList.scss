@@ -2,40 +2,50 @@
 @import '../../../../styles/vars/colors.scss';
 @import '../../../../styles/vars/fonts.scss';
 
-
-
 .popup-list {
-    position: absolute;
-    top: 105%;
-    left: 0;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
-    padding: 24px;
-    background: var(--white);
-    border-radius: 8px;
-    box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	position: absolute;
+	top: 150%;
+	left: 0;
+	width: 320px;
+	padding: 32px 0 24px;
+	background: var(--white);
+	border-radius: 8px;
+	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
 
-    &__line {
-        display: flex;
-        align-items: center;
-        column-gap: 10px;
-        color: var(--bright-green-06);
+	&__body {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		row-gap: 8px;
+	}
+
+	&__line {
+		display: flex;
+		align-items: center;
+		column-gap: 10px;
+		color: var(--bright-green-06);
 		font-size: 14px;
 		font-weight: var(--500);
 		line-height: 1.5;
-        cursor: pointer;
-        transition: all 0.15s ease-in;
-    }
+		cursor: pointer;
+		transition: all 0.15s ease-in;
+        padding: 0 24px;
+	}
 
-    &__line:hover {
-        text-decoration: underline;
-        color: var(--bright-green);
-    }
+	&__line:hover {
+		color: var(--white);
+        background: var(--bright-green-06);
+	}
 
-    &__line img {
-        width: 10px;
-        height: 8px;
-    }
+	&__line img {
+		width: 10px;
+		height: 8px;
+	}
+
+	&__close {
+		position: absolute;
+		top: -20px;
+		right: 24px;
+		cursor: pointer;
+	}
 }

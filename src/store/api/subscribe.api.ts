@@ -5,8 +5,7 @@ import { toast } from 'react-toastify'
 export const subscribeApi = (resetForm: () => void) => {
 	const onSubmit = async (data: ISubscribe) => {
 		const fetchUser = data
-		console.log(fetchUser)
-		
+				
 		if (fetchUser.data.subscriber !== "") {
 			try {
 				const response = await axios.post<ISubscribe>(

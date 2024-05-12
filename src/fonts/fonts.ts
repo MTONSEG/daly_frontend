@@ -1,4 +1,4 @@
-import { Roboto, Open_Sans, Inter, Nunito } from 'next/font/google'
+import { Roboto, Open_Sans, Inter, Nunito, Poppins } from 'next/font/google'
 
 export const roboto = Roboto({
 	weight: ['400', '500'],
@@ -25,5 +25,11 @@ export const nunito = Nunito({
 	weight: ['500', '600', '700'],
 	subsets: ['latin', 'cyrillic'],
 	variable: '--nunito',
+	display: 'swap'
+})
+export const poppins = Poppins({
+	weight: ['500', '600', '700'],
+	subsets: ['latin', 'devanagari'],
+	variable: '--poppins',
 	display: 'swap'
 })

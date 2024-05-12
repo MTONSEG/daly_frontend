@@ -1,6 +1,6 @@
 @import '@/media';
-@import "../../../styles/vars/colors.scss";
-@import "../../../styles/vars/fonts.scss";
+@import '../../../styles/vars/colors.scss';
+@import '../../../styles/vars/fonts.scss';
 
 .main-page {
 	width: 100%;
@@ -374,7 +374,7 @@
 		width: 100%;
 		max-width: 100%;
 		box-sizing: border-box;
-		border: 1px solid  var(--grey) !important;
+		border: 1px solid var(--grey) !important;
 		border-radius: 10px;
 		background: var(--white);
 		padding: 12px 15px 12px 15px;
@@ -403,38 +403,42 @@
 		line-height: 1.5;
 	}
 
+	&__check-box {
+		position: relative;
+		width: 15px;
+		height: 15px;
+		border: 2px solid var(--grey);
+		border-radius: 3px;
+		cursor: pointer;
+	}
+
+	&__check-box_active {
+		width: 15px;
+		height: 15px;
+		border: 2px solid var(--grey);
+		border-radius: 3px;
+		background: green;
+	}
+
+	&__check-box input {
+	 opacity: 0;;
+	}
+
+	&__check-box-sign {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 2;
+		width: 11px;
+		height: 8px;
+	}
+
 	&__terms {
 		display: flex;
 		align-items: center;
 		column-gap: 13px;
 		position: relative;
-	}
-
-	&__terms-error {
-		position: absolute;
-		left: -120px;
-		top: 0;
-	}
-
-	&__terms-mark-active,
-	&__terms-mark-nonactive {
-		min-width: 15px;
-		min-height: 15px;
-		border-radius: 100%;
-		border: 2px solid #1f1b1b;
-		cursor: pointer;
-		position: relative;
-	}
-
-	&__terms-mark-active div {
-		position: absolute;
-		min-width: 8px;
-		min-height: 8px;
-		background-color: var(--bright-green);
-		border-radius: 50%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-40%, -40%);
 	}
 
 	&__terms-text {
@@ -719,6 +723,12 @@
 		height: auto;
 		padding: 15px 0;
 	}
+
+	.slick-slide {
+			width: 214px !important;
+			max-width: 214px !important;
+			margin-right: 25px !important;
+		}
 }
 
 @include media-max(xxs) {
@@ -754,6 +764,5 @@
 			column-gap: 24px;
 			row-gap: 32px;
 		}
-	
 	}
 }

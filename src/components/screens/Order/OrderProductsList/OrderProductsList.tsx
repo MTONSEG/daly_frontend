@@ -18,6 +18,7 @@ interface IExtendedProduct extends IProduct {
 
 const OrderProductsList: FC = () => {
 	const word = useTranslations('order')
+
 	const { locale } = useParams()
 	const [products, setProducts] = useState<IExtendedProduct[]>([])
 	const chosenProducts = useAppSelector((state) => state.basket.products)
@@ -79,7 +80,7 @@ const OrderProductsList: FC = () => {
 						</div>
 					))
 				) : (
-					<Loader />
+					<div className='order-products-list__item name'>{word("empty-list-text")}</div>
 				)}
 			</div>
 			<div className='order-products-list__top-bottom'>

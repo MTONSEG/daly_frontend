@@ -145,7 +145,8 @@
 		"buy-aggreement": "By clicking the submit button you confirm your agreement with the ",
 		"buy-aggreement-link": "terms of sale in the Daly online store",
 		"fill-popup-text": "Some of the fields are empty. Fill them up to proceed with the order creation",
-		"fill-popup-close-button": "Close"
+		"fill-popup-close-button": "Close",
+		"empty-list-text":"You've not chosen any products, go check your basket first"
 	},
 	"order-delivery":{
 		"title": "Way of shipment",
@@ -195,5 +196,10 @@
 		"title": "Do you want to sell or buy something quickly and profitably?",
 		"text": "At your service is a board of free announcements Daly.ua. On our portal you will find everything from small appliances to real estate and cars. And if you sell a product, service, rent or rent a house, we will help you solve your problem quickly and efficiently, just add an ad for free! Wide range of goods and services. Clothes and shoes, electronics and household appliances, real estate, cars, work, collectibles - here you will find ads for every taste! Huge audience. Thousands of your potential customers visit our site daily. Don’t miss them, submit an ad now! User-friendliness. Well-designed section structure and ad search help you quickly find the right suggestions. And you can place an ad in just a few clicks.",
 		"open-text": "expand"
-	}	
+	},
+	"status-popup":{
+		"success-text":"Request fulfilled successfully!",
+		"failed-text":"Failed to create a request. Please try again.",
+		"waiting-text":"Waiting for your request to be processed..."
+	}
 }

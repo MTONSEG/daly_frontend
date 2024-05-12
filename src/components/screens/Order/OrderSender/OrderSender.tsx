@@ -7,6 +7,9 @@ import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { createOrder } from '@/store/api/order.api'
 import { IOrderData } from '@/store/order/order.slice'
 import { useState } from 'react'
+import StatusPopup from '@/components/ui/forms/StatusPopup/StatusPopup'
+import { useParams, useRouter } from 'next/navigation'
+
 export interface StrapiOrder {
 	name: string | undefined
 	surn: string | undefined
@@ -27,11 +30,12 @@ export interface StrapiOrder {
 }
 
 const OrderSender = () => {
+	const router = useRouter()
+	const { locale } = useParams()
 	const word = useTranslations('order')
-	const dispatch: any = useAppDispatch()
-
+	const dispatch = useAppDispatch()
 	const order = useAppSelector((state) => state.order)
-	const [showPopup, setShowPopup] = useState<boolean>(false)
+	const [orderStatus, setOrderStatus] = useState<'waiting' | 'idle' | 'success' | 'failed'>('idle') // Track order success state
 
 	const transformOrderData = (orderData: IOrderData): StrapiOrder | null => {
 		const { order } = orderData
@@ -39,10 +43,8 @@ const OrderSender = () => {
 			Object.values(order).some((value) => value === undefined) ||
 			order.productsSets === undefined
 		) {
-			setShowPopup(true) // Show popup when fields are not filled
 			return null
 		}
-		setShowPopup(false) // Hide popup when all fields are filled
 
 		const products = order.productsSets?.map((set) => ({
 			product: [set.id],
@@ -66,27 +68,37 @@ const OrderSender = () => {
 		return transformedOrder
 	}
 
-	const handleCreateOrder = () => {
+	const handleCreateOrder = async () => {
+		setOrderStatus('waiting')
 		const transformedOrder = transformOrderData(order)
 		if (!transformedOrder) {
 			console.error('Failed to transform order data')
+			setOrderStatus('failed')
 			return
 		}
 
-		console.log('🚀 ~ handleCreateOrder ~ transformedOrder:', transformedOrder)
-		dispatch(createOrder(transformedOrder))
+		try {
+			// Dispatch createOrder action
+			await dispatch(createOrder(transformedOrder))
+			setOrderStatus('success') // Set order success to true
+		} catch (error) {
+			console.error('Error creating order:', error)
+			setOrderStatus('failed') // Set order success to false in case of error
+		}
+	}
+
+	const handleStatusPopupClose = () => {
+		if (orderStatus === 'success') {
+			router.push(`/${locale}/catalog`)
+		} else if (orderStatus === 'failed') {
+			setOrderStatus('idle')
+		}
 	}
 
 	return (
 		<div className='order__bottom'>
-			{showPopup && (
-				<div className='order__popup'>
-					<Button className='order__order-button' onClick={() => setShowPopup(false)}>
-						{word('fill-popup-close-button')}
-					</Button>
-					<p className='order__popup-text'>{word('fill-popup-text')}</p>
-				</div>
-			)}
+			<StatusPopup status={orderStatus} onClose={handleStatusPopupClose} />
+
 			<Button className='order__order-button' onClick={handleCreateOrder}>
 				{word('buy-button')}
 			</Button>

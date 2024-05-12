@@ -22,8 +22,6 @@ export interface IOrderData {
 		deliveryDate: string | undefined
 		deliveryTime: string | undefined
 		deliveryAddress: string | undefined
-		deliveryApartment: string | undefined
-		deliveryComment: string | undefined
 		productsData: IProduct[] | undefined
 		productsSets:
 			| undefined
@@ -46,8 +44,6 @@ const initialState: IOrderData = {
 		deliveryDate: undefined,
 		deliveryTime: undefined,
 		deliveryAddress: undefined,
-		deliveryApartment: undefined,
-		deliveryComment: undefined,
 		productsData: undefined,
 		productsSets: undefined
 	}
@@ -83,21 +79,21 @@ const orderData = createSlice({
 			state,
 			action: PayloadAction<{
 				deliveryType: string
-				deliveryTown: string | undefined
-				deliveryDate: string | undefined
-				deliveryTime: string | undefined
-				deliveryAddress: string | undefined
-				deliveryApartment: string | undefined
-				deliveryComment: string | undefined
+				deliveryTown?: string | undefined
+				deliveryDate?: string | undefined
+				deliveryTime?: string | undefined
+				deliveryAddress?: string | undefined
 			}>
 		) => {
-			state.order.deliveryType = action.payload.deliveryType
-			state.order.deliveryTown = action.payload.deliveryTown
-			state.order.deliveryDate = action.payload.deliveryDate
-			state.order.deliveryTime = action.payload.deliveryTime
-			state.order.deliveryAddress = action.payload.deliveryAddress
-			state.order.deliveryApartment = action.payload.deliveryApartment
-			state.order.deliveryComment = action.payload.deliveryComment
+			if (action.payload.deliveryType === 'delivery') {
+				state.order.deliveryType = action.payload.deliveryType
+				state.order.deliveryTown = action.payload.deliveryTown
+				state.order.deliveryDate = action.payload.deliveryDate
+				state.order.deliveryTime = action.payload.deliveryTime
+				state.order.deliveryAddress = action.payload.deliveryAddress
+			} else {
+				state.order.deliveryType = action.payload.deliveryType
+			}
 		},
 		fillProductsData: (
 			state,

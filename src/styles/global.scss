@@ -17,3 +17,9 @@
 	width: 89px;
 	height: 31px;
 }
+
+body{
+	&.popup-is-active{
+		overflow-y: hidden;
+	}
+}

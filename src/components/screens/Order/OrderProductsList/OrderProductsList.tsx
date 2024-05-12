@@ -18,11 +18,11 @@ interface IExtendedProduct extends IProduct {
 
 const OrderProductsList: FC = () => {
 	const word = useTranslations('order')
+
 	const { locale } = useParams()
 	const [products, setProducts] = useState<IExtendedProduct[]>([])
 	const chosenProducts = useAppSelector((state) => state.basket.products)
 	const productsData = useAppSelector((state) => state.order.order.productsData)
-	console.log('🚀 ~ productsData:', productsData)
 
 	useEffect(() => {
 		// Extract product IDs and quantities from chosenProducts
@@ -80,7 +80,7 @@ const OrderProductsList: FC = () => {
 						</div>
 					))
 				) : (
-					<Loader />
+					<div className='order-products-list__item name'>{word("empty-list-text")}</div>
 				)}
 			</div>
 			<div className='order-products-list__top-bottom'>

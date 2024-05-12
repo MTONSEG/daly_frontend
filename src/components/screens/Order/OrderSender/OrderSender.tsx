@@ -6,19 +6,21 @@ import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 
 import { createOrder } from '@/store/api/order.api'
 import { IOrderData } from '@/store/order/order.slice'
+import { useState } from 'react'
+import StatusPopup from '@/components/ui/forms/StatusPopup/StatusPopup'
+import { useParams, useRouter } from 'next/navigation'
+
 export interface StrapiOrder {
 	name: string | undefined
-	surname: string | undefined
+	surn: string | undefined
 	email: string | undefined
-	phoneNumber: number | undefined
-	paymentMethod: string | undefined
+	phone: number | undefined
+	payment: string | undefined
 	deliveryType: string | undefined
-	deliveryTown: string | undefined
-	deliveryDate: string | undefined
+	city: string | undefined
+	deliveryData: string | undefined
 	deliveryTime: string | undefined
-	deliveryAddress: string | undefined
-	deliveryApartment: string | undefined
-	deliveryComment: string | undefined
+	address: string | undefined
 	products:
 		| undefined
 		| {
@@ -28,67 +30,75 @@ export interface StrapiOrder {
 }
 
 const OrderSender = () => {
+	const router = useRouter()
+	const { locale } = useParams()
 	const word = useTranslations('order')
-	const dispatch: any = useAppDispatch()
-
+	const dispatch = useAppDispatch()
 	const order = useAppSelector((state) => state.order)
+	const [orderStatus, setOrderStatus] = useState<'waiting' | 'idle' | 'success' | 'failed'>('idle') // Track order success state
 
-	// Define a function to transform the order data
 	const transformOrderData = (orderData: IOrderData): StrapiOrder | null => {
 		const { order } = orderData
-
-		// Validation: Check if any field in orderData is undefined
 		if (
 			Object.values(order).some((value) => value === undefined) ||
 			order.productsSets === undefined
 		) {
-			console.error('One or more fields in orderData are undefined')
-			// You can display an error message, throw an error, or return null
 			return null
 		}
 
-		// Map over order.productsSets to create the products array
 		const products = order.productsSets?.map((set) => ({
 			product: [set.id],
 			quantity: set.quantity
 		}))
 
-		// Flatten and transform the order object
 		const transformedOrder: StrapiOrder = {
 			name: order.name,
-			surname: order.surname,
+			surn: order.surname,
 			email: order.email,
-			phoneNumber: order.phoneNumber,
-			paymentMethod: order.paymentMethod,
+			phone: order.phoneNumber,
+			payment: order.paymentMethod,
 			deliveryType: order.deliveryType,
-			deliveryTown: order.deliveryTown,
-			deliveryDate: order.deliveryDate,
+			city: order.deliveryTown,
+			deliveryData: order.deliveryDate,
 			deliveryTime: order.deliveryTime,
-			deliveryAddress: order.deliveryAddress,
-			deliveryApartment: order.deliveryApartment,
-			deliveryComment: order.deliveryComment,
+			address: order.deliveryAddress,
 			products: products || [] // Assign the products array, default to empty array if products is undefined
 		}
 
 		return transformedOrder
 	}
 
-	// const { mutate: createOrder } = useCreateOrderMutation()
-
-	const handleCreateOrder = () => {
+	const handleCreateOrder = async () => {
+		setOrderStatus('waiting')
 		const transformedOrder = transformOrderData(order)
-		// if (!transformedOrder) {
-		// 	// Handle error: Display error message, show alert, etc.
-		// 	console.error('Failed to transform order data')
-		// 	return
-		// }
+		if (!transformedOrder) {
+			console.error('Failed to transform order data')
+			setOrderStatus('failed')
+			return
+		}
 
-		console.log('🚀 ~ handleCreateOrder ~ transformedOrder:', transformedOrder)
-		dispatch(createOrder(transformedOrder))
+		try {
+			// Dispatch createOrder action
+			await dispatch(createOrder(transformedOrder))
+			setOrderStatus('success') // Set order success to true
+		} catch (error) {
+			console.error('Error creating order:', error)
+			setOrderStatus('failed') // Set order success to false in case of error
+		}
+	}
+
+	const handleStatusPopupClose = () => {
+		if (orderStatus === 'success') {
+			router.push(`/${locale}/catalog`)
+		} else if (orderStatus === 'failed') {
+			setOrderStatus('idle')
+		}
 	}
 
 	return (
 		<div className='order__bottom'>
+			<StatusPopup status={orderStatus} onClose={handleStatusPopupClose} />
+
 			<Button className='order__order-button' onClick={handleCreateOrder}>
 				{word('buy-button')}
 			</Button>

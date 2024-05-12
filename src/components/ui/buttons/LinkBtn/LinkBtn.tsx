@@ -7,10 +7,10 @@ import { useParams } from 'next/navigation'
 
 interface PropsType extends LinkProps {
 	variant?: 'default' | 'green'
-	children: ReactNode | string
+	children?: ReactNode | string
 	text?: string
 	href: string
-	children?: React.ReactNode
+	//children?: React.ReactNode
 	className?: string
 }
 

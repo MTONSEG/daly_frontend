@@ -1,28 +1,53 @@
+'use client'
+
 import './Footer.scss'
 import Logo from '@/components/ui/icons/Logo/Logo'
 import Image from 'next/image'
 import cityIcon from '@/icons/footer-location-icon.webp'
 import fbIcon from '@/icons/footer-fb.webp'
 import igIcon from '@/icons/footer-ig.webp'
+import { ArrowDown } from '@/components/ui/icons'
 import PopupList from '../../popups/PopupList/PopupList'
+import { useState } from 'react'
+import LocaleSelect from '@/components/ui/forms/LocaleSelect/LocaleSelect'
 
 const TopFooter = () => {
-	const cities = ["Одесса", "Днепр","Киев","Харьков","Херсон","Тернополь"]
+	const cities = ['Одесса', 'Днепр', 'Киев', 'Харьков', 'Херсон', 'Тернополь']
+	const [popup, setPopup] = useState<boolean>(false)
+	const closePopup = () => {
+		setPopup(false)
+	}
+
+	const [cityValue, setCityValue] = useState<string>(cities[0])
+	const getCity = (e: string) => {
+		setCityValue(e)
+	}
+
+	console.log(cityValue)
+
 	return (
 		<div className='top-footer'>
 			<div className='container container_dafault top-footer__content'>
 				<div className='top-footer__location-wrapper'>
 					<Logo />
 					<div className='top-footer__city'>
-						<p className='top-footer__city-text'>Днепр</p>
 						<Image src={cityIcon} width={12} height={12} alt='city' />
-						<PopupList data={cities}/>
+						<p className='top-footer__city-text'>{cityValue}</p>
+						<div
+							className={popup ? 'top-footer__city-arrow_up' : 'top-footer__city-arrow'}
+							onClick={() => setPopup(!popup)}
+						>
+							<ArrowDown />
+						</div>
+						{popup && <PopupList data={cities} close={closePopup} getValue={getCity} />}
 					</div>
 				</div>
 				<div className='top-footer__socialmedia'>
 					<p className='top-footer__socialmedia-text'>Присоединяйтесь к нам </p>
-					<Image src={fbIcon} width={33} height={33} alt='fb' />
-					<Image src={igIcon} width={33} height={33} alt='ig' />
+					<div style={{display: "flex", columnGap: "10px"}}>
+						<Image src={fbIcon} width={33} height={33} alt='fb' />
+						<Image src={igIcon} width={33} height={33} alt='ig' />
+					</div>
 				</div>
 			</div>
 		</div>

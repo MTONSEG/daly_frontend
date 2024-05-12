@@ -4,8 +4,6 @@ import { CheckIcon } from '@/components/ui/icons'
 import './Checkbox.scss'
 
 interface ICheckboxProps {
-	name?: string
-	error?: string
 	label: string
 	isActive: boolean
 	toggleCheckbox: () => void

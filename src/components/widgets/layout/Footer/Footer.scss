@@ -136,28 +136,25 @@
 	}
 }
 
-@include media-max(sm) {
-	// .top-footer {
-	// 	&__socialmedia {
-	// 		display: flex;
-	// 		flex-direction: column;
-	// 		row-gap: 16px;
-	// 	}
-	// }
-}
 @include media-max(xs) {
 	.top-footer {
-		&__content {
+		&__content, &__socialmedia {
 			display: flex;
 			flex-direction: column;
 			row-gap: 32px;
+			align-items: flex-start;
 		}
 
 		&__socialmedia {
-			display: flex;
-			flex-direction: column;
 			row-gap: 16px;
-			align-items: flex-start;
+		}
+	}
+
+	.bottom-footer {
+		&__navigation {
+			display: flex;
+			flex-wrap: wrap;
+			row-gap: 12px;
 		}
 	}
 }

@@ -9,9 +9,13 @@ import igIcon from '@/icons/footer-ig.webp'
 import { ArrowDown } from '@/components/ui/icons'
 import PopupList from '../../popups/PopupList/PopupList'
 import { useState } from 'react'
-import LocaleSelect from '@/components/ui/forms/LocaleSelect/LocaleSelect'
+import { useTranslations } from 'next-intl'
 
 const TopFooter = () => {
+	// const word = useTranslations("top-footer")
+	// const citiesString = word('cities').replace(/'/g, '"');
+	// const citiesArray = JSON.parse(citiesString)
+	
 	const cities = ['Одесса', 'Днепр', 'Киев', 'Харьков', 'Херсон', 'Тернополь']
 	const [popup, setPopup] = useState<boolean>(false)
 	const closePopup = () => {
@@ -23,7 +27,6 @@ const TopFooter = () => {
 		setCityValue(e)
 	}
 
-	console.log(cityValue)
 
 	return (
 		<div className='top-footer'>

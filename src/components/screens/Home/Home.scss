@@ -421,7 +421,7 @@
 	}
 
 	&__check-box input {
-	 opacity: 0;;
+		opacity: 0;
 	}
 
 	&__check-box-sign {
@@ -610,6 +610,13 @@
 }
 
 @include media-max(sm) {
+	.mainBanner {
+		margin-top: 20px;
+	}
+
+	.product-line {
+		margin-top: 25px;
+	}
 	.mainBanner-slide {
 		&__text-wr {
 			width: 100%;
@@ -640,6 +647,20 @@
 		&__container {
 			padding: 0 15px;
 		}
+	}
+
+	.slick-slide {
+		width: 214px !important;
+		max-width: 214px !important;
+		margin-right: 25px !important;
+	}
+	
+	.slick-list {
+		padding: 0 !important;
+	}
+
+	.bottomBanner {
+		overflow-x: hidden;
 	}
 }
 
@@ -725,10 +746,10 @@
 	}
 
 	.slick-slide {
-			width: 214px !important;
-			max-width: 214px !important;
-			margin-right: 25px !important;
-		}
+		width: 214px !important;
+		max-width: 214px !important;
+		margin-right: 25px !important;
+	}
 }
 
 @include media-max(xxs) {

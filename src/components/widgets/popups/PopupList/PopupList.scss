@@ -49,3 +49,14 @@
 		cursor: pointer;
 	}
 }
+
+@include media-max(sm) {
+	.popup-list {
+		width: 170px;
+	}
+}
+@include media-max(xxs) {
+	.popup-list {
+	left: -30%;		
+	}
+}

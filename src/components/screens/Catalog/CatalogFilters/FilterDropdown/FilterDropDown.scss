@@ -2,12 +2,35 @@
 	display: flex;
 	flex-direction: column;
 
+	&.placeholder {
+		.filter-dropdown__head {
+			// height: 25px;
+			// background: var(--dark-grey-01);
+			// border-radius: 2px;
+		}
+
+		.filter-dropdown__name{
+			width: 75%;
+			height: 25px;
+			background: var(--dark-grey-01);
+			border-radius: 2px;
+		}
+
+		.filter-dropdown__body {
+			&.active {
+				height: 35px;
+			}
+			background: var(--dark-grey-01);
+		}
+	}
+
 	&__head {
 		cursor: pointer;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
+		padding: 0 5px 0 0;
 		&:hover {
 			.filter-dropdown__name {
 				opacity: 0.8;
@@ -23,8 +46,6 @@
 		line-height: 152%;
 		transition: 0.3s;
 	}
-
-	
 
 	&__body {
 		transition: 0.3s;

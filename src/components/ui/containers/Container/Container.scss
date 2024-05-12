@@ -25,7 +25,7 @@
 		box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
 		background: #fff;
 		@include media-max(xs) {
-			padding: 15px 35px 25px 20px;
+			padding: 15px;
 		}
 	}
 }

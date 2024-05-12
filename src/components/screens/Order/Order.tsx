@@ -24,9 +24,11 @@ const Order: FC<IOrder> = ({}) => {
 						<OrderProductsList />
 					</div>
 				</Container>
-				{/* <Container>
-					<OrderDelivery />
-				</Container> */}
+				<Container variant='block'>
+					<div className='order__delivery'>
+						<OrderDelivery />
+					</div>
+				</Container>
 				<ScrollToBtn text={word('next-button')} elementId={'order-payment'} />
 				<Container variant='block'>
 					<div className='order__payment' id='order-payment'>
@@ -39,7 +41,7 @@ const Order: FC<IOrder> = ({}) => {
 						<OrderPersonalInfo />
 					</div>
 				</Container>
-				<OrderSender/>
+				<OrderSender />
 			</div>
 		</Container>
 	)

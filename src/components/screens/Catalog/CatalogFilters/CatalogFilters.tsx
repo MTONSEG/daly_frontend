@@ -82,7 +82,8 @@ const CatalogFilters: React.FC<Props> = () => {
 				</div>
 			)}
 			<div className={`catalog-filters ${isActive ? 'active' : ''}`} ref={ref}>
-				{filters.length > 0 ? (
+				{
+					filters.length > 0 ? (
 					filters.map((filter, index) => (
 						<FilterDropdown
 							filter={filter}
@@ -91,8 +92,15 @@ const CatalogFilters: React.FC<Props> = () => {
 						/>
 					))
 				) : (
-					<Loader />
-				)}
+					Array.from({ length: 11 }).map((_, index) => (
+							<FilterDropdown
+							updateFilter={updateFilter}
+							key={index}
+							isManuallyPrice={index === 0} // Set isManuallyPrice to true for the first element
+							/>
+						))
+					)
+				}
 				<div className='catalog-filters__buttons'>
 					<TransparentBtn onClick={handleUpdateFilters}>
 						{word('save-filters-button')}

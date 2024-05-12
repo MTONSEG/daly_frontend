@@ -1,6 +1,7 @@
 'use client'
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createOrder } from '../api/order.api'
 
 export interface IBasketData {
 	products: {
@@ -41,11 +42,16 @@ const basketData = createSlice({
 		deleteProduct: (state, action: PayloadAction<{ id: number }>) => {
 			const { id } = action.payload
 			state.products = state.products.filter((product) => product.id !== id)
-		},
-
+		}
+	},
+	extraReducers: (builder) => {
+		builder.addCase(createOrder.fulfilled, (state, action) => {
+			// Clear basket when order is successfully created
+			state.products = []
+		})
 	}
 })
 
-export const { addProduct, removeProduct,deleteProduct } = basketData.actions
+export const { addProduct, removeProduct, deleteProduct } = basketData.actions
 
 export default basketData.reducer

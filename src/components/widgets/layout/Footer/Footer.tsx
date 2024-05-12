@@ -1,6 +1,7 @@
 import './Footer.scss'
 import TopFooter from './TopFooter'
 import MiddleFooter from './MiddleFooter'
+import BottomFooter from './BottomFooter'
 
 export default function Footer() {
 	return (
@@ -11,6 +12,7 @@ export default function Footer() {
 					<MiddleFooter />
 				</div>
 			</div>
+			<BottomFooter />
 		</footer>
 	)
 }

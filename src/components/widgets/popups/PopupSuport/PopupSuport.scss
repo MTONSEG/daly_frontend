@@ -1,0 +1,37 @@
+@import '@/media';
+@import '../../../../styles/vars/colors.scss';
+@import '../../../../styles/vars/fonts.scss';
+
+.popup-suport {
+	width: 100%;
+	max-width: 649px;
+	background: var(--white);
+	border-radius: 10px;
+	box-shadow: 3px 4px 12px 0px var(--dark-grey-03);
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__close-wrapper {
+        position: absolute;
+        top: -25px;
+        right: -25px;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        background: var(--dark-grey-008);
+        cursor: pointer;
+    }
+
+    &__close-wrapper:hover {
+        transform: scale(120%);
+    }
+}

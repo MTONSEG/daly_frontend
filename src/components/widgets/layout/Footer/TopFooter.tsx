@@ -12,9 +12,9 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 const TopFooter = () => {
-	// const word = useTranslations("top-footer")
-	// const citiesString = word('cities').replace(/'/g, '"');
-	// const citiesArray = JSON.parse(citiesString)
+	const word = useTranslations("top-footer")
+	const citiesString = word('cities').replace(/'/g, '"');
+	const citiesArray = JSON.parse(citiesString)
 	
 	const cities = ['Одесса', 'Днепр', 'Киев', 'Харьков', 'Херсон', 'Тернополь']
 	const [popup, setPopup] = useState<boolean>(false)
@@ -22,7 +22,7 @@ const TopFooter = () => {
 		setPopup(false)
 	}
 
-	const [cityValue, setCityValue] = useState<string>(cities[0])
+	const [cityValue, setCityValue] = useState<string>(citiesArray[0])
 	const getCity = (e: string) => {
 		setCityValue(e)
 	}
@@ -42,11 +42,11 @@ const TopFooter = () => {
 						>
 							<ArrowDown />
 						</div>
-						{popup && <PopupList data={cities} close={closePopup} getValue={getCity} />}
+						{popup && <PopupList data={citiesArray} close={closePopup} getValue={getCity} />}
 					</div>
 				</div>
 				<div className='top-footer__socialmedia'>
-					<p className='top-footer__socialmedia-text'>Присоединяйтесь к нам </p>
+					<p className='top-footer__socialmedia-text'>{word("socialMedia-text")}</p>
 					<div style={{display: "flex", columnGap: "10px"}}>
 						<Image src={fbIcon} width={33} height={33} alt='fb' />
 						<Image src={igIcon} width={33} height={33} alt='ig' />

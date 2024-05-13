@@ -197,9 +197,26 @@
 		"text": "At your service is a board of free announcements Daly.ua. On our portal you will find everything from small appliances to real estate and cars. And if you sell a product, service, rent or rent a house, we will help you solve your problem quickly and efficiently, just add an ad for free! Wide range of goods and services. Clothes and shoes, electronics and household appliances, real estate, cars, work, collectibles - here you will find ads for every taste! Huge audience. Thousands of your potential customers visit our site daily. Don’t miss them, submit an ad now! User-friendliness. Well-designed section structure and ad search help you quickly find the right suggestions. And you can place an ad in just a few clicks.",
 		"open-text": "expand"
 	},
+	"top-footer": {
+		"cities": "['Odesa', 'Dnipro', 'Kiyv', 'Charkiv', 'Cherson', 'Ternopil']",
+		"socialMedia-text": "Join us"		
+	},
 	"status-popup":{
 		"success-text":"Request fulfilled successfully!",
 		"failed-text":"Failed to create a request. Please try again.",
 		"waiting-text":"Waiting for your request to be processed..."
+	},
+	"middle-footer": {
+		"title1": "Message board",
+		"title2": "Service center",
+		"title3": "Internet shop",
+		"title4": "Users for",
+		"column1": "['Announcements','Shops','Charity','Personal cabinet']",
+		"column2": "['What are we fixing','Service center addresses']",
+		"column3": "['Goods catalog','Delivery and payment','Bucket','Personal cabinet','Contacts', 'Vacancies']",
+		"column4": "['Garanties', 'Delivery and payment', 'Support', 'Question-answer']"
+	},
+	"bottom-footer": {
+		"navLinks": "['Privacy policy','User Agreement','Use of cookies','Site map']"
 	}
 }

@@ -1,13 +1,12 @@
 import './Footer.scss'
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import { useTranslations } from 'next-intl'
 
 const BottomFooter = () => {
-	const navLinks: Array<string> = [
-		'Политика конфиденциальности',
-		'Пользовательское соглашение',
-		'Использование cookies',
-		'Карта сайта'
-	]
+	const word = useTranslations("bottom-footer")
+	const navLinksString = word("navLinks").replace(/'/g, '"')
+	const navLinksArray = JSON.parse(navLinksString)
+	const navLinks: Array<string> = navLinksArray
 	
 	return (
 		<div className='bottom-footer'>

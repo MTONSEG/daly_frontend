@@ -1,19 +1,26 @@
 import './Footer.scss'
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import { useTranslations } from 'next-intl'
 
 const MiddleFooter = () => {
+	const word = useTranslations("middle-footer")
+	const columnString1 = word("column1").replace(/'/g, '"')
+	const columnArray1 = JSON.parse(columnString1)
+	
+	const columnString2 = word("column2").replace(/'/g, '"')
+	const columnArray2 = JSON.parse(columnString2)
+
+	const columnString3 = word("column3").replace(/'/g, '"')
+	const columnArray3 = JSON.parse(columnString3)
+
+	const columnString4 = word("column4").replace(/'/g, '"')
+	const columnArray4 = JSON.parse(columnString4)
+	
 	const dataLinks = {
-		'Доска объявлений': ['Объявления', 'Магазины', 'Благотворительность', 'Личный кабинет'],
-		'Сервисный центр': ['Что мы чиним', 'Адреса сервисных центров'],
-		'Интернет-магазин': [
-			'Каталог товаров',
-			'Доставка и оплата',
-			'Корзина',
-			'Личный кабинет',
-			'Контакты',
-			'Вакансии'
-		],
-		Пользователям: ['Гарантии', 'Доставка и оплата', 'Служба поддержки', 'Вопрос-ответ']
+		[word("title1")]: columnArray1,
+		[word("title2")]: columnArray2,
+		[word("title3")]: columnArray3,
+		[word("title4")]: columnArray4
 	}
 
 	return (
@@ -21,7 +28,7 @@ const MiddleFooter = () => {
 			{Object.entries(dataLinks).map(([title, items], index) => (
 				<div className='middle-footer__column' key={index}>
 					<h3 className='middle-footer__column-title'>{title}</h3>
-					{items.map((item, i) => (
+					{items.map((item: string, i: number) => (
 						<p className='middle-footer__column-link' key={i}>
 							<LinkBtn
 								href={item}

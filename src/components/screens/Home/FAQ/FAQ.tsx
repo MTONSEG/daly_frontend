@@ -28,7 +28,7 @@ const FAQ = () => {
 					className={showMore ? 'faq__open-arrow' : ''}
 				/>
 			</div>
-			<Image src={faq} width={50} height={50} alt='faq' className={'faq__icon'} />
+			{/* <Image src={faq} width={50} height={50} alt='faq' className={'faq__icon'} /> */}
 		</div>
 	)
 }

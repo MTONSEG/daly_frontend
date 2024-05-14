@@ -4,6 +4,7 @@ import { ChangeEvent } from 'react'
 import { forwardRef } from 'react'
 
 export interface IInputProps {
+	id?: string
 	type?: 'text' | 'number' | 'email' | 'password'
 	label?: string
 	value?: string | number

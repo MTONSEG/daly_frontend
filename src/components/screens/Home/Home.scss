@@ -140,7 +140,6 @@
 .brands {
 	display: flex;
 	flex-direction: column;
-	row-gap: 30px;
 
 	&__logos {
 		display: grid;
@@ -339,7 +338,7 @@
 	&__description {
 		display: flex;
 		flex-direction: column;
-		row-gap: 30px;
+		row-gap: 18px;
 	}
 
 	&__description-title {
@@ -361,13 +360,14 @@
 	display: flex;
 	align-items: flex-start;
 	column-gap: 60px;
+	padding-top: 21px;
 
 	&__inputs {
 		width: 100%;
-		max-width: 349px;
+		min-width: 349px;
 		display: flex;
 		flex-direction: column;
-		row-gap: 8px;
+		row-gap: 2px;
 	}
 
 	&__input {
@@ -477,7 +477,7 @@
 }
 
 .faq {
-	padding: 100px 0;
+	padding: 100px 0 119px;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -533,11 +533,11 @@
 	}
 
 	&__icon {
-		position: absolute;
-		right: 0;
-		bottom: 20px;
-		width: 50px;
-		height: 50px;
+		position: fixed;
+		right: 40px;
+		bottom: 470px;
+		width: 80px;
+		height: 80px;
 		cursor: pointer;
 		animation: pulse 1.5s infinite;
 	}
@@ -555,6 +555,7 @@
 	}
 }
 
+
 @include media-max(lg) {
 	.middleBanner {
 		&__block:first-of-type {
@@ -563,6 +564,24 @@
 
 		img {
 			width: 100%;
+		}
+	}
+
+	.subscribe-form {
+		&__inputs {
+			max-width: 75%;
+		}
+	}
+
+	.faq {
+		&__icon {
+			position: fixed;
+			right: 40px;
+			bottom: 60px;
+			width: 50px;
+			height: 50px;
+			cursor: pointer;
+			animation: pulse 1.5s infinite;
 		}
 	}
 }
@@ -606,6 +625,12 @@
 
 	.faq {
 		padding: 40px 0;
+	}
+
+	.slick-slide {
+		width: 214px !important;
+		max-width: 214px !important;
+		margin-right: 25px !important;
 	}
 }
 
@@ -654,7 +679,7 @@
 		max-width: 214px !important;
 		margin-right: 25px !important;
 	}
-	
+
 	.slick-list {
 		padding: 0 !important;
 	}
@@ -749,6 +774,12 @@
 		width: 214px !important;
 		max-width: 214px !important;
 		margin-right: 25px !important;
+	}
+
+	.subscribe-form {
+		&__inputs {
+			min-width: 90%;
+		}
 	}
 }
 

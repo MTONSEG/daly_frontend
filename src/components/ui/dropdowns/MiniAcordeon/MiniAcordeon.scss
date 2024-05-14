@@ -1,0 +1,46 @@
+.mini-acordeon {
+	border: 1px solid #dadcdc;
+	border-radius: 10px;
+	padding: 12px 15px;
+	// height: 45px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	&__heading {
+		font-family: var(--inter);
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 150%;
+		color: var(--dark-grey);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+		transition: 0.2s;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	&__content {
+		margin: -15px 0 0 0;
+		font-family: var(--inter);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 155%;
+		color: var(--dark-grey);
+
+		height: 0;
+		visibility: hidden;
+		opacity: 0;
+		transition: 0.2s;
+
+		&.active {
+			margin: 0px 0 0 0;
+			height: fit-content;
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}

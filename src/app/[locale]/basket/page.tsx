@@ -1,11 +1,5 @@
-import Basket from "@/components/screens/Basket/Basket"
+import Basket from '@/components/screens/Basket/Basket'
 
-
-
-export default function CatalogPage() {
-
-	return (
-		
-		<Basket/>
-	)
+export default function BasketPage() {
+	return <Basket />
 }

@@ -146,9 +146,9 @@
 		"buy-aggreement-link": "terms of sale in the Daly online store",
 		"fill-popup-text": "Some of the fields are empty. Fill them up to proceed with the order creation",
 		"fill-popup-close-button": "Close",
-		"empty-list-text":"You've not chosen any products, go check your basket first"
+		"empty-list-text": "You've not chosen any products, go check your basket first"
 	},
-	"order-delivery":{
+	"order-delivery": {
 		"title": "Way of shipment",
 		"nav-1": "Delivery",
 		"nav-2": "Takeout"
@@ -175,12 +175,12 @@
 		"placeholder-4": "name@inbox.ua"
 	},
 	"terms": {
-		"title-1":"Convenient delivery",
-		"title-2":"Payment in any way",
-		"title-3":"Warranty service",
-		"title-4":"Quick exchange and return",
-		"title-5":"Express delivery",
-		"title-6":"Better prices"
+		"title-1": "Convenient delivery",
+		"title-2": "Payment in any way",
+		"title-3": "Warranty service",
+		"title-4": "Quick exchange and return",
+		"title-5": "Express delivery",
+		"title-6": "Better prices"
 	},
 	"subscribe": {
 		"main-title": "Be the first !",
@@ -201,10 +201,27 @@
 		"cities": "['Odesa', 'Dnipro', 'Kiyv', 'Charkiv', 'Cherson', 'Ternopil']",
 		"socialMedia-text": "Join us"		
 	},
-	"status-popup":{
-		"success-text":"Request fulfilled successfully!",
-		"failed-text":"Failed to create a request. Please try again.",
-		"waiting-text":"Waiting for your request to be processed..."
+	"status-popup": {
+		"success-text": "Request fulfilled successfully!",
+		"failed-text": "Failed to create a request. Please try again.",
+		"waiting-text": "Waiting for your request to be processed..."
+	},
+	"support-nav": {
+		"registration-theme": "Registration and sign-in",
+		"registration-value-0": "Registration",
+		"registration-value-1": "Sign-in",
+		"delivery-theme": "Delivery and payment",
+		"delivery-value-0": "Delivery",
+		"delivery-value-1": "Payment"
+	},
+	"support-data": {
+		"support-heading": "Support Heading",
+		"support-text": "Support text",
+		"support-text-long": "Support text long  long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long",
+		"support-heading-1": "Registration",
+		"support-heading-2": "Sign-in",
+		"support-heading-3": "Delivery",
+		"support-heading-4": "Payment"
 	},
 	"middle-footer": {
 		"title1": "Message board",

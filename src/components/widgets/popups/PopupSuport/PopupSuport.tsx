@@ -1,29 +1,20 @@
+'use client'
 import './PopupSuport.scss'
-// import { useForm } from 'react-hook-form'
-import Input from '@/components/ui/forms/Input/Input'
+import SuportForm from './SuportForm'
+import PopupSuportBottom from './PopupSuportBottom'
 import Image from 'next/image'
 import GreenCross from '@/images/green-cross.webp'
 
 const PopupSuport = () => {
-	//useForm-------------------------------------------------
-	//const form= useForm({})
-
-	// const { register, handleSubmit, formState, reset } = form
-	// const { errors } = formState
-
-	//const onSubmit = handleSubmit()
+	
 	return (
 		<div className='popup-suport'>
 			<div
 				style={{ position: 'relative', minWidth: '100%', minHeight: '100%', padding: '40px 28px' }}
 			>
-				<form className='popup-suport__form'>
-					<Input
-						type='email'
-						placeholder={''}
-						// {...register('data.subscriber', { required: true })}
-					/>
-				</form>
+				<h2 className='popup-suport__title'>Обращение в службу поддержки</h2>
+				  <SuportForm />
+				  <PopupSuportBottom />
 				<div className='popup-suport__close-wrapper'>
 					<Image src={GreenCross} width={30} height={30} alt='cross' />
 				</div>

@@ -194,3 +194,12 @@ export interface ISubscribe {
 	 subscribe: boolean
     }
  }
+
+ export interface ISuport {
+	data: {
+		fullname: string,
+		phone: number,
+		email: string,
+		text: string
+	}
+ }

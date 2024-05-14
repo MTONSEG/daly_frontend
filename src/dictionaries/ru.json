@@ -147,7 +147,7 @@
 		"buy-aggreement-link": "условиями продажи в интернет-магазине Daly",
 		"fill-popup-text": "Некоторые из полей пустые. Заполните их чтобы продолжить оформление заказа.",
 		"fill-popup-close-button": "Закрыть",
-		"empty-list-text":"Вы не выбрали продукты для покупки, проверьте корзину"
+		"empty-list-text": "Вы не выбрали продукты для покупки, проверьте корзину"
 	},
 	"order-delivery": {
 		"title": "Способ получения",
@@ -199,11 +199,28 @@
 		"open-text": "развернуть"
 	},
 	"top-footer": {
-		"cities": "['Одесса', 'Днепр', 'Киев', 'Харьков', 'Херсон', 'Тернополь']"	
+		"cities": "['Одесса', 'Днепр', 'Киев', 'Харьков', 'Херсон', 'Тернополь']"
 	},
 	"status-popup": {
 		"success-text": "Запрос выполнен!",
 		"failed-text": "НУ удалось создать запрос. Пожалуйста попробуйте еще раз.",
 		"waiting-text": "Запрос обрабатывается..."
+	},
+	"support-nav": {
+		"registration-theme": "Регистрация и вход",
+		"registration-value-1": "Регистрация",
+		"registration-value-2": "Вход",
+		"delivery-theme": "Доставка и оплата",
+		"delivery-value-1": "Доставка",
+		"delivery-value-2": "Оплата"
+	},
+	"support-data": {
+		"support-heading": "Поддержка заголовок",
+		"support-text": "Поддержка текст",
+		"support-text-long": "Поддержка текст long  long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long",
+		"support-heading-1": "Регистрация",
+		"support-heading-2": "Вход",
+		"support-heading-3": "Доставка",
+		"support-heading-4": "Оплата"
 	}
 }

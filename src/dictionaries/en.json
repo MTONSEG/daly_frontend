@@ -146,9 +146,9 @@
 		"buy-aggreement-link": "terms of sale in the Daly online store",
 		"fill-popup-text": "Some of the fields are empty. Fill them up to proceed with the order creation",
 		"fill-popup-close-button": "Close",
-		"empty-list-text":"You've not chosen any products, go check your basket first"
+		"empty-list-text": "You've not chosen any products, go check your basket first"
 	},
-	"order-delivery":{
+	"order-delivery": {
 		"title": "Way of shipment",
 		"nav-1": "Delivery",
 		"nav-2": "Takeout"
@@ -175,12 +175,12 @@
 		"placeholder-4": "name@inbox.ua"
 	},
 	"terms": {
-		"title-1":"Convenient delivery",
-		"title-2":"Payment in any way",
-		"title-3":"Warranty service",
-		"title-4":"Quick exchange and return",
-		"title-5":"Express delivery",
-		"title-6":"Better prices"
+		"title-1": "Convenient delivery",
+		"title-2": "Payment in any way",
+		"title-3": "Warranty service",
+		"title-4": "Quick exchange and return",
+		"title-5": "Express delivery",
+		"title-6": "Better prices"
 	},
 	"subscribe": {
 		"main-title": "Be the first !",
@@ -197,9 +197,26 @@
 		"text": "At your service is a board of free announcements Daly.ua. On our portal you will find everything from small appliances to real estate and cars. And if you sell a product, service, rent or rent a house, we will help you solve your problem quickly and efficiently, just add an ad for free! Wide range of goods and services. Clothes and shoes, electronics and household appliances, real estate, cars, work, collectibles - here you will find ads for every taste! Huge audience. Thousands of your potential customers visit our site daily. Don’t miss them, submit an ad now! User-friendliness. Well-designed section structure and ad search help you quickly find the right suggestions. And you can place an ad in just a few clicks.",
 		"open-text": "expand"
 	},
-	"status-popup":{
-		"success-text":"Request fulfilled successfully!",
-		"failed-text":"Failed to create a request. Please try again.",
-		"waiting-text":"Waiting for your request to be processed..."
+	"status-popup": {
+		"success-text": "Request fulfilled successfully!",
+		"failed-text": "Failed to create a request. Please try again.",
+		"waiting-text": "Waiting for your request to be processed..."
+	},
+	"support-nav": {
+		"registration-theme": "Registration and sign-in",
+		"registration-value-0": "Registration",
+		"registration-value-1": "Sign-in",
+		"delivery-theme": "Delivery and payment",
+		"delivery-value-0": "Delivery",
+		"delivery-value-1": "Payment"
+	},
+	"support-data": {
+		"support-heading": "Support Heading",
+		"support-text": "Support text",
+		"support-text-long": "Support text long  long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long",
+		"support-heading-1": "Registration",
+		"support-heading-2": "Sign-in",
+		"support-heading-3": "Delivery",
+		"support-heading-4": "Payment"
 	}
 }

@@ -8,30 +8,91 @@
 	background: var(--white);
 	border-radius: 10px;
 	box-shadow: 3px 4px 12px 0px var(--dark-grey-03);
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 
+	&__title {
+		color: var(--dark-grey);
+		font-family: var(--poppins);
+		font-size: 32px;
+		font-weight: var(--700);
+		line-height: 1.2;
+		margin-bottom: 20px;
+	}
 
+	&__form {
+		display: flex;
+		flex-direction: column;
+	}
 
-    &__form {
-        display: flex;
-        flex-direction: column;
-    }
+	&__form-input:not(:last-of-type) {
+		margin-bottom: 24px;
+	}
 
-    &__close-wrapper {
-        position: absolute;
-        top: -25px;
-        right: -25px;
-        width: 30px;
-        height: 30px;
-        border-radius: 100%;
-        background: var(--dark-grey-008);
-        cursor: pointer;
-    }
+	&__form-label {
+		margin-bottom: 5px;
+		padding-right: 20px;
+		position: relative;
+		color: var(--black);
+		font-family: var(--poppins);
+		font-weight: var(--700);
+		line-height: 1.5;
+	}
 
-    &__close-wrapper:hover {
-        transform: scale(120%);
+	&__form-label::after {
+		content: '';
+		display: inline-block;
+		width: 6px;
+		height: 6px;
+		background-image: url('../../../../assets/images/Input-green-star.webp');
+		background-size: cover;
+		background-repeat: no-repeat;
+		transform: translateY(-100%);
+	}
+
+	&__close-wrapper {
+		position: absolute;
+		top: -25px;
+		right: -25px;
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+		background: var(--dark-grey-008);
+		cursor: pointer;
+	}
+
+	&__close-wrapper:hover {
+		transform: scale(120%);
+	}
+}
+
+.support-bottom {
+	margin-top: 56px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__button-choose {
+        width: 190px;
+		height: 41px;
+		border-radius: 10px;
+		box-shadow: 1px 2px 16px 3px var(--dark-grey-008);
+		background: var(--white);
+        margin-bottom: 10px;
+	}
+
+	&__button-choose-label {
+		color: var(--grey);
+		font-family: var(--poppins);
+		font-size: 12px;
+		font-weight: var(--400);
+		line-height: 1.3;
+        text-align: center;
+	}
+
+    &__send-button {
+        padding: 15px;
     }
 }

@@ -8,9 +8,10 @@
 	background: var(--white);
 	border-radius: 10px;
 	box-shadow: 3px 4px 12px 0px var(--dark-grey-03);
-	position: absolute;
-	top: 20%;
+	position: fixed;
+	top: 50%;
 	left: 50%;
+	z-index: 50000;
 	transform: translate(-50%, -50%);
 
 	&__title {
@@ -27,8 +28,8 @@
 		flex-direction: column;
 	}
 
-	&__form-input:not(:last-of-type) {
-		margin-bottom: 24px;
+	&__form-input {
+		margin-bottom: 12px;
 	}
 
 	&__form-label {
@@ -75,12 +76,24 @@
 	align-items: center;
 
 	&__button-choose {
-        width: 190px;
+		width: 190px;
 		height: 41px;
 		border-radius: 10px;
 		box-shadow: 1px 2px 16px 3px var(--dark-grey-008);
 		background: var(--white);
-        margin-bottom: 10px;
+		margin-bottom: 10px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__button-choose input {
+		min-width: 100%;
+		min-height: 100%;
+		opacity: 0;
+		position: absolute;
+		cursor: pointer;
 	}
 
 	&__button-choose-label {
@@ -89,10 +102,70 @@
 		font-size: 12px;
 		font-weight: var(--400);
 		line-height: 1.3;
-        text-align: center;
+		text-align: center;
 	}
 
-    &__send-button {
-        padding: 15px;
-    }
+	&__file-name {
+		position: absolute;
+		top: -60%;
+		left: 50%;
+		transform: translateX(-50%);
+		white-space: nowrap;
+		opacity: 0.6;
+	}
+
+	&__send-button {
+		width: 260px;
+		height: 41px;
+		padding: 0 15px;
+		margin: 30px 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__send-button:hover {
+		transform: scale(103%);
+	}
+
+	&__terms {
+		font-weight: var(-400);
+		line-height: 1.5;
+	}
+
+	&__terms_underline {
+		border-bottom: 1px solid var(--dark-grey);
+		cursor: pointer;
+	}
+
+	&__terms_underline:hover {
+		color: var(--bright-green);
+		transform: scale(150%);
+		border-bottom: 1px solid var(--bright-green);
+	}
+}
+
+.popup-success {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 649px;
+	background: var(--white);
+	border-radius: 10px;
+	padding: 40px 28px 124px;
+	box-shadow: 3px 4px 12px 0px var(--dark-grey-03);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 50000;
+	transform: translate(-50%, -50%);
+	margin-bottom: 25px;
+
+	&__text {
+		color: var(--dark-grey);
+		font-size: 16px;
+		font-weight: var(--500);
+		line-height: 1.52%;
+	}
 }

@@ -197,9 +197,10 @@ export interface ISubscribe {
 
  export interface ISuport {
 	data: {
-		fullname: string,
+		name: string,
 		phone: number,
 		email: string,
-		text: string
+		message: string,
+		image: any
 	}
  }

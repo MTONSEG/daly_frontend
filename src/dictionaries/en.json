@@ -235,5 +235,9 @@
 	},
 	"bottom-footer": {
 		"navLinks": "['Privacy policy','User Agreement','Use of cookies','Site map']"
+	},
+	"404":{
+		"title": "There is no such page",
+		"button": "Go to home page"
 	}
 }

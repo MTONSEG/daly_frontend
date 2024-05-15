@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import SupportNavDropdown from './SupportNavDropdown/SupportNavDropdown'
-import "./SupportNav.scss";
+import './SupportNav.scss'
 
 interface Theme {
 	name: string
@@ -24,10 +24,11 @@ const SupportNav: FC<SupportNavProps> = ({ themes, onSelectValue }) => {
 		<div className='support-nav'>
 			{themes.map((theme, index) => (
 				<SupportNavDropdown
+					activeValue={selectedValue}
 					values={theme.values}
 					onSelectValue={(value: string) => handleValueSelection(value)}
-                    theme={theme.name}
-                    key={index}
+					theme={theme.name}
+					key={index}
 				/>
 			))}
 		</div>

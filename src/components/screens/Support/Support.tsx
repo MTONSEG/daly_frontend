@@ -1,8 +1,9 @@
-"use client"
+'use client'
 import React, { FC, useState } from 'react'
 import SupportNav from './SupportNav/SupportNav'
 import SupportContent from './SupportContent/SupportContent'
-import "./Support.scss";
+import './Support.scss'
+import Container from '@/components/ui/containers/Container/Container'
 
 interface ISupport {}
 
@@ -25,10 +26,12 @@ const Support: FC<ISupport> = ({}) => {
 	}
 
 	return (
-		<div className='support'>
-			<SupportNav themes={themes} onSelectValue={(value: string) => handleSelectValue(value)} />
-			<SupportContent selectedValue={selectedValue} />
-		</div>
+		<Container>
+			<div className='support'>
+				<SupportNav themes={themes} onSelectValue={(value: string) => handleSelectValue(value)} />
+				<SupportContent selectedValue={selectedValue} />
+			</div>
+		</Container>
 	)
 }
 

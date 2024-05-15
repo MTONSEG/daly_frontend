@@ -8,12 +8,15 @@ import ComparePopup from '@/components/widgets/layout/Header/BottomHeader/Compar
 import FavoritePopup from '@/components/widgets/layout/Header/BottomHeader/FavoritePopup/FavoritePopup'
 import SearchHeader from '@/components/widgets/layout/Header/SearchHeader/SearchHeader'
 import PopupCatalog from '@/components/widgets/popups/PopupCatalog/PopupCatalog'
+import PopupSuport from '@/components/widgets/popups/PopupSuport/PopupSuport'
 import { DELIVERY_PATH, SUPPORT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
+
 
 export default function BottomHeader() {
 	const t = useTranslations('home')
 
+		
 	return (
 		<div className='bottom-header'>
 			<Container>
@@ -34,11 +37,11 @@ export default function BottomHeader() {
 
 					<div className='bottom-header__right'>
 						<LinkBtn
-							href={`/${SUPPORT_PATH}`}
+							 href={`/${SUPPORT_PATH}`}
 							className='bottom-header__support-link'
 							// eslint-disable-next-line react/no-children-prop
 							children={t('support')}
-						/>
+				    	/>
 
 						<div className='bottom-header__popup-wrap'>
 							<ComparePopup />

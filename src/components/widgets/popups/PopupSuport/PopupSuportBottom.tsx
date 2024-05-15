@@ -1,32 +1,39 @@
 import './PopupSuport.scss'
 import { ISuport } from '@/types/types'
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from 'react-hook-form'
 import Button from '@/components/ui/buttons/Button/Button'
-import { useState } from 'react';
-
+import { useState } from 'react'
 
 interface PropsTypes {
 	register: UseFormRegister<ISuport>
-	handleImage: (e: string) => void
-   }
+	handleImage: (e: File | null) => void
+}
 
-const PopupSuportBottom = ({register, handleImage}:PropsTypes) => {
-	const [image, setImage] = useState("")
+
+
+const PopupSuportBottom = ({ register, handleImage }: PropsTypes) => {
+	const [fileName, setFileName] = useState<string>('')
+
 	const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-		  const file = e.target.files[0];
-		  setImage(URL.createObjectURL(file));
-		  handleImage(image)
+		const file = e.target.files ? e.target.files[0] : null
+		if (file) {
+			setFileName(file.name)
+		} else {
+			setFileName('')
 		}
-	 };
-	
+		handleImage(file)
+	}
+
+
 	return (
 		<div className='support-bottom'>
 			<div className='support-bottom__button-choose'>
-               <input type="file" onChange={handleChangeImage}/>
-			    Выбрать файл
-		</div>
+				<input type='file' onChange={handleChangeImage} />
+				Выбрать файл
+				<span className='support-bottom__file-name'>{fileName}</span>
+			</div>
 			
+
 			<span className='support-bottom__button-choose-label'>
 				Скриншот экрана( при необходимости)
 			</span>

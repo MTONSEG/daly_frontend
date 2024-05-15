@@ -11,11 +11,11 @@ import Container from '@/components/ui/containers/Container/Container'
 import MiddleBanner from './MiddleBanner/MiddleBanner'
 import BottomBanner from './BottomBanner/BottomBanner'
 import Header from '@/components/widgets/layout/Header/Header'
-import PopupSuport from '@/components/widgets/popups/PopupSuport/PopupSuport'
+
 
 export default function Home() {
 	const t = useTranslations('home')
-
+	
 	return (
 		<>
 			<div style={{ position: 'relative' }}>
@@ -48,7 +48,6 @@ export default function Home() {
 					<FAQ />
 					<FaqButton />
 				</Container>
-				<PopupSuport />
 			</div>
 		</>
 	)

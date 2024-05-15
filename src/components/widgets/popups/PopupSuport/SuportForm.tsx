@@ -2,18 +2,19 @@
 import './PopupSuport.scss'
 import { ISuport } from '@/types/types'
 import Input from '@/components/ui/forms/Input/Input'
-import { UseFormRegister } from 'react-hook-form'
+import { UseFormRegister, FieldErrors  } from 'react-hook-form'
 
 interface PropsTypes {
 	register: UseFormRegister<ISuport>
-	errors?: {
-		data?: {
-			name?: { message: string }
-			phone: { message: string }
-			email: { message: string }
-			message: { message: string }
-		}
-	}
+	// errors?: {
+	// 	data?: {
+	// 		name?: { message: string }
+	// 		phone?: { message: string }
+	// 		email?: { message: string }
+	// 		message?: { message: string }
+	// 	}
+	// }
+	errors?: FieldErrors<ISuport>
 }
 
 const SuportForm = ({ register, errors }: PropsTypes) => {

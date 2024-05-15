@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import arrow from '@/assets/images/arrowDown.png'
-import faq from '@/assets/images/faq.webp'
 
 const FAQ = () => {
 	const word = useTranslations('faq')
@@ -28,7 +27,6 @@ const FAQ = () => {
 					className={showMore ? 'faq__open-arrow' : ''}
 				/>
 			</div>
-			{/* <Image src={faq} width={50} height={50} alt='faq' className={'faq__icon'} /> */}
 		</div>
 	)
 }

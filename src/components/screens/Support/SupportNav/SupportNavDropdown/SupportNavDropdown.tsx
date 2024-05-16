@@ -1,26 +1,35 @@
 import React, { FC, useState } from 'react'
 import Arrow from '../../../../ui/arrows/Arrow'
 import { useTranslations } from 'next-intl'
-import "./SupportNavDropdown.scss";
+import './SupportNavDropdown.scss'
 
 interface SupportNavDropdownProps {
 	theme: string
 	values: string[]
 	onSelectValue: (value: string) => void
+	activeValue: string
 }
 
-const SupportNavDropdown: FC<SupportNavDropdownProps> = ({ theme, values, onSelectValue }) => {
+const SupportNavDropdown: FC<SupportNavDropdownProps> = ({
+	theme,
+	values,
+	onSelectValue,
+	activeValue
+}) => {
 	const w = useTranslations('support-nav')
 	const [isOpen, setIsOpen] = useState<boolean>(false)
-	const [activeItem, setActiveItem] = useState<string | null>(null)
 	const handleValueSelection = (value: string) => {
 		onSelectValue(value)
-		setActiveItem(value)
 	}
 
 	return (
 		<div className='support-nav-dropdown'>
-			<div className='support-nav-dropdown__theme' onClick={()=>{setIsOpen(!isOpen)}}>
+			<div
+				className='support-nav-dropdown__theme'
+				onClick={() => {
+					setIsOpen(!isOpen)
+				}}
+			>
 				<Arrow state={isOpen} />
 				{w(`${theme}-theme`)}
 			</div>
@@ -29,7 +38,7 @@ const SupportNavDropdown: FC<SupportNavDropdownProps> = ({ theme, values, onSele
 					return (
 						<div
 							key={index}
-							className={`support-nav-dropdown__item ${value === activeItem ? 'active' : ''}`}
+							className={`support-nav-dropdown__item ${value === activeValue ? 'active' : ''}`}
 							onClick={() => handleValueSelection(value)}
 						>
 							{w(`${theme}-value-${index}`)}

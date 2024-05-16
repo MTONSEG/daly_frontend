@@ -1,0 +1,160 @@
+@import '@/media';
+
+.overflow-hidden {
+	overflow-y: hidden;
+}
+
+.underlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 9999;
+	transition: 0.3s;
+}
+
+.closeSign-wr {
+	position: absolute;
+	right: -25px;
+	top: -25px;
+	background: var(--dark-grey);
+
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	svg {
+		fill: rgb(0, 198, 94);
+	}
+}
+
+.comment {
+	padding: 20px 20px 35px 20px;
+	border-radius: 10px;
+	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	background: rgb(255, 255, 255);
+	margin-bottom: 20px;
+
+	&__top {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__author {
+		display: flex;
+	}
+
+	&__image {
+		margin-right: 15px;
+	}
+
+	&__name {
+		color: var(--dark-grey);
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 150%;
+	}
+
+	&__date {
+		color: var(--dark-grey);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 120%;
+		margin-top: 10px;
+	}
+
+	&__stars {
+		display: flex;
+		align-items: center;
+	}
+
+	&__star-amount {
+		color: rgb(0, 198, 94);
+		font-weight: 500;
+		line-height: 150%;
+		margin-right: 5px;
+	}
+
+	&__star {
+		fill: red;
+	}
+
+	&__text {
+		margin-top: 20px;
+		color: var(--dark-grey);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 152%;
+	}
+
+	&-popup {
+		max-width: 750px;
+		opacity: 1;
+		width: 100%;
+		border-radius: 10px;
+		box-shadow: 3px 4px 12px 0px rgba(54, 58, 69, 0.26);
+		background: rgb(255, 255, 255);
+		padding: 30px 60px;
+		z-index: 2;
+		position: fixed;
+		max-height: 506px;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
+}
+
+.comment-popup {
+	&__thanks {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		max-height: 220px;
+		max-width: 500px;
+		width: 100%;
+	}
+
+	&__title {
+		color: var(--dark-grey);
+		font-size: 32px;
+		font-weight: 700;
+		line-height: 120%;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	&__stars {
+		margin: 20px auto;
+	}
+
+	&__top {
+		margin-top: 20px;
+		display: flex;
+		align-items: self-start;
+		justify-content: space-between;
+		gap: 30px;
+		margin-bottom: 20px;
+
+		.input {
+			flex-grow: 1;
+		}
+	}
+
+	&__sendBtn {
+		margin-top: 30px;
+	}
+}
+
+@include media-max(xs) {
+	.comment-popup {
+		padding: 10px;
+	}
+}

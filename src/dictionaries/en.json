@@ -16,17 +16,228 @@
 		"find": "Find",
 		"empty-cart": "There are no items in your cart, please select something from the catalog",
 		"empty-favorite": "There are no products in your favorites, select something from the catalog",
-		"empty-compare": "There are no products in comparison, select something from the catalog"
+		"empty-compare": "There are no products in comparison, select something from the catalog",
+		"about": "About",
+		"sales1": "Sale from",
+		"sales2": "to smartphones",
+		"seeAll": "See more",
+		"hits": "Hits",
+		"new": "New",
+		"disconts": "Disconts",
+		"popular": "Popular",
+		"cashBack": "Cashback for every purchase",
+		"fastDelivery": "Express delivery for",
+		"hours": "2 hours"
 	},
 	"catalog": {
+		"title": "Catalog",
 		"buy-button-not-active": "Buy",
 		"buy-button-active": "To basket",
-		"favourite-button": "To favourites"
+		"favourite-button": "To favourites",
+		"show-more-button": "Show more",
+		"show-less-button": "Show less",
+		"save-filters-button": "Save",
+		"default-filters-button": "Defaults",
+		"empty-text-1": "There are no such products",
+		"empty-text-2": "Loosen down your filters and save to load more products"
+	},
+	"favourites": {
+		"title": "Favourites",
+		"empty-text-1": "Your Favourites are empty",
+		"empty-text-2": "Add products into yuor favourites to check them out or buy some later"
+	},
+	"comparison": {
+		"title": "Сomparison",
+		"controls-all": "All",
+		"controls-diff": "Only diffrences",
+		"empty-text-1": "Your Comparisons are empty",
+		"empty-text-2": "Add products into your comparisons to compare them with others and buy later",
+		"characteristics-title": "Characteristics"
+	},
+	"basket": {
+		"title": "Basket",
+		"promo-placeholder": "Promocode",
+		"order-button": "Go to ordering",
+		"use-promo-button": "Confirm",
+		"discount-price": "Discounts",
+		"whole-price": "Price",
+		"empty-text-1": "Your basket is empty",
+		"empty-text-2": "Add products into your basket to buy later",
+		"deletion-text": "Your product is going to be deleted in:",
+		"revert-deletion-text": "Cancel deletion"
 	},
 	"color-picker": {
 		"color-1": "grey",
 		"color-2": "green",
 		"color-3": "dark",
 		"color-4": "orange"
+	},
+	"sorting": {
+		"sorting-pre-word": "Sort by",
+		"publishedAt": "Date",
+		"price": "Price",
+		"rating": "Rating"
+	},
+	"inputErrors": {
+		">length": "not enough",
+		"<length": "too much",
+		"ok": "ok"
+	},
+	"product": {
+		"buy-button": "About delivery and payment",
+		"price": "Price",
+		"compare": "Compare",
+		"favourite": "In favourite",
+		"memory": "Memory",
+		"resolution": "Resolution",
+		"ram": "ram",
+		"buy": "Buy",
+		"color": "color",
+		"characteristics": "Characteristics",
+		"allCharacteristics": "All characteristics",
+		"description": "Description",
+		"accessories": "Accessories",
+		"comments": "Comments",
+		"credit": "Credit",
+		"deliver": "Delivery",
+		"cpu": "CPU",
+		"diagonale": "Diagonale",
+		"display": "Display",
+		"howToBuyCr": "Installments",
+		"addToBusket": "Add item to cart",
+		"name": "Name",
+		"email": "Email",
+		"mounthlyPayment": "Monthly",
+		"review": "Review",
+		"leftReview": "Add review",
+		"send": "Send",
+		"showMore": "show more",
+		"showLess": "show less",
+		"loremTitle": "Do you want to sell or buy something quickly and profitably?",
+		"loremText": "Free classifieds board Daly.ua is at your service. On our portal you will find everything from small household appliances to real estate and cars. And if you sell goods, services, rent or rent housing, we will help you solve your problem quickly and efficiently, just add an ad for free! A wide range of goods and services. Clothes and footwear, electronics and household appliances, real estate, cars, work, collectibles - here you will find ads for every taste! A huge audience. Thousands of your potential clients visit our site every day. Don't miss them, submit an ad now! Ease of use. A well-thought-out structure of sections and an ad search will help you quickly find the right offers. And you can place an ad in just a few clicks."
+	},
+	"delivery": {
+		"delivery": "Delivery",
+		"pickup": "Pickup",
+		"chooseCity": "Choose city",
+		"goodAvailibility": "Product available in our store",
+		"destinationCity": "Destination City",
+		"destinationCityKh": "Kharkiv",
+		"destinationCityDn": "Dnipro",
+		"destinationCityKiev": "Kiev",
+		"date": "Date",
+		"time": "Time",
+		"adress": "Adress",
+		"buyBtn": "Buy",
+		"linkText": "Full delivery terms",
+		"workWeek": "Mon-Fri: from 10.00 to 21.00 Sat: from 10.00 to 21.00",
+		"templateAdress": "Kyiv, st. Teplychnaya 8k3"
+	},
+	"order": {
+		"title": "Placing an order",
+		"chosen-title": "Order list",
+		"chosen-change-button": "Edit",
+		"chosen-word": "Total",
+		"payment-title": "Payment method",
+		"personal-title": "Personal info",
+		"next-button": "Next",
+		"buy-button": "Make order",
+		"buy-aggreement": "By clicking the submit button you confirm your agreement with the ",
+		"buy-aggreement-link": "terms of sale in the Daly online store",
+		"fill-popup-text": "Some of the fields are empty. Fill them up to proceed with the order creation",
+		"fill-popup-close-button": "Close",
+		"empty-list-text": "You've not chosen any products, go check your basket first"
+	},
+	"order-delivery": {
+		"title": "Way of shipment",
+		"nav-1": "Delivery",
+		"nav-2": "Takeout"
+	},
+	"payment": {
+		"title-1": "Online",
+		"title-2": "Installment plan online",
+		"title-3": "Upon receipt",
+		"title-4": "Digital wallet",
+		"description-1": "Visa, Mastercard",
+		"description-2": "List of partner banks",
+		"description-3": "Cash or card",
+		"description-4": "IBox,  TRUST Wallet",
+		"link-2": "Fill out the form on the website"
+	},
+	"personal-info": {
+		"title-1": "Name",
+		"title-2": "Surname",
+		"title-3": "Phone number",
+		"title-4": "E-mail",
+		"placeholder-1": "John",
+		"placeholder-2": "Deer",
+		"placeholder-3": "+38 (123)-456-78-90",
+		"placeholder-4": "name@inbox.ua"
+	},
+	"terms": {
+		"title-1": "Convenient delivery",
+		"title-2": "Payment in any way",
+		"title-3": "Warranty service",
+		"title-4": "Quick exchange and return",
+		"title-5": "Express delivery",
+		"title-6": "Better prices"
+	},
+	"subscribe": {
+		"main-title": "Be the first !",
+		"description": "Subscribe to the latest updates and learn about new products and special offers first",
+		"button-value": "Subscribe",
+		"placeholder": "Your e-mail",
+		"agreement-text1": "I agree to the terms of processing",
+		"agreement-text2": "personal data",
+		"agreement-text3": "and with",
+		"agreement-text4": "subscription terms"
+	},
+	"faq": {
+		"title": "Do you want to sell or buy something quickly and profitably?",
+		"text": "At your service is a board of free announcements Daly.ua. On our portal you will find everything from small appliances to real estate and cars. And if you sell a product, service, rent or rent a house, we will help you solve your problem quickly and efficiently, just add an ad for free! Wide range of goods and services. Clothes and shoes, electronics and household appliances, real estate, cars, work, collectibles - here you will find ads for every taste! Huge audience. Thousands of your potential customers visit our site daily. Don’t miss them, submit an ad now! User-friendliness. Well-designed section structure and ad search help you quickly find the right suggestions. And you can place an ad in just a few clicks.",
+		"open-text": "expand"
+	},
+	"top-footer": {
+		"cities": "['Odesa', 'Dnipro', 'Kiyv', 'Charkiv', 'Cherson', 'Ternopil']",
+		"socialMedia-text": "Join us"		
+	},
+	"status-popup": {
+		"success-text": "Request fulfilled successfully!",
+		"failed-text": "Failed to create a request. Please try again.",
+		"waiting-text": "Waiting for your request to be processed..."
+	},
+	"support-nav": {
+		"registration-theme": "Registration and sign-in",
+		"registration-value-0": "Registration",
+		"registration-value-1": "Sign-in",
+		"delivery-theme": "Delivery and payment",
+		"delivery-value-0": "Delivery",
+		"delivery-value-1": "Payment"
+	},
+	"support-data": {
+		"support-heading": "Support Heading",
+		"support-text": "Support text",
+		"support-text-long": "Support text long  long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long",
+		"support-heading-1": "Registration",
+		"support-heading-2": "Sign-in",
+		"support-heading-3": "Delivery",
+		"support-heading-4": "Payment"
+	},
+	"middle-footer": {
+		"title1": "Message board",
+		"title2": "Service center",
+		"title3": "Internet shop",
+		"title4": "Users for",
+		"column1": "['Announcements','Shops','Charity','Personal cabinet']",
+		"column2": "['What are we fixing','Service center addresses']",
+		"column3": "['Goods catalog','Delivery and payment','Bucket','Personal cabinet','Contacts', 'Vacancies']",
+		"column4": "['Garanties', 'Delivery and payment', 'Support', 'Question-answer']"
+	},
+	"bottom-footer": {
+		"navLinks": "['Privacy policy','User Agreement','Use of cookies','Site map']"
+	},
+	"404":{
+		"title": "There is no such page",
+		"button": "Go to home page"
 	}
 }

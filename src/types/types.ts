@@ -5,7 +5,8 @@ export interface IProductImage {
 	url: string
 }
 
-export type IProductProperties = {
+// Update the IProductProperties type definition
+export interface IProductProperties {
 	id: number
 	memory: string
 	ram: string
@@ -14,8 +15,12 @@ export type IProductProperties = {
 	cpu: string
 	diagonale: string
 	display: string
+	[key: string]: string | number // Index signature to allow any string as property name
 }
 
+// export type IComment = {
+
+// }
 
 export type IProductComments = {
 	id: number
@@ -26,7 +31,23 @@ export type IProductComments = {
 		author: string
 		email: string
 		name: string
-	}[]
+	}
+}
+
+export type IBrand = {
+	id: number
+	attributes: {
+		name: string
+		createdAt: string
+		updatedAt: string
+		publishedAt: string
+		label: string
+		locale: string
+	}
+}
+
+export type IProductLocales = {
+	data: IProduct[]
 }
 
 export interface IProduct {
@@ -47,7 +68,9 @@ export interface IProduct {
 		images?: IProductImage[]
 		properties?: IProductProperties
 		category?: { data: ICategory }
-		product_comments?: { data: IProductComments }
+		product_comments?: { data: IComment[] }
+		brand?: { data: IBrand }
+		localizations?: IProductLocales
 	}
 }
 
@@ -84,10 +107,100 @@ export interface IMapIcons {
 	[key: string]: ComponentType<SVGProps<SVGSVGElement>>
 }
 
+export interface IFilter {
+	id: number
+	attributes: {
+		name: string
+		label: string
+		min_price: number
+		max_price: number
+		createdAt: string
+		updatedAt: string
+		publishedAt: string
+		stock: number
+		locale: string
+		brands: {
+			id: number
+			active: boolean
+			brand: {
+				id: number
+				data: IBrand
+			}
+		}[]
+		categories: {
+			id: number
+			active: boolean
+			category: {
+				id: number
+				data: ICategory
+			}
+		}[]
+		options: {
+			id: number
+			title: string
+			active: boolean
+		}[]
+	}
+}
+
 export interface ISelectOption {
-	id: string,
+	id: string
 	value: string
 	label: string
 	isFixed?: boolean
 	isDisabled?: boolean
 }
+
+export interface IComment {
+	text: string
+	email: string
+	rating: number
+	author: object
+	name: string
+	product: number[]
+	updatedAt?: string
+}
+
+export interface ILogos {
+	data: {
+		attributes: {
+			brandsLogo: {
+				data: {
+					attributes: {
+						url: string
+					}
+				}[]
+			}
+		}
+	}
+}
+export interface ITerms {
+	data: {
+		attributes: {
+			termsImage: {
+				data: {
+					attributes: {
+						url: string
+					}
+				}[]
+			}
+		}
+	}
+}
+
+export interface ISubscribe {
+    data: {
+     subscriber: string,
+	 subscribe: boolean
+    }
+ }
+
+ export interface ISuport {
+	data: {
+		name: string,
+		phone: number,
+		email: string,
+		message: string,
+		image: any
+	}
+ }

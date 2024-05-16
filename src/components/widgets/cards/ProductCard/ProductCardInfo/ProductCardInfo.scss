@@ -4,11 +4,19 @@
 	&__info {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: 2px;
 		font-family: var(--inter);
 		font-weight: 500;
 		width: 100%;
 		max-width: 200px;
+	}
+
+	&__category,
+	&__name {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		-webkit-line-clamp: 1;
 	}
 
 	&__category {

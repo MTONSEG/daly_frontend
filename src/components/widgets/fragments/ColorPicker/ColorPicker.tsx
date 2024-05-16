@@ -1,8 +1,9 @@
 'use client'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { CheckIcon } from '@/components/ui/icons'
 import './ColorPicker.scss'
 import { useTranslations } from 'next-intl'
+import { upperFirstLetter } from '@/utils/upperFirtLetter'
 
 interface IColorPickerProps {
 	variant: 'forCard' | 'forPage'
@@ -30,7 +31,7 @@ const ColorPicker: React.FC<IColorPickerProps> = ({ variant }) => {
 	return (
 		<div className={`color-picker ${variant === 'forPage' && 'for-page'}`}>
 			<div className='color-picker__heading'>
-				{selectedColor && <p>{getColorName(selectedColor)}</p>}
+				{selectedColor && <p>{upperFirstLetter(getColorName(selectedColor))}</p>}
 			</div>
 			<div className='color-picker__circles-container'>
 				{colors.map((color, index) => (
@@ -39,6 +40,7 @@ const ColorPicker: React.FC<IColorPickerProps> = ({ variant }) => {
 						style={{ background: colors[index].hex }}
 						key={index}
 						onClick={() => handleColorSelection(color.hex)}
+						aria-label={`color-circle ${color.name}`}
 					>
 						{selectedColor === color.hex && (
 							<CheckIcon className='color-picker__icon' />

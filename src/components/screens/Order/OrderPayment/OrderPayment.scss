@@ -1,0 +1,38 @@
+@import "@/media";
+.order-block {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	&__title {
+		font-family: var(--inter);
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 150%;
+		color: var(--dark-grey);
+	}
+
+	&__content {
+        display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(170px, 297px));
+		row-gap: 11px;
+		column-gap: 30px;
+	}
+
+    &__input{
+        width: 100%;
+    }
+    @include media-max(sm) {
+        &__content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(245px, 100%));
+            justify-items: center;
+        }
+    }
+    @include media-max(xxs) {
+        &__content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 100%));
+            justify-items: center;
+        }
+    }
+}

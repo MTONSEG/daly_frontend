@@ -3,12 +3,13 @@
 	&__image-container {
 		position: relative;
 		width: 100%;
-		height: 180px;
+		height: 170px;
 		&.row {
 			width: 100%;
 			max-width: 200px;
 			height: 160px;
 		}
+		cursor: pointer;
 	}
 
 	&__image {
@@ -17,11 +18,21 @@
 		height: auto;
 	}
 
+	&__image-placeholder {
+		margin: 10px 0 0 0;
+		width: 100%;
+		max-width: 170px;
+		height: 160px;
+		background: var(--grey-04);
+	}
+
 	@include media-max(xs) {
 		&__image-container {
 			position: relative;
 			width: 100%;
 			height: 100px;
+			display: flex;
+			justify-content: center;
 			&.row {
 				width: 100%;
 				max-width: 200px;

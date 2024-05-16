@@ -1,7 +1,8 @@
 .color-picker {
+	margin: 0 0 0 1px;
 	display: flex;
 	flex-direction: column;
-	gap: 7px;
+	gap: 10px;
 
 	&.for-page {
 		gap: 15px;

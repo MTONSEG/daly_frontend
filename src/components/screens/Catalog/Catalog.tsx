@@ -1,47 +1,28 @@
-'use client'
-import { useEffect, useState } from 'react'
-import { IProduct } from '@/types/types'
 import './Catalog.scss'
-
+import CatalogContent from './CatalogContent'
 import Container from '@/components/ui/containers/Container/Container'
-import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
+import CatalogFilters from './CatalogFilters/CatalogFilters'
+import { useTranslations } from 'next-intl'
+import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 
-export default function Catalog() {
-	const [products, setProducts] = useState<IProduct[]>([])
-
-	useEffect(() => {
-		const fetchFeaturedProducts = async () => {
-			try {
-				const response = await fetch(
-					`http://localhost:1337/api/products?populate=images,properties,category&pagination[page]=3&pagination[pageSize]=3`,
-					{ cache: 'force-cache' }
-				)
-
-				const dataRow = await response.json()
-				const data = dataRow.data
-				setProducts(data)
-			} catch (error) {
-				console.error('Error fetching data:', error)
-			}
-		}
-
-		fetchFeaturedProducts()
-	}, [])
-
+const Catalog: React.FC = () => {
+	const word = useTranslations('catalog')
+	const breadcrumbArr: IBreadcrumb[] = [
+		{ label: 'Home', href: '/', active: false },
+		{ label: 'Catalog', href: 'catalog', active: true }
+	]
 	return (
-		<>
-			<Container>
-				{/* <div className='catalog'>
-					{products.map((product, index) => (
-						<ProductCard
-							key={index}
-							product={product}
-							variant={'row'}
-						></ProductCard>
-					))}
-				</div> */}
-				<></>
-			</Container>
-		</>
+		<Container>
+			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
+			<div className='catalog'>
+				<div className='catalog__title'>{word('title')}</div>
+				<div className='catalog__content'>
+					<CatalogFilters />
+					<CatalogContent />
+				</div>
+			</div>
+		</Container>
 	)
 }
+
+export default Catalog

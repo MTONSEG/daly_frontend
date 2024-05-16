@@ -4,7 +4,10 @@ import { useTranslations } from 'next-intl'
 import './FavouriteBtn.scss'
 import { FavoriteIconGreen } from '../../icons'
 import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
-import { addFavorite, removeFavorite } from '@/store/slices/favourites.slice'
+import {
+	addFavorite,
+	removeFavorite
+} from '@/store/favourites/favourites.slice'
 
 interface IFavouriteBtnProps {
 	isLabeled?: boolean
@@ -29,12 +32,12 @@ const FavouriteBtn: React.FC<IFavouriteBtnProps> = ({ id, isLabeled }) => {
 	const buttonText = t('favourite-button')
 
 	return (
-		<div className='favourite-button__container' onClick={handleClick}>
+		<button className='favourite-button__container' onClick={handleClick} aria-label='favourite-button'>
 			{isLabeled && buttonText}
 			<FavoriteIconGreen
 				className={`favourite-button__favourite-icon ${isFavorite && 'active'}`}
 			/>
-		</div>
+		</button>
 	)
 }
 

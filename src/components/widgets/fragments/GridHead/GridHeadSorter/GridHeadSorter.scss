@@ -1,0 +1,108 @@
+.sorter {
+	position: relative;
+	&__head {
+		display: flex;
+		flex-direction: row;
+		// align-items: center;
+		gap: 7px;
+		cursor: pointer;
+		width: 70px;
+		text-align: left;
+		color: var(--dark-grey);
+		font-family: var(--inter);
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 120%;
+		letter-spacing: 0px;
+		text-align: left;
+	}
+
+	&__arrow {
+		position: relative;
+		width: 10px;
+		height: 10px; /* Adjust the height to match the width for a symmetrical arrow */
+		transition: 0.3s;
+		transform: rotate(-90deg);
+		top: 3px;
+		&.asc {
+			transform: rotate(-90deg);
+		}
+		&.desc {
+			top: 0;
+			transform: rotate(90deg);
+		}
+	}
+
+	&__arrow::before,
+	&__arrow::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%) rotate(45deg); /* Rotate the lines to form an angle */
+		width: 7px; /* Increase the width for a thicker arrow */
+		height: 7px; /* Increase the height for a thicker arrow */
+		border-top: 2px solid #000; /* Create the top line of the arrow */
+		border-right: 2px solid #000; /* Create the right line of the arrow */
+		border-radius: 1px;
+	}
+
+	&__arrow::before {
+		right: 50%; /* Position the first line to the right */
+		margin-right: -3.5px; /* Adjust the margin to align the lines properly */
+	}
+
+	&__arrow::after {
+		left: 50%; /* Position the second line to the left */
+		margin-left: -3.5px; /* Adjust the margin to align the lines properly */
+	}
+
+	&__options {
+		top: 22px;
+		width: 100px;
+		position: absolute;
+		height: 0;
+		opacity: 0;
+		pointer-events: none;
+		transition: 0.3s;
+		&.active {
+			z-index: 4;
+			height: auto;
+			opacity: 1;
+			pointer-events: auto;
+			display: flex;
+			flex-direction: column;
+			border-radius: 7px;
+			background: var(--light-grey);
+		}
+	}
+
+	&__option {
+		padding: 7px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		cursor: pointer;
+		transition: 0.3s;
+		&.active,
+		&:hover {
+			.arrow::before,
+			.arrow::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%) rotate(45deg); /* Rotate the lines to form an angle */
+				width: 7px; /* Increase the width for a thicker arrow */
+				height: 7px; /* Increase the height for a thicker arrow */
+				border-top: 2px solid var(--white); /* Create the top line of the arrow */
+				border-right: 2px solid var(--white); /* Create the right line of the arrow */
+				border-radius: 1px;
+			}
+			color: var(--white);
+			background: var(--bright-green-06);
+		}
+
+		&.active{
+			background: var(--bright-green);
+		}
+	}
+}

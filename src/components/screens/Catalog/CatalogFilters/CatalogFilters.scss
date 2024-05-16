@@ -1,0 +1,76 @@
+@import '../../../../styles/mixins/media.scss';
+
+.catalog-filters {
+	display: flex;
+	flex-direction: column;
+	gap: 27px;
+	padding: 23px 30px 30px 30px;
+	max-width: 270px;
+	border-radius: 0px 0px 2px 2px;
+	background: var(--white);
+	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	height: fit-content;
+	min-height: 780px;
+	min-width: 270px;
+	&__buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__mobile-button {
+		display: none;
+	}
+
+	@include media-max(sm) {
+		padding: 25px 30px 30px 20px;
+		position: fixed;
+		right: -100%;
+		transition: 0.2s ease-in-out;
+		z-index: 15;
+		&.active {
+			bottom: 0;
+			right: 0;
+			z-index: 15;
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: 100vh;
+			min-height: 0;
+		}
+
+		&__buttons {
+			position: sticky;
+			bottom: 0;
+			display: flex;
+			flex-direction: row;
+			gap: 20px;
+			width: 215px;
+			margin-top: auto;
+		}
+
+		&__mobile-button {
+			position: fixed;
+			z-index: 6;
+			bottom: 70px;
+			right: 30px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background: var(--bright-green);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			transition: 0.2s;
+			&:hover {
+				background: var(--bright-green-06);
+			}
+		}
+
+		&__mobile-icon {
+			width: 20px;
+			height: 20px;
+			fill: var(--light-grey);
+		}
+	}
+}

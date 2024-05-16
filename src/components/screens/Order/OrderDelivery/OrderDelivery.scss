@@ -1,0 +1,271 @@
+@import '@/media';
+.order-delivery {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+
+	&__title {
+		font-family: var(--inter);
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 150%;
+		color: var(--dark-grey);
+	}
+
+	&__nav {
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+	}
+
+	&__nav-item {
+		width: 100%;
+		max-width: 221px;
+		height: 41px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--inter);
+		font-weight: 500;
+		font-size: 14px;
+		color: var(--bright-green);
+		cursor: pointer;
+		box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+		background: #fff;
+		transition: 0.2s;
+		border-radius: 10px;
+		&:hover {
+			color: var(--bright-green-06);
+			box-shadow: 1px 1px 8px 3px rgba(54, 58, 69, 0.08);
+		}
+		&.active {
+			background: var(--bright-green);
+			color: #fff;
+		}
+	}
+
+	&__content {
+		margin: 20px 0 0 0;
+		box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+		background: #fff;
+
+		.courier {
+			display: flex;
+			padding-bottom: 0px;
+
+			.css-1u9des2-indicatorSeparator {
+				display: none;
+			}
+
+			&__left {
+				width: 100%;
+				margin-right: 0px;
+				// max-width: 554px;
+			}
+
+			&__form {
+				padding: 30px;
+				max-width: 554px;
+				&.order-form {
+					padding: 25px 30px 0px 30px;
+					max-width: 100%;
+				}
+			}
+
+			.select-container {
+				width: 100%;
+				margin-bottom: 30px;
+			}
+
+			.select-label {
+				color: var(--dark-grey);
+				font-size: 16px;
+				font-weight: 500;
+				line-height: 152%;
+				letter-spacing: 0px;
+				text-align: left;
+				margin-bottom: 5px;
+			}
+		}
+
+		.pickup {
+			padding: 30px;
+			&__content {
+				margin-top: 20px;
+				display: flex;
+			}
+
+			&__title {
+				color: var(--dark-grey);
+				font-size: 18px;
+				font-weight: 700;
+				line-height: 150%;
+			}
+
+			&__adress {
+				color: var(--dark-grey);
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 150%;
+				max-width: 180px;
+				position: relative;
+			}
+
+			&__city {
+				margin-top: 36px;
+			}
+
+			&__time {
+				color: var(--dark-grey);
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 150%;
+				margin-top: 20px;
+			}
+
+			&__tel {
+				margin-top: 20px;
+				display: flex;
+				align-content: center;
+				flex-wrap: wrap;
+
+				svg {
+					width: 16px;
+					height: 16px;
+					margin-right: 10px;
+				}
+			}
+
+			&__iframe {
+				height: 405px;
+				margin-left: 107px;
+				max-width: 670px;
+				width: 100%;
+			}
+		}
+	}
+
+	@include media-max(xs) {
+		gap: 10px;
+
+		&__title {
+			font-size: 18px;
+		}
+
+		&__nav {
+			gap: 10px;
+		}
+
+		&__nav-item {
+			font-size: 12px;
+		}
+
+		&__content {
+			margin: 0px 0 0 0;
+			box-shadow: none;
+			background: #fff;
+			.selects-line {
+				flex-direction: column;
+				gap: 0;
+			}
+
+			.courier {
+				display: flex;
+				padding-bottom: 0px;
+
+				.css-1u9des2-indicatorSeparator {
+					display: none;
+				}
+
+				&__left {
+					width: 100%;
+					margin-right: 0px;
+					// max-width: 554px;
+				}
+
+				&__form {
+					padding: 15px;
+					max-width: 554px;
+					&.order-form {
+						padding: 0;
+						max-width: 100%;
+					}
+				}
+
+				.select-container {
+					width: 100%;
+					margin-bottom: 15px;
+				}
+
+				.select-label {
+					color: var(--dark-grey);
+					font-size: 14px;
+					font-weight: 500;
+					line-height: 152%;
+					letter-spacing: 0px;
+					text-align: left;
+					margin-bottom: 5px;
+				}
+			}
+
+			.pickup {
+				padding: 0px;
+				&__content {
+					margin-top: 0px;
+					display: flex;
+					flex-direction: column;
+					gap: 20px;
+				}
+
+				&__title {
+					color: var(--dark-grey);
+					font-size: 16px;
+					font-weight: 700;
+					line-height: 150%;
+				}
+
+				&__adress {
+					color: var(--dark-grey);
+					font-size: 12px;
+					font-weight: 500;
+					line-height: 150%;
+					max-width: 180px;
+					position: relative;
+				}
+
+				&__city {
+					margin-top: 15px;
+				}
+
+				&__time {
+					color: var(--dark-grey);
+					font-size: 12px;
+					font-weight: 400;
+					line-height: 150%;
+					margin-top: 20px;
+				}
+
+				&__tel {
+					margin-top: 20px;
+					display: flex;
+					align-content: center;
+					flex-wrap: wrap;
+
+					svg {
+						width: 16px;
+						height: 16px;
+						margin-right: 10px;
+					}
+				}
+
+				&__iframe {
+					height: 405px;
+					margin-left: 0px;
+					max-width: 670px;
+					width: 100%;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,140 @@
+@import '@/media';
+.order {
+	margin: 41px 0 0;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	width: 100%;
+	max-width: 725px;
+
+	&__title {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 30px;
+		font-family: var(--inter);
+		font-weight: 700;
+		font-size: 32px;
+		line-height: 120%;
+		color: var(--dark-grey);
+	}
+
+	&__title-arrow {
+		width: 15px;
+		height: 25px;
+	}
+
+	&__delivery {
+		width: 100%;
+		max-width: 725px;
+	}
+
+	&__bottom {
+		display: flex;
+		flex-direction: row;
+		gap: 56px;
+		align-items: center;
+
+		position: relative;
+	}
+
+	&__order-button {
+		border-radius: 10px;
+		width: 226px;
+		height: 41px;
+		background: var(--bright-green);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--inter);
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 120%;
+		color: var(--white);
+		width: 100%;
+		max-width: 226px;
+	}
+
+	&__aggreement {
+		width: 100%;
+		max-width: 378px;
+		font-family: var(--inter);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 150%;
+		color: var(--dark-grey);
+		span {
+			color: var(--bright-green);
+		}
+	}
+
+	&__popup{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		background: var(--white);
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 56px;
+		transition: 0.3s;
+	}
+
+	&__popup-text{
+		font-family: var(--inter);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 150%;
+		color: red;
+	}
+
+	@include media-max(xs) {
+		align-items: center;
+		&__title {
+			font-weight: 700;
+			font-size: 22px;
+			gap: 15px;
+		}
+		&__title-arrow {
+			width: 10px;
+			height: 20px;
+		}
+
+
+		&__bottom {
+			display: flex;
+			flex-direction: column;
+			gap: 25px;
+			align-items: center;
+			justify-content: center;
+		}
+	
+		&__aggreement {
+			text-align: center;
+		}
+
+		&__popup{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			right: 0;
+			background: var(--white);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 26px;
+			transition: 0.3s;
+		}
+	
+		&__popup-text{
+			font-family: var(--inter);
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 150%;
+			color: red;
+			text-align: center;
+		}
+	
+	}
+}

@@ -12,6 +12,7 @@ export { default as StarIcon } from '@/icons/star.svg'
 export { default as CommentIcon } from '@/icons/comment.svg'
 export { default as FavoriteIconGreen } from '@/icons/favorite-green.svg'
 export { default as CheckIcon } from '@/icons/check.svg'
+export { default as DropDownIcon } from '@/icons/drop-down.svg'
 export { default as TriangleIcon } from '@/icons/triangle.svg'
 
 // catalog popup
@@ -34,3 +35,25 @@ export { default as SockIcon } from '@/icons/catalog/sock.svg'
 export { default as TabletIcon } from '@/icons/catalog/tablet.svg'
 export { default as WheelIcon } from '@/icons/catalog/wheel.svg'
 export { default as HeadsetIcon } from '@/icons/catalog/headset.svg'
+
+//catalog
+export { default as CardsModIcon } from '@/icons/cards-mode-icon.svg'
+export { default as ListModIcon } from '@/icons/list-mode-icon.svg'
+export { default as FilterMobileIcon } from '@/icons/filter.svg'
+// product page
+export { default as LikeIcon } from '@/icons/like-icon.svg'
+export { default as ArrowRight } from '@/icons/arrow-right.svg'
+export { default as StarProduct } from '@/icons/star-product.svg'
+export { default as CloseSign } from '@/icons/btn-close_off.svg'
+export { default as TelIcon } from '@/icons/phone.svg'
+export { default as ArrowDown } from '@/icons/downArrow.svg'
+// comparison
+export { default as TrashIcon } from '@/icons/trash-can.svg'
+// order
+export { default as ArrowLeft } from '@/icons/arrow-left-big.svg'
+export { default as GreyCross } from '@/icons/grey-cross.svg'
+// home
+export { default as LogoBanner } from '@/icons/LogoBanner.svg'
+
+
+

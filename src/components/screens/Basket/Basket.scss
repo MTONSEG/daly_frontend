@@ -1,0 +1,50 @@
+@import '../../../styles/mixins/media.scss';
+
+.basket {
+	margin: 40px 0 0 0;
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	&__title {
+		color: var(--dark-grey);
+		font-family: var(--sans);
+		font-size: 30px;
+		font-weight: 700;
+		line-height: 120%;
+		width: 100%;
+		text-align: left;
+	}
+
+	&__content {
+		width: 100%;
+	}
+
+	&__order-button {
+		border-radius: 10px;
+		background: var(--bright-green);
+		width: fit-content;
+		height: 41px;
+		color: var(--white);
+		font-family: var(--inter);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 120%;
+		padding: 0 56px 0 56px;
+		transition: 0.2s;
+		&:hover {
+			background: var(--dark-green);
+		}
+	}
+
+	&__order-button-box{
+		width: fit-content;
+	}
+
+	@include media-max(md){
+		gap: 20px;
+		align-items: center;
+		&__title {
+			max-width: 720px;
+		}
+	}
+}

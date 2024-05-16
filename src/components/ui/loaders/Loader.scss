@@ -1,0 +1,36 @@
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.loader-dot {
+    width: 15px;
+    height: 15px;
+    background-color: var(--bright-green);
+    border-radius: 50%;
+    margin-right: 10px;
+    animation: jump 0.5s infinite alternate;
+}
+
+.loader-dot:last-child {
+    margin-right: 0;
+}
+
+.loader-dot:nth-child(2) {
+    animation-delay: 0.2s; /* Delay the second dot's animation */
+}
+
+.loader-dot:nth-child(3) {
+    animation-delay: 0.4s; /* Delay the third dot's animation */
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}

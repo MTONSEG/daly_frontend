@@ -1,0 +1,154 @@
+@import '@/media';
+
+.product {
+	display: grid;
+	grid-template-columns: 370px 1fr;
+
+	&__slider-container {
+		max-width: 370px;
+	}
+
+	&__title {
+		margin: 0 0 30px 0;
+		color: var(--dark-grey);
+		font-family: var(--inter);
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 150%;
+		grid-column: 1/3;
+	}
+}
+
+.info {
+	margin-left: 40px;
+	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 404px;
+
+	&__deliver-btn {
+		margin-top: 30px;
+		width: 100%;
+		color: rgb(255, 255, 255);
+		font-size: 14px;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+
+		svg {
+			margin-left: 5px;
+		}
+	}
+}
+
+@include media-max(lg) {
+	.info {
+		grid-template-columns: 1fr 1fr;
+
+		&__right {
+			max-width: 350px;
+			justify-self: center;
+		}
+	}
+}
+
+@include media-max(md) {
+	.info {
+		grid-template-columns: 1fr;
+
+		&__left {
+			order: 2;
+		}
+
+		&__right {
+			order: 1;
+			justify-self: start;
+			max-width: 100%;
+			width: 100%;
+			margin: 0 0 20px 0;
+		}
+	}
+}
+
+@include media-max(sm) {
+	.product {
+		grid-template-columns: 1fr;
+
+		&__title {
+			grid-column: 1/2;
+		}
+		.product__slider-container {
+			margin: 0 auto;
+		}
+	}
+
+	.info {
+		grid-template-columns: 1fr 1fr;
+		margin-top: 20px;
+		margin-left: 0;
+
+		&__left {
+			order: inherit;
+		}
+
+		&__deliver-btn {
+			display: none;
+		}
+	}
+}
+
+.lorem {
+	margin: 100px 0;
+
+	&__title {
+		color: rgb(129, 129, 135);
+		font-size: 14px;
+		line-height: 150%;
+		margin-bottom: 8px;
+	}
+
+	&__text {
+		color: rgb(129, 129, 135);
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 130%;
+		transition: 0.3;
+	}
+
+	&__show-more {
+		display: flex;
+		margin-top: 17px;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	&__show-more-text {
+		color: rgb(129, 129, 135);
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 130%;
+		cursor: pointer;
+		margin-right: 10px;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+@include media-max(xs) {
+	.product {
+		grid-template-columns: 1fr;
+
+		&__right {
+			margin-top: 20px;
+		}
+	}
+
+	.lorem {
+		margin-top: 50px;
+	}
+
+	.info {
+		grid-template-columns: 1fr;
+	}
+}

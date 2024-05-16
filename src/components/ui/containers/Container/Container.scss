@@ -1,3 +1,5 @@
+@import '@/media';
+
 .container {
 	width: 100%;
 	margin: 0 auto;
@@ -7,5 +9,30 @@
 	&_fullscreen {
 		max-width: 100%;
 		padding: 0;
+	}
+
+	&_product {
+		border-radius: 10px;
+		box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+		background: rgb(255, 255, 255);
+		padding: 30px 50px;
+	}
+
+	&_block {
+		margin: 0 0;
+		width: 100%;
+		padding: 25px 55px 35px 30px;
+		box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+		background: #fff;
+		@include media-max(xs) {
+			padding: 15px;
+		}
+	}
+}
+
+@include media-max(xs) {
+	.container_product {
+		padding: 30px 15px;
+		grid-template-columns: 1fr;
 	}
 }

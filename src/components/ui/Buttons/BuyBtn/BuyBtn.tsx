@@ -1,9 +1,9 @@
-"use client"
+'use client'
 import { CartIconThick } from '../../icons'
 import { useTranslations } from 'next-intl'
-import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
-import { addProduct } from '@/store/slices/basket.slice'
 import './BuyBtn.scss'
+import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
+import { addProduct } from '@/store/basket/basket.slice'
 
 interface IBuyButtonProps {
 	id: number
@@ -25,10 +25,10 @@ const BuyButton: React.FC<IBuyButtonProps> = ({ id }) => {
 		: t('buy-button-not-active')
 
 	return (
-		<div className='buy-button' onClick={handleClick}>
+		<button className='buy-button' onClick={handleClick} aria-label='buy-button'>
 			{buttonText}
 			<CartIconThick className='buy-button__icon' />
-		</div>
+		</button>
 	)
 }
 

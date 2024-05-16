@@ -1,6 +1,4 @@
 @import '@/media';
-@import '../../../styles/vars/colors.scss';
-@import '../../../styles/vars/fonts.scss';
 
 .main-page {
 	width: 100%;
@@ -574,6 +572,7 @@
 	}
 
 	.faq {
+		overflow-x: hidden;
 		&__icon {
 			position: fixed;
 			right: 40px;

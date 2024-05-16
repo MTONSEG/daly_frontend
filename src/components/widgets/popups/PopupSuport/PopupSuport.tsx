@@ -43,7 +43,6 @@ const PopupSuport = ({ closePopup }: PopupTypes) => {
 						position: 'relative',
 						minWidth: '100%',
 						minHeight: '100%',
-						padding: '40px 28px'
 					}}
 				>
 					<h2 className='popup-suport__title'>Обращение в службу поддержки</h2>

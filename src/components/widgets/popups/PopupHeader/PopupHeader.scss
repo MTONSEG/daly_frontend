@@ -3,6 +3,7 @@
 .popup-header {
 	position: relative;
 	margin: 0 20px 0 0;
+	z-index: 5;
 
 	&:last-child {
 		margin: 0;

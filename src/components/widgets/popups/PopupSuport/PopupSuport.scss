@@ -1,6 +1,4 @@
 @import '@/media';
-@import '../../../../styles/vars/colors.scss';
-@import '../../../../styles/vars/fonts.scss';
 
 .popup-suport {
 	width: 100%;
@@ -13,7 +11,8 @@
 	left: 50%;
 	z-index: 50000;
 	transform: translate(-50%, -50%);
-
+	padding: 40px 28px;
+	
 	&__title {
 		color: var(--dark-grey);
 		font-family: var(--poppins);
@@ -55,8 +54,8 @@
 
 	&__close-wrapper {
 		position: absolute;
-		top: -25px;
-		right: -25px;
+		top: -24px;
+		right: 0px;
 		width: 30px;
 		height: 30px;
 		border-radius: 100%;
@@ -70,7 +69,7 @@
 }
 
 .support-bottom {
-	margin-top: 56px;
+	margin-top: 24px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -167,5 +166,28 @@
 		font-size: 16px;
 		font-weight: var(--500);
 		line-height: 1.52%;
+	}
+}
+
+@include media-max(md) {
+	.popup-suport {
+		max-width: 80%;
+	}
+}
+
+@include media-max(xs) {
+	.popup-suport {
+	padding: 25px 15px !important;
+
+	&__close-wrapper {
+		top: -35px;
+		right: -25px;
+	}
+	}
+
+	.support-bottom {
+		&__send-button {
+			width: 100%;
+		}
 	}
 }

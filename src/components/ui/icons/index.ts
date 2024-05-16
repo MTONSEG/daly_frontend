@@ -54,6 +54,7 @@ export { default as ArrowLeft } from '@/icons/arrow-left-big.svg'
 export { default as GreyCross } from '@/icons/grey-cross.svg'
 // home
 export { default as LogoBanner } from '@/icons/LogoBanner.svg'
+export { default as Catalog } from '@/icons/catalog.svg'
 
 
 

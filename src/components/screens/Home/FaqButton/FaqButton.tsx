@@ -20,6 +20,7 @@ const FaqButton = () => {
 
 	const closePopup = () => {
 		dispatch(setPopupSupport(false))
+		dispatch(setOverlaySupport(false))
 	}
 
 	const closeOverlay = () => {

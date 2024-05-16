@@ -1,0 +1,57 @@
+@import '@/media';
+
+.burger {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--colorLine);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 5px;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 3000;
+
+    & .burger-line {
+      display: block;
+      width: 24px;
+      height: 1px;
+      color: var(--black);
+      border: 1px solid var(--black);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    & .burger--upperLine {
+      display: none;
+    }
+
+    & .burger--middleLine {
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      margin: auto;
+      display: block;
+      width: 24px;
+      height: 1px;
+      color: var(--black);
+      border: 1px solid var(--black);
+      transition: transform 0.2s ease-in-out;
+      transform: rotate(45deg);
+    }
+
+    & .burger--lowerLine {
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      margin: auto;
+      display: block;
+      width: 24px;
+      height: 1px;
+      color: var(--black);
+      border: 1px solid var(--black);
+      transition: transform 0.2s ease-in-out;
+      transform: rotate(-45deg);
+    }
+  }

@@ -32,7 +32,7 @@ import popupSupportSlice from "./popups/supportPopup.slice"
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['basket', 'favourites', 'comparison', 'order'],
+	whitelist: ['basket', 'favourites', 'comparison', 'order', 'filters'],
 	// blacklist: ['header', 'filters', 'catalogProducts']
 }
 

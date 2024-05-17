@@ -16,7 +16,7 @@ const SupportNavDropdown: FC<SupportNavDropdownProps> = ({
 	onSelectValue,
 	activeValue
 }) => {
-	const w = useTranslations('support-nav')
+	const t = useTranslations('support-nav')
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const handleValueSelection = (value: string) => {
 		onSelectValue(value)
@@ -31,7 +31,7 @@ const SupportNavDropdown: FC<SupportNavDropdownProps> = ({
 				}}
 			>
 				<Arrow state={isOpen} />
-				{w(`${theme}-theme`)}
+				{t(`${theme}-theme`)}
 			</div>
 			<div className={`support-nav-dropdown__body ${isOpen && 'active'}`}>
 				{values.map((value, index) => {
@@ -41,7 +41,7 @@ const SupportNavDropdown: FC<SupportNavDropdownProps> = ({
 							className={`support-nav-dropdown__item ${value === activeValue ? 'active' : ''}`}
 							onClick={() => handleValueSelection(value)}
 						>
-							{w(`${theme}-value-${index}`)}
+							{t(`${theme}-value-${index}`)}
 						</div>
 					)
 				})}

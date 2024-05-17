@@ -213,7 +213,10 @@
 		"registration-value-2": "Вход",
 		"delivery-theme": "Доставка и оплата",
 		"delivery-value-1": "Доставка",
-		"delivery-value-2": "Оплата"
+		"delivery-value-2": "Оплата",
+		"assistant-title": "Не нашли решение? Напишите нам!",
+		"assistant-text": "Мы ответим вам в течение 24 часов",
+		"assistant-button": "Написать"
 	},
 	"support-data": {
 		"support-heading": "Поддержка заголовок",

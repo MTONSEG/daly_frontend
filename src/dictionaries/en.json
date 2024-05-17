@@ -212,7 +212,10 @@
 		"registration-value-1": "Sign-in",
 		"delivery-theme": "Delivery and payment",
 		"delivery-value-0": "Delivery",
-		"delivery-value-1": "Payment"
+		"delivery-value-1": "Payment",
+		"assistant-title": "Could'nt find a solution? Message us!",
+		"assistant-text": "We answer in 24 hours",
+		"assistant-button": "Message"
 	},
 	"support-data": {
 		"support-heading": "Support Heading",

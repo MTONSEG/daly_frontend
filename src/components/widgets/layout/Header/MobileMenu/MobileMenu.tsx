@@ -1,7 +1,7 @@
 import './MobileMenu.scss'
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { DeliveryIcon } from '@/components/ui/icons'
-import { Catalog } from '@/components/ui/icons'
+import PopupCatalog from '@/components/widgets/popups/PopupCatalog/PopupCatalog'
 import { DELIVERY_PATH, SUPPORT_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
 
@@ -17,7 +17,7 @@ const MobileMenu = ({ stateMenu }: PropsTypes) => {
 			<nav className='mobile-menu__navigation'>
 				<ul className='mobile-menu__navigation-list'>
 					<li className='mobile-menu__navigation-list-item'>
-						<Catalog />
+						<PopupCatalog />
 						<span>Каталог товаров</span>
 					</li>
 					<li className='mobile-menu__navigation-list-item'>

@@ -149,5 +149,32 @@
 				height: 22px;
 			}
 		}
+
+		.popup-catalog {
+			&__item {
+				display: flex;
+				flex-direction: column;
+				row-gap: 16px;
+			}
+
+			&__item:hover .popup-catalog__sub-list {
+				transform: translateX(-100%);
+				transition: all 0.7s ease-in-out;
+				z-index: 3010;
+			}
+
+			&__menu {
+				top: calc(100% + 20px);
+				left: 0;
+				transform: translate(0, -10px);
+
+				&.active {
+					transform: translate(0, 0);
+				}
+			}
+		}
 	}
+}
+
+@include media-max(md) {
 }

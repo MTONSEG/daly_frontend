@@ -26,7 +26,7 @@ export default function PopupCatalogItem({
 			</LinkBtn>
 		))
 	}, [products])
-
+console.log(productList)
 	return (
 		<li {...props} className={`popup-catalog__item`}>
 			<LinkBtn href={href} className='popup-catalog__item-link'>

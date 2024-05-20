@@ -8,6 +8,9 @@ import PopupHeaderItem from '@/components/widgets/popups/PopupHeader/PopupHeader
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { COMPARE_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
+import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
+import { useEffect } from 'react'
+import { fetchFavoritesData } from '@/store/api/favorites.api'
 
 export default function FavoritePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
@@ -17,13 +20,19 @@ export default function FavoritePopup() {
 	const handleToggle = () => {
 		setIsActive((active) => !active)
 	}
+	const favId = useAppSelector((state) => state.favourites.products)
+	const dispatch = useAppDispatch()
+	useEffect(() => {
+		dispatch(fetchFavoritesData(favId))
+	}, [])
 
+	const favData = useAppSelector((state) => state.favoritesApi.favorites)
+	console.log(favData)
 	return (
 		<PopupHeader variant='favorite'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
 				<FavoriteIcon />
 			</Button>
-
 			<PopupHeaderContainer
 				ref={ref}
 				isActive={isActive}
@@ -32,12 +41,16 @@ export default function FavoritePopup() {
 				isEmpty
 				textEmpty={t('empty-favorite')}
 			>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc=''
-					onClick={handleToggle}
-				/>
+				{favData &&
+					favData.map((item, index) => (
+						<PopupHeaderItem
+							title={item.attributes.title}
+							price={70000}
+							imageSrc=''
+							onClick={handleToggle}
+							key={index}
+						/>
+					))}
 			</PopupHeaderContainer>
 		</PopupHeader>
 	)

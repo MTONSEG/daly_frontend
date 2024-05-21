@@ -5,9 +5,9 @@ import ProductCardInfo from './ProductCardInfo/ProductCardInfo'
 import ColorPicker from '../../fragments/ColorPicker/ColorPicker'
 import ProductCardMetrics from './ProductCardMetrics/ProductCardMetrics'
 import { useRouter } from 'next/navigation'
-import FavouriteBtn from '@/components/ui/buttons/FavouriteBtn/FavouriteBtn'
-import BuyButton from '@/components/ui/buttons/BuyBtn/BuyBtn'
-import DeleteBtn from '@/components/ui/buttons/DeleteButton/DeleteBtn'
+import FavouriteBtn from '@/components/ui/Buttons/FavouriteBtn/FavouriteBtn'
+import BuyButton from '@/components/ui/Buttons/BuyBtn/BuyBtn'
+import DeleteBtn from '@/components/ui/Buttons/DeleteButton/DeleteBtn'
 
 interface IProductCardProps {
 	product?: IProduct
@@ -30,6 +30,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 	const handleRouteClick = () => {
 		router.push(`/${locale}/product/${displayProduct && displayProduct.id}`)
 	}
+	console.log(displayProduct)
 	return (
 		<div className={`product-card ${variant && variant} ${!displayProduct && 'placeholder'}`}>
 			<div className='product-card__fav-container'>

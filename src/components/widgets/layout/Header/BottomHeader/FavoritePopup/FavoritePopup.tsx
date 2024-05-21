@@ -8,7 +8,7 @@ import PopupHeaderItem from '@/components/widgets/popups/PopupHeader/PopupHeader
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { FAVOURITE_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
-import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
+import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
@@ -27,6 +27,7 @@ export default function FavoritePopup() {
 	}
 	const productIds = useAppSelector((state) => state.favourites.products)
 	const [products, setProducts] = useState<IProduct[]>([])
+	
 	useEffect(() => {
 		const FetchAllProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)

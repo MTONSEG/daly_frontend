@@ -19,7 +19,9 @@ export const fetchFavoritesData = createAsyncThunk<IProduct[], number[], { rejec
 
 	async function (ids, { rejectWithValue }) {
 		const queryString = ids.map((id, index) => `filters[id][$in][${index}]=${id}`).join('&')
-		const response = await axios.get(`http://localhost:1337/api/products?${queryString}`)
+		const response = await axios.get(`http://localhost:1337/api/products?${queryString}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`)
+		
+		
 		if (response.status !== 200) {
 			return rejectWithValue('Server error !')
 		}

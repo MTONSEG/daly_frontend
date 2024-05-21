@@ -64,7 +64,7 @@ const Product: FC<IProduct> = ({ id }) => {
 
 	const { data, isLoading } = useGetProductQuery({ locale: locale[0], id: id })
 	const properties = data && data.data.attributes.properties
-
+console.log(data)
 	const currentPath = usePathname()
 
 	const breadcrumbArr: IBreadcrumb[] = [

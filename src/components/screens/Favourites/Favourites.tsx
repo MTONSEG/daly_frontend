@@ -21,7 +21,7 @@ const Favourites: React.FC = () => {
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
-
+	
 	useEffect(() => {
 		const FetchAllProducts = async () => {
 			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)

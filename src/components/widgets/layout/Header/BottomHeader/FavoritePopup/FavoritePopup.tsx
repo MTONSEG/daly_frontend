@@ -6,28 +6,58 @@ import PopupHeader from '@/components/widgets/popups/PopupHeader/PopupHeader'
 import PopupHeaderContainer from '@/components/widgets/popups/PopupHeader/PopupHeaderContainer/PopupHeaderContainer'
 import PopupHeaderItem from '@/components/widgets/popups/PopupHeader/PopupHeaderItem/PopupHeaderItem'
 import useOutsideClick from '@/hooks/useOutSideClick'
-import { COMPARE_PATH } from '@/routes/routes'
+import { FAVOURITE_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
 import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
-import { useEffect } from 'react'
-import { fetchFavoritesData } from '@/store/api/favorites.api'
+import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
+import { IProduct } from '@/types/types'
+import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+
 
 export default function FavoritePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
-
+	const { locale } = useParams()
+	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
+	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
 	const t = useTranslations('home')
 
 	const handleToggle = () => {
 		setIsActive((active) => !active)
 	}
-	const favId = useAppSelector((state) => state.favourites.products)
-	const dispatch = useAppDispatch()
+	const productIds = useAppSelector((state) => state.favourites.products)
+	const [products, setProducts] = useState<IProduct[]>([])
 	useEffect(() => {
-		dispatch(fetchFavoritesData(favId))
-	}, [])
+		const FetchAllProducts = async () => {
+			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
+			const sortedProducts = [...fetchedProducts]
+			const comparisonFunctions = {
+				publishedAt: {
+					asc: (a: IProduct, b: IProduct) =>
+						new Date(a.attributes.publishedAt).getTime() -
+						new Date(b.attributes.publishedAt).getTime(),
+					desc: (a: IProduct, b: IProduct) =>
+						new Date(b.attributes.publishedAt).getTime() -
+						new Date(a.attributes.publishedAt).getTime()
+				},
+				rating: {
+					asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
+					desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
+				},
+				price: {
+					asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
+					desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
+				}
+			}
+			const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
 
-	const favData = useAppSelector((state) => state.favoritesApi.favorites)
-	console.log(favData)
+			sortedProducts.sort(comparisonFunction)
+
+			setProducts(sortedProducts)
+	}
+	FetchAllProducts()
+},[locale,productIds])
+	
 	return (
 		<PopupHeader variant='favorite'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
@@ -36,17 +66,17 @@ export default function FavoritePopup() {
 			<PopupHeaderContainer
 				ref={ref}
 				isActive={isActive}
-				hrefLink={`/${COMPARE_PATH}`}
+				hrefLink={`/${FAVOURITE_PATH}`}
 				labelLink='В избранное'
-				isEmpty
+				isEmpty={false}
 				textEmpty={t('empty-favorite')}
 			>
-				{favData &&
-					favData.map((item, index) => (
+				{products &&
+					products.map((item, index) => (
 						<PopupHeaderItem
 							title={item.attributes.title}
-							price={70000}
-							imageSrc=''
+							price={item.attributes.price}
+							imageSrc={item.attributes.thumbnail}
 							onClick={handleToggle}
 							key={index}
 						/>

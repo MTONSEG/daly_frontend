@@ -1,5 +1,7 @@
 export const DELIVERY_PATH = 'delivery'
 export const CATALOG_PATH = 'catalog'
 export const SUPPORT_PATH = 'support'
-export const COMPARE_PATH = 'compare'
+export const COMPARE_PATH = 'comparison'
 export const PRODUCT_PATH = 'product'
+export const FAVOURITE_PATH = 'favourites'
+export const BASKET_PATH = 'basket'

@@ -1,10 +1,10 @@
-import { ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 import './Button.scss'
 
 interface PropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant?: 'default' | 'product' | 'parameter'
 	className?: string
-	children?: string
+	children?: string | ReactNode
 	type?: 'button' | 'submit' | 'reset'
 }
 

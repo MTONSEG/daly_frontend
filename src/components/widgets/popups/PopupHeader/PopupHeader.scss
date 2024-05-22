@@ -84,6 +84,7 @@
 
 	&__btn {
 		display: inline-block;
+		position: relative;
 
 		&:hover {
 			opacity: 0.7;
@@ -145,6 +146,17 @@
 		text-align: center;
 		margin: 0 auto 15px;
 	}
+.busket-amount {
+	position: absolute;
+	bottom: -20%;
+	right: -30%;
+	border-radius: 100%;
+	width: 14px;
+	height: 14px;
+	background: var(--dark-green);
+	color: var(--white);
+	font-size: 10px;
+}
 
 	@include media-max(lg) {
 		&__container {

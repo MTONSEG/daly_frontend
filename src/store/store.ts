@@ -27,6 +27,7 @@ import { novaPostAdressesApi } from './api/novaPost.api'
 import { homeApi } from '@/store/api/home.api'
 import orderSlice from './order/order.slice'
 import popupSupportSlice from "./popups/supportPopup.slice"
+import favoritesApiSlice from './api/favorites.api'
 
 
 const persistConfig = {
@@ -52,7 +53,8 @@ const persistedReducer = persistReducer(
 		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer,
 		[homeApi.reducerPath]: homeApi.reducer,
 		order: orderSlice,
-		popupSupport: popupSupportSlice
+		popupSupport: popupSupportSlice,
+		favoritesApi: favoritesApiSlice
 		})
 )
 

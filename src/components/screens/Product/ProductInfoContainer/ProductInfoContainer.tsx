@@ -27,7 +27,7 @@ const ProductInfoContainer: FC<IProductInfoContainer> = ({ properties, data }) =
 			</div>
 
 			<div className='info__right'>
-				<ProductInfoAction price={data.attributes.price} />
+				<ProductInfoAction price={data.attributes.price} id={data.id}/>
 				<Button className='info__deliver-btn' variant='product'>
 					{t('buy-button')} <ArrowRight />
 				</Button>

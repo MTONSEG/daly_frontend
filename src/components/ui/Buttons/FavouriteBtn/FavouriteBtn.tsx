@@ -9,25 +9,28 @@ import {
 	removeFavorite
 } from '@/store/favourites/favourites.slice'
 
+
 interface IFavouriteBtnProps {
 	isLabeled?: boolean
 	id: number
+	isFavorite?: boolean
+	handleClick: () => void
 }
 
-const FavouriteBtn: React.FC<IFavouriteBtnProps> = ({ id, isLabeled }) => {
+const FavouriteBtn: React.FC<IFavouriteBtnProps> = ({ id, isLabeled, isFavorite, handleClick }) => {
 	const t = useTranslations('catalog')
 	const dispatch = useAppDispatch()
-	const isFavorite = useAppSelector((state) =>
-		state.favourites.products.includes(id)
-	)
-
-	const handleClick = () => {
-		if (isFavorite) {
-			dispatch(removeFavorite(id))
-		} else {
-			dispatch(addFavorite(id))
-		}
-	}
+	// const isFavourite = useAppSelector((state) =>
+	// 	state.favourites.products.includes(id)
+	// )
+	
+	// const handleClick = () => {
+	// 	if (isFavorite) {
+	// 		dispatch(removeFavorite(id))
+	// 	} else {
+	// 		dispatch(addFavorite(id))
+	// 	}
+	// }
 
 	const buttonText = t('favourite-button')
 
@@ -38,6 +41,7 @@ const FavouriteBtn: React.FC<IFavouriteBtnProps> = ({ id, isLabeled }) => {
 				className={`favourite-button__favourite-icon ${isFavorite && 'active'}`}
 			/>
 		</button>
+		
 	)
 }
 

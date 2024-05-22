@@ -9,10 +9,12 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { setPopupSupport } from '@/store/popups/supportPopup.slice'
 import { setOverlaySupport } from '@/store/popups/supportPopup.slice'
 import { setSuccessForm } from '@/store/popups/supportPopup.slice'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 const FaqButton = () => {
 	const dispatch = useAppDispatch()
+	const popupRef = useRef<HTMLDivElement>(null)
+
 	const showPopup = () => {
 		dispatch(setPopupSupport(true))
 		dispatch(setOverlaySupport(true))
@@ -30,21 +32,19 @@ const FaqButton = () => {
 	const popupFormState = useAppSelector((state) => state.popupSupport.popupForm)
 	const popupOverlayState = useAppSelector((state) => state.popupSupport.overlay)
 	const successFormState = useAppSelector((state) => state.popupSupport.successForm)
-
-	useEffect(() => {
-		const bodyClassList = document.body.classList
-		if (!popupOverlayState) {
-			bodyClassList.remove('popup-is-active')
-		} else {
-			bodyClassList.add('popup-is-active')
-		}
-	}, [popupOverlayState])
+	
 
 	useEffect(() => {
 		if (successFormState === true) {
 			dispatch(setPopupSupport(false))
 		}
 	}, [successFormState])
+
+	useEffect(() => {
+        if (popupFormState && popupRef.current) {
+            popupRef.current.scrollIntoView({ behavior: 'smooth' })
+        }
+    }, [popupFormState])
 
 	return (
 		<>
@@ -56,7 +56,7 @@ const FaqButton = () => {
 				className={'faq__icon'}
 				onClick={showPopup}
 			/>
-			{popupFormState && <PopupSuport closePopup={closePopup} />}
+			{popupFormState && <PopupSuport closePopup={closePopup} ref={popupRef}/>}
 			{popupOverlayState && <div className='overlay'></div>}
 			{successFormState && <PopupSuccess closeOverlay={closeOverlay} />}
 		</>

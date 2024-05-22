@@ -6,14 +6,6 @@ import { UseFormRegister, FieldErrors  } from 'react-hook-form'
 
 interface PropsTypes {
 	register: UseFormRegister<ISuport>
-	// errors?: {
-	// 	data?: {
-	// 		name?: { message: string }
-	// 		phone?: { message: string }
-	// 		email?: { message: string }
-	// 		message?: { message: string }
-	// 	}
-	// }
 	errors?: FieldErrors<ISuport>
 }
 

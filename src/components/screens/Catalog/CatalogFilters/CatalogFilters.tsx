@@ -9,7 +9,7 @@ import FilterDropdown from './FilterDropdown/FilterDropdown'
 import { useTranslations } from 'next-intl'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { fetchAllFilters } from '@/store/filters/filters.api'
-import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
+import TransparentBtn from '@/components/ui/Buttons/TransparentBtn/TransparentBtn'
 import { useSearchParams } from 'next/navigation'
 
 // probable dynamic import
@@ -22,21 +22,22 @@ const CatalogFilters: React.FC = () => {
 	const word = useTranslations('catalog')
 
 	const filtersFromRedux = useAppSelector((state) => state.filters.filtersData)
-	console.log('🚀 ~ filtersFromRedux:', filtersFromRedux[1]?.attributes.categories[0]?.active)
+	console.log('🚀 ~ filtersFromRedux:', filtersFromRedux)
+	// console.log('🚀 ~ filtersFromRedux:', filtersFromRedux[1]?.attributes.categories[0]?.active)
 	const [filters, setFilters] = useState<IFilter[]>([])
 	const [isInitialized, setIsInitialized] = useState(false)
-	console.log("🚀 ~ isInitialized:", isInitialized)
+	// console.log("🚀 ~ isInitialized:", isInitialized)
 
 	const urlParams = useSearchParams()
 	const queryCategory = urlParams.get('category')
 	const queryBrand = urlParams.get('brand')
 
-	useEffect(() => {
-		if (isInitialized) {
-			dispatch(fetchAllFilters(locale))
-		}
-	}, [locale])
-	
+	// useEffect(() => {
+	// 	if (!queryCategory && !queryBrand) {
+	// 		dispatch(fetchAllFilters(locale))
+	// 	}
+	// }, [locale])
+
 	const initializeFilters = (filters: IFilter[]) => {
 		return filters.map((filter) => {
 			const updatedCategories = filter.attributes.categories?.map((category) => {
@@ -62,8 +63,11 @@ const CatalogFilters: React.FC = () => {
 
 	useEffect(() => {
 		if (filtersFromRedux.length === 0 && !isInitialized) {
+			console.log('fetched def filters')
 			dispatch(fetchAllFilters(locale))
-		} else if (filtersFromRedux.length > 0 && !isInitialized) {
+		}
+
+		if (filtersFromRedux.length > 0 && !isInitialized) {
 			const updatedFilters = initializeFilters([...filtersFromRedux])
 			setFilters(updatedFilters)
 

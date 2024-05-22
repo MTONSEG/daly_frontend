@@ -7,7 +7,7 @@ import Counter from '@/components/widgets/fragments/Counter/Counter'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { addProduct, removeProduct, deleteProduct } from '@/store/basket/basket.slice'
 import { useTranslations } from 'use-intl'
-import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
+import TransparentBtn from '@/components/ui/Buttons/TransparentBtn/TransparentBtn'
 
 interface IBasketRowProps {
 	product: IProduct
@@ -19,7 +19,7 @@ const BasketRow: React.FC<IBasketRowProps> = ({ product, quantity }) => {
 	const [isDeleting, setIsDeleting] = useState<boolean>(false)
 	const [counter, setCounter] = useState<number>(5)
 	const dispatch = useAppDispatch()
-
+	
 	useEffect(() => {
 		let timeout: NodeJS.Timeout | null = null
 

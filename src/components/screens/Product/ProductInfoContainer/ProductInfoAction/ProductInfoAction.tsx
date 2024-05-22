@@ -22,7 +22,7 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 	
 	const isFavorite = useAppSelector((state) => state.favourites.products.includes(id))
 	const isCompare = useAppSelector((state) => state.comparison.products.includes(id))
-		
+	console.log(isFavorite)
 	const handleFavouriteClick = () => {
 		if (isFavorite) {
 			dispatch(removeFavorite(id))

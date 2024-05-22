@@ -22,8 +22,6 @@ export default function CartPopup() {
 		return productId.id
 	})
 	const { locale } = useParams()
-	console.log(products)
-
 	const t = useTranslations('home')
 
 	const handleToggle = () => {
@@ -43,6 +41,7 @@ export default function CartPopup() {
 		<PopupHeader variant='cart'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
 				<CartIcon />
+				{products.length > 0 && <div className='busket-amount'>{products.length}</div>}
 			</Button>
 
 			<PopupHeaderContainer

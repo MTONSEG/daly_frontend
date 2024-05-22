@@ -27,17 +27,19 @@ const basketData = createSlice({
 				state.products.push({ id, quantity: 1 })
 			}
 		},
+		
 		removeProduct: (state, action: PayloadAction<{ id: number }>) => {
 			const { id } = action.payload
 			const existingProductIndex = state.products.findIndex((product) => product.id === id)
 
-			console.log('removed one:' + state.products)
-			if (!existingProductIndex) return
-			const existingProduct = state.products[existingProductIndex]
-			if (existingProduct.quantity === 1) {
-				state.products.splice(existingProductIndex, 1)
+			if (existingProductIndex !== -1) {
+				const existingProduct = state.products[existingProductIndex]
+				if (existingProduct.quantity > 1) {
+					existingProduct.quantity--
+				} else {
+					state.products.splice(existingProductIndex, 1)
+				}
 			}
-			existingProduct.quantity--
 		},
 		deleteProduct: (state, action: PayloadAction<{ id: number }>) => {
 			const { id } = action.payload

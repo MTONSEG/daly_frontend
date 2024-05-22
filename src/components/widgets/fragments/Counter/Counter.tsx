@@ -8,6 +8,7 @@ interface ICounterProps {
 }
 
 const Counter: React.FC<ICounterProps> = ({ quantity, increment, decrement }) => {
+	
 	return (
 		<div className='counter'>
 			<div className='counter__arrow-box' onClick={decrement}>

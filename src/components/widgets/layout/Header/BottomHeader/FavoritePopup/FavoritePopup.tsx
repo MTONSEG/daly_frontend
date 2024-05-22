@@ -69,7 +69,7 @@ export default function FavoritePopup() {
 				isActive={isActive}
 				hrefLink={`/${FAVOURITE_PATH}`}
 				labelLink='В избранное'
-				isEmpty={false}
+				isEmpty={products.length > 0 ? false : true}
 				textEmpty={t('empty-favorite')}
 			>
 				{products &&

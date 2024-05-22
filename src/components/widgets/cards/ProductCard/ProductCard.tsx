@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation'
 import FavouriteBtn from '@/components/ui/Buttons/FavouriteBtn/FavouriteBtn'
 import BuyButton from '@/components/ui/Buttons/BuyBtn/BuyBtn'
 import DeleteBtn from '@/components/ui/Buttons/DeleteButton/DeleteBtn'
+import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
+import { addFavorite, removeFavorite } from '@/store/favourites/favourites.slice'
 
 interface IProductCardProps {
 	product?: IProduct
@@ -30,11 +32,30 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 	const handleRouteClick = () => {
 		router.push(`/${locale}/product/${displayProduct && displayProduct.id}`)
 	}
-	console.log(displayProduct)
+	const isFavorite = useAppSelector((state) =>
+		product ? state.favourites.products.includes(product.id) : false
+	)
+	const dispatch = useAppDispatch()
+	const handleClick = () => {
+		if (product) {
+			if (isFavorite) {
+				dispatch(removeFavorite(product.id))
+			} else {
+				dispatch(addFavorite(product.id))
+			}
+		}
+	}
 	return (
 		<div className={`product-card ${variant && variant} ${!displayProduct && 'placeholder'}`}>
 			<div className='product-card__fav-container'>
-				{displayProduct && <FavouriteBtn id={displayProduct.id} isLabeled={false} />}
+				{displayProduct && (
+					<FavouriteBtn
+						id={displayProduct.id}
+						isLabeled={false}
+						isFavorite={isFavorite}
+						handleClick={handleClick}
+					/>
+				)}
 			</div>
 
 			<ProductCardImg

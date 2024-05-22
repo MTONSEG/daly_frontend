@@ -19,7 +19,7 @@ export default function Home() {
 	return (
 		<>
 			<div style={{ position: 'relative' }}>
-				<Header />
+				{/* <Header /> */}
 				<MainBanner />
 				<Container>
 					<ProductLine title={t('hits')} tag='hit' tagValue={true} />

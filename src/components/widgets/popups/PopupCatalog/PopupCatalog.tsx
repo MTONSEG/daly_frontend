@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/icons'
 import './PopupCatalog.scss'
 import useOutsideClick from '@/hooks/useOutSideClick'
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import { CATALOG_PATH } from '@/routes/routes'
 import type { IMapIcons } from '@/types/types'
 import { useMemo } from 'react'

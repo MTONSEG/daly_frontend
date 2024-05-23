@@ -33,7 +33,7 @@ const FavouriteBtn: React.FC<IFavouriteBtnProps> = ({ id, isLabeled, isFavorite,
 	// }
 
 	const buttonText = t('favourite-button')
-
+	
 	return (
 		<button className='favourite-button__container' onClick={handleClick} aria-label='favourite-button'>
 			{isLabeled && buttonText}

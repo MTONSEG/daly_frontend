@@ -88,12 +88,9 @@
 			margin: 3px 6px 0 0;
 			width: 20px;
 			height: 20px;
+			transform: translateY(5px);
 		}
 	}
-}
-
-@include media-max(lg) {
-
 }
 
 @include media-max(md) {
@@ -119,3 +116,20 @@
 		}
 	}
 }
+
+@include media-max(xs) {
+	.bottom-header {
+		align-items: flex-start;
+		padding-bottom: 10px;
+
+		&__row {
+			flex-wrap: wrap;
+			row-gap: 24px;
+		}
+
+		&__right {
+			margin-left: 0;
+		}
+	}
+}
+

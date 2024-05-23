@@ -76,8 +76,11 @@
 			background: var(--grey-04);
 		}
 	}
+}
 
-	@include media-max(md) {
-		
+@include media-max(xs) {
+	.search-header {
+		margin: 0;
+		min-width: 150px;
 	}
 }

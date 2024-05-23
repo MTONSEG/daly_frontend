@@ -19,18 +19,20 @@ interface IProductLine {
 	sort?: string
 	brands?: boolean
 	logos?: boolean
+	sortingOption?: 'publishedAt' | 'price' | 'rating'
+	isDiscount?: boolean
 }
 
-const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum, brands, logos }) => {
+const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum, brands, logos, sortingOption, isDiscount }) => {
 	const { data } = useGetProductsByTagQuery({ tag: tag, tagValue: tagValue, pageNum: pageNum })
-	
+	const catalogHref = sortingOption ? `/catalog?sorting=${sortingOption}` : isDiscount ? `/catalog?isDiscount=${isDiscount}` :'/catalog'
 	const t = useTranslations('home')
 
 	return (
 		<div className='product-line'>
 			<div className='product-line__top'>
 				<h2 className='product-line__title'>{title}</h2>
-				<LinkBtn className='product-line__text' href='/catalog'>
+				<LinkBtn className='product-line__text' href={catalogHref}>
 					{t('seeAll')}
 				</LinkBtn>
 			</div>

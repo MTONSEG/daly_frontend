@@ -16,8 +16,8 @@ export default function PopupCatalogItem({ children, products, href, ...props }:
 	const productList = useMemo(() => {
 		const list: IProduct[] = products.length > 20 ? products.slice(0, 20) : products
 
-		return list.map((el) => (
-			<LinkBtn href={`/product/${el.id}`} className='popup-catalog__item-link'>
+		return list.map((el, index) => (
+			<LinkBtn href={`/product/${el.id}`} className='popup-catalog__item-link' key={index}>
 				{el.attributes.title}
 			</LinkBtn>
 		))

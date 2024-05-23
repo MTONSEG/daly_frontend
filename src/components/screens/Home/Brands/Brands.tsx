@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import '../Home.scss'
 import { useGetLogosQuery } from '@/store/api/productRTKQ.api'
@@ -11,11 +11,11 @@ const Brands = () => {
 	const { data: logosData } = useGetLogosQuery({})
 	const logosArray = logosData?.data.attributes.brandsLogo.data
 
-    const t = useTranslations('home')
+	const t = useTranslations('home')
 
 	return (
 		<div className='brands'>
-            <div className='product-line__top'>
+			<div className='product-line__top'>
 				<h2 className='product-line__title'>Популярные бренды</h2>
 				<LinkBtn className='product-line__text' href='/catalog'>
 					{t('seeAll')}

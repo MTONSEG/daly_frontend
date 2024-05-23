@@ -22,6 +22,7 @@ const CatalogContent: React.FC = () => {
 	const urlParams = useSearchParams()
 	const urlSortingOption: 'publishedAt' | 'price' | 'rating' = urlParams.get('sorting') as 'publishedAt' | 'price' | 'rating'
 	const urlSortingMethod = 'desc'
+	const urlIsDiscounted: string | null = urlParams.get('isDiscount')
 
 	useEffect(() => {
 		dispatch(
@@ -39,7 +40,8 @@ const CatalogContent: React.FC = () => {
 		filters.sortingMethod,
 		filters.page,
 		filters.limit,
-		filters.start
+		filters.start,
+		urlIsDiscounted
 	)
 
 	const fetchFilteredProductsMemoized = useCallback(() => {

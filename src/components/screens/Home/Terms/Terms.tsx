@@ -4,6 +4,7 @@ import '../Home.scss'
 import { useGetTermsQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import noImage from "@/images/image-break.png"
 
 const Terms = () => {
 	const word = useTranslations('terms')
@@ -21,12 +22,12 @@ const Terms = () => {
 	return (
 		<div className='main-terms'>
 			{titles.map((item, index) => (
-				<div className='main-terms__item'>
+				<div className='main-terms__item' key={index}>
 					<h3 className='main-terms__item-title' key={index}>
 						{item}
 					</h3>
 					<Image
-						src={termsArray ? termsArray[index].attributes.url : ''}
+						src={termsArray ? termsArray[index].attributes.url : noImage}
 						width={65}
 						height={65}
 						alt='icon'

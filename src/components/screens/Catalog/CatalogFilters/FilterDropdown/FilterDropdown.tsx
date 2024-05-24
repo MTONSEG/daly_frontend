@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './FilterDropDown.scss'
 import { IFilter } from '@/types/types'
 import { upperFirstLetter } from '@/utils/upperFirtLetter'
 import Arrow from '@/components/ui/arrows/Arrow'
-
-// probable dynamic import
 import PriceRange from '@/components/ui/forms/PriceRange/PriceRange'
 import Checkbox from '../../../../ui/checkboxes/Checkbox'
 import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
@@ -33,15 +31,29 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 	updateFilter,
 	isManuallyPrice
 }) => {
+	// console.log("🚀 ~ filter:", filter)
 	const isPlaceholder: boolean = !filter && true
-	// const isPrice: boolean =
-	// 	filter?.attributes.min_price !== null && filter?.attributes.max_price !== null
 	const isPrice: boolean = filter
 		? filter?.attributes.min_price !== null && filter?.attributes.max_price !== null
 		: false
 	const isManuallyPriceState = isManuallyPrice ? true : false
-	const [dropActive, setDropActive] = useState<boolean>(isManuallyPriceState)
 
+	const hasActiveOption = (filter: IFilter | undefined): boolean => {
+		if (!filter) return false
+		const { categories, brands } = filter.attributes
+		// console.log(categories.some((category) => category.active));
+		return (
+			categories.some((category) => category.active) ||
+			brands.some((brand) => brand.active)
+		)
+	}
+
+	// console.log("filter does have active",hasActiveOption(filter));
+
+	const [dropActive, setDropActive] = useState<boolean>(
+		hasActiveOption(filter)||isManuallyPriceState  
+	)
+	// console.log("🚀 ~ dropActive:", dropActive, filter?.attributes.categories[0]?.active)
 	const [values, setValues] = useState([0, 10000])
 	const [showAllItems, setShowAllItems] = useState<boolean>(false)
 

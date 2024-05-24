@@ -12,25 +12,31 @@ import MiddleBanner from './MiddleBanner/MiddleBanner'
 import BottomBanner from './BottomBanner/BottomBanner'
 import Header from '@/components/widgets/layout/Header/Header'
 
-
 export default function Home() {
 	const t = useTranslations('home')
-	
+
 	return (
 		<>
 			<div style={{ position: 'relative' }}>
 				{/* <Header /> */}
 				<MainBanner />
 				<Container>
-					<ProductLine title={t('hits')} tag='hit' tagValue={true} />
+					<ProductLine title={t('hits')} tag='hit' tagValue={true} sortingOption='rating' />
 					<ProductLine
 						title={t('new')}
 						tag='hit'
 						tagValue={false}
 						sort='sort[0]=publishedAt:desc'
+						sortingOption='publishedAt'
 					/>
 					<MiddleBanner />
-					<ProductLine title={t('disconts')} tag='hit' tagValue={false} pageNum={3} />
+					<ProductLine
+						title={t('disconts')}
+						tag='hit'
+						tagValue={false}
+						pageNum={3}
+						isDiscount={true}
+					/>
 					<BottomBanner />
 					<Brands />
 					<ProductLine
@@ -40,6 +46,7 @@ export default function Home() {
 						sort='sort[0]=publishedAt:asc'
 						pageNum={4}
 						logos={true}
+						sortingOption='rating'
 					/>
 					<Terms />
 				</Container>

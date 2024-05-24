@@ -19,6 +19,11 @@ const OrderPersonalInfo = () => {
 	const [phoneNumber, setPhoneNumber] = useState<number | undefined>()
 	const [email, setEmail] = useState<string | undefined>()
 
+	const [nameError, setNameError] = useState<string | undefined>()
+	const [surnameError, setSurnameError] = useState<string | undefined>()
+	const [phoneNumberError, setPhoneNumberError] = useState<string | undefined>()
+	const [emailError, setEmailError] = useState<string | undefined>()
+
 	const debouncedName = useDebounce(name, 500)
 	const debouncedSurname = useDebounce(surname, 500)
 	const debouncedPhoneNumber = useDebounce(phoneNumber, 500)
@@ -35,11 +40,54 @@ const OrderPersonalInfo = () => {
 		)
 	}, [debouncedName, debouncedSurname, debouncedEmail, debouncedPhoneNumber, dispatch])
 
+	const validateName = (value: string) => {
+		if (!value) {
+			setNameError(w("input-error-empty"))
+		} else {
+			setNameError(undefined)
+		}
+	}
+
+	const validateSurname = (value: string) => {
+		if (!value) {
+			setSurnameError(w("input-error-empty"))
+		} else {
+			setSurnameError(undefined)
+		}
+	}
+
+	const validatePhoneNumber = (value: number | undefined) => {
+		const phoneNumberRegex = /^380\d{9}$/
+		if (!value) {
+			setPhoneNumberError(w("phone-error-empty"))
+		} else if (!phoneNumberRegex.test(value.toString())) {
+			setPhoneNumberError(w("phone-error-invalid"))
+		} else {
+			setPhoneNumberError(undefined)
+		}
+	}
+
+	const validateEmail = (value: string | undefined) => {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		if (!value) {
+			setEmailError(w("email-error-empty"))
+		} else if (!emailRegex.test(value)) {
+			setEmailError(w("email-error-invalid"))
+		} else {
+			setEmailError(undefined)
+		}
+	}
+
 	const onChange = <T extends string | number | boolean | Date | undefined>(
-		setter: StateSetter<T>
+		setter: StateSetter<T>,
+		validator?: (value: T) => void
 	) => {
 		return (e: React.ChangeEvent<HTMLInputElement>) => {
-			setter(e.target.value as T)
+			const value = e.target.value as T
+			setter(value)
+			if (validator) {
+				validator(value)
+			}
 		}
 	}
 
@@ -52,32 +100,36 @@ const OrderPersonalInfo = () => {
 					label={word('title-1')}
 					name='name'
 					placeholder={word('placeholder-1')}
-					onChange={onChange(setName)}
+					onChange={onChange(setName, validateName)}
 					inputClassName='order-block__input'
+					error={nameError}
 				/>
 				<Input
 					type={'text'}
 					label={word('title-2')}
-					name='phone number'
+					name='surname'
 					placeholder={word('placeholder-2')}
-					onChange={onChange(setSurname)}
+					onChange={onChange(setSurname, validateSurname)}
 					inputClassName='order-block__input'
+					error={surnameError}
 				/>
 				<Input
 					type={'number'}
 					label={word('title-3')}
 					name='phone number'
 					placeholder={word('placeholder-3')}
-					onChange={onChange(setPhoneNumber)}
+					onChange={onChange(setPhoneNumber, validatePhoneNumber)}
 					inputClassName='order-block__input'
+					error={phoneNumberError}
 				/>
 				<Input
 					type='email'
 					label={word('title-4')}
-					name='phone number'
+					name='email'
 					placeholder={word('placeholder-4')}
-					onChange={onChange(setEmail)}
+					onChange={onChange(setEmail, validateEmail)}
 					inputClassName='order-block__input'
+					error={emailError}
 				/>
 			</div>
 		</div>

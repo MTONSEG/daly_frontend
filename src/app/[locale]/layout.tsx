@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
 	children: React.ReactNode
-	params: { local: string }
+	params: { local: string  }
 }
 
 export default function RootLayout({ children, params: { local } }: Readonly<RootLayoutProps>) {

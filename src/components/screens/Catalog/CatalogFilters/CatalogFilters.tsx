@@ -9,39 +9,76 @@ import FilterDropdown from './FilterDropdown/FilterDropdown'
 import { useTranslations } from 'next-intl'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { fetchAllFilters } from '@/store/filters/filters.api'
-import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
-import Loader from '@/components/ui/loaders/Loader'
+import TransparentBtn from '@/components/ui/Buttons/TransparentBtn/TransparentBtn'
+import { useSearchParams } from 'next/navigation'
 
 // probable dynamic import
 import { FilterMobileIcon } from '@/components/ui/icons'
 
-interface Props {}
-
-const CatalogFilters: React.FC<Props> = () => {
+const CatalogFilters: React.FC = () => {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
 	const { locale } = useParams()
 	const dispatch = useAppDispatch()
 	const word = useTranslations('catalog')
 
 	const filtersFromRedux = useAppSelector((state) => state.filters.filtersData)
+	console.log('🚀 ~ filtersFromRedux:', filtersFromRedux)
+	// console.log('🚀 ~ filtersFromRedux:', filtersFromRedux[1]?.attributes.categories[0]?.active)
 	const [filters, setFilters] = useState<IFilter[]>([])
+	const [isInitialized, setIsInitialized] = useState(false)
+	// console.log("🚀 ~ isInitialized:", isInitialized)
+
+	const urlParams = useSearchParams()
+	const queryCategory = urlParams.get('category')
+	const queryBrand = urlParams.get('brand')
+
+	// useEffect(() => {
+	// 	if (!queryCategory && !queryBrand) {
+	// 		dispatch(fetchAllFilters(locale))
+	// 	}
+	// }, [locale])
+
+	const initializeFilters = (filters: IFilter[]) => {
+		return filters.map((filter) => {
+			const updatedCategories = filter.attributes.categories?.map((category) => {
+				return category.category.data.attributes.name === queryCategory
+					? { ...category, active: true }
+					: category
+			})
+
+			const updatedBrands = filter.attributes.brands?.map((brand) => {
+				return brand.brand.data.attributes.name === queryBrand ? { ...brand, active: true } : brand
+			})
+
+			return {
+				...filter,
+				attributes: {
+					...filter.attributes,
+					categories: updatedCategories || filter.attributes.categories,
+					brands: updatedBrands || filter.attributes.brands
+				}
+			}
+		})
+	}
 
 	useEffect(() => {
-		dispatch(fetchAllFilters(locale))
-		console.log('Fetched default filters and their names')
-	}, [dispatch, locale])
-
-	useEffect(() => {
-		if (filtersFromRedux) {
-			setFilters([...filtersFromRedux])
+		if (filtersFromRedux.length === 0 && !isInitialized) {
+			console.log('fetched def filters')
+			dispatch(fetchAllFilters(locale))
 		}
-	}, [filtersFromRedux])
+
+		if (filtersFromRedux.length > 0 && !isInitialized) {
+			const updatedFilters = initializeFilters([...filtersFromRedux])
+			setFilters(updatedFilters)
+
+			setIsInitialized(true)
+			handleUpdateFiltersFromUrl(updatedFilters)
+		}
+	}, [filtersFromRedux, isInitialized, queryCategory, queryBrand, locale])
 
 	const updateFilter = useCallback((updatedFilter: IFilter) => {
 		setFilters((prevFilters) => {
-			const index = prevFilters.findIndex(
-				(filter) => filter.id === updatedFilter.id
-			)
+			const index = prevFilters.findIndex((filter) => filter.id === updatedFilter.id)
 			if (index !== -1) {
 				const updatedFilters = [...prevFilters]
 				updatedFilters[index] = updatedFilter
@@ -64,6 +101,11 @@ const CatalogFilters: React.FC<Props> = () => {
 		setIsActive(false)
 	}
 
+	const handleUpdateFiltersFromUrl = (urlFilters: IFilter[]) => {
+		dispatch(updateStateFilters(urlFilters))
+		setIsActive(false)
+	}
+
 	const handleFetchDefaultFilters = () => {
 		dispatch(fetchAllFilters(locale))
 		setIsActive(false)
@@ -82,25 +124,17 @@ const CatalogFilters: React.FC<Props> = () => {
 				</div>
 			)}
 			<div className={`catalog-filters ${isActive ? 'active' : ''}`} ref={ref}>
-				{
-					filters.length > 0 ? (
-					filters.map((filter, index) => (
-						<FilterDropdown
-							filter={filter}
-							updateFilter={updateFilter}
-							key={index}
-						/>
-					))
-				) : (
-					Array.from({ length: 11 }).map((_, index) => (
+				{filters.length > 0
+					? filters.map((filter, index) => (
+							<FilterDropdown filter={filter} updateFilter={updateFilter} key={index} />
+					  ))
+					: Array.from({ length: 11 }).map((_, index) => (
 							<FilterDropdown
-							updateFilter={updateFilter}
-							key={index}
-							isManuallyPrice={index === 0} // Set isManuallyPrice to true for the first element
+								updateFilter={updateFilter}
+								key={index}
+								isManuallyPrice={index === 0} // Set isManuallyPrice to true for the first element
 							/>
-						))
-					)
-				}
+					  ))}
 				<div className='catalog-filters__buttons'>
 					<TransparentBtn onClick={handleUpdateFilters}>
 						{word('save-filters-button')}

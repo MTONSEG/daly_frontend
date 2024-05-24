@@ -1,6 +1,6 @@
 'use client'
 
-import "../../../widgets/SliderThumbnail/SliderThumbnail.scss"
+import '../../../widgets/SliderThumbnail/SliderThumbnail.scss'
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'
@@ -19,18 +19,33 @@ interface IProductLine {
 	sort?: string
 	brands?: boolean
 	logos?: boolean
+	sortingOption?: 'publishedAt' | 'price' | 'rating'
+	isDiscount?: boolean
 }
 
-const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum, brands, logos }) => {
+const ProductLine: FC<IProductLine> = ({
+	title,
+	tag,
+	tagValue,
+	pageNum,
+	brands,
+	logos,
+	sortingOption,
+	isDiscount
+}) => {
 	const { data } = useGetProductsByTagQuery({ tag: tag, tagValue: tagValue, pageNum: pageNum })
-	
+	const catalogHref = sortingOption
+		? `/catalog?sorting=${sortingOption}`
+		: isDiscount
+		? `/catalog?isDiscount=${isDiscount}`
+		: '/catalog'
 	const t = useTranslations('home')
 
 	return (
 		<div className='product-line'>
 			<div className='product-line__top'>
 				<h2 className='product-line__title'>{title}</h2>
-				<LinkBtn className='product-line__text' href='/catalog'>
+				<LinkBtn className='product-line__text' href={catalogHref}>
 					{t('seeAll')}
 				</LinkBtn>
 			</div>
@@ -54,15 +69,17 @@ const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum, brands, 
 										<ProductCard product={el} variant='card' locale={'ru'} />
 									</div>
 							  ))
-							: data?.data.map((el, index) => (
-									<div style={{ width: '175px' }} key={index}>
-										<Image
-											fill
-											alt='brand'
-											src={el.attributes.images ? el.attributes.images[index].url : ''}
-										/>
-									</div>
-							  ))}
+							: data?.data.map((el, index) => {
+									if (el.attributes.images) {
+										return (
+											<div style={{ width: '175px' }} key={index}>
+												<Image fill alt='brand' src={el.attributes.images[index].url} />
+											</div>
+										)
+									} else {
+										return
+									}
+							  })}
 					</Slider>
 				</div>
 			</div>

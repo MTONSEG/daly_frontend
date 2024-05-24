@@ -49,6 +49,7 @@ const MainBanner = () => {
 									fill
 									alt='mainBanner'
 									className='mainBanner-slide__image'
+									priority
 								/>
 							</div>
 						))}

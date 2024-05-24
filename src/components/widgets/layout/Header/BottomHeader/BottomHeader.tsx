@@ -1,6 +1,6 @@
 'use client'
 
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import Container from '@/components/ui/containers/Container/Container'
 import { DeliveryIcon } from '@/components/ui/icons'
 import CartPopup from '@/components/widgets/layout/Header/BottomHeader/CartPopup/CartPopup'
@@ -28,19 +28,20 @@ export default function BottomHeader() {
 			<Container>
 				<div className='bottom-header__row'>
 					<div className='bottom-header__left'>
-						{windowWidth.isDesktop ? (
-							<PopupCatalog />
+						{windowWidth.isMobile ? (
+							<Burger toggleBurger={toggleBurger} stateBurger={stateBurger} />
 						) : (
-							<Burger  toggleBurger={toggleBurger} stateBurger={stateBurger}/>
+							<PopupCatalog />
 						)}
-
-						<LinkBtn
-							className='bottom-header__delivery-link'
-							href={`/${DELIVERY_PATH}`}
-							text={t('delivery-pay')}
-						>
-							<DeliveryIcon /> <span>{t('delivery-pay')}</span>
-						</LinkBtn>
+						{!windowWidth.isMobile && (
+							<LinkBtn
+								className='bottom-header__delivery-link'
+								href={`/${DELIVERY_PATH}`}
+								text={t('delivery-pay')}
+							>
+								<DeliveryIcon /> <span>{t('delivery-pay')}</span>
+							</LinkBtn>
+						)}
 					</div>
 
 					<SearchHeader />
@@ -60,7 +61,7 @@ export default function BottomHeader() {
 						</div>
 					</div>
 				</div>
-				<MobileMenu  stateMenu={stateBurger} />
+				<MobileMenu stateMenu={stateBurger} />
 			</Container>
 		</div>
 	)

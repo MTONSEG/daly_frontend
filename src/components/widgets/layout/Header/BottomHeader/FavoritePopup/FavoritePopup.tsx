@@ -14,7 +14,6 @@ import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
 
-
 export default function FavoritePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
 	const { locale } = useParams()
@@ -27,38 +26,41 @@ export default function FavoritePopup() {
 	}
 	const productIds = useAppSelector((state) => state.favourites.products)
 	const [products, setProducts] = useState<IProduct[]>([])
-	
+
 	useEffect(() => {
 		const FetchAllProducts = async () => {
-			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
-			const sortedProducts = [...fetchedProducts]
-			const comparisonFunctions = {
-				publishedAt: {
-					asc: (a: IProduct, b: IProduct) =>
-						new Date(a.attributes.publishedAt).getTime() -
-						new Date(b.attributes.publishedAt).getTime(),
-					desc: (a: IProduct, b: IProduct) =>
-						new Date(b.attributes.publishedAt).getTime() -
-						new Date(a.attributes.publishedAt).getTime()
-				},
-				rating: {
-					asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
-					desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
-				},
-				price: {
-					asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
-					desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
+			if (productIds.length > 0) {
+				const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
+				const sortedProducts = [...fetchedProducts]
+				const comparisonFunctions = {
+					publishedAt: {
+						asc: (a: IProduct, b: IProduct) =>
+							new Date(a.attributes.publishedAt).getTime() -
+							new Date(b.attributes.publishedAt).getTime(),
+						desc: (a: IProduct, b: IProduct) =>
+							new Date(b.attributes.publishedAt).getTime() -
+							new Date(a.attributes.publishedAt).getTime()
+					},
+					rating: {
+						asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
+						desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
+					},
+					price: {
+						asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
+						desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
+					}
 				}
+				const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
+				console.log('🚀 ~ FetchAllProducts ~ sortingWay:', sortingWay)
+
+				sortedProducts.sort(comparisonFunction)
+
+				setProducts(sortedProducts)
 			}
-			const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
+		}
+		FetchAllProducts()
+	}, [locale, productIds])
 
-			sortedProducts.sort(comparisonFunction)
-
-			setProducts(sortedProducts)
-	}
-	FetchAllProducts()
-},[locale,productIds])
-	
 	return (
 		<PopupHeader variant='favorite'>
 			<Button className='popup-header__btn' onClick={handleToggle}>

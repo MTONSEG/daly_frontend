@@ -147,7 +147,12 @@
 		"buy-aggreement-link": "условиями продажи в интернет-магазине Daly",
 		"fill-popup-text": "Некоторые из полей пустые. Заполните их чтобы продолжить оформление заказа.",
 		"fill-popup-close-button": "Закрыть",
-		"empty-list-text": "Вы не выбрали продукты для покупки, проверьте корзину"
+		"empty-list-text": "Вы не выбрали продукты для покупки, проверьте корзину",
+		"phone-error-empty": "Номер телефона обязателен. Пример: 097 078 5760",
+		"phone-error-invalid": "Неверная форма номера телефона",
+		"email-error-empty": "Email обязателен",
+		"email-error-invalid": "Неверная форма Email. Пример: example@ex.com",
+		"input-error-empty": "This field has to be filled"
 	},
 	"order-delivery": {
 		"title": "Способ получения",

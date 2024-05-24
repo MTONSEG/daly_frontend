@@ -14,7 +14,7 @@ export interface IFiltersState {
 export const filtersState: IFiltersState = {
 	filtersData: [],
 	sortingOption: 'publishedAt',
-	sortingMethod: 'asc',
+	sortingMethod: 'desc',
 	page: 1,
 	limit: 12,
 	start: undefined,

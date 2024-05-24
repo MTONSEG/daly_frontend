@@ -49,8 +49,13 @@ export const filtersQueryBuilder = (
 			: `&pagination[page]=${page}&pagination[pageSize]=${limit}`
 	}`
 
-	const sortingFilter = `&sort=${sorting}:${sortingWay}`
-	const discountFilter =  (isDiscounted === "true" ? `&filters[discount][$gt]=0`: '')
+	const sortingFilter = sorting ? `sort=${sorting}:${sortingWay}` : undefined
+	const discountFilter = isDiscounted === 'true' ? `filters[discount][$gt]=0` : undefined
 
-	return `${baseurl}&${validFilterQueries.join('&')}${sortingFilter}${paginationFilter}${discountFilter}`
+	// Build the final query string by including only the defined filters
+	const queryParams = [...validFilterQueries, sortingFilter, paginationFilter, discountFilter]
+		.filter(Boolean)
+		.join('&')
+
+	return `${baseurl}&${queryParams}`
 }

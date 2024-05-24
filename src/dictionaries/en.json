@@ -146,7 +146,12 @@
 		"buy-aggreement-link": "terms of sale in the Daly online store",
 		"fill-popup-text": "Some of the fields are empty. Fill them up to proceed with the order creation",
 		"fill-popup-close-button": "Close",
-		"empty-list-text": "You've not chosen any products, go check your basket first"
+		"empty-list-text": "You've not chosen any products, go check your basket first",
+		"phone-error-empty": "Phone number is required. Example: 097 078 5760",
+		"phone-error-invalid": "Phone number is invalid",
+		"email-error-empty": "Email is required",
+		"email-error-invalid": "Email is invalid. Example: example@ex.com",
+		"input-error-empty": "This field has to be filled"
 	},
 	"order-delivery": {
 		"title": "Way of shipment",

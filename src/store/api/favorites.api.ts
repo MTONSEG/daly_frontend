@@ -1,6 +1,25 @@
-import axios from 'axios'
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IProduct } from '@/types/types'
+
+// Define the API service
+export const favoritesApi = createApi({
+	reducerPath: 'favoritesApi',
+	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:1337/api/' }),
+	endpoints: (builder) => ({
+		fetchFavoritesData: builder.query<IProduct[], number[]>({
+			query: (ids) => {
+				const queryString = ids.map((id, index) => `filters[id][$in][${index}]=${id}`).join('&')
+				return `products?${queryString}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`
+			}
+		})
+	})
+})
+
+// Export hooks for usage in functional components
+export const { useFetchFavoritesDataQuery } = favoritesApi
+
+// Slice to manage the favorite products state
+import { createSlice } from '@reduxjs/toolkit'
 
 interface FavoritesState {
 	favorites: IProduct[] | null
@@ -14,22 +33,6 @@ const initialState: FavoritesState = {
 	error: null
 }
 
-export const fetchFavoritesData = createAsyncThunk<IProduct[], number[], { rejectValue: string }>(
-	'favoritesData/fetchFavoritesData',
-
-	async function (ids, { rejectWithValue }) {
-		const queryString = ids.map((id, index) => `filters[id][$in][${index}]=${id}`).join('&')
-		const response = await axios.get(`http://localhost:1337/api/products?${queryString}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`)
-		
-		
-		if (response.status !== 200) {
-			return rejectWithValue('Server error !')
-		}
-		const responseData = response.data.data
-		return responseData
-	}
-)
-
 const favoritesDataSlice = createSlice({
 	name: 'favoritesData',
 	initialState,
@@ -38,18 +41,22 @@ const favoritesDataSlice = createSlice({
 			state.favorites = action.payload
 		}
 	},
-
 	extraReducers: (builder) => {
-		builder
-			.addCase(fetchFavoritesData.pending, (state) => {
-				state.loading = true
-				state.error = null
-			})
-
-			.addCase(fetchFavoritesData.fulfilled, (state, action) => {
+		builder.addMatcher(favoritesApi.endpoints.fetchFavoritesData.matchPending, (state) => {
+			state.loading = true
+			state.error = null
+		})
+		builder.addMatcher(
+			favoritesApi.endpoints.fetchFavoritesData.matchFulfilled,
+			(state, action) => {
 				state.favorites = action.payload
 				state.loading = false
-			})
+			}
+		)
+		builder.addMatcher(favoritesApi.endpoints.fetchFavoritesData.matchRejected, (state, action) => {
+			state.loading = false
+			state.error = action.error?.message ?? 'Failed to fetch favorites'
+		})
 	}
 })
 

@@ -11,6 +11,7 @@ import { useParams } from 'next/navigation'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+import Loader from '@/components/ui/loaders/Loader'
 
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
@@ -73,8 +74,10 @@ const Favourites: React.FC = () => {
 						<div className='favourites__title'>{word('title')}</div>
 						<GridHead />
 					</div>
-					{productIds.length > 0 ? (
+					{products.length > 0 ? (
 						<CatalogGrid products={products} gridMode={gridMode} />
+					) : productIds.length > 0 ? (
+						<Loader />
 					) : (
 						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 					)}

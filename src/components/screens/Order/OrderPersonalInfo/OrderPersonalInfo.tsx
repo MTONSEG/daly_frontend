@@ -16,7 +16,7 @@ const OrderPersonalInfo = () => {
 
 	const [name, setName] = useState<string>('')
 	const [surname, setSurname] = useState<string>('')
-	const [phoneNumber, setPhoneNumber] = useState<number | undefined>()
+	const [phoneNumber, setPhoneNumber] = useState<string | undefined>()
 	const [email, setEmail] = useState<string | undefined>()
 
 	const [nameError, setNameError] = useState<string | undefined>()
@@ -42,7 +42,7 @@ const OrderPersonalInfo = () => {
 
 	const validateName = (value: string) => {
 		if (!value) {
-			setNameError(w("input-error-empty"))
+			setNameError(w('input-error-empty'))
 		} else {
 			setNameError(undefined)
 		}
@@ -50,29 +50,38 @@ const OrderPersonalInfo = () => {
 
 	const validateSurname = (value: string) => {
 		if (!value) {
-			setSurnameError(w("input-error-empty"))
+			setSurnameError(w('input-error-empty'))
 		} else {
 			setSurnameError(undefined)
 		}
 	}
 
-	const validatePhoneNumber = (value: number | undefined) => {
-		const phoneNumberRegex = /^380\d{9}$/
+	const validatePhoneNumber = (value: string | undefined) => {
+		console.log('🚀 ~ validatePhoneNumber ~ value:', value)
 		if (!value) {
-			setPhoneNumberError(w("phone-error-empty"))
-		} else if (!phoneNumberRegex.test(value.toString())) {
-			setPhoneNumberError(w("phone-error-invalid"))
+			setPhoneNumberError(w('input-error-empty'))
 		} else {
-			setPhoneNumberError(undefined)
+			let error = ''
+			if (value.length < 9) {
+				error = 'Phone number should be at least 9 digits.'
+				setPhoneNumberError(error) // Set the error state
+				return
+			} else if (!value.match(/^[\d\s()+-]+$/)) {
+				error = 'Please enter a valid phone number.'
+				setPhoneNumberError(error) // Set the error state
+				return
+			}
+			setPhoneNumberError(undefined) // Set the error state
+			setPhoneNumber(value)
 		}
 	}
 
 	const validateEmail = (value: string | undefined) => {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 		if (!value) {
-			setEmailError(w("email-error-empty"))
+			setEmailError(w('email-error-empty'))
 		} else if (!emailRegex.test(value)) {
-			setEmailError(w("email-error-invalid"))
+			setEmailError(w('email-error-invalid'))
 		} else {
 			setEmailError(undefined)
 		}
@@ -118,7 +127,7 @@ const OrderPersonalInfo = () => {
 					label={word('title-3')}
 					name='phone number'
 					placeholder={word('placeholder-3')}
-					onChange={onChange(setPhoneNumber, validatePhoneNumber)}
+					onTelChange={validatePhoneNumber}
 					inputClassName='order-block__input'
 					error={phoneNumberError}
 				/>

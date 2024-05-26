@@ -28,6 +28,7 @@ import { homeApi } from '@/store/api/home.api'
 import orderSlice from './order/order.slice'
 import popupSupportSlice from "./popups/supportPopup.slice"
 import favoritesApiSlice from './api/favorites.api'
+import { favoritesApi } from './api/favorites.api'
 
 
 const persistConfig = {
@@ -54,7 +55,8 @@ const persistedReducer = persistReducer(
 		[homeApi.reducerPath]: homeApi.reducer,
 		order: orderSlice,
 		popupSupport: popupSupportSlice,
-		favoritesApi: favoritesApiSlice
+		// favoritesApi: favoritesApiSlice,
+		[favoritesApi.reducerPath]: favoritesApi.reducer
 		})
 )
 

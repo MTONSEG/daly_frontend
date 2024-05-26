@@ -11,7 +11,7 @@
 .mainBanner {
 	height: 390px;
 	margin-top: 50px;
-
+		
 	& > div {
 		height: 100%;
 	}
@@ -22,13 +22,16 @@
 }
 
 .mainBanner-slide {
-	background: rgba(255, 183, 98, 0.4);
-
+	max-width: 81.25%;
+	margin-right: 30px;
+				
 	&__image {
-		object-fit: contain;
+		object-fit: cover;
+		min-height: 390px;
+		max-height: 390px;
 		display: block;
 		margin: 0 auto;
-		max-width: 1440px;
+		max-width: 100%;
 	}
 
 	&__text-wr {
@@ -109,9 +112,7 @@
 	}
 
 	&__bottom {
-		// display: flex;
 		height: 210px;
-		// width: 1200px;
 		max-width: 100%;
 
 		.product-card {
@@ -172,12 +173,10 @@
 	height: 200px;
 
 	img {
-		// width: 570px;
-		// height: auto;
 		width: 100%;
-	height: auto;
-	max-width: 100%;
-	max-height: 100%;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
 	}
 
 	&__block {
@@ -208,6 +207,7 @@
 .bottomBanner {
 	margin-top: 0px;
 }
+
 .bottomBanner-slide {
 	height: 270px;
 	margin: 80px 0;
@@ -565,7 +565,6 @@
 	}
 }
 
-
 @include media-max(lg) {
 	.middleBanner {
 		&__block:first-of-type {
@@ -596,10 +595,18 @@
 			animation: pulse 1.5s infinite;
 		}
 	}
+	
 }
 
 @include media-max(md) {
 	.mainBanner-slide {
+		margin-right: 15px;
+	        
+		&__image {
+			object-fit: cover;
+			object-position: 10% center;
+		}
+
 		&__text-wr {
 			width: 60%;
 			left: 40px;
@@ -644,9 +651,16 @@
 		max-width: 214px !important;
 		margin-right: 25px !important;
 	}
+
+	.middleBanner {
+		margin-top: 60px;
+	}
 }
 
 @include media-max(sm) {
+	.f-carousel {
+		max-height: 320px;
+	}
 	.mainBanner {
 		margin-top: 20px;
 	}
@@ -655,6 +669,7 @@
 		margin-top: 25px;
 	}
 	.mainBanner-slide {
+		
 		&__text-wr {
 			width: 100%;
 			margin: 10px auto;
@@ -669,12 +684,16 @@
 			min-height: 100%;
 			object-fit: cover;
 		}
+
+		&__btn {
+			margin-top: 80px;
+		}
 	}
 
 	.middleBanner {
 		flex-direction: column;
 		height: 420px;
-
+		
 		&__block {
 			margin-bottom: 20px;
 			max-width: 100%;
@@ -693,10 +712,6 @@
 		margin-right: 25px !important;
 	}
 
-	.slick-list {
-		padding: 0 !important;
-	}
-
 	.bottomBanner {
 		overflow-x: hidden;
 	}
@@ -706,6 +721,10 @@
 			top: 160px;
 		}
 	}
+
+	.slick-list {
+		padding-top: 5px !important;
+	}
 }
 
 @include media-max(xs) {
@@ -714,6 +733,9 @@
 	}
 
 	.mainBanner-slide {
+		max-height: 200px;     
+		max-width: 95%; 
+
 		&__text-wr {
 			left: 0;
 			padding: 0 10px;
@@ -729,8 +751,8 @@
 		}
 
 		&__btn {
-			max-width: 320px;
-			margin: 20px auto;
+			max-width: 250px;
+			margin-top: 60px;
 			margin-left: 0;
 		}
 	}
@@ -741,15 +763,12 @@
 		}
 	}
 
-	.slick-list {
-		padding: 0 !important;
-	}
-
 	.middleBanner {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		height: auto;
+		margin-top: 0;
 	}
 
 	.brands {
@@ -784,8 +803,8 @@
 	}
 
 	.slick-slide {
-		width: 214px !important;
-		max-width: 214px !important;
+		width: 254px !important;
+		max-width: 254px !important;
 		margin-right: 25px !important;
 	}
 

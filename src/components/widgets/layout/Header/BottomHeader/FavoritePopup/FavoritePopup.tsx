@@ -50,16 +50,19 @@ export default function FavoritePopup() {
 						desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
 					}
 				}
-				const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
-				console.log('🚀 ~ FetchAllProducts ~ sortingWay:', sortingWay)
 
-				sortedProducts.sort(comparisonFunction)
+				const validSortingOption = comparisonFunctions[sortingOption]
+				const validSortingWay = validSortingOption ? validSortingOption[sortingWay] : null
+
+				if (validSortingWay) {
+					sortedProducts.sort(validSortingWay)
+				}
 
 				setProducts(sortedProducts)
 			}
 		}
 		FetchAllProducts()
-	}, [locale, productIds])
+	}, [locale, productIds, sortingOption, sortingWay])
 
 	return (
 		<PopupHeader variant='favorite'>

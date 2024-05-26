@@ -18,7 +18,6 @@ export default function ComparePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
 	const t = useTranslations('home')
 	const [products, setProducts] = useState<IProduct[]>([])
-	console.log(products)
 	const compareIds = useAppSelector((state) => state.comparison.products)
 	const { locale } = useParams()
 
@@ -47,6 +46,7 @@ export default function ComparePopup() {
 				hrefLink={`/${COMPARE_PATH}`}
 				labelLink='В сравнение'
 				textEmpty={t('empty-compare')}
+				isEmpty={products.length > 0 ? false : true}
 			>
 				{products &&
 					products.map((item, index) => (

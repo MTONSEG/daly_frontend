@@ -29,7 +29,6 @@ const Brands = () => {
 			<div className={'brands__logos'}>
 				{logosArray &&
 					logosArray.map((item: any, index: number) => {
-						// Remove the '.svg' extension from the name
 						const brandName = upperFirstLetter(item.attributes.name.replace('Logo.svg', ''))
 
 						return (
@@ -40,7 +39,7 @@ const Brands = () => {
 										src={item.attributes.url ? item.attributes.url : ''}
 										width={175}
 										height={80}
-										style={{ minWidth: '100%', objectFit: 'cover' }}
+										// style={{ minWidth: '100%', objectFit: 'cover' }}
 										loading='lazy'
 									/>
 								</div>

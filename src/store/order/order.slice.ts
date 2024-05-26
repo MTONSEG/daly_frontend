@@ -15,7 +15,7 @@ export interface IOrderData {
 		name: string | undefined
 		surname: string | undefined
 		email: string | undefined
-		phoneNumber: number | undefined
+		phoneNumber: string | undefined
 		paymentMethod: string | undefined
 		deliveryType: string | undefined
 		deliveryTown: string | undefined
@@ -59,7 +59,7 @@ const orderData = createSlice({
 				name: string
 				surname: string
 				email: string | undefined
-				phoneNumber: number | undefined
+				phoneNumber: string | undefined
 			}>
 		) => {
 			state.order.name = action.payload.name

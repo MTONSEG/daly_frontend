@@ -7,32 +7,38 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { IProduct } from '@/types/types'
 import { useParams } from 'next/navigation'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
-import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
+import TransparentBtn from '@/components/ui/Buttons/TransparentBtn/TransparentBtn'
 import ComparisonBlock from './ComparisonBlock/ComparisonBlock'
 import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 
 const Comparison: React.FC = () => {
 	const [comparisonDisplayType, setComparisonDisplayType] = useState<'all' | 'diff'>('all')
 	const word = useTranslations('comparison')
 	const productIds = useAppSelector((state) => state.comparison.products)
 	const [products, setProducts] = useState<IProduct[]>([])
-	console.log("🚀 ~ products:", products)
+	console.log('🚀 ~ products:', products)
 	const { locale } = useParams()
 
 	const updateIsMobile = () => {
 		setIsMobile(window.innerWidth < 578)
 	}
 
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery({
+		ids: productIds,
+		locale
+	})
+
 	useEffect(() => {
-		const FetchProducts = async () => {
-			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
+		if (fetchedProducts) {
 			setProducts(fetchedProducts)
 		}
-
-		FetchProducts()
 
 		updateIsMobile() // Initial check for mobile
 		window.addEventListener('resize', updateIsMobile)
@@ -70,7 +76,7 @@ const Comparison: React.FC = () => {
 												variant={isMobile ? 'row' : 'card'}
 												isCompared={true}
 												key={product.id}
-												locale={ locale}
+												locale={locale}
 											/>
 										)
 									})

@@ -9,7 +9,7 @@ import BasketPriceCalculator from './BasketPriceCalculator/BasketPriceCalculator
 import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 import { fillProductsData, fillProductsSets } from '@/store/order/order.slice'
 
 const BasketContent: React.FC = () => {
@@ -24,15 +24,20 @@ const BasketContent: React.FC = () => {
 	const productPlainIds = productIds.map((productId) => {
 		return productId.id
 	})
+
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery({
+		ids: productPlainIds,
+		locale
+	})
+
 	useEffect(() => {
-		const FetchProducts = async () => {
-			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
+		if (fetchedProducts) {
 			setProducts(fetchedProducts)
-			dispatch(fillProductsData({ productsData: fetchedProducts }));
-			dispatch(fillProductsSets({productsSets: productIds}));
-			// console.log("🚀 ~ FetchProducts ~ dispatch(fillProductsData({products: fetchedProducts})):", dispatch(fillProductsData({products: fetchedProducts})))
 		}
-		FetchProducts()
 	}, [productIds])
 
 	useEffect(() => {

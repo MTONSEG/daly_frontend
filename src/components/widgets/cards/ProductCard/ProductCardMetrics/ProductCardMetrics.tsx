@@ -18,24 +18,20 @@ const ProductCardMetrics: React.FC<IProductCardMetricsProps> = ({
 	return (
 		<div className='product-card__metrics'>
 			<div className='product-card__price-block'>
-				{discount && discount != undefined && (
-					<p className='product-card__discount'>{price - discount} ₴</p>
-				)}
-				<p
-					className={`product-card__price ${
-						discount && discount > 0 ? 'discounted' : ''
-					}`}
-				>
-					{price}₴
+				<p className='product-card__price'>
+					{discount ? Math.ceil(price - discount) : Math.ceil(price)}₴
 				</p>
+				{discount && discount != undefined && (
+					<p className='product-card__old-price'> {Math.ceil(price)}₴</p>
+				)}
 			</div>
 
 			<div className='product-card__r-c-block'>
 				<div className='product-card__r-c-item'>
-					{rating} <StarIcon className="product-card__r-c-icon"/>
+					{rating} <StarIcon className='product-card__r-c-icon' />
 				</div>
 				<div className='product-card__r-c-item'>
-					<CommentIcon className="product-card__r-c-icon"/>
+					<CommentIcon className='product-card__r-c-icon' />
 					{commsQuantity ? commsQuantity : '0'}
 				</div>
 			</div>

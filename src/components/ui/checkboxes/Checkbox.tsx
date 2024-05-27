@@ -9,15 +9,15 @@ interface ICheckboxProps {
 	toggleCheckbox: () => void
 }
 
-const Checkbox: React.FC<ICheckboxProps> = ({
-	label,
-	isActive,
-	toggleCheckbox
-}) => {
+const Checkbox: React.FC<ICheckboxProps> = ({ label, isActive, toggleCheckbox }) => {
 	const [active, setActive] = useState<boolean>(isActive)
 	useEffect(() => {
-		setActive(isActive);
-	}, [isActive]);
+		setActive(isActive)
+	}, [isActive])
+
+	// Replace underscores with spaces
+	const formattedLabel = label.replace(/_/g, ' ')
+
 	return (
 		<div className='check-box'>
 			<label className='check-box__label'>
@@ -33,7 +33,7 @@ const Checkbox: React.FC<ICheckboxProps> = ({
 
 					{active && <CheckIcon className='check-box__icon' />}
 				</div>
-				{label}
+				{formattedLabel}
 			</label>
 		</div>
 	)

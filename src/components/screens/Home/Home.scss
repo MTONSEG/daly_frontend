@@ -287,7 +287,7 @@
 	margin: 80px 0 80px;
 
 	&__item {
-		width: 100%;
+		min-width: 100%;
 		max-width: 175px;
 		height: 150px;
 		max-height: 150px;
@@ -599,6 +599,14 @@
 }
 
 @include media-max(md) {
+	.mainBanner {
+		margin-top: 0px;
+	}
+
+	.product-line {
+		margin-top: 40px;
+	}
+
 	.mainBanner-slide {
 		margin-right: 15px;
 	        
@@ -654,6 +662,10 @@
 
 	.middleBanner {
 		margin-top: 60px;
+	}
+
+	.main-terms {
+		margin: 40px 0;
 	}
 }
 
@@ -725,6 +737,11 @@
 	.slick-list {
 		padding-top: 5px !important;
 	}
+
+	.slick-slider {
+		display: flex !important;
+		justify-content: flex-start !important;
+	}
 }
 
 @include media-max(xs) {
@@ -760,6 +777,7 @@
 	.product-line {
 		.slick-list {
 			height: 320px;
+			padding: 5px 0 0  !important;
 		}
 	}
 

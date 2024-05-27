@@ -56,9 +56,9 @@ const ProductLine: FC<IProductLine> = ({
 						arrows={false}
 						responsive={[
 							{ breakpoint: 375, settings: { dots: true, slidesToShow: 1 } },
-							{ breakpoint: 576, settings: { dots: true, slidesToShow: 1, centerMode: true } },
+							{ breakpoint: 576, settings: { dots: true, slidesToShow: 1.3, centerMode: false, centerPadding: "0px" } },
 							{ breakpoint: 768, settings: { dots: true, slidesToShow: 2 } },
-							{ breakpoint: 1220, settings: { slidesToShow: 4 } },
+							{ breakpoint: 1220, settings: { slidesToShow: 4, centerMode: false} },
 							{ breakpoint: 1024, settings: { slidesToShow: 3 } }
 						]}
 						infinite={false}

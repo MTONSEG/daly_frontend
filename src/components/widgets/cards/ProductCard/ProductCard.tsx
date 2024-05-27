@@ -5,9 +5,9 @@ import ProductCardInfo from './ProductCardInfo/ProductCardInfo'
 import ColorPicker from '../../fragments/ColorPicker/ColorPicker'
 import ProductCardMetrics from './ProductCardMetrics/ProductCardMetrics'
 import { useRouter } from 'next/navigation'
-import FavouriteBtn from '@/components/ui/Buttons/FavouriteBtn/FavouriteBtn'
-import BuyButton from '@/components/ui/Buttons/BuyBtn/BuyBtn'
-import DeleteBtn from '@/components/ui/Buttons/DeleteButton/DeleteBtn'
+import FavouriteBtn from '@/components/ui/buttons/FavouriteBtn/FavouriteBtn'
+import BuyButton from '@/components/ui/buttons/BuyBtn/BuyBtn'
+import DeleteBtn from '@/components/ui/buttons/DeleteButton/DeleteBtn'
 import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
 import { addFavorite, removeFavorite } from '@/store/favourites/favourites.slice'
 
@@ -87,6 +87,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 					<ProductCardMetrics
 						price={displayProduct.attributes.price}
 						rating={displayProduct.attributes.rating}
+						discount={displayProduct.attributes.discount}
 						commsQuantity={
 							displayProduct.attributes.product_comments &&
 							displayProduct.attributes.product_comments.data.length

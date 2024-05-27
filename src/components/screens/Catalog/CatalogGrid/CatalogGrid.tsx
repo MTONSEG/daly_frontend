@@ -5,7 +5,7 @@ import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { setPagination } from '@/store/filters/slice/filters.slice'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import Pagination from '@/components/widgets/fragments/Pagination/Pagination'
-import ShowBtn from '@/components/ui/Buttons/ShowBtn/ShowBtn'
+import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
@@ -17,6 +17,7 @@ interface ICatalogGridProps {
 }
 
 const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) => {
+	console.log("🚀 ~ products:", products)
 	const dispatch = useAppDispatch()
 	const word = useTranslations('catalog')
 

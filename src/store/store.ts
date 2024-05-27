@@ -26,15 +26,13 @@ import { commentApi } from './api/comment.api'
 import { novaPostAdressesApi } from './api/novaPost.api'
 import { homeApi } from '@/store/api/home.api'
 import orderSlice from './order/order.slice'
-import popupSupportSlice from "./popups/supportPopup.slice"
-import favoritesApiSlice from './api/favorites.api'
-import { favoritesApi } from './api/favorites.api'
-
+import popupSupportSlice from './popups/supportPopup.slice'
+import { productsApi } from '@/hooks/useFetchMultipleByIds'
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['basket', 'favourites', 'comparison', 'order', 'filters'],
+	whitelist: ['basket', 'favourites', 'comparison', 'order', 'filters']
 	// blacklist: ['header', 'filters', 'catalogProducts']
 }
 
@@ -56,8 +54,8 @@ const persistedReducer = persistReducer(
 		order: orderSlice,
 		popupSupport: popupSupportSlice,
 		// favoritesApi: favoritesApiSlice,
-		[favoritesApi.reducerPath]: favoritesApi.reducer
-		})
+		[productsApi.reducerPath]: productsApi.reducer
+	})
 )
 
 export const store = configureStore({
@@ -73,6 +71,7 @@ export const store = configureStore({
 			.concat(commentApi.middleware)
 			.concat(novaPostAdressesApi.middleware)
 			.concat(homeApi.middleware)
+			.concat(productsApi.middleware)
 })
 
 export const persistor = persistStore(store)

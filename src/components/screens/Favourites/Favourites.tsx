@@ -37,24 +37,24 @@ const Favourites: React.FC = () => {
 		if (fetchedProducts) {
 			const sortedProducts = [...fetchedProducts]
 
-			const comparisonFunctions = {
-				publishedAt: {
-					asc: (a: IProduct, b: IProduct) =>
-						new Date(a.attributes.publishedAt).getTime() -
-						new Date(b.attributes.publishedAt).getTime(),
-					desc: (a: IProduct, b: IProduct) =>
-						new Date(b.attributes.publishedAt).getTime() -
-						new Date(a.attributes.publishedAt).getTime()
-				},
-				rating: {
-					asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
-					desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
-				},
-				price: {
-					asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
-					desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
+				const comparisonFunctions = {
+					publishedAt: {
+						asc: (a: IProduct, b: IProduct) =>
+							new Date(a.attributes.publishedAt).getTime() -
+							new Date(b.attributes.publishedAt).getTime(),
+						desc: (a: IProduct, b: IProduct) =>
+							new Date(b.attributes.publishedAt).getTime() -
+							new Date(a.attributes.publishedAt).getTime()
+					},
+					rating: {
+						asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
+						desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
+					},
+					price: {
+						asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
+						desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
+					}
 				}
-			}
 
 			const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
 			sortedProducts.sort(comparisonFunction)

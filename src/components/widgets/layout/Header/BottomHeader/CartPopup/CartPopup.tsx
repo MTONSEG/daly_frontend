@@ -59,6 +59,7 @@ export default function CartPopup() {
 							price={item.attributes.price}
 							imageSrc={item.attributes.thumbnail}
 							onClick={handleToggle}
+							key={index}
 						/>
 					))}
 			</PopupHeaderContainer>

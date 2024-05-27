@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import listImage from '@/assets/images/list-image.png'
-import "./EmptyList.scss";
+import './EmptyList.scss'
 
 interface EmptyListProps {
 	emptyText1: string

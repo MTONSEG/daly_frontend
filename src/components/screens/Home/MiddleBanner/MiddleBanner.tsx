@@ -2,15 +2,11 @@
 import { useGetBannersQuery } from '@/store/api/home.api'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const MiddleBanner = () => {
 	const { data, isLoading } = useGetBannersQuery({ bannerType: 'middle_banners' })
 	const t = useTranslations('home')
-
-	useEffect(() => {
-		console.log(data?.data.attributes.middle_banners)
-	}, [data])
 
 	if (isLoading) {
 		return <div>...loading</div>

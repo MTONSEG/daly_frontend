@@ -5,7 +5,7 @@ import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { setPagination } from '@/store/filters/slice/filters.slice'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import Pagination from '@/components/widgets/fragments/Pagination/Pagination'
-import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn'
+import ShowBtn from '@/components/ui/Buttons/ShowBtn/ShowBtn'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
@@ -88,7 +88,7 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) 
 						<ProductCard variant={gridMode} key={index} locale={locale}/>
 					))
 				) : (
-					<EmptyList emptyText1={word("empty-text-1")} emptyText2={word("empty-text-2")} />
+					<EmptyList emptyText1={word("empty-text-1")} emptyText2={word("empty-text-2")}/>
 				)}
 			</div>
 			{products.length > 0 && meta && meta.pagination.pageCount > 1 && (

@@ -11,8 +11,9 @@ import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useState, useEffect } from 'react'
 import { IProduct } from '@/types/types'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 import { useParams } from 'next/navigation'
+import Loader from '@/components/ui/loaders/Loader'
 
 export default function CartPopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
@@ -28,14 +29,21 @@ export default function CartPopup() {
 		setIsActive((active) => !active)
 	}
 
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery({
+		ids: productPlainIds,
+		locale
+	})
+
+	// Update the products state when fetchedProducts changes
 	useEffect(() => {
-		const FetchProducts = async () => {
-			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
+		if (fetchedProducts) {
 			setProducts(fetchedProducts)
 		}
-
-		FetchProducts()
-	}, [productIds, locale])
+	}, [fetchedProducts])
 
 	return (
 		<PopupHeader variant='cart'>
@@ -52,7 +60,9 @@ export default function CartPopup() {
 				isEmpty={products.length > 0 ? false : true}
 				textEmpty={t('empty-cart')}
 			>
-				{products &&
+				{isLoading ? (
+					<Loader />
+				) : (
 					products.map((item, index) => (
 						<PopupHeaderItem
 							title={item.attributes.title}
@@ -61,7 +71,8 @@ export default function CartPopup() {
 							onClick={handleToggle}
 							key={index}
 						/>
-					))}
+					))
+				)}
 			</PopupHeaderContainer>
 		</PopupHeader>
 	)

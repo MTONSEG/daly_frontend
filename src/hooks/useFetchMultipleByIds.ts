@@ -1,30 +1,20 @@
-import { getData } from '@/services/axios.config'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IProduct, IResponse } from '@/types/types'
 
-export const useFetchMultipleByIds = async (
-	productIds: number[],
-	locale: string | string[]
-): Promise<IProduct[]> => {
-	const productRequests = productIds.map(async (productId) => {
-		try {
-			const product = await getData<IResponse<IProduct>>(
-				`/products/${productId}?locale=${locale}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`
-			)
-			return product.data
-		} catch (e: unknown) {
-			if (typeof e === 'string') {
-				console.error(e.toUpperCase())
-			} else if (e instanceof Error) {
-				console.error(e.message)
-			}
-			// Return a placeholder value (e.g., null) when an error occurs
-			return null
-		}
+// Define the API service
+export const productsApi = createApi({
+	reducerPath: 'productsApi',
+	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:1337/api/' }),
+	endpoints: (builder) => ({
+		fetchProductsByIds: builder.query<IProduct[], { ids: number[]; locale: string | string[] }>({
+			query: ({ ids, locale }) => {
+				const queryString = ids.map((id) => `filters[id][$in][]=${id}`).join('&')
+				return `products?${queryString}&locale=${locale}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`
+			},
+			transformResponse: (response: IResponse<IProduct[]>): IProduct[] => response.data
+		})
 	})
+})
 
-	const fetchedProducts = await Promise.all(productRequests)
-
-	const validProducts = fetchedProducts.filter((product) => product !== null) as IProduct[]
-
-	return validProducts
-}
+// Export hooks for usage in functional components
+export const { useFetchProductsByIdsQuery } = productsApi

@@ -12,7 +12,8 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
+import Loader from '@/components/ui/loaders/Loader'
 
 export default function ComparePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
@@ -25,15 +26,22 @@ export default function ComparePopup() {
 		setIsActive((active) => !active)
 	}
 
+	// Call the hook to fetch products by IDs
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery({
+		ids: compareIds,
+		locale
+	})
+
+	// Update the products state when fetchedProducts changes
 	useEffect(() => {
-		const FetchProducts = async () => {
-			const fetchedProducts = await useFetchMultipleByIds(compareIds, locale)
+		if (fetchedProducts) {
 			setProducts(fetchedProducts)
 		}
-
-		FetchProducts()
-	}, [compareIds, locale])
-
+	}, [fetchedProducts])
 	return (
 		<PopupHeader variant='compare'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
@@ -48,7 +56,9 @@ export default function ComparePopup() {
 				textEmpty={t('empty-compare')}
 				isEmpty={products.length > 0 ? false : true}
 			>
-				{products &&
+				{isLoading ? (
+					<Loader />
+				) : (
 					products.map((item, index) => (
 						<PopupHeaderItem
 							title={item.attributes.title}
@@ -57,7 +67,8 @@ export default function ComparePopup() {
 							onClick={handleToggle}
 							key={index}
 						/>
-					))}
+					))
+				)}
 			</PopupHeaderContainer>
 		</PopupHeader>
 	)

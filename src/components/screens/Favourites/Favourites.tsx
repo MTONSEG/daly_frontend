@@ -10,8 +10,8 @@ import { IProduct } from '@/types/types'
 import { useParams } from 'next/navigation'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
 import Loader from '@/components/ui/loaders/Loader'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
@@ -20,14 +20,22 @@ const Favourites: React.FC = () => {
 	const gridMode = useAppSelector((state) => state.catalogProducts.gridMode)
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
-	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
 
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery({
+		ids: productIds,
+		locale
+	})
+
+	const [products, setProducts] = useState<IProduct[]>([])
+
 	useEffect(() => {
-		const FetchAllProducts = async () => {
-			if (productIds.length > 0) {
-				const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
-				const sortedProducts = [...fetchedProducts]
+		if (fetchedProducts) {
+			const sortedProducts = [...fetchedProducts]
 
 				const comparisonFunctions = {
 					publishedAt: {
@@ -48,17 +56,12 @@ const Favourites: React.FC = () => {
 					}
 				}
 
-				if (comparisonFunctions[sortingOption] && comparisonFunctions[sortingOption][sortingWay]) {
-					const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
-					sortedProducts.sort(comparisonFunction)
-				}
+			const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
+			sortedProducts.sort(comparisonFunction)
 
-				setProducts(sortedProducts)
-			}
+			setProducts(sortedProducts)
 		}
-
-		FetchAllProducts()
-	}, [productIds, sortingWay, sortingOption, locale])
+	}, [fetchedProducts, sortingWay, sortingOption])
 
 	const breadcrumbArr: IBreadcrumb[] = [
 		{ label: 'Home', href: '/', active: false },
@@ -74,12 +77,12 @@ const Favourites: React.FC = () => {
 						<div className='favourites__title'>{word('title')}</div>
 						<GridHead />
 					</div>
-					{products.length > 0 ? (
-						<CatalogGrid products={products} gridMode={gridMode} />
-					) : productIds.length > 0 ? (
+					{isLoading ? (
 						<Loader />
-					) : (
+					) : error ? (
 						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
+					) : (
+						<CatalogGrid products={products} gridMode={gridMode} />
 					)}
 				</div>
 			</div>

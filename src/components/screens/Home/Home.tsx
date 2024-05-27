@@ -10,15 +10,12 @@ import FaqButton from './FaqButton/FaqButton'
 import Container from '@/components/ui/containers/Container/Container'
 import MiddleBanner from './MiddleBanner/MiddleBanner'
 import BottomBanner from './BottomBanner/BottomBanner'
-import Header from '@/components/widgets/layout/Header/Header'
 
 export default function Home() {
 	const t = useTranslations('home')
 
 	return (
-		<>
 			<div style={{ position: 'relative' }}>
-				{/* <Header /> */}
 				<MainBanner />
 				<Container>
 					<ProductLine title={t('hits')} tag='hit' tagValue={true} sortingOption='rating' />
@@ -56,6 +53,5 @@ export default function Home() {
 					<FaqButton />
 				</Container>
 			</div>
-		</>
-	)
+		)
 }

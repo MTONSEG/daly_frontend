@@ -19,6 +19,7 @@ const Favourites: React.FC = () => {
 	console.log('🚀 ~ productIds:', productIds)
 	const gridMode = useAppSelector((state) => state.catalogProducts.gridMode)
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
+	console.log('🚀 ~ sortingWay:', sortingWay)
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
 	const { locale } = useParams()
 
@@ -37,25 +38,25 @@ const Favourites: React.FC = () => {
 		if (fetchedProducts) {
 			const sortedProducts = [...fetchedProducts]
 
-				const comparisonFunctions = {
-					publishedAt: {
-						asc: (a: IProduct, b: IProduct) =>
-							new Date(a.attributes.publishedAt).getTime() -
-							new Date(b.attributes.publishedAt).getTime(),
-						desc: (a: IProduct, b: IProduct) =>
-							new Date(b.attributes.publishedAt).getTime() -
-							new Date(a.attributes.publishedAt).getTime()
-					},
-					rating: {
-						asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
-						desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
-					},
-					price: {
-						asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
-						desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
-					}
+			const comparisonFunctions = {
+				publishedAt: {
+					asc: (a: IProduct, b: IProduct) =>
+						new Date(a.attributes.publishedAt).getTime() -
+						new Date(b.attributes.publishedAt).getTime(),
+					desc: (a: IProduct, b: IProduct) =>
+						new Date(b.attributes.publishedAt).getTime() -
+						new Date(a.attributes.publishedAt).getTime()
+				},
+				rating: {
+					asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
+					desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
+				},
+				price: {
+					asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
+					desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
 				}
-
+			}
+			console.log(comparisonFunctions['publishedAt']['desc'])
 			const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
 			sortedProducts.sort(comparisonFunction)
 
@@ -77,12 +78,12 @@ const Favourites: React.FC = () => {
 						<div className='favourites__title'>{word('title')}</div>
 						<GridHead />
 					</div>
-					{isLoading ? (
-						<Loader />
-					) : error ? (
-						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
-					) : (
+					{products.length > 0 ? (
 						<CatalogGrid products={products} gridMode={gridMode} />
+					) : productIds ? (
+						<Loader />
+					) : (
+						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 					)}
 				</div>
 			</div>

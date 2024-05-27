@@ -72,7 +72,7 @@ body {
 			border: 1px solid var(--bright-green);
 		}
 	}
-
+	
 	@include media-max(sm) {
 		padding: 0 15px;
 		&__title {

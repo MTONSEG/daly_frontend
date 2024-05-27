@@ -10,10 +10,7 @@ import Image from 'next/image'
 const MainBanner = () => {
 	const { data, isLoading } = useGetBannersQuery({ bannerType: 'hero_banners' })
 	const t = useTranslations('home')
-
-	if (isLoading) {
-		return <div>...loading</div>
-	}
+	
 	return (
 		<div className='mainBanner'>
 			<Fancybox

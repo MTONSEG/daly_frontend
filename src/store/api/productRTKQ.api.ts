@@ -16,7 +16,7 @@ export const getProductApi = createApi({
 		}),
 		getProducts: builder.query<IResponse<IProduct[]>, { locale: string; page: number }>({
 			query: ({ locale, page }) => {
-				return `http://localhost:1337/api/products?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=4&populate=images`
+				return `http://localhost:1337/api/products?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=7&populate=images`
 			}
 		}),
 		getLogos: builder.query<ILogos, {}>({
@@ -30,7 +30,7 @@ export const getProductApi = createApi({
 			{ tag: string; tagValue: boolean; pageNum?: number; sort?: string }
 		>({
 			query: ({ tag, tagValue, pageNum = 1, sort }) => {
-				return `products?filters[${tag}][$eq]=${tagValue}&pagination[page]=${pageNum}&pagination[pageSize]=5&populate=images&${sort}`
+				return `products?filters[${tag}][$eq]=${tagValue}&pagination[page]=${pageNum}&pagination[pageSize]=7&populate=images&${sort}`
 			}
 		})
 	})

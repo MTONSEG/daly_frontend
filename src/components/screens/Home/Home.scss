@@ -82,59 +82,7 @@
 	height: 10px !important;
 }
 
-.product-line {
-	flex: 1 1;
-	margin-top: 80px;
-	height: 465px;
 
-	&__top {
-		display: flex;
-		justify-content: space-between;
-		column-gap: 32px;
-		align-items: center;
-		margin-bottom: 30px;
-	}
-
-	&__title {
-		font-size: 32px;
-		font-weight: var(--700);
-		line-height: 1.2;
-		color: var(--black);
-		white-space: wrap;
-	}
-
-	&__text {
-		color: var(--dark-grey);
-		font-size: 14px;
-		font-weight: var(--500);
-		line-height: 1.5;
-		opacity: 0.5;
-	}
-
-	&__bottom {
-		height: 210px;
-		max-width: 100%;
-
-		.product-card {
-			margin-right: 25px;
-			height: 100%;
-
-			&:last-of-type {
-				margin-right: 0;
-			}
-		}
-	}
-
-	.product-card {
-		width: 214px;
-	}
-
-	.slick-list {
-		height: 400px;
-		padding-top: 5px;
-		padding-left: 5px;
-	}
-}
 
 .brands {
 	display: flex;
@@ -649,7 +597,7 @@
 	.slick-slide {
 		width: 214px !important;
 		max-width: 214px !important;
-		margin-right: 25px !important;
+		// margin-right: 25px !important;
 	}
 
 	.middleBanner {
@@ -709,7 +657,7 @@
 	.slick-slide {
 		width: 214px !important;
 		max-width: 214px !important;
-		margin-right: 25px !important;
+		// margin-right: 25px !important;
 	}
 
 	.bottomBanner {
@@ -805,7 +753,7 @@
 	.slick-slide {
 		width: 254px !important;
 		max-width: 254px !important;
-		margin-right: 25px !important;
+		// margin-right: 25px !important;
 	}
 
 	.subscribe-form {

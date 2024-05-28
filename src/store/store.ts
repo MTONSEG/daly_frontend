@@ -9,7 +9,9 @@ import {
 	PURGE,
 	REGISTER
 } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+// import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
+import storage from './storage'
 
 import { setupListeners } from '@reduxjs/toolkit/query'
 import basketSlice from './basket/basket.slice'

@@ -19,6 +19,7 @@ const Favourites: React.FC = () => {
 	console.log('🚀 ~ productIds:', productIds)
 	const gridMode = useAppSelector((state) => state.catalogProducts.gridMode)
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
+	console.log('🚀 ~ sortingWay:', sortingWay)
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
 	const { locale } = useParams()
 
@@ -56,7 +57,7 @@ const Favourites: React.FC = () => {
 					}
 				}
 
-			const comparisonFunction = comparisonFunctions[sortingOption]?.[sortingWay]
+			const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
 			sortedProducts.sort(comparisonFunction)
 
 			setProducts(sortedProducts)
@@ -77,12 +78,12 @@ const Favourites: React.FC = () => {
 						<div className='favourites__title'>{word('title')}</div>
 						<GridHead />
 					</div>
-					{isLoading ? (
-						<Loader />
-					) : error ? (
-						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
-					) : (
+					{products.length > 0 ? (
 						<CatalogGrid products={products} gridMode={gridMode} />
+					) : productIds ? (
+						<Loader />
+					) : (
+						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 					)}
 				</div>
 			</div>

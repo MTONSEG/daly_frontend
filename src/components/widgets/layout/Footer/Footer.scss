@@ -137,6 +137,7 @@
 }
 
 @include media-max(xs) {
+	
 	.top-footer {
 		&__content, &__socialmedia {
 			display: flex;
@@ -148,6 +149,10 @@
 		&__socialmedia {
 			row-gap: 16px;
 		}
+	}
+
+	.middle-footer {
+		padding: 20px 0 40px;
 	}
 
 	.bottom-footer {

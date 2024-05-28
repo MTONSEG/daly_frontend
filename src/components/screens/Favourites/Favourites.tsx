@@ -32,7 +32,7 @@ const Favourites: React.FC = () => {
 	})
 
 	const [products, setProducts] = useState<IProduct[]>([])
-
+	
 	useEffect(() => {
 		if (fetchedProducts) {
 			const sortedProducts = [...fetchedProducts]
@@ -56,7 +56,7 @@ const Favourites: React.FC = () => {
 					}
 				}
 
-			const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
+			const comparisonFunction = comparisonFunctions[sortingOption]?.[sortingWay]
 			sortedProducts.sort(comparisonFunction)
 
 			setProducts(sortedProducts)

@@ -11,7 +11,7 @@
 .mainBanner {
 	height: 390px;
 	margin-top: 50px;
-		
+
 	& > div {
 		height: 100%;
 	}
@@ -24,7 +24,7 @@
 .mainBanner-slide {
 	max-width: 81.25%;
 	margin-right: 30px;
-				
+
 	&__image {
 		object-fit: cover;
 		min-height: 390px;
@@ -550,6 +550,7 @@
 		height: 80px;
 		cursor: pointer;
 		animation: pulse 1.5s infinite;
+		z-index: 3001;
 	}
 
 	@keyframes pulse {
@@ -595,7 +596,6 @@
 			animation: pulse 1.5s infinite;
 		}
 	}
-	
 }
 
 @include media-max(md) {
@@ -604,12 +604,12 @@
 	}
 
 	.product-line {
-		margin-top: 40px;
+		margin-top: 60px;
 	}
 
 	.mainBanner-slide {
 		margin-right: 15px;
-	        
+
 		&__image {
 			object-fit: cover;
 			object-position: 10% center;
@@ -661,18 +661,32 @@
 	}
 
 	.middleBanner {
-		margin-top: 60px;
+		margin-top: 80px;
+		height: 160px;
+
+		&__image {
+			min-height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		&__text {
+			font-size: 16px;
+			max-width: 50%;
+		}
+
+		.highlight {
+			font-size: 20px;
+		}
 	}
 
 	.main-terms {
-		margin: 40px 0;
+		margin: 80px 0;
 	}
 }
 
 @include media-max(sm) {
-	.f-carousel {
-		max-height: 320px;
-	}
+	
 	.mainBanner {
 		margin-top: 20px;
 	}
@@ -681,7 +695,6 @@
 		margin-top: 25px;
 	}
 	.mainBanner-slide {
-		
 		&__text-wr {
 			width: 100%;
 			margin: 10px auto;
@@ -703,13 +716,41 @@
 	}
 
 	.middleBanner {
+		overflow: hidden;
+		display: flex;
 		flex-direction: column;
-		height: 420px;
-		
+		height: auto;
+
 		&__block {
 			margin-bottom: 20px;
-			max-width: 100%;
+			min-width: 100%;
 		}
+
+		&__text {
+			font-size: 28px;
+		}
+	}
+
+	.middleBanner__image {
+		width: 100%;
+		height: auto;
+		animation: none;
+		opacity: 1;
+		animation-duration: 1s;
+		animation-name: fadeIn;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	.brands {
+		margin-top: 80px;
 	}
 
 	.subscribe {
@@ -726,6 +767,21 @@
 
 	.bottomBanner {
 		overflow-x: hidden;
+
+		.f-carousel {
+			height: auto !important;
+		}
+	}
+
+	.bottomBanner-slide {
+		background: linear-gradient(to right, #ccefdb, #f5f5f5);
+
+		&__image {
+			width: 50%;
+			height: 100%;
+			object-fit: contain;
+			object-position: right;
+		}
 	}
 
 	.faq {
@@ -750,8 +806,8 @@
 	}
 
 	.mainBanner-slide {
-		max-height: 200px;     
-		max-width: 95%; 
+		max-height: 200px;
+		max-width: 95%;
 
 		&__text-wr {
 			left: 0;
@@ -777,7 +833,7 @@
 	.product-line {
 		.slick-list {
 			height: 320px;
-			padding: 5px 0 0  !important;
+			padding: 5px 0 0 !important;
 		}
 	}
 
@@ -787,9 +843,20 @@
 		justify-content: flex-start;
 		height: auto;
 		margin-top: 0;
+		
+			&__text {
+			font-size: 16px;
+			max-width: 50%;
+		}
+
+		.highlight {
+			font-size: 18px;
+		}
 	}
 
 	.brands {
+		margin-top: 80px;
+
 		&__logos {
 			max-width: 100%;
 			display: grid;
@@ -814,12 +881,7 @@
 			min-width: 100%;
 		}
 	}
-
-	.bottomBanner-slide {
-		height: auto;
-		padding: 15px 0;
-	}
-
+	
 	.slick-slide {
 		width: 254px !important;
 		max-width: 254px !important;
@@ -830,6 +892,12 @@
 		&__inputs {
 			min-width: 90%;
 		}
+	}
+
+	.bottomBanner-slide {
+		height: auto;
+		padding: 20px 0 20px 50px;
+		margin: 0;
 	}
 }
 
@@ -846,7 +914,15 @@
 
 	.bottomBanner-slide {
 		height: auto;
-		padding: 15px 0;
+		padding: 20px 0 20px 50px;
+
+		&__text {
+			display: none;
+		}
+
+		&__title {
+			font-size: 18px;
+		}
 	}
 
 	.main-terms {

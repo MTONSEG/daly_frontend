@@ -26,15 +26,20 @@ export default function ComparePopup() {
 		setIsActive((active) => !active)
 	}
 
-	// Call the hook to fetch products by IDs
+	//Call the hook to fetch products by IDs
 	const {
 		data: fetchedProducts,
 		error,
 		isLoading
-	} = useFetchProductsByIdsQuery({
-		ids: compareIds,
-		locale
-	})
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: compareIds,
+			locale
+		},
+		{
+			skip: compareIds.length === 0
+		}
+	)
 
 	// Update the products state when fetchedProducts changes
 	useEffect(() => {
@@ -42,6 +47,7 @@ export default function ComparePopup() {
 			setProducts(fetchedProducts)
 		}
 	}, [fetchedProducts])
+
 	return (
 		<PopupHeader variant='compare'>
 			<Button className='popup-header__btn' onClick={handleToggle}>

@@ -30,10 +30,15 @@ const Comparison: React.FC = () => {
 		data: fetchedProducts,
 		error,
 		isLoading
-	} = useFetchProductsByIdsQuery({
-		ids: productIds,
-		locale
-	})
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: productIds,
+			locale
+		},
+		{
+			skip: productIds.length === 0
+		}
+	)
 
 	useEffect(() => {
 		if (fetchedProducts) {

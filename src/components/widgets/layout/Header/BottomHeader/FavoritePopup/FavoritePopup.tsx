@@ -27,16 +27,21 @@ export default function FavoritePopup() {
 	const handleToggle = () => {
 		setIsActive((active) => !active)
 	}
-
+	
 	const {
 		data: fetchedProducts,
 		error,
 		isLoading
-	} = useFetchProductsByIdsQuery({
-		ids: productIds,
-		locale
-	})
-
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: productIds,
+			locale
+		},
+		{
+			skip: productIds.length === 0
+		}
+	)
+	
 	useEffect(() => {
 		if (fetchedProducts) {
 			const sortedProducts = [...fetchedProducts]

@@ -6,7 +6,6 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { GreyCross } from '@/components/ui/icons'
-import Loader from '@/components/ui/loaders/Loader'
 import { Link } from '@/navigation'
 
 interface IExtendedProduct extends IProduct {

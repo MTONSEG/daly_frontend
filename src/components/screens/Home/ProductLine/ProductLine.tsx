@@ -39,7 +39,6 @@ const ProductLine: FC<IProductLine> = ({
 	isDiscount
 }) => {
 	const { data } = useGetProductsByTagQuery({ tag: tag, tagValue: tagValue, pageNum: pageNum })
-	console.log("🚀 ~ data:", data)
 	const catalogHref = sortingOption
 		? `/catalog?sorting=${sortingOption}`
 		: isDiscount

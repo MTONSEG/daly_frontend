@@ -22,6 +22,7 @@ export default function CartPopup() {
 	const productPlainIds = productIds.map((productId) => {
 		return productId.id
 	})
+	
 	const { locale } = useParams()
 	const t = useTranslations('home')
 
@@ -33,10 +34,15 @@ export default function CartPopup() {
 		data: fetchedProducts,
 		error,
 		isLoading
-	} = useFetchProductsByIdsQuery({
-		ids: productPlainIds,
-		locale
-	})
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: productPlainIds,
+			locale
+		},
+		{
+			skip: productIds.length === 0
+		}
+	)
 
 	// Update the products state when fetchedProducts changes
 	useEffect(() => {
@@ -44,7 +50,7 @@ export default function CartPopup() {
 			setProducts(fetchedProducts)
 		}
 	}, [fetchedProducts])
-
+	console.log(productPlainIds)
 	return (
 		<PopupHeader variant='cart'>
 			<Button className='popup-header__btn' onClick={handleToggle}>

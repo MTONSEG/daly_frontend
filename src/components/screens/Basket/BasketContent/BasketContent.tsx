@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './BasketContent.scss'
-import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
+import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import BasketRow from './BasketRow/BasketRow'
@@ -10,12 +10,11 @@ import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
-import { fillProductsData, fillProductsSets } from '@/store/order/order.slice'
+
 
 const BasketContent: React.FC = () => {
 	const word = useTranslations('basket')
 	const productIds = useAppSelector((state) => state.basket.products)
-	const dispatch: any = useAppDispatch()
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
 	const [totalPrice, setTotalPrice] = useState<number>(0)
@@ -57,6 +56,7 @@ const BasketContent: React.FC = () => {
 		setTotalPrice(totalPrice)
 		setTotalDiscount(totalDiscount)
 	}, [products, productIds])
+	console.log(fetchedProducts)
 	return (
 		<div className='basket-content'>
 			<div className='basket-content__products'>

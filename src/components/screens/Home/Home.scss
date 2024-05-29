@@ -232,7 +232,7 @@
 	grid-auto-rows: 150px;
 	grid-auto-flow: dense;
 	gap: 24px;
-	margin: 80px 0 80px;
+	margin: 80px 0;
 
 	&__item {
 		min-width: 100%;
@@ -629,7 +629,7 @@
 	}
 
 	.main-terms {
-		margin: 80px 0;
+		margin: 40px 0;
 	}
 }
 

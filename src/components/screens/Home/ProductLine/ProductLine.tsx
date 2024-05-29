@@ -7,7 +7,9 @@ import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'
 import { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules';
 import 'swiper/css'
+import 'swiper/css/pagination'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import './ProductLine.scss'
@@ -47,6 +49,13 @@ const ProductLine: FC<IProductLine> = ({
 
 	const { locale } = useParams()
 
+	const pagination = {
+		clickable: true,
+		renderBullet: function (index: number, className: any) {
+		  return '<span class="' + className + '">' + (index + 1) + '</span>';
+		},
+	  };
+
 	return (
 		<div className='product-line'>
 			<div className='product-line__top'>
@@ -62,7 +71,9 @@ const ProductLine: FC<IProductLine> = ({
 						spaceBetween={25}
 						loop={true}
 						navigation
-						pagination={{ clickable: true }}
+						//pagination={{ clickable: true }}
+						pagination={pagination}
+						modules={[Pagination]}
 						breakpoints={{
 							1440: {
 								slidesPerView: 5,
@@ -118,7 +129,7 @@ const ProductLine: FC<IProductLine> = ({
 									}
 									return null
 							  })}
-					</Swiper>
+				    </Swiper>
 				</div>
 			</div>
 		</div>

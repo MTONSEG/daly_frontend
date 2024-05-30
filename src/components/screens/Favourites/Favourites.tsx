@@ -16,6 +16,7 @@ import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
 	const productIds = useAppSelector((state) => state.favourites.products)
+	console.log('🚀 ~ productIds:', productIds)
 	const gridMode = useAppSelector((state) => state.catalogProducts.gridMode)
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
@@ -34,41 +35,42 @@ const Favourites: React.FC = () => {
 			skip: productIds.length === 0
 		}
 	)
+	console.log('🚀 ~ fetchedProducts:', fetchedProducts)
 
 	const [products, setProducts] = useState<IProduct[]>([])
-console.log(sortingOption)
-useEffect(() => {
-	if (fetchedProducts) {
-		const sortedProducts = [...fetchedProducts]
-		const comparisonFunctions = {
-			publishedAt: {
-				asc: (a: IProduct, b: IProduct) =>
-					new Date(a.attributes.publishedAt).getTime() -
-					new Date(b.attributes.publishedAt).getTime(),
-				desc: (a: IProduct, b: IProduct) =>
-					new Date(b.attributes.publishedAt).getTime() -
-					new Date(a.attributes.publishedAt).getTime()
-			},
-			rating: {
-				asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
-				desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
-			},
-			price: {
-				asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
-				desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
+	console.log(sortingOption)
+	useEffect(() => {
+		if (fetchedProducts) {
+			const sortedProducts = [...fetchedProducts]
+			const comparisonFunctions = {
+				publishedAt: {
+					asc: (a: IProduct, b: IProduct) =>
+						new Date(a.attributes.publishedAt).getTime() -
+						new Date(b.attributes.publishedAt).getTime(),
+					desc: (a: IProduct, b: IProduct) =>
+						new Date(b.attributes.publishedAt).getTime() -
+						new Date(a.attributes.publishedAt).getTime()
+				},
+				rating: {
+					asc: (a: IProduct, b: IProduct) => a.attributes.rating - b.attributes.rating,
+					desc: (a: IProduct, b: IProduct) => b.attributes.rating - a.attributes.rating
+				},
+				price: {
+					asc: (a: IProduct, b: IProduct) => a.attributes.price - b.attributes.price,
+					desc: (a: IProduct, b: IProduct) => b.attributes.price - a.attributes.price
+				}
 			}
+
+			const validSortingOption = comparisonFunctions[sortingOption]
+			const validSortingWay = validSortingOption ? validSortingOption[sortingWay] : null
+
+			if (validSortingWay) {
+				sortedProducts.sort(validSortingWay)
+			}
+
+			setProducts(sortedProducts)
 		}
-
-		const validSortingOption = comparisonFunctions[sortingOption]
-		const validSortingWay = validSortingOption ? validSortingOption[sortingWay] : null
-
-		if (validSortingWay) {
-			sortedProducts.sort(validSortingWay)
-		}
-
-		setProducts(sortedProducts)
-	}
-}, [fetchedProducts, sortingOption, sortingWay])
+	}, [fetchedProducts, sortingOption, sortingWay])
 
 	const breadcrumbArr: IBreadcrumb[] = [
 		{ label: 'Home', href: '/', active: false },

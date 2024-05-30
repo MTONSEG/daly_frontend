@@ -8,7 +8,11 @@ export const productsApi = createApi({
 	endpoints: (builder) => ({
 		fetchProductsByIds: builder.query<IProduct[], { ids: number[]; locale: string | string[] }>({
 			query: ({ ids, locale }) => {
-				const queryString = ids.map((id) => `filters[id][$in][]=${id}`).join('&')
+				if (ids.length === 0) {
+					return '' // No request will be made if the ids array is empty
+				}
+				console.log('🚀 ~ ids:', ids)
+				const queryString = ids.map((id, index) => `filters[id][$in][${index}]=${id}`).join('&')
 				return `products?${queryString}&locale=${locale}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`
 			},
 			transformResponse: (response: IResponse<IProduct[]>): IProduct[] => response.data

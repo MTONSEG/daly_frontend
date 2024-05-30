@@ -42,16 +42,13 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 		if (!filter) return false
 		const { categories, brands } = filter.attributes
 		// console.log(categories.some((category) => category.active));
-		return (
-			categories.some((category) => category.active) ||
-			brands.some((brand) => brand.active)
-		)
+		return categories.some((category) => category.active) || brands.some((brand) => brand.active)
 	}
 
 	// console.log("filter does have active",hasActiveOption(filter));
 
 	const [dropActive, setDropActive] = useState<boolean>(
-		hasActiveOption(filter)||isManuallyPriceState  
+		hasActiveOption(filter) || isManuallyPriceState
 	)
 	// console.log("🚀 ~ dropActive:", dropActive, filter?.attributes.categories[0]?.active)
 	const [values, setValues] = useState([0, 10000])

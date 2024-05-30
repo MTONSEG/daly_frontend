@@ -10,6 +10,9 @@ import { removeFavorite } from '@/store/favourites/favourites.slice'
 import { addComparisonProduct } from '@/store/comparison/comparison.slice'
 import { removeComparisonProduct } from '@/store/comparison/comparison.slice'
 import { FavoriteIconGreen } from '@/components/ui/icons'
+import { addProduct, removeProduct } from '@/store/basket/basket.slice'
+import { useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 
 interface IProductInfoAction {
 	price: number
@@ -19,10 +22,14 @@ interface IProductInfoAction {
 const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 	const dispatch = useAppDispatch()
 	const t = useTranslations('product')
-	
+	const { locale } = useParams()
+	const router = useRouter()
+
 	const isFavorite = useAppSelector((state) => state.favourites.products.includes(id))
 	const isCompare = useAppSelector((state) => state.comparison.products.includes(id))
-	console.log(isFavorite)
+	const isInBasket = useAppSelector((state) =>
+		state.basket.products.some((product) => product.id === id)
+	)
 	const handleFavouriteClick = () => {
 		if (isFavorite) {
 			dispatch(removeFavorite(id))
@@ -37,8 +44,14 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 			dispatch(addComparisonProduct(id))
 		}
 	}
-	
-	const onBuyHandler = () => {}
+
+	const onBuyHandler = () => {
+		if (isInBasket) {
+			router.push(`/${locale}/basket`)
+		} else {
+			dispatch(addProduct({ id }))
+		}
+	}
 
 	return (
 		<div className='action-box'>
@@ -49,11 +62,10 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 
 			<div className='action-box__icons-line'>
 				<Button className='icons-line__col' onClick={handleCompareClick}>
-					<p className={isCompare ? 'icons-line__text-color' : 'icons-line__text'}>{t('compare')}</p>
-					<p className='icons-line__icon'>
-						{isCompare ? <CompareActiveIcon /> : <CompareIcon />}
-						
+					<p className={isCompare ? 'icons-line__text-color' : 'icons-line__text'}>
+						{t('compare')}
 					</p>
+					<p className='icons-line__icon'>{isCompare ? <CompareActiveIcon /> : <CompareIcon />}</p>
 				</Button>
 
 				<Button className='icons-line__col' onClick={handleFavouriteClick}>

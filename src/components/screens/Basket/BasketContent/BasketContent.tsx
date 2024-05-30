@@ -10,11 +10,12 @@ import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
-
+import { skipToken } from '@reduxjs/toolkit/query'
 
 const BasketContent: React.FC = () => {
 	const word = useTranslations('basket')
 	const productIds = useAppSelector((state) => state.basket.products)
+	console.log('🚀 ~ productIds:', productIds)
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
 	const [totalPrice, setTotalPrice] = useState<number>(0)
@@ -28,16 +29,22 @@ const BasketContent: React.FC = () => {
 		data: fetchedProducts,
 		error,
 		isLoading
-	} = useFetchProductsByIdsQuery({
-		ids: productPlainIds,
-		locale
-	})
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: productPlainIds,
+			locale
+		},
+		{
+			skip: productIds.length === 0
+		}
+	)
 
 	useEffect(() => {
-		if (fetchedProducts) {
+		if (fetchedProducts && fetchedProducts.length > 0) {
+			console.log('🚀 ~ useEffect ~ fetchedProducts:', fetchedProducts)
 			setProducts(fetchedProducts)
 		}
-	}, [productIds])
+	}, [productIds, fetchedProducts])
 
 	useEffect(() => {
 		let totalPrice = 0
@@ -56,23 +63,17 @@ const BasketContent: React.FC = () => {
 		setTotalPrice(totalPrice)
 		setTotalDiscount(totalDiscount)
 	}, [products, productIds])
-	console.log(fetchedProducts)
+
 	return (
 		<div className='basket-content'>
 			<div className='basket-content__products'>
-				{productIds.length > 0 && products.length > 0 ? (
+				{products.length > 0 ? (
 					products.map((product, index) => {
-						if (productIds[index]) {
-							return (
-								<BasketRow
-									product={product}
-									quantity={productIds[index].quantity}
-									key={product.id}
-								/>
-							)
-						}
+						return (
+							<BasketRow product={product} quantity={productIds[index].quantity} key={product.id} />
+						)
 					})
-				) : productIds.length === 0 ? (
+				) : productPlainIds.length === 0 ? (
 					<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 				) : (
 					<Loader />

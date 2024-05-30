@@ -1,5 +1,6 @@
 'use client'
 
+import "./BottomBanner.scss"
 import Button from '@/components/ui/buttons/Button/Button'
 import Carousel from '@/components/widgets/SliderThumbnail/SliderComp/Carousel'
 import Fancybox from '@/components/widgets/SliderThumbnail/SliderComp/Fancybox'

@@ -1,6 +1,6 @@
 'use client'
 
-import '../Home.scss'
+import './Terms.scss'
 import { useGetTermsQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'

@@ -40,7 +40,7 @@ export default function CartPopup() {
 			locale
 		},
 		{
-			skip: productIds.length === 0
+			skip: productPlainIds.length === 0
 		}
 	)
 
@@ -50,7 +50,7 @@ export default function CartPopup() {
 			setProducts(fetchedProducts)
 		}
 	}, [fetchedProducts])
-	console.log(productPlainIds)
+	
 	return (
 		<PopupHeader variant='cart'>
 			<Button className='popup-header__btn' onClick={handleToggle}>

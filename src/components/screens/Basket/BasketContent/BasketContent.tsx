@@ -23,21 +23,26 @@ const BasketContent: React.FC = () => {
 	const productPlainIds = productIds.map((productId) => {
 		return productId.id
 	})
-
+	
 	const {
 		data: fetchedProducts,
 		error,
 		isLoading
-	} = useFetchProductsByIdsQuery({
-		ids: productPlainIds,
-		locale
-	})
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: productPlainIds,
+			locale
+		},
+		// {
+		// 	skip: productPlainIds.length === 0
+		// }
+	)
 
 	useEffect(() => {
 		if (fetchedProducts) {
 			setProducts(fetchedProducts)
 		}
-	}, [productIds])
+	}, [productPlainIds])
 
 	useEffect(() => {
 		let totalPrice = 0
@@ -56,7 +61,7 @@ const BasketContent: React.FC = () => {
 		setTotalPrice(totalPrice)
 		setTotalDiscount(totalDiscount)
 	}, [products, productIds])
-	console.log(fetchedProducts)
+	
 	return (
 		<div className='basket-content'>
 			<div className='basket-content__products'>

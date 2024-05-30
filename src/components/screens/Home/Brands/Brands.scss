@@ -1,0 +1,69 @@
+@import '@/media';
+
+.brands {
+	display: flex;
+	flex-direction: column;
+
+	&__logos {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+		grid-auto-rows: auto;
+		grid-auto-flow: dense;
+		row-gap: 24px;
+		transition: all 0.2 ease-in;
+	}
+
+	&__logos-item {
+		cursor: pointer;
+		transition: all 0.2s ease-in;
+	}
+
+	&__logos-item img {
+		min-width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+
+	&__logos-item:hover {
+		transform: scale(105%);
+	}
+}
+
+@include media-max(sm) {
+    .brands {
+		margin-top: 80px;
+	}
+}
+
+@include media-max(xs) {
+    .brands {
+		margin-top: 80px;
+
+		&__logos {
+			max-width: 100%;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(auto, 1fr));
+			column-gap: 24px;
+			row-gap: 32px;
+		}
+
+		&__logos-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+		}
+	}
+}
+
+@include media-max(xxs) {
+    .brands {
+		&__logos {
+			max-width: 100%;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(auto, 140px));
+			column-gap: 24px;
+			row-gap: 32px;
+		}
+	}
+}

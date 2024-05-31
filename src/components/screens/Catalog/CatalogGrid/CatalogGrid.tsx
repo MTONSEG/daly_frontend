@@ -17,7 +17,7 @@ interface ICatalogGridProps {
 }
 
 const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) => {
-	console.log("🚀 ~ products:", products)
+	// console.log("🚀 ~ products:", products)
 	const dispatch = useAppDispatch()
 	const word = useTranslations('catalog')
 
@@ -72,8 +72,8 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) 
 	}
 
 	return (
-		<div className='catalog-grid'>
-			<div
+		<section className='catalog-grid'>
+			<ul
 				className={`catalog-grid__products ${gridMode === 'row' && 'row'} ${
 					(meta && meta.pagination.pageCount > 4) || products.length >= 4 ? '' : 'lesser'
 				}`}
@@ -91,7 +91,7 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) 
 				) : (
 					<EmptyList emptyText1={word("empty-text-1")} emptyText2={word("empty-text-2")}/>
 				)}
-			</div>
+			</ul>
 			{products.length > 0 && meta && meta.pagination.pageCount > 1 && (
 				<div className='catalog-grid__show-button'>
 					<ShowBtn
@@ -108,7 +108,7 @@ const CatalogGrid: React.FC<ICatalogGridProps> = ({ products, gridMode, meta }) 
 					paginate={paginate}
 				/>
 			)}
-		</div>
+		</section>
 	)
 }
 

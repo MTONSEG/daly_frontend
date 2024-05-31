@@ -53,7 +53,7 @@ const filtersData = createSlice({
 				state.status = 'success'
 				state.error = null
 				state.filtersData = action.payload
-				// console.log('🚀 SUCCESSSSSSSSSSSSSSSSS', state.filtersData)
+				console.log('🚀 SUCCESSSSSSSSSSSSSSSSS', state.filtersData)
 			})
 
 			.addCase(fetchAllFilters.rejected, (state) => {

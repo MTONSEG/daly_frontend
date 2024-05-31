@@ -82,10 +82,10 @@ const Favourites: React.FC = () => {
 			<div className='favourites'>
 				<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 				<div className='favourites__content'>
-					<div className='favourites__head'>
-						<div className='favourites__title'>{word('title')}</div>
+					<section className='favourites__head'>
+						<h2 className='favourites__title'>{word('title')}</h2>
 						<GridHead />
-					</div>
+					</section>
 					{isLoading ? (
 						<Loader />
 					) : products.length > 0 ? (

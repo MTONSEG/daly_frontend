@@ -64,7 +64,7 @@ const Pagination: React.FC<IPaginationProps> = ({ currentPage, pageCount, pagina
 
 	return (
 		pageCount > 1 && (
-			<div className='pagination'>
+			<nav className='pagination'>
 				<button
 					key='prev'
 					className='pagination__arrow left'
@@ -78,7 +78,7 @@ const Pagination: React.FC<IPaginationProps> = ({ currentPage, pageCount, pagina
 					onClick={() => paginate(currentPage + 1)}
 					aria-label='pagination-arrow-right'
 				></button>
-			</div>
+			</nav>
 		)
 	)
 }

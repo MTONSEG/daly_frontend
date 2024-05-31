@@ -22,21 +22,22 @@ const CatalogFilters: React.FC = () => {
 	const word = useTranslations('catalog')
 
 	const filtersFromRedux = useAppSelector((state) => state.filters.filtersData)
-	console.log('🚀 ~ filtersFromRedux:', filtersFromRedux)
+	// console.log('🚀 ~ filtersFromRedux:', filtersFromRedux)
 	// console.log('🚀 ~ filtersFromRedux:', filtersFromRedux[1]?.attributes.categories[0]?.active)
 	const [filters, setFilters] = useState<IFilter[]>([])
-	const [isInitialized, setIsInitialized] = useState(false)
+	const [isInitialized, setIsInitialized] = useState<boolean>(false)
 	// console.log("🚀 ~ isInitialized:", isInitialized)
 
 	const urlParams = useSearchParams()
 	const queryCategory = urlParams.get('category')
 	const queryBrand = urlParams.get('brand')
 
-	// useEffect(() => {
-	// 	if (!queryCategory && !queryBrand) {
-	// 		dispatch(fetchAllFilters(locale))
-	// 	}
-	// }, [locale])
+	useEffect(() => {
+		console.log('changed the locale so fetched the localized filters')
+		if (!queryCategory && !queryBrand) {
+			dispatch(fetchAllFilters(locale))
+		}
+	}, [locale])
 
 	const initializeFilters = (filters: IFilter[]) => {
 		return filters.map((filter) => {
@@ -63,7 +64,7 @@ const CatalogFilters: React.FC = () => {
 
 	useEffect(() => {
 		if (filtersFromRedux.length === 0 && !isInitialized) {
-			console.log('fetched def filters')
+			// console.log('fetched def filters')
 			dispatch(fetchAllFilters(locale))
 		}
 
@@ -73,6 +74,10 @@ const CatalogFilters: React.FC = () => {
 
 			setIsInitialized(true)
 			handleUpdateFiltersFromUrl(updatedFilters)
+		}
+
+		if (filtersFromRedux.length > 0 && !queryCategory && !queryBrand) {
+			setFilters(filtersFromRedux)
 		}
 	}, [filtersFromRedux, isInitialized, queryCategory, queryBrand, locale])
 
@@ -114,16 +119,16 @@ const CatalogFilters: React.FC = () => {
 	return (
 		<>
 			{!isActive && (
-				<div
+				<section
 					className='catalog-filters__mobile-button'
 					onClick={() => {
 						setIsActive(true)
 					}}
 				>
 					<FilterMobileIcon className='catalog-filters__mobile-icon' />
-				</div>
+				</section>
 			)}
-			<div className={`catalog-filters ${isActive ? 'active' : ''}`} ref={ref}>
+			<section className={`catalog-filters ${isActive ? 'active' : ''}`} ref={ref}>
 				{filters.length > 0
 					? filters.map((filter, index) => (
 							<FilterDropdown filter={filter} updateFilter={updateFilter} key={index} />
@@ -135,15 +140,15 @@ const CatalogFilters: React.FC = () => {
 								isManuallyPrice={index === 0} // Set isManuallyPrice to true for the first element
 							/>
 					  ))}
-				<div className='catalog-filters__buttons'>
+				<section className='catalog-filters__buttons'>
 					<TransparentBtn onClick={handleUpdateFilters}>
 						{word('save-filters-button')}
 					</TransparentBtn>
 					<TransparentBtn onClick={handleFetchDefaultFilters}>
 						{word('default-filters-button')}
 					</TransparentBtn>
-				</div>
-			</div>
+				</section>
+			</section>
 		</>
 	)
 }

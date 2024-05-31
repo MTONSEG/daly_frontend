@@ -17,17 +17,17 @@ const Basket: React.FC = () => {
 	return (
 		<Container>
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
-			<div className='basket'>
-				<div className='basket__title'>{word('title')}</div>
-				<div className='basket__content'>
+			<section className='basket'>
+				<h2 className='basket__title'>{word('title')}</h2>
+				<section className='basket__content'>
 					<BasketContent />
-				</div>
+				</section>
 				<div className='basket__order-button-box'>
 					<Link href='/order'>
 						<Button className='basket__order-button'>{word('order-button')}</Button>
 					</Link>
 				</div>
-			</div>
+			</section>
 		</Container>
 	)
 }

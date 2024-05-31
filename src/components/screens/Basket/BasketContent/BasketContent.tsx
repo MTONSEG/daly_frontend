@@ -65,8 +65,8 @@ const BasketContent: React.FC = () => {
 	}, [products, productIds])
 
 	return (
-		<div className='basket-content'>
-			<div className='basket-content__products'>
+		<section className='basket-content'>
+			<ul className='basket-content__products'>
 				{products.length > 0 ? (
 					products.map((product, index) => {
 						return (
@@ -78,11 +78,11 @@ const BasketContent: React.FC = () => {
 				) : (
 					<Loader />
 				)}
-			</div>
-			<div className='basket-content__calculator'>
+			</ul>
+			<section className='basket-content__calculator'>
 				<BasketPriceCalculator totalPrice={totalPrice} totalDiscount={totalDiscount} />
-			</div>
-		</div>
+			</section>
+		</section>
 	)
 }
 

@@ -67,8 +67,8 @@ const Comparison: React.FC = () => {
 		<Container>
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 			<div className='comparison'>
-				<div className='comparison__head'>
-					<div className='comparison__title'>{word('title')}</div>
+				<section className='comparison__head'>
+					<h2 className='comparison__title'>{word('title')}</h2>
 					{productIds ? (
 						<>
 							<div className='comparison__head-cards'>
@@ -89,7 +89,7 @@ const Comparison: React.FC = () => {
 									<Loader />
 								)}
 							</div>
-							<div className='comparison__controls'>
+							<nav className='comparison__controls'>
 								<TransparentBtn
 									onClick={() => {
 										handleControlClick('all')
@@ -108,18 +108,18 @@ const Comparison: React.FC = () => {
 								>
 									{word('controls-diff')}
 								</TransparentBtn>
-							</div>
+							</nav>
 						</>
 					) : (
 						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 					)}
-				</div>
+				</section>
 
-				<div className='comparison__characteristics'>
+				<ul className='comparison__characteristics'>
 					{products.length > 0 && products[0].attributes.properties && (
 						<ComparisonBlock products={products} displayType={comparisonDisplayType} />
 					)}
-				</div>
+				</ul>
 			</div>
 		</Container>
 	)

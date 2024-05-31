@@ -1,11 +1,11 @@
 @import '@/media';
 
 
-.bottomBanner {
+.bottom-banner {
 	margin-top: 0px;
 }
 
-.bottomBanner-slide {
+.bottom-banner-slide {
 	height: 270px !important;
 	margin: 80px 0 !important;
 	display: flex;
@@ -59,7 +59,7 @@
 }
 
 @include media-max(sm) {
-    .bottomBanner {
+    .bottom-banner {
 		overflow-x: hidden;
 
 		.f-carousel {
@@ -67,7 +67,7 @@
 		}
 	}
 
-    .bottomBanner-slide {
+    .bottom-banner-slide {
 		background: linear-gradient(to right, #ccefdb, #f5f5f5);
 
 		&__image {
@@ -81,7 +81,7 @@
 }
 
 @include media-max(xs) {
-    .bottomBanner-slide {
+    .bottom-banner-slide {
 		height: auto;
 		padding: 20px 0 20px 50px;
 		margin: 0;
@@ -93,7 +93,7 @@
 }
 
 @include media-max(xxs) {
-    .bottomBanner-slide {
+    .bottom-banner-slide {
 		height: auto;
 		padding: 20px 0 20px 40px;
 	

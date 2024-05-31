@@ -1,5 +1,6 @@
 'use client'
-import '../Home.scss'
+import '../../../screens/Home/Home.scss'
+import './FaqButton.scss'
 import Image from 'next/image'
 import Faq from '@/assets/images/faq.webp'
 import PopupSuport from '@/components/widgets/popups/PopupSuport/PopupSuport'
@@ -32,7 +33,6 @@ const FaqButton = () => {
 	const popupFormState = useAppSelector((state) => state.popupSupport.popupForm)
 	const popupOverlayState = useAppSelector((state) => state.popupSupport.overlay)
 	const successFormState = useAppSelector((state) => state.popupSupport.successForm)
-	
 
 	useEffect(() => {
 		if (successFormState === true) {
@@ -41,25 +41,25 @@ const FaqButton = () => {
 	}, [successFormState])
 
 	useEffect(() => {
-        if (popupFormState && popupRef.current) {
-            popupRef.current.scrollIntoView({ behavior: 'smooth' })
-        }
-    }, [popupFormState])
+		if (popupFormState && popupRef.current) {
+			popupRef.current.scrollIntoView({ behavior: 'smooth' })
+		}
+	}, [popupFormState])
 
 	return (
-		<>
+		<div className='support-button'>
 			<Image
 				src={Faq}
 				width={50}
 				height={50}
 				alt='faq'
-				className={'faq__icon'}
+				className={'support-button__image'}
 				onClick={showPopup}
 			/>
-			{popupFormState && <PopupSuport closePopup={closePopup} ref={popupRef}/>}
+			{popupFormState && <PopupSuport closePopup={closePopup} ref={popupRef} />}
 			{popupOverlayState && <div className='overlay'></div>}
 			{successFormState && <PopupSuccess closeOverlay={closeOverlay} />}
-		</>
+		</div>
 	)
 }
 export default FaqButton

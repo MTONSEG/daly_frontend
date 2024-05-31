@@ -1,6 +1,7 @@
 import './Breadcrumbs.scss'
 import LinkBtn from '../buttons/LinkBtn/LinkBtn'
 
+
 export interface IBreadcrumb {
 	label: string
 	href: string
@@ -14,6 +15,7 @@ export default function Breadcrumbs({
 	breadcrumbsArr: IBreadcrumb[]
 	classname?: string
 }) {
+	
 	return (
 		<nav aria-label='Breadcrumb' className={`${classname}  breadcrumbs`}>
 			<ul className='breadcrumbs__ul'>

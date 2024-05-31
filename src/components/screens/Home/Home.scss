@@ -94,44 +94,12 @@
 	&__open-arrow {
 		transform: rotate(180deg);
 	}
-
-	&__icon {
-		position: fixed;
-		right: 40px;
-		bottom: 470px;
-		width: 80px;
-		height: 80px;
-		cursor: pointer;
-		animation: pulse 1.5s infinite;
-		z-index: 3001;
-	}
-
-	@keyframes pulse {
-		0% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.2);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
 }
 
 @include media-max(lg) {
 	
 	.faq {
 		overflow-x: hidden;
-		&__icon {
-			position: fixed;
-			right: 20px;
-			top: 120px;
-			width: 50px;
-			height: 50px;
-			cursor: pointer;
-			animation: pulse 1.5s infinite;
-		}
 	}
 }
 

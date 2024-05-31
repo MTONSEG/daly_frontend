@@ -1,9 +1,8 @@
 'use client'
 
-import '../Home.scss'
+import './Brands.scss'
 import { useGetLogosQuery } from '@/store/api/productRTKQ.api'
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
-import { ILogos } from '@/types/types'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -39,7 +38,6 @@ const Brands = () => {
 										src={item.attributes.url ? item.attributes.url : ''}
 										width={175}
 										height={80}
-										// style={{ minWidth: '100%', objectFit: 'cover' }}
 										loading='lazy'
 									/>
 								</div>

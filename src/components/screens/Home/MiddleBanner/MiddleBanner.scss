@@ -1,0 +1,130 @@
+@import '@/media';
+
+.middle-banner {
+	display: flex;
+	justify-content: space-between;
+	max-width: 100%;
+	margin-top: 80px;
+	height: 200px;
+
+	img {
+		width: 100%;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	&__block {
+		width: 100%;
+		max-width: 570px;
+		cursor: pointer;
+		position: relative;
+	}
+
+	&__text {
+		position: absolute;
+		color: var(--white);
+		font-size: 24px;
+		font-weight: var(--700);
+		line-height: 1.5;
+		left: 30px;
+		top: 30px;
+		max-width: 250px;
+	}
+
+	&__text_highlight {
+		color: var(--bright-gree);
+		margin-left: 4px;
+		font-size: 36px;
+	}
+}
+
+@include media-max(lg) {
+	.middle-banner {
+		&__block:first-of-type {
+			margin-right: 10px;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+@include media-max(md) {
+	.middle-banner {
+		margin-top: 80px;
+		height: 160px;
+
+		&__image {
+			min-height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		&__text {
+			font-size: 16px;
+			max-width: 50%;
+		}
+
+		&__text_highlight {
+			font-size: 20px;
+		}
+	}
+}
+
+@include media-max(sm) {
+	.middle-banner {
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		height: auto;
+
+		&__block {
+			margin-bottom: 20px;
+			min-width: 100%;
+		}
+
+		&__text {
+			font-size: 28px;
+		}
+	}
+
+	.middle-banner__image {
+		width: 100%;
+		height: auto;
+		animation: none;
+		opacity: 1;
+		animation-duration: 1s;
+		animation-name: fadeIn;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+}
+
+@include media-max(xs) {
+	.middle-banner {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		height: auto;
+		margin-top: 0;
+
+		&__text {
+			font-size: 16px;
+			max-width: 50%;
+		}
+
+		&__text_highlight {
+			font-size: 18px;
+		}
+	}
+}

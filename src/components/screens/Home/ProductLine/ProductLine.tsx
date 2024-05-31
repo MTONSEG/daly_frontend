@@ -1,5 +1,6 @@
 'use client'
 
+import './ProductLine.scss'
 import '../../../widgets/SliderThumbnail/SliderThumbnail.scss'
 import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
@@ -12,7 +13,6 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
-import './ProductLine.scss'
 
 interface IProductLine {
 	title: string

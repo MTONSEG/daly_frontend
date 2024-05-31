@@ -1,6 +1,6 @@
 'use client'
 
-import '../Home.scss'
+import './Subscribe.scss'
 import { useTranslations } from 'next-intl'
 import SubscribeForm from './SubscribeForm'
 

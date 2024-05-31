@@ -1,4 +1,5 @@
-import '../Home.scss'
+
+import './Subscribe.scss'
 import { useForm } from 'react-hook-form'
 import { ISubscribe } from '@/types/types'
 import { useState, useEffect } from 'react'

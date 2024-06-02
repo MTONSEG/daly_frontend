@@ -40,7 +40,7 @@ export default function CartPopup() {
 			locale
 		},
 		{
-			skip: productIds.length === 0
+			skip: productPlainIds.length === 0
 		}
 	)
 

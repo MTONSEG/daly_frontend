@@ -7,6 +7,7 @@ import { Link } from '@/navigation'
 import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 
 
+
 const Basket: React.FC = () => {
 	const word = useTranslations('basket')
 	const breadcrumbArr: IBreadcrumb[] = [

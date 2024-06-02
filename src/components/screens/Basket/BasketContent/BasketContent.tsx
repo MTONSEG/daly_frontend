@@ -24,7 +24,7 @@ const BasketContent: React.FC = () => {
 	const productPlainIds = productIds.map((productId) => {
 		return productId.id
 	})
-
+	
 	const {
 		data: fetchedProducts,
 		error,

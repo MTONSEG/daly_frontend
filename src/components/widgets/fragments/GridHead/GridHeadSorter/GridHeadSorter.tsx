@@ -46,26 +46,26 @@ const GridHeadSorter: React.FC<IGridHeadSorterProps> = ({ sortingOptions, sortin
 
 	return (
 		<div className='sorter' ref={ref}>
-			<div
+			<p
 				className='sorter__head'
 				onClick={() => setIsActive(!isActive)}
 				aria-label='sort-drop-head'
 			>
 				{word(sortingOption)}
 				<Arrow state={isActive} />
-			</div>
-			<div className={`sorter__options ${isActive && 'active'}`}>
+			</p>
+			<section className={`sorter__options ${isActive && 'active'}`}>
 				{sortingOptions.map((option, index) => (
-					<div
+					<p
 						key={index}
 						className={`sorter__option ${sortingOption === option && 'active'}`}
 						onClick={() => handleOptionClick(option)}
 					>
 						{word(option)}
 						{sortingOption === option && <Arrow state={sortingMethod === 'asc' ? true : false} />}
-					</div>
+					</p>
 				))}
-			</div>
+			</section>
 		</div>
 	)
 }

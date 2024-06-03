@@ -1,0 +1,61 @@
+.courier {
+	display: flex;
+	padding-bottom: 40px;
+
+	.css-1u9des2-indicatorSeparator {
+		display: none;
+	}
+
+	&__left {
+		width: 100%;
+		margin-right: 40px;
+		// max-width: 554px;
+	}
+
+	&__form {
+		padding: 30px;
+		max-width: 554px;
+		&.order-form {
+			padding: 25px 30px 0px 30px;
+			max-width: 100%;
+		}
+	}
+
+	&__link {
+		color: var(--dark-grey);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 150%;
+		text-decoration-line: underline;
+		margin-top: 20px;
+	}
+
+	.select-container {
+		width: 100%;
+		margin-bottom: 30px;
+	}
+
+	.select-label {
+		color: var(--dark-grey);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 152%;
+		letter-spacing: 0px;
+		text-align: left;
+		margin-bottom: 5px;
+	}
+
+	&__right {
+	}
+
+	&__right-line {
+	}
+
+	&__price {
+		&_text {
+		}
+	}
+
+	&__etc {
+	}
+}

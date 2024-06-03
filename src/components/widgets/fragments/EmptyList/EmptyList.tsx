@@ -12,8 +12,8 @@ interface EmptyListProps {
 const EmptyList: React.FC<EmptyListProps> = ({ emptyText1, emptyText2 }) => {
 	return (
 		<div className='empty-list'>
-			<div className='empty-list__text'>{emptyText1}</div>
-			<div className='empty-list__text'>{emptyText2}</div>
+			<p className='empty-list__text'>{emptyText1}</p>
+			<p className='empty-list__text'>{emptyText2}</p>
 			<Image
 				src={listImage}
 				alt='list-image'

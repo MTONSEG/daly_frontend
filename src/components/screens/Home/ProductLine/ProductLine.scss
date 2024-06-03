@@ -39,6 +39,7 @@
 			&:last-of-type {
 				margin-right: 0;
 			}
+			max-width: 100%;
 		}
 	}
 
@@ -48,19 +49,27 @@
 		overflow: visible;
 	}
 
+	&__slider {
+		padding: 15px !important;
+		margin: -15px;
+	}
+
 	&__slide-content {
 		width: 100%;
-		max-width: 214px;
-		padding: 5px;
+		// max-width: 214px;
+		// padding: 5px;
+		.product-card {
+			max-width: 100% !important;
+		}
 	}
-	
+
 	@include media-max(ul) {
 		.swiper {
 			padding-bottom: 0;
 		}
 
 		.swiper-pagination {
-			display: none;
+			display: none !important;
 		}
 	}
 
@@ -75,7 +84,7 @@
 		}
 	}
 
-		@include media-max(xxs) {
+	@include media-max(xxs) {
 		&__title {
 			font-size: 28px;
 		}
@@ -133,4 +142,3 @@
 		}
 	}
 }
-

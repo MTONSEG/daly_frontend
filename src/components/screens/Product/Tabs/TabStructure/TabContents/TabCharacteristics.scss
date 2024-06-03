@@ -1,0 +1,39 @@
+@import '@/media';
+.characteristics {
+	&__title {
+		color: var(--dark-grey);
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 150%;
+		text-align: left;
+		margin: 0 0 40px 0px;
+	}
+
+	&__list {
+	}
+
+	&__line {
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid rgb(239, 239, 239);
+		border-top: 1px solid rgb(239, 239, 239);
+		padding: 10px 0;
+	}
+
+	&__key,
+	&__value {
+		color: #000;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 150%;
+		min-width: 220px;
+	}
+}
+@include media-max(xs) {
+	.characteristics {
+		&__key,
+		&__value {
+			min-width: 100px;
+		}
+	}
+}

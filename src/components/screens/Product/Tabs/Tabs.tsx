@@ -6,6 +6,8 @@ import TabHead from './TabStructure/TabHead'
 import TabContent from './TabStructure/TabContent'
 import Comments from './TabComments/Comments'
 import Delivery from './Delivery/Delivery'
+import DescriptionTab from './TabStructure/TabContents/TabDescription'
+import Characteristics from './TabStructure/TabContents/TabCharacteristics'
 
 interface ITabs {
 	description: string
@@ -15,103 +17,6 @@ interface ITabs {
 export interface ITab {
 	title: string
 	content: React.ReactNode
-}
-
-const DescriptionTab: FC<{ description: string }> = ({ description }) => {
-	const t = useTranslations('product')
-
-	return (
-		<div className='description-tab'>
-			<h2 className='description__title'>{t('description')}</h2>
-
-			<p className='description__text'>{description}</p>
-		</div>
-	)
-}
-
-const Characteristics: FC<{ properities: IProductProperties | undefined }> = ({ properities }) => {
-	const t = useTranslations('product')
-
-	return (
-		<div className='characteristics'>
-			{properities ? (
-				<>
-					<h2 className='characteristics__title'>{t('characteristics')}</h2>
-
-					<ol className='characteristics__list'>
-						{Object.entries(properities).map((el, index) => {
-							if (el[0] === 'id') {
-								return ''
-							}
-							return (
-								<li key={index} className='characteristics__line'>
-									<p className='characteristics__key'>{t(el[0])}:</p>
-									<p className='characteristics__value'>{el[1]}</p>
-								</li>
-							)
-						})}
-					</ol>
-				</>
-			) : (
-				<h1>error</h1>
-			)}
-		</div>
-	)
-}
-
-const Credit = () => {
-	const t = useTranslations('product')
-
-	return (
-		<div className='credit'>
-			<h1 className='credit__title'>{t('credit')}</h1>
-			<div className='credit-box'>
-				<h2 className='credit-box__title'>{t('howToBuyCr')}</h2>
-				<ol className='credit-box__ol'>
-					<li className='credit-box__li'>
-						<span>1.</span>
-						{t('addToBusket')}
-					</li>
-					<li className='credit-box__li'>
-						<span>2.</span>
-						{t('addToBusket')}
-					</li>
-					<li className='credit-box__li'>
-						<span>3.</span>
-						{t('addToBusket')}
-					</li>
-					<li className='credit-box__li'>
-						<span>4.</span>
-						{t('addToBusket')}
-					</li>
-					<li className='credit-box__li'>
-						<span>5.</span>
-						{t('addToBusket')}
-					</li>
-				</ol>
-			</div>
-
-			<div className='credit-box credit-box_small'>
-				<h2 className='credit-box__title'>{t('mounthlyPayment')}</h2>
-				<ul className='credit-box__ol_installment '>
-					<li className='credit-box__li_installment'>
-						<p className='credix-box__left-text'>{t('mounthlyPayment')}</p>
-						<p className='credix-box__right-text'>8350 ∞ ₴</p>
-					</li>
-				</ul>
-			</div>
-
-			<div className='credit-box credit-box_small'>
-				<h2 className='credit-box__title'>{t('mounthlyPayment')}</h2>
-				<ul className='credit-box__ol_installment '>
-					<li className='credit-box__li_installment'>
-						<p className='credix-box__left-text'>{t('mounthlyPayment')}</p>
-						<p className='credix-box__right-text'>8350 ∞ ₴</p>
-					</li>
-				</ul>
-			</div>
-		</div>
-	)
 }
 
 const Tabs: FC<ITabs> = ({ description, properties }) => {

@@ -19,14 +19,21 @@ interface IProductCardProps {
 }
 
 const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared, locale }) => {
-	const displayProduct =
-		locale === product?.attributes.locale
-			? product
-			: product &&
-			  product.attributes.localizations &&
-			  product.attributes.localizations.data.length > 0
-			? product.attributes.localizations.data[0]
-			: product
+	function getDisplayProduct(product: IProduct | undefined, locale: string[] | string) {
+		if (locale === product?.attributes?.locale) {
+			return product
+		}
+		if (
+			product &&
+			product.attributes?.localizations &&
+			product.attributes.localizations.data.length > 0
+		) {
+			return product.attributes.localizations.data[0]
+		}
+		return product
+	}
+
+	const displayProduct = getDisplayProduct(product, locale)
 
 	const router = useRouter()
 	const handleRouteClick = () => {
@@ -66,7 +73,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 				onClick={handleRouteClick}
 			/>
 
-			<div
+			<section
 				className={`product-card__info-container ${!product && 'placeholder'}`}
 				onClick={handleRouteClick}
 			>
@@ -80,9 +87,9 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 						<ColorPicker variant='forCard' />
 					</>
 				)}
-			</div>
+			</section>
 
-			<div className={`product-card__button-container ${!product && 'placeholder'}`}>
+			<section className={`product-card__button-container ${!product && 'placeholder'}`}>
 				{displayProduct && (
 					<ProductCardMetrics
 						price={displayProduct.attributes.price}
@@ -100,7 +107,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 						{isCompared && <DeleteBtn productId={displayProduct.id} />}
 					</div>
 				)}
-			</div>
+			</section>
 		</div>
 	)
 }

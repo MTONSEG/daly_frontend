@@ -83,7 +83,8 @@
 @include media-max(xs) {
     .bottom-banner-slide {
 		height: auto;
-		padding: 20px 0 20px 50px;
+		margin: 40px 0 !important;
+		padding: 20px 0 20px 40px !important;
 		margin: 0;
 
         &__text {

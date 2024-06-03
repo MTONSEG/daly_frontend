@@ -10,6 +10,9 @@ import { removeFavorite } from '@/store/favourites/favourites.slice'
 import { addComparisonProduct } from '@/store/comparison/comparison.slice'
 import { removeComparisonProduct } from '@/store/comparison/comparison.slice'
 import { FavoriteIconGreen } from '@/components/ui/icons'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import { BASKET_PATH } from '@/routes/routes'
+import Link from 'next/link'
 
 interface IProductInfoAction {
 	price: number
@@ -19,10 +22,10 @@ interface IProductInfoAction {
 const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 	const dispatch = useAppDispatch()
 	const t = useTranslations('product')
-	
+
 	const isFavorite = useAppSelector((state) => state.favourites.products.includes(id))
 	const isCompare = useAppSelector((state) => state.comparison.products.includes(id))
-	console.log(isFavorite)
+
 	const handleFavouriteClick = () => {
 		if (isFavorite) {
 			dispatch(removeFavorite(id))
@@ -37,7 +40,7 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 			dispatch(addComparisonProduct(id))
 		}
 	}
-	
+
 	const onBuyHandler = () => {}
 
 	return (
@@ -49,11 +52,10 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 
 			<div className='action-box__icons-line'>
 				<Button className='icons-line__col' onClick={handleCompareClick}>
-					<p className={isCompare ? 'icons-line__text-color' : 'icons-line__text'}>{t('compare')}</p>
-					<p className='icons-line__icon'>
-						{isCompare ? <CompareActiveIcon /> : <CompareIcon />}
-						
+					<p className={isCompare ? 'icons-line__text-color' : 'icons-line__text'}>
+						{t('compare')}
 					</p>
+					<p className='icons-line__icon'>{isCompare ? <CompareActiveIcon /> : <CompareIcon />}</p>
 				</Button>
 
 				<Button className='icons-line__col' onClick={handleFavouriteClick}>
@@ -65,7 +67,6 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 					</p>
 				</Button>
 			</div>
-
 			<Button className='action-box__buy-btn' variant='product' onClick={onBuyHandler}>
 				{t('buy')}
 			</Button>

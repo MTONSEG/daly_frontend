@@ -78,6 +78,12 @@
 	}
 }
 
+@include media-max(md) {
+	.search-header {
+		max-width: 100%;
+	}
+}
+
 @include media-max(xs) {
 	.search-header {
 		margin: 0;

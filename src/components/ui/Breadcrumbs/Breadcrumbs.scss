@@ -1,16 +1,16 @@
 .breadcrumbs {
 	overflow-x: auto;
-	font-family: var(--roboto);
+	font-family: var(--inter);
 	font-size: 14px;
 	font-weight: 400;
-	// margin-top: 5px;
 	margin: 20px 0;
+	transition: all 0.3s ease-in-out;
 
 	&__ul {
 		width: max-content;
 		display: flex;
-		font-family: var(--nunito);
-
+		column-gap: 10px;
+		
 		li {
 			display: flex;
 		}
@@ -18,10 +18,22 @@
 
 	&__li {
 		color: var(--dark-grey);
-		font-family: Roboto;
+		font-family: var(--inter);
 		line-height: normal;
-		&_active {
-			color: #000;
+		transition: all 0.2s ease-in;
+
+		&:hover {
+			transform: translateY(-1px);
+			text-decoration: underline;
+		}
+
+		&:not(:last-of-type)::after {
+			content: ">";
+			margin-left: 10px;
+			text-decoration: none !important; 
+		}
+		&:hover:after {
+	     	text-decoration: none !important; 
 		}
 	}
 

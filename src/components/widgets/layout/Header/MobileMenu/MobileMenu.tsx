@@ -1,7 +1,7 @@
 import './MobileMenu.scss'
 import { useEffect } from 'react'
 import LocaleSelect from '@/components/ui/forms/LocaleSelect/LocaleSelect'
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import Logo from '@/components/ui/icons/Logo/Logo'
 import { UserIcon } from '@/components/ui/icons'
 import { useTranslations } from 'next-intl'
@@ -9,9 +9,10 @@ import MenuNavigation from './MenuNavigation'
 
 interface PropsTypes {
 	stateMenu: boolean
+	toggleMenu: () => void
 }
 
-const MobileMenu = ({ stateMenu }: PropsTypes) => {
+const MobileMenu = ({ stateMenu, toggleMenu }: PropsTypes) => {
 	const t = useTranslations('home')
 	const s = useTranslations('shared')
 
@@ -26,7 +27,7 @@ const MobileMenu = ({ stateMenu }: PropsTypes) => {
 
 	return (
 		<div className={stateMenu ? 'mobile-menu-active' : 'mobile-menu'}>
-			<div className='mobile-menu__logo'>
+			<div className='mobile-menu__logo' onClick={toggleMenu}>
 				<Logo />
 			</div>
 			<div className='top-header__actions mobile-menu__actions'>
@@ -40,7 +41,7 @@ const MobileMenu = ({ stateMenu }: PropsTypes) => {
 					</span>
 				</LinkBtn>
 			</div>
-			<MenuNavigation />
+			<MenuNavigation toggleMenu={toggleMenu}/>
 		</div>
 	)
 }

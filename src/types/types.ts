@@ -204,3 +204,9 @@ export interface ISubscribe {
 		image: any
 	}
  }
+
+ export interface IBreadcrumb {
+	label: string
+	href: string
+	active?: boolean
+}

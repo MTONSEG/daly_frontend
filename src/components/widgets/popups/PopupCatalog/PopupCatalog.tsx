@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/icons'
 import './PopupCatalog.scss'
 import useOutsideClick from '@/hooks/useOutSideClick'
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import { CATALOG_PATH } from '@/routes/routes'
 import type { IMapIcons } from '@/types/types'
 import { useMemo } from 'react'
@@ -31,10 +31,10 @@ import { formatPath } from '@/utils/formatPath'
 import { useGetCategoriesQuery } from '@/store/header/header.api'
 import PopupCatalogItem from '@/components/widgets/popups/PopupCatalog/PopupCatalogItem/PopupCatalogItem'
 import PopupCatalogMenu from '@/components/widgets/popups/PopupCatalog/PopupCatalogMenu/PopupCatalogMenu'
+import { useMatchMedia } from '@/hooks/use-match-media'
 
 const PopupCatalog = () => {
-	const { ref, isActive, setIsActive } =
-		useOutsideClick<HTMLUListElement>(false)
+	const { ref, isActive, setIsActive } = useOutsideClick<HTMLUListElement>(false)
 
 	const { locale } = useParams()
 
@@ -43,6 +43,8 @@ const PopupCatalog = () => {
 	const { data, isLoading } = useGetCategoriesQuery(checkArr(locale))
 
 	const t = useTranslations('home')
+
+	const windowWidth = useMatchMedia()
 
 	const handleOpen = () => {
 		setIsActive(true)
@@ -85,26 +87,25 @@ const PopupCatalog = () => {
 		<div className='popup-catalog'>
 			<LinkBtn
 				href={`/${CATALOG_PATH}`}
-				className={`popup-catalog__btn ${setActive(
-					formatPath(path) === CATALOG_PATH
-				)}`}
+				className={`popup-catalog__btn ${setActive(formatPath(path) === CATALOG_PATH)}`}
 				onMouseEnter={handleOpen}
 			>
 				<BurgerIcon /> <span>{t('catalog')}</span>
 			</LinkBtn>
-
-			<PopupCatalogMenu ref={ref} isActive={isActive}>
-				{isLoading ? (
-					<ThreeDots
-						visible={true}
-						radius='9'
-						ariaLabel='three-dots-loading'
-						wrapperClass='popup-catalog__loader'
-					/>
-				) : (
-					items
-				)}
-			</PopupCatalogMenu>
+			{!windowWidth.isMobile && (
+				<PopupCatalogMenu ref={ref} isActive={isActive}>
+					{isLoading ? (
+						<ThreeDots
+							visible={true}
+							radius='9'
+							ariaLabel='three-dots-loading'
+							wrapperClass='popup-catalog__loader'
+						/>
+					) : (
+						items
+					)}
+				</PopupCatalogMenu>
+			)}
 		</div>
 	)
 }

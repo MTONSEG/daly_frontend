@@ -23,17 +23,12 @@
 		transition: all 0.2s ease-in;
 
 		&:hover {
-			transform: translateY(-1px);
-			text-decoration: underline;
+			text-decoration: underline;		
 		}
 
 		&:not(:last-of-type)::after {
 			content: ">";
 			margin-left: 10px;
-			text-decoration: none !important; 
-		}
-		&:hover:after {
-	     	text-decoration: none !important; 
 		}
 	}
 

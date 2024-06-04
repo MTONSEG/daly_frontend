@@ -16,7 +16,7 @@
 
 	&__image {
 		object-fit: cover;
-		min-height: 390px;
+		height: 390px;
 		max-height: 390px;
 		display: block;
 		margin: 0 auto;
@@ -63,13 +63,16 @@
 
 @include media-max(md) {
     .main-banner {
+		height: 320px;
 		margin-top: 0px;
 	}
 
     .main-banner-slide {
 		margin-right: 15px;
-
+		max-width: 100%;
+		
 		&__image {
+		    max-height: 320px;
 			object-fit: cover;
 			object-position: 10% center;
 		}
@@ -120,8 +123,7 @@
 
     .main-banner-slide {
 		max-height: 200px;
-		max-width: 95%;
-
+		
 		&__text-wr {
 			left: 0;
 			padding: 0 10px;

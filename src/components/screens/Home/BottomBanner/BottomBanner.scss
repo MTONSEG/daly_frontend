@@ -82,10 +82,15 @@
 
 @include media-max(xs) {
     .bottom-banner-slide {
-		height: auto;
-		margin: 40px 0 !important;
-		padding: 20px 0 20px 40px !important;
+		height: auto !important;
+		max-height: 220px !important;
+		margin: 0 !important;
+		padding: 15px 15px 20px 60px !important;
 		margin: 0;
+
+		&__title {
+			font-size: 26px;
+		}
 
         &__text {
 			display: none;
@@ -96,9 +101,8 @@
 @include media-max(xxs) {
     .bottom-banner-slide {
 		height: auto;
-		padding: 20px 0 20px 40px;
+		padding: 15px 15px 20px 40px !important;
 	
-
         &__text-wr {
             display: flex;
             flex-direction: column;
@@ -108,10 +112,11 @@
 
 		&__title {
 			font-size: 26px;
+			margin-bottom: 5px;
 		}
 
         &__btn {
-           margin-bottom: 20px;
+           margin-bottom: 0;
            margin-right: 20px;
            max-width: 70%;
         }

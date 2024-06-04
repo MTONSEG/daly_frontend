@@ -1,6 +1,6 @@
 "use client"
 import './Breadcrumbs.scss';
-import LinkBtn from '../buttons/LinkBtn/LinkBtn';
+import LinkBtn from '../Buttons/LinkBtn/LinkBtn';
 import { HomeBlack } from '../icons';
 import { IBreadcrumb } from '@/types/types';
 import { useState } from 'react';

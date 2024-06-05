@@ -3,7 +3,7 @@ import Container from '@/components/ui/containers/Container/Container'
 import SliderThumbnailFancyApp from '@/components/widgets/SliderThumbnail/SliderThumbnailFancyApp'
 import './Product.scss'
 import { inter, open_sans } from '@/fonts/fonts'
-import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
+import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useParams, usePathname } from 'next/navigation'
 import { useGetProductQuery } from '@/store/api/productRTKQ.api'
 import { FC, useState } from 'react'
@@ -16,47 +16,6 @@ import { useTranslations } from 'next-intl'
 
 interface IProduct {
 	id: number
-}
-
-const LoremComp = () => {
-	const t = useTranslations('product')
-	const [openText, setOpenText] = useState(true)
-
-	const variants = {
-		active: {
-			opacity: 1
-		},
-		inactive: {
-			opacity: 0,
-			height: 0,
-			overflow: 'hidden'
-		}
-	}
-
-	return (
-		<div className='lorem'>
-			<h2 className='lorem__title'>{t('loremTitle')}</h2>
-			<motion.p
-				className='lorem__text'
-				variants={variants}
-				animate={openText ? 'active' : 'inactive'}
-			>
-				{t('loremText')}
-			</motion.p>
-
-			<div className='lorem__show-more' onClick={() => setOpenText(!openText)}>
-				<p className='lorem__show-more-text'>
-					{openText ? `${t('showMore')}` : `${t('showLess')}`}
-				</p>
-				<motion.div
-					variants={{ active: { rotate: '180deg' }, inActive: { rotate: '0deg' } }}
-					animate={openText ? 'active' : 'inactive'}
-				>
-					<ArrowDown />
-				</motion.div>
-			</div>
-		</div>
-	)
 }
 
 const Product: FC<IProduct> = ({ id }) => {
@@ -75,10 +34,7 @@ const Product: FC<IProduct> = ({ id }) => {
 			active: true
 		}
 	]
-
-	if (isLoading) {
-		return <div>loading...</div>
-	}
+	
 	return (
 		<Container>
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />

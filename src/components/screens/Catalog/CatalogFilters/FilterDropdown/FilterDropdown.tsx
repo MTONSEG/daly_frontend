@@ -42,19 +42,16 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 		if (!filter) return false
 		const { categories, brands } = filter.attributes
 		// console.log(categories.some((category) => category.active));
-		return (
-			categories.some((category) => category.active) ||
-			brands.some((brand) => brand.active)
-		)
+		return categories.some((category) => category.active) || brands.some((brand) => brand.active)
 	}
 
 	// console.log("filter does have active",hasActiveOption(filter));
 
 	const [dropActive, setDropActive] = useState<boolean>(
-		hasActiveOption(filter)||isManuallyPriceState  
+		hasActiveOption(filter) || isManuallyPriceState
 	)
 	// console.log("🚀 ~ dropActive:", dropActive, filter?.attributes.categories[0]?.active)
-	const [values, setValues] = useState([0, 10000])
+	const [values, setValues] = useState<number[]>([0, 10000])
 	const [showAllItems, setShowAllItems] = useState<boolean>(false)
 
 	const handleChange = (newValues: number[]) => {
@@ -135,7 +132,7 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 	}
 
 	return (
-		<div className={`filter-dropdown ${isPlaceholder && 'placeholder'}`}>
+		<section className={`filter-dropdown ${isPlaceholder && 'placeholder'}`}>
 			<div
 				className='filter-dropdown__head'
 				onClick={() => {
@@ -146,12 +143,12 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 					}
 				}}
 			>
-				<div className='filter-dropdown__name'>
+				<h4 className='filter-dropdown__name'>
 					{filter && upperFirstLetter(filter.attributes.label)}
-				</div>
+				</h4>
 				{!isPrice && !isManuallyPriceState && <Arrow state={dropActive} />}
 			</div>
-			<div className={`filter-dropdown__body ${dropActive && 'active'} ${isPrice && 'active'}`}>
+			<ul className={`filter-dropdown__body ${dropActive && 'active'} ${isPrice && 'active'}`}>
 				{isPrice && filter && (
 					<PriceRange
 						maxPrice={filter.attributes.max_price}
@@ -198,8 +195,8 @@ const FilterDropDown: React.FC<IFilterDropDownProps> = ({
 					setShowAllItems={handleShowAllItems}
 					shouldShowMoreButton={shouldShowMoreButton}
 				/>
-			</div>
-		</div>
+			</ul>
+		</section>
 	)
 }
 

@@ -49,11 +49,10 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 
 			<div className='action-box__icons-line'>
 				<Button className='icons-line__col' onClick={handleCompareClick}>
-					<p className={isCompare ? 'icons-line__text-color' : 'icons-line__text'}>{t('compare')}</p>
-					<p className='icons-line__icon'>
-						{isCompare ? <CompareActiveIcon /> : <CompareIcon />}
-						
+					<p className={isCompare ? 'icons-line__text-color' : 'icons-line__text'}>
+						{t('compare')}
 					</p>
+					<p className='icons-line__icon'>{isCompare ? <CompareActiveIcon /> : <CompareIcon />}</p>
 				</Button>
 
 				<Button className='icons-line__col' onClick={handleFavouriteClick}>
@@ -65,7 +64,6 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 					</p>
 				</Button>
 			</div>
-
 			<Button className='action-box__buy-btn' variant='product' onClick={onBuyHandler}>
 				{t('buy')}
 			</Button>

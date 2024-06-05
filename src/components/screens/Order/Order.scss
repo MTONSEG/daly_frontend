@@ -86,7 +86,7 @@
 		font-weight: 400;
 		font-size: 14px;
 		line-height: 150%;
-		color: red;
+		color: var(--red);
 	}
 
 	@include media-max(xs) {
@@ -132,7 +132,7 @@
 			font-weight: 400;
 			font-size: 14px;
 			line-height: 150%;
-			color: red;
+			color: var(--red);
 			text-align: center;
 		}
 	

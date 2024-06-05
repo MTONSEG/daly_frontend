@@ -31,8 +31,8 @@
 		font-size: 14px;
 		color: var(--bright-green);
 		cursor: pointer;
-		box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
-		background: #fff;
+		box-shadow: 1px 2px 16px 3px var(--dark-grey-01);
+		background: var(--white);
 		transition: 0.2s;
 		border-radius: 10px;
 		&:hover {
@@ -41,14 +41,14 @@
 		}
 		&.active {
 			background: var(--bright-green);
-			color: #fff;
+			color: var(--white);
 		}
 	}
 
 	&__content {
 		margin: 20px 0 0 0;
 		box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
-		background: #fff;
+		background: var(--white);
 
 		.courier {
 			display: flex;
@@ -164,7 +164,7 @@
 		&__content {
 			margin: 0px 0 0 0;
 			box-shadow: none;
-			background: #fff;
+			background: var(--white);
 			.selects-line {
 				flex-direction: column;
 				gap: 0;

@@ -53,8 +53,8 @@ const OrderDelivery = ({}) => {
 
 	return (
 		<div className='order-delivery'>
-			<div className='order-delivery__title'>{w('title')}</div>
-			<div className='order-delivery__nav'>
+			<h4 className='order-delivery__title'>{w('title')}</h4>
+			<nav className='order-delivery__nav'>
 				<div
 					className={`order-delivery__nav-item ${deliveryType === 'delivery' && 'active'}`}
 					onClick={() => {
@@ -71,8 +71,8 @@ const OrderDelivery = ({}) => {
 				>
 					{w('nav-2')}
 				</div>
-			</div>
-			<div className='order-delivery__content'>
+			</nav>
+			<section className='order-delivery__content'>
 				{deliveryType === 'delivery' && (
 					<div className='courier'>
 						<div className='courier__left'>
@@ -81,7 +81,7 @@ const OrderDelivery = ({}) => {
 					</div>
 				)}
 				{deliveryType === 'takeout' && <Pickup />}
-			</div>
+			</section>
 		</div>
 	)
 }

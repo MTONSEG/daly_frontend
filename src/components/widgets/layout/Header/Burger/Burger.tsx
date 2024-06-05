@@ -1,34 +1,30 @@
-import "./Burger.scss";
-import { useState } from "react";
-
+'use client'
+import './Burger.scss'
+import MobileOverlay from '../MobileMenu/Overlay'
+import { useState } from 'react'
 
 interface PropsTypes {
-    stateBurger: boolean,
-    toggleBurger: () => void
+	stateMenu: boolean
+	toggleMenu: () => void
 }
 
-const Burger = ({toggleBurger, stateBurger}: PropsTypes) => {
-// const dispatch = useAppDispatch();
+const Burger = ({ toggleMenu, stateMenu }: PropsTypes) => {
+	//const [overlay, setOverlay] = useState<boolean>(false)
 
-// const burgerRedux = useAppSelector((state) => state.header.burger)
+    const handleBurger = () => {
+        toggleMenu()
+        //setOverlay(!overlay)
+    }
 
-// const [stateBurger, setStateBurger] = useState(false);
-// const clickBurger = () => {
-// setStateBurger(!stateBurger)
-// dispatch(getBurgerInfo(!stateBurger))
-// }
-
-// useEffect(() => {
-// setStateBurger(burgerRedux)
-// },[burgerRedux])
-
-
-    return (
-        <div className="burger" onClick={toggleBurger}>
-            <div className={stateBurger ? "burger--upperLine" : "burger-line"}></div>
-            <div className={stateBurger ? "burger--middleLine" : "burger-line"}></div>
-            <div className={stateBurger ? "burger--lowerLine" : "burger-line"}></div>
-        </div>
-    )
+	return (
+		<div>
+			<div className='burger' onClick={handleBurger}>
+				<div className={stateMenu ? 'burger--upperLine' : 'burger-line'}></div>
+				<div className={stateMenu ? 'burger--middleLine' : 'burger-line'}></div>
+				<div className={stateMenu ? 'burger--lowerLine' : 'burger-line'}></div>
+			</div>
+			<MobileOverlay state={stateMenu} />
+		</div>
+	)
 }
-export default Burger;
+export default Burger

@@ -1,6 +1,6 @@
 'use client'
 
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import Container from '@/components/ui/containers/Container/Container'
 import { DeliveryIcon } from '@/components/ui/icons'
 import CartPopup from '@/components/widgets/layout/Header/BottomHeader/CartPopup/CartPopup'
@@ -19,21 +19,21 @@ export default function BottomHeader() {
 	const t = useTranslations('home')
 	const windowWidth = useMatchMedia()
 
-	const [stateBurger, setStateBurger] = useState<boolean>(false)
-	const toggleBurger = () => {
-		setStateBurger(!stateBurger)
+	const [stateMenu, setStateMenu] = useState<boolean>(false)
+	const toggleMenu = () => {
+		setStateMenu(!stateMenu)
 	}
 	return (
 		<div className='bottom-header'>
 			<Container>
 				<div className='bottom-header__row'>
 					<div className='bottom-header__left'>
-						{windowWidth.isMobile ? (
-							<Burger toggleBurger={toggleBurger} stateBurger={stateBurger} />
+						{!windowWidth.isDesktop ? (
+							<Burger toggleMenu={toggleMenu} stateMenu={stateMenu} />
 						) : (
 							<PopupCatalog />
 						)}
-						{!windowWidth.isMobile && (
+						{windowWidth.isDesktop && (
 							<LinkBtn
 								className='bottom-header__delivery-link'
 								href={`/${DELIVERY_PATH}`}
@@ -47,13 +47,13 @@ export default function BottomHeader() {
 					<SearchHeader />
 
 					<div className='bottom-header__right'>
+						{windowWidth.isDesktop &&
 						<LinkBtn
 							href={`/${SUPPORT_PATH}`}
 							className='bottom-header__support-link'
-							// eslint-disable-next-line react/no-children-prop
 							children={t('support')}
 						/>
-
+						}
 						<div className='bottom-header__popup-wrap'>
 							<ComparePopup />
 							<FavoritePopup />
@@ -61,7 +61,7 @@ export default function BottomHeader() {
 						</div>
 					</div>
 				</div>
-				<MobileMenu stateMenu={stateBurger} />
+				<MobileMenu stateMenu={stateMenu} toggleMenu={toggleMenu}/>
 			</Container>
 		</div>
 	)

@@ -16,6 +16,7 @@ export { default as FavoriteIconGreen } from '@/icons/favorite-green.svg'
 export { default as CheckIcon } from '@/icons/check.svg'
 export { default as DropDownIcon } from '@/icons/drop-down.svg'
 export { default as TriangleIcon } from '@/icons/triangle.svg'
+export { default as SupportMobile } from '@/icons/support-mobile.svg'
 
 // catalog popup
 export { default as AppleIcon } from '@/icons/catalog/apple.svg'

@@ -256,5 +256,11 @@
 	"404": {
 		"title": "There is no such page",
 		"button": "Go to home page"
+	},
+	"breadcrumbs": {
+		"favourites": "favourites",
+		"product": "product",
+		"basket": "basket",
+		"comparison": "compare products"
 	}
 }

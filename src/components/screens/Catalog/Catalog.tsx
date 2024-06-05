@@ -15,13 +15,14 @@ const Catalog: React.FC = () => {
 		<Container>
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 			<div className='catalog'>
-				<div className='catalog__title'>{word('title')}</div>
+				<h2 className='catalog__title'>{word('title')}</h2>
 				<div className='catalog__content'>
 					<CatalogFilters />
 					<CatalogContent />
 				</div>
 			</div>
 		</Container>
+
 	)
 }
 

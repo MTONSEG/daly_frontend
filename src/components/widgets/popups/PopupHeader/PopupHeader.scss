@@ -185,3 +185,24 @@
 		}
 	}
 }
+
+@include media-max(lg) {
+	.popup-header {
+		margin: 0 5px 0 0;
+	}
+}
+
+@include media-max(xs) {
+	.popup-header {
+		&__container {
+			right: -50%;
+		}
+	}
+}
+@include media-max(xxs) {
+	.popup-header {
+		&__container {
+			right: -20px;
+		}
+	}
+}

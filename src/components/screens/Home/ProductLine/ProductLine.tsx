@@ -2,13 +2,13 @@
 
 import './ProductLine.scss'
 import '../../../widgets/SliderThumbnail/SliderThumbnail.scss'
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'
 import { FC } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import Image from 'next/image'
@@ -51,9 +51,10 @@ const ProductLine: FC<IProductLine> = ({
 	const pagination = {
 		clickable: true,
 		renderBullet: function (index: number, className: any) {
-		  return '<span class="' + className + '">' + (index + 1) + '</span>';
-		},
-	  };
+			// return '<span class="' + className + '">' + (index + 1) + '</span>'
+			return '<span class="' + className + '">' + '</span>'
+		}
+	}
 
 	return (
 		<div className='product-line'>
@@ -66,6 +67,7 @@ const ProductLine: FC<IProductLine> = ({
 			<div className='product-line__bottom'>
 				<div className='product-line__slider-container'>
 					<Swiper
+						className='product-line__slider'
 						slidesPerView={5}
 						spaceBetween={25}
 						loop={true}
@@ -79,19 +81,20 @@ const ProductLine: FC<IProductLine> = ({
 								spaceBetween: 25
 							},
 							1024: {
+								slidesPerView: 5,
+								spaceBetween: 25,
+								pagination: false
+							},
+							762: {
 								slidesPerView: 4,
 								spaceBetween: 25
 							},
-							762: {
-								slidesPerView: 3,
-								spaceBetween: 25
-							},
 							576: {
-								slidesPerView: 2,
+								slidesPerView: 3,
 								spaceBetween: 10
 							},
 							375: {
-								slidesPerView: 1,
+								slidesPerView: 2,
 								spaceBetween: 5,
 								centeredSlides: true
 							},
@@ -128,7 +131,7 @@ const ProductLine: FC<IProductLine> = ({
 									}
 									return null
 							  })}
-				    </Swiper>
+					</Swiper>
 				</div>
 			</div>
 		</div>

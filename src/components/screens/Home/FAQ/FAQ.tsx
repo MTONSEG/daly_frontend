@@ -8,8 +8,7 @@ import arrow from '@/assets/images/arrowDown.png'
 
 const FAQ = () => {
 	const word = useTranslations('faq')
-
-	const [showMore, setShowMore] = useState<boolean>(false)
+    const [showMore, setShowMore] = useState<boolean>(false)
 
 	return (
 		<div className='faq'>

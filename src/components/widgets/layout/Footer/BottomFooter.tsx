@@ -1,5 +1,5 @@
 import './Footer.scss'
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import { useTranslations } from 'next-intl'
 
 const BottomFooter = () => {

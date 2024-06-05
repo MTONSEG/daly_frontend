@@ -11,7 +11,8 @@ import TransparentBtn from '@/components/ui/Buttons/TransparentBtn/TransparentBt
 import ComparisonBlock from './ComparisonBlock/ComparisonBlock'
 import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
-import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
+import { IBreadcrumb } from '@/types/types'
+import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 
 const Comparison: React.FC = () => {
@@ -19,7 +20,6 @@ const Comparison: React.FC = () => {
 	const word = useTranslations('comparison')
 	const productIds = useAppSelector((state) => state.comparison.products)
 	const [products, setProducts] = useState<IProduct[]>([])
-	console.log('🚀 ~ products:', products)
 	const { locale } = useParams()
 
 	const updateIsMobile = () => {

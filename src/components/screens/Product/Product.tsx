@@ -3,7 +3,7 @@ import Container from '@/components/ui/containers/Container/Container'
 import SliderThumbnailFancyApp from '@/components/widgets/SliderThumbnail/SliderThumbnailFancyApp'
 import './Product.scss'
 import { inter, open_sans } from '@/fonts/fonts'
-import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
+import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useParams, usePathname } from 'next/navigation'
 import { useGetProductQuery } from '@/store/api/productRTKQ.api'
 import { FC, useState } from 'react'
@@ -13,6 +13,7 @@ import AdditionalGoods from './AdditionalGoods/AdditionalGoods'
 import { motion } from 'framer-motion'
 import { ArrowDown } from '@/components/ui/icons'
 import { useTranslations } from 'next-intl'
+import { IBreadcrumb } from '@/types/types'
 
 interface IProduct {
 	id: number
@@ -75,10 +76,7 @@ const Product: FC<IProduct> = ({ id }) => {
 			active: true
 		}
 	]
-
-	if (isLoading) {
-		return <div>loading...</div>
-	}
+	
 	return (
 		<Container>
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />

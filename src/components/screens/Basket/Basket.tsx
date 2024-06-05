@@ -9,10 +9,6 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 
 const Basket: React.FC = () => {
 	const word = useTranslations('basket')
-	// const breadcrumbArr: IBreadcrumb[] = [
-	// 	{ label: 'Home', href: '/', active: false },
-	// 	{ label: 'Basket', href: 'basket', active: true }
-	// ]
 
 	return (
 		<Container>

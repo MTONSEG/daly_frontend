@@ -9,16 +9,16 @@ interface IComparisonItemProps {
 
 const ComparisonItem: React.FC<IComparisonItemProps> = ({ propertyName, propertyValues }) => {
 	return (
-		<div className='comparison-item'>
-			<div className='comparison-item__prop'>{upperFirstLetter(propertyName)}</div>
+		<section className='comparison-item'>
+			<h4 className='comparison-item__prop'>{upperFirstLetter(propertyName)}</h4>
 			{propertyValues.map((value, index) => {
 				return (
-					<div key={index} className='comparison-item__prop'>
+					<p key={index} className='comparison-item__prop'>
 						{value}
-					</div>
+					</p>
 				)
 			})}
-		</div>
+		</section>
 	)
 }
 

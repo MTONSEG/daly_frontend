@@ -55,8 +55,8 @@ const ComparisonBlock: React.FC<IComparisonBlockProps> = ({ displayType, product
 
 	return (
 		<div className='comparison-block'>
-			<div className='comparison-block__title'>{word('characteristics-title')}</div>
-			<div className='comparison-block__items'>{renderFilteredItems()}</div>
+			<h3 className='comparison-block__title'>{word('characteristics-title')}</h3>
+			<ul className='comparison-block__items'>{renderFilteredItems()}</ul>
 		</div>
 	)
 }

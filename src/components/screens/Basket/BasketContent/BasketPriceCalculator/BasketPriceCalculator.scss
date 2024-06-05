@@ -6,9 +6,9 @@
 	gap: 15px;
 	padding: 25px 30px 35px 30px;
 	border-radius: 5px;
-	background: rgb(255, 255, 255);
+	background: var(--white);
 	border-radius: 10px;
-	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	box-shadow: 1px 2px 16px 3px var(--dark-grey);
 	&__input {
 	}
 

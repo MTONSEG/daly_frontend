@@ -7,7 +7,7 @@ import Counter from '@/components/widgets/fragments/Counter/Counter'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { addProduct, removeProduct, deleteProduct } from '@/store/basket/basket.slice'
 import { useTranslations } from 'use-intl'
-import TransparentBtn from '@/components/ui/Buttons/TransparentBtn/TransparentBtn'
+import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
 
 interface IBasketRowProps {
 	product: IProduct
@@ -15,11 +15,12 @@ interface IBasketRowProps {
 }
 
 const BasketRow: React.FC<IBasketRowProps> = ({ product, quantity }) => {
+	console.log('🚀 ~ product:', product.id)
 	const word = useTranslations('basket')
 	const [isDeleting, setIsDeleting] = useState<boolean>(false)
 	const [counter, setCounter] = useState<number>(5)
 	const dispatch = useAppDispatch()
-	
+
 	useEffect(() => {
 		let timeout: NodeJS.Timeout | null = null
 
@@ -61,9 +62,9 @@ const BasketRow: React.FC<IBasketRowProps> = ({ product, quantity }) => {
 	return (
 		<>
 			{!isDeleting ? (
-				<div className='basket-row'>
+				<section className='basket-row'>
 					<div className='basket-row__photo-info-box'>
-						<div className='basket-row__image-container'>
+						<section className='basket-row__image-container'>
 							{product.attributes.images && (
 								<Image
 									src={product.attributes.images[0].url}
@@ -77,28 +78,28 @@ const BasketRow: React.FC<IBasketRowProps> = ({ product, quantity }) => {
 									quality={75}
 								/>
 							)}
-						</div>
-						<div className='basket-row__info'>
-							<div className='basket-row__info-category'>
+						</section>
+						<section className='basket-row__info'>
+							<p className='basket-row__info-category'>
 								{product.attributes.category?.data.attributes.label}
-							</div>
-							<div className='basket-row__info-name'>{product.attributes.title}</div>
-						</div>
+							</p>
+							<p className='basket-row__info-name'>{product.attributes.title}</p>
+						</section>
 					</div>
-					<div className='basket-row__counter-container'>
+					<section className='basket-row__counter-container'>
 						<Counter quantity={quantity} increment={handleincrement} decrement={handledecrement} />
-					</div>
-					<div className='basket-row__price'>{product.attributes.price}₴</div>
+					</section>
+					<p className='basket-row__price'>{product.attributes.price}₴</p>
 					<TrashIcon className='basket-row__delete-icon' onClick={() => setIsDeleting(true)} />
-				</div>
+				</section>
 			) : (
-				<div className='basket-row'>
-					<div className='basket-row__delete-text'>
+				<section className='basket-row'>
+					<p className='basket-row__delete-text'>
 						{word('deletion-text')}
 						{counter} sec
-					</div>
+					</p>
 					<TransparentBtn onClick={handleRevert}>{word('revert-deletion-text')}</TransparentBtn>
-				</div>
+				</section>
 			)}
 		</>
 	)

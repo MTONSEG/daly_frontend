@@ -10,9 +10,6 @@ import { removeFavorite } from '@/store/favourites/favourites.slice'
 import { addComparisonProduct } from '@/store/comparison/comparison.slice'
 import { removeComparisonProduct } from '@/store/comparison/comparison.slice'
 import { FavoriteIconGreen } from '@/components/ui/icons'
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
-import { BASKET_PATH } from '@/routes/routes'
-import Link from 'next/link'
 
 interface IProductInfoAction {
 	price: number
@@ -22,10 +19,10 @@ interface IProductInfoAction {
 const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 	const dispatch = useAppDispatch()
 	const t = useTranslations('product')
-
+	
 	const isFavorite = useAppSelector((state) => state.favourites.products.includes(id))
 	const isCompare = useAppSelector((state) => state.comparison.products.includes(id))
-
+	console.log(isFavorite)
 	const handleFavouriteClick = () => {
 		if (isFavorite) {
 			dispatch(removeFavorite(id))
@@ -40,7 +37,7 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 			dispatch(addComparisonProduct(id))
 		}
 	}
-
+	
 	const onBuyHandler = () => {}
 
 	return (

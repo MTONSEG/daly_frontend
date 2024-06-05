@@ -17,6 +17,7 @@ import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
 	const productIds = useAppSelector((state) => state.favourites.products)
+	console.log('🚀 ~ productIds:', productIds)
 	const gridMode = useAppSelector((state) => state.catalogProducts.gridMode)
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
@@ -35,6 +36,7 @@ const Favourites: React.FC = () => {
 			skip: productIds.length === 0
 		}
 	)
+	console.log('🚀 ~ fetchedProducts:', fetchedProducts)
 
 	const [products, setProducts] = useState<IProduct[]>([])
 	console.log(sortingOption)
@@ -81,10 +83,10 @@ const Favourites: React.FC = () => {
 			<div className='favourites'>
 				<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 				<div className='favourites__content'>
-					<div className='favourites__head'>
-						<div className='favourites__title'>{word('title')}</div>
+					<section className='favourites__head'>
+						<h2 className='favourites__title'>{word('title')}</h2>
 						<GridHead />
-					</div>
+					</section>
 					{isLoading ? (
 						<Loader />
 					) : products.length > 0 ? (

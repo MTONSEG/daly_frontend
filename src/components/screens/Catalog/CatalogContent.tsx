@@ -16,7 +16,7 @@ type Params = {
 
 const CatalogContent: React.FC = () => {
 	const { locale } = useParams()
-	const filters = useAppSelector((state: { filters: any }) => state.filters)
+	const filters = useAppSelector((state) => state.filters)
 	const dispatch = useAppDispatch()
 	
 	const urlParams = useSearchParams()

@@ -17,13 +17,13 @@ const Basket: React.FC = () => {
 				<div className='basket__title'>{word('title')}</div>
 				<div className='basket__content'>
 					<BasketContent />
-				</div>
+				</section>
 				<div className='basket__order-button-box'>
 					<Link href='/order'>
 						<Button className='basket__order-button'>{word('order-button')}</Button>
 					</Link>
 				</div>
-			</div>
+			</section>
 		</Container>
 	)
 }

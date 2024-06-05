@@ -15,7 +15,7 @@ const BasketPriceCalculator: React.FC<IBasketPriceCalculatorProps> = ({
 }) => {
 	const word = useTranslations('basket')
 	return (
-		<div className='basket-calculator'>
+		<article className='basket-calculator'>
 			<Input
 				type={'text'}
 				placeholder={word('promo-placeholder')}
@@ -23,17 +23,17 @@ const BasketPriceCalculator: React.FC<IBasketPriceCalculatorProps> = ({
 				onChange={() => {}}
 				inputClassName={'basket-calculator__input'}
 			/>
-			<Button className='basket-calculator__button'>{word("use-promo-button")}</Button>
+			<Button className='basket-calculator__button'>{word('use-promo-button')}</Button>
 			<div className='basket-calculator__info'>
-				<div className='basket-calculator__info-word'>{word("discount-price")}</div>
-				<div className='basket-calculator__info-number'>{Math.floor(totalDiscount)}₴</div>
+				<p className='basket-calculator__info-word'>{word('discount-price')}</p>
+				<p className='basket-calculator__info-number'>{Math.floor(totalDiscount)}₴</p>
 			</div>
 			<div className='basket-calculator__line'></div>
 			<div className='basket-calculator__info price'>
-				<div className='basket-calculator__info-word'>{word("whole-price")}</div>
-				<div className='basket-calculator__info-number'>{Math.floor(totalPrice)}₴</div>
+				<p className='basket-calculator__info-word'>{word('whole-price')}</p>
+				<p className='basket-calculator__info-number'>{Math.floor(totalPrice)}₴</p>
 			</div>
-		</div>
+		</article>
 	)
 }
 

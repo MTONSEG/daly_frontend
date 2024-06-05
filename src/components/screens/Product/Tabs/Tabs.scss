@@ -46,54 +46,9 @@
 	}
 }
 
-.description {
-	&__title {
-		color: #000;
-		font-size: 24px;
-		font-weight: 700;
-		line-height: 150%;
-		letter-spacing: 0px;
-		margin-bottom: 40px;
-	}
 
-	&__text {
-		color: var(--dark-grey);
-		font-weight: 500;
-		line-height: 150%;
-		letter-spacing: 0px;
-	}
-}
 
-.characteristics {
-	&__title {
-		color: var(--dark-grey);
-		font-size: 24px;
-		font-weight: 700;
-		line-height: 150%;
-		text-align: left;
-		margin: 0 0 40px 0px;
-	}
 
-	&__list {
-	}
-
-	&__line {
-		display: flex;
-		align-items: center;
-		border-bottom: 1px solid rgb(239, 239, 239);
-		border-top: 1px solid rgb(239, 239, 239);
-		padding: 10px 0;
-	}
-
-	&__key,
-	&__value {
-		color: #000;
-		font-size: 14px;
-		font-weight: 500;
-		line-height: 150%;
-		min-width: 220px;
-	}
-}
 
 .tab__content-wr {
 	border-radius: 10px;
@@ -111,79 +66,7 @@
 	display: block;
 }
 
-.credit {
-	&__title {
-		color: var(--dark-grey);
-		font-size: 24px;
-		font-weight: 700;
-		line-height: 150%;
-		margin-bottom: 40px;
-	}
-}
-.credit-box {
-	padding: 25px 20px;
-	border-radius: 10px;
-	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
-	background: rgb(255, 255, 255);
-	margin-bottom: 40px;
 
-	&_small {
-		max-width: 484px;
-	}
-
-	&__title {
-		color: var(--dark-grey);
-		font-size: 18px;
-		font-weight: 700;
-		line-height: 150%;
-	}
-
-	&__ol {
-		list-style: none;
-		counter-reset: item;
-		margin-top: 30px;
-
-		&_installment {
-		}
-	}
-
-	&__left-text {
-		color: var(--dark-grey);
-		font-size: 14px;
-		line-height: 150%;
-		letter-spacing: 0px;
-		text-align: left;
-	}
-
-	&__right-text {
-		color: var(--dark-grey);
-		font-size: 14px;
-		font-weight: 500;
-		line-height: 150%;
-		letter-spacing: 0px;
-		text-align: left;
-	}
-
-	&__li {
-		color: var(--dark-grey);
-		font-size: 16px;
-		font-weight: 500;
-		line-height: 152%;
-		margin-bottom: 5px;
-
-		span {
-			font-weight: 700;
-		}
-
-		&_installment {
-			display: flex;
-			justify-content: space-between;
-			border-top: 1px solid rgb(239, 239, 239);
-			border-bottom: 1px solid rgb(239, 239, 239);
-			padding: 10px 0;
-		}
-	}
-}
 
 @include media-max(md) {
 	.tabs {
@@ -211,15 +94,6 @@
 
 		&:last-of-type {
 			border-radius: 10px;
-		}
-	}
-}
-
-@include media-max(xs) {
-	.characteristics {
-		&__key,
-		&__value {
-			min-width: 100px;
 		}
 	}
 }

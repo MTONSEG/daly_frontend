@@ -1,0 +1,17 @@
+.description {
+	&__title {
+		color: #000;
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 150%;
+		letter-spacing: 0px;
+		margin-bottom: 40px;
+	}
+
+	&__text {
+		color: var(--dark-grey);
+		font-weight: 500;
+		line-height: 150%;
+		letter-spacing: 0px;
+	}
+}

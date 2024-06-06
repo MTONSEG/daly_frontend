@@ -3,6 +3,7 @@ import './PopupSuport.scss'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { setSuccessForm } from '@/store/popups/supportPopup.slice'
 import { useEffect, forwardRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { ISuport } from '@/types/types'
 import { useForm } from 'react-hook-form'
 import SuportForm from './SuportForm'
@@ -35,6 +36,9 @@ const PopupSuport = forwardRef<HTMLDivElement, PopupTypes>(({ closePopup }, ref)
         }
     }, [formState.isSubmitSuccessful, dispatch])
 
+    //------------------------------------------------------
+    const word = useTranslations('popup-support')
+
     return (
         <form onSubmit={onSubmit}>
             <div className='popup-suport' ref={ref}>
@@ -45,7 +49,7 @@ const PopupSuport = forwardRef<HTMLDivElement, PopupTypes>(({ closePopup }, ref)
                         minHeight: '100%',
                     }}
                 >
-                    <h2 className='popup-suport__title'>Обращение в службу поддержки</h2>
+                    <h2 className='popup-suport__title'>{word("title")}</h2>
                     <SuportForm register={register} errors={errors} />
                     <PopupSuportBottom register={register} handleImage={handleImage} />
                     <div className='popup-suport__close-wrapper' onClick={closePopup}>

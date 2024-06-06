@@ -5,13 +5,14 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
+import { Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
 const MiddleBanner = () => {
 	const { data, isLoading } = useGetBannersQuery({ bannerType: 'middle_banners' })
 	const t = useTranslations('home')
+	const duplicatedBanners = data ? Array(4).fill(data.data.attributes.middle_banners).flat() : [];
 
 	const pagination = {
 		clickable: true,
@@ -27,15 +28,30 @@ const MiddleBanner = () => {
 				spaceBetween={15}
 				loop={true}
 				pagination={pagination}
-				modules={[Pagination]}
+				modules={[Pagination, Autoplay]}
+				autoplay={{
+					delay: 3000, 
+					disableOnInteraction: false, 
+					pauseOnMouseEnter: true, 
+				}}
 				breakpoints={{
 					1024: {
 						slidesPerView: 1,
-						spaceBetween: 15
+						spaceBetween: 15,
+						autoplay: false 
+					},
+					0: {
+						slidesPerView: 1,
+						spaceBetween: 15,
+						autoplay: {
+							delay: 3000, 
+							disableOnInteraction: false, 
+							pauseOnMouseEnter: true, 
+						}
 					}
 				}}
 			>
-				{data?.data.attributes.middle_banners?.map((el, index) => {
+				{duplicatedBanners.map((el, index) => {
 					return (
 						<SwiperSlide>
 							<div className='middle-banner__block'>

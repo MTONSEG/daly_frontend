@@ -1,5 +1,5 @@
 'use client'
-import '../../../screens/Home/Home.scss'
+import '../../../../components/screens/Home/Home.scss'
 import './FaqButton.scss'
 import Image from 'next/image'
 import Faq from '@/assets/images/faq.webp'
@@ -47,19 +47,21 @@ const FaqButton = () => {
 	}, [popupFormState])
 
 	return (
-		<div className='support-button'>
-			<Image
-				src={Faq}
-				width={50}
-				height={50}
-				alt='faq'
-				className={'support-button__image'}
-				onClick={showPopup}
-			/>
+		<>
+			<div className='support-button'>
+				<Image
+					src={Faq}
+					width={50}
+					height={50}
+					alt='faq'
+					className={'support-button__image'}
+					onClick={showPopup}
+				/>
+			</div>
 			{popupFormState && <PopupSuport closePopup={closePopup} ref={popupRef} />}
 			{popupOverlayState && <div className='overlay'></div>}
 			{successFormState && <PopupSuccess closeOverlay={closeOverlay} />}
-		</div>
+		</>
 	)
 }
 export default FaqButton

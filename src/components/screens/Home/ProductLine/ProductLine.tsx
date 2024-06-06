@@ -51,7 +51,6 @@ const ProductLine: FC<IProductLine> = ({
 	const pagination = {
 		clickable: true,
 		renderBullet: function (index: number, className: any) {
-			// return '<span class="' + className + '">' + (index + 1) + '</span>'
 			return '<span class="' + className + '">' + '</span>'
 		}
 	}
@@ -72,7 +71,6 @@ const ProductLine: FC<IProductLine> = ({
 						spaceBetween={25}
 						loop={true}
 						navigation
-						//pagination={{ clickable: true }}
 						pagination={pagination}
 						modules={[Pagination]}
 						breakpoints={{

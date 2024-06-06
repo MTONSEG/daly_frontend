@@ -13,9 +13,9 @@ const Basket: React.FC = () => {
 	return (
 		<Container>
 			<Breadcrumbs />
-			<div className='basket'>
+			<section className='basket'>
 				<div className='basket__title'>{word('title')}</div>
-				<div className='basket__content'>
+				<section className='basket__content'>
 					<BasketContent />
 				</section>
 				<div className='basket__order-button-box'>

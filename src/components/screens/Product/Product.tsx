@@ -10,6 +10,7 @@ import { FC, useState } from 'react'
 import ProductInfoContainer from './ProductInfoContainer/ProductInfoContainer'
 import Tabs from './Tabs/Tabs'
 import AdditionalGoods from './AdditionalGoods/AdditionalGoods'
+import LoremComp from '@/components/widgets/fragments/Lorem/Lorem'
 import { motion } from 'framer-motion'
 import { ArrowDown } from '@/components/ui/icons'
 import { useTranslations } from 'next-intl'
@@ -26,18 +27,10 @@ const Product: FC<IProduct> = ({ id }) => {
 
 	const currentPath = usePathname()
 
-	const breadcrumbArr: IBreadcrumb[] = [
-		{ label: 'home', href: '/', active: false },
-		{
-			label: data?.data.attributes.title ? data?.data.attributes.title : '',
-			href: currentPath,
-			active: true
-		}
-	]
-	
+		
 	return (
 		<Container>
-			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
+			<Breadcrumbs />
 			<div className='container_product'>
 				<div className={`${open_sans.className} ${inter.className} product`}>
 					<h2 className='product__title'>{data?.data.attributes.title}</h2>

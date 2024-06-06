@@ -31,9 +31,8 @@ const MiddleFooter = () => {
 		};
 	  }
 	  
-	  const links: Array<string> = ["#","#","#","#","#","#","/catalog","/delivery","/basket","#","#","#","#","#","/support"]
+	 // const links: Array<string> = ["#","#","#","#","#","#","/catalog","/delivery","/basket","#","#","#","#","#","/support"]
 	 
-
 	return (
 		<div className='middle-footer'>
 			{Object.entries(dataLinks).map(([title, items], index) => (
@@ -42,7 +41,7 @@ const MiddleFooter = () => {
 					{items.map((item: string, i: number) => (
 						<p className='middle-footer__column-link' key={i}>
 							<LinkBtn
-								href='/basket'
+								href={"#"}
 								text={item}
 								children={item}
 								className='middle-footer__column-link'

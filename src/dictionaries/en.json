@@ -262,5 +262,18 @@
 		"product": "product",
 		"basket": "basket",
 		"comparison": "compare products"
+	},
+	"popup-support": {
+		"title": "Contact support"
+	},
+	"popup-support-bottom": {
+		"choose": "Choose file",
+		"screen": "Screen shot( if necessary)",
+		"send": "By pressing send, you agree to the terms of processing",
+		"personal": "personal data"
+	},
+	"popup-support-success": {
+		"title": "Your message send!",
+		"info": "Support will contact you soon"
 	}
 }

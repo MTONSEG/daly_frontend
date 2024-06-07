@@ -1,0 +1,124 @@
+@import '@/media';
+
+
+.bottom-banner {
+	margin-top: 0px;
+}
+
+.bottom-banner-slide {
+	height: 270px !important;
+	margin: 80px 0 !important;
+	display: flex;
+	justify-content: space-between;
+	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	border-radius: 10px;
+	background-color: transparent;
+	padding: 30px 0 0 70px !important;
+	width: 99% !important;
+	position: relative !important;
+	z-index: 1;
+
+	&__text-wr {
+		z-index: 1;
+	}
+
+	&__title {
+		color: var(--bright-green);
+		font-size: 36px;
+		font-weight: var(--700);
+		line-height: 1.5;
+		letter-spacing: 0.5px;
+		margin-bottom: 15px;
+	}
+
+	&__text {
+		color: var(--dark-grey);
+		font-size: 24px;
+		font-weight: var(--500);
+		line-height: 1.5;
+		text-align: left;
+	}
+
+	&__text2 {
+		color: var(--dark-grey);
+		font-size: 14px;
+		font-weight: var(--400);
+		line-height: 1.5;
+	}
+
+	&__btn {
+		margin-top: 30px;
+	}
+
+	&__image {
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 0;
+	}
+}
+
+@include media-max(sm) {
+    .bottom-banner {
+		overflow-x: hidden;
+
+		.f-carousel {
+			height: auto !important;
+		}
+	}
+
+    .bottom-banner-slide {
+		background: linear-gradient(to right, #ccefdb, #f5f5f5);
+
+		&__image {
+			width: 50%;
+			height: 100%;
+			object-fit: contain;
+			object-position: right;
+		}
+	}
+
+}
+
+@include media-max(xs) {
+    .bottom-banner-slide {
+		height: auto !important;
+		max-height: 220px !important;
+		margin: 0 !important;
+		padding: 15px 15px 20px 60px !important;
+		margin: 0;
+
+		&__title {
+			font-size: 26px;
+		}
+
+        &__text {
+			display: none;
+		}
+	}
+}
+
+@include media-max(xxs) {
+    .bottom-banner-slide {
+		height: auto;
+		padding: 15px 15px 20px 40px !important;
+	
+        &__text-wr {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100%;
+        }
+
+		&__title {
+			font-size: 26px;
+			margin-bottom: 5px;
+		}
+
+        &__btn {
+           margin-bottom: 0;
+           margin-right: 20px;
+           max-width: 70%;
+        }
+	}
+}

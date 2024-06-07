@@ -11,28 +11,39 @@ import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBt
 import ComparisonBlock from './ComparisonBlock/ComparisonBlock'
 import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
-import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+import { IBreadcrumb } from '@/types/types'
+import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 
 const Comparison: React.FC = () => {
 	const [comparisonDisplayType, setComparisonDisplayType] = useState<'all' | 'diff'>('all')
 	const word = useTranslations('comparison')
 	const productIds = useAppSelector((state) => state.comparison.products)
 	const [products, setProducts] = useState<IProduct[]>([])
-	console.log("🚀 ~ products:", products)
 	const { locale } = useParams()
 
 	const updateIsMobile = () => {
 		setIsMobile(window.innerWidth < 578)
 	}
 
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: productIds,
+			locale
+		},
+		{
+			skip: productIds.length === 0
+		}
+	)
+
 	useEffect(() => {
-		const FetchProducts = async () => {
-			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
+		if (fetchedProducts) {
 			setProducts(fetchedProducts)
 		}
-
-		FetchProducts()
 
 		updateIsMobile() // Initial check for mobile
 		window.addEventListener('resize', updateIsMobile)
@@ -56,8 +67,8 @@ const Comparison: React.FC = () => {
 		<Container>
 			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 			<div className='comparison'>
-				<div className='comparison__head'>
-					<div className='comparison__title'>{word('title')}</div>
+				<section className='comparison__head'>
+					<h2 className='comparison__title'>{word('title')}</h2>
 					{productIds ? (
 						<>
 							<div className='comparison__head-cards'>
@@ -70,7 +81,7 @@ const Comparison: React.FC = () => {
 												variant={isMobile ? 'row' : 'card'}
 												isCompared={true}
 												key={product.id}
-												locale={ locale}
+												locale={locale}
 											/>
 										)
 									})
@@ -78,7 +89,7 @@ const Comparison: React.FC = () => {
 									<Loader />
 								)}
 							</div>
-							<div className='comparison__controls'>
+							<nav className='comparison__controls'>
 								<TransparentBtn
 									onClick={() => {
 										handleControlClick('all')
@@ -97,18 +108,18 @@ const Comparison: React.FC = () => {
 								>
 									{word('controls-diff')}
 								</TransparentBtn>
-							</div>
+							</nav>
 						</>
 					) : (
 						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 					)}
-				</div>
+				</section>
 
-				<div className='comparison__characteristics'>
+				<ul className='comparison__characteristics'>
 					{products.length > 0 && products[0].attributes.properties && (
 						<ComparisonBlock products={products} displayType={comparisonDisplayType} />
 					)}
-				</div>
+				</ul>
 			</div>
 		</Container>
 	)

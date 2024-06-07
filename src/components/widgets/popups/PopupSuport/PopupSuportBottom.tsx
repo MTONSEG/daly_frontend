@@ -3,6 +3,7 @@ import { ISuport } from '@/types/types'
 import { UseFormRegister } from 'react-hook-form'
 import Button from '@/components/ui/buttons/Button/Button'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface PropsTypes {
 	register: UseFormRegister<ISuport>
@@ -24,18 +25,18 @@ const PopupSuportBottom = ({ register, handleImage }: PropsTypes) => {
 		handleImage(file)
 	}
 
-
+const word = useTranslations("popup-support-bottom")
 	return (
 		<div className='support-bottom'>
 			<div className='support-bottom__button-choose'>
 				<input type='file' onChange={handleChangeImage} />
-				Выбрать файл
+				{word("choose")}
 				<span className='support-bottom__file-name'>{fileName}</span>
 			</div>
 			
 
 			<span className='support-bottom__button-choose-label'>
-				Скриншот экрана( при необходимости)
+				{word("screen")}
 			</span>
 			<Button
 				variant='product'
@@ -44,9 +45,9 @@ const PopupSuportBottom = ({ register, handleImage }: PropsTypes) => {
 				className='support-bottom__send-button'
 			/>
 			<div className='support-bottom__terms'>
-				<span>Нажимая отправить, вы соглашаетесь с условиями обработки</span>
+				<span>{word("send")}</span>
 				<br />
-				<span className='support-bottom__terms_underline'>персональных данных</span>
+				<span className='support-bottom__terms_underline'>{word("personal")}</span>
 			</div>
 		</div>
 	)

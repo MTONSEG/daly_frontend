@@ -9,26 +9,64 @@ interface SupportContentProps {
 
 const SupportContent: FC<SupportContentProps> = ({ selectedValue }) => {
 	const w = useTranslations('support-data')
-	const MiniAcordeonsData = [
+	const MiniAcordeonsRandoms1 = [
 		{
-			heading: w('support-heading'),
-			content: w('support-text')
+			heading: w('support-drop-heading-2'),
+			content: w('support-lorem-2')
 		},
 		{
-			heading: w('support-heading'),
+			heading: w('support-drop-heading-1'),
+			content: w('support-lorem-1')
+		},
+		{
+			heading: w('support-drop-heading-2'),
 			content: w('support-text-long')
 		},
 		{
-			heading: w('support-heading'),
+			heading: w('support-drop-heading-3'),
+			content: w('support-lorem-3')
+		},
+		{
+			heading: w('support-drop-heading-3'),
+			content: w('support-text')
+		},
+		{
+			heading: w('support-drop-heading-4'),
+			content: w('support-lorem-4')
+		},
+		{
+			heading: w('support-drop-heading'),
+			content: w('support-text')
+		},
+		{
+			heading: w('support-drop-heading-2'),
+			content: w('support-lorem-5')
+		},
+		{
+			heading: w('support-drop-heading-1'),
+			content: w('support-text')
+		}
+	]
+	const MiniAcordeonsRandoms2 = [
+		{
+			heading: w('support-drop-heading-4'),
+			content: w('support-lorem-3')
+		},
+		{
+			heading: w('support-drop-heading-5'),
 			content: w('support-text-long')
 		},
 		{
-			heading: w('support-heading'),
+			heading: w('support-drop-heading-3'),
+			content: w('support-lorem-4')
+		},
+		{
+			heading: w('support-drop-heading-1'),
 			content: w('support-text')
 		},
 		{
-			heading: w('support-heading'),
-			content: w('support-text')
+			heading: w('support-drop-heading-5'),
+			content: w('support-lorem-5')
 		}
 	]
 
@@ -37,7 +75,7 @@ const SupportContent: FC<SupportContentProps> = ({ selectedValue }) => {
 			<div className='support-content__content'>
 				<div className='support-content__title'>{w('support-heading-1')}</div>
 				<div className='support-content__drops-wrapper'>
-					{MiniAcordeonsData.map((data, index) => (
+					{MiniAcordeonsRandoms2.map((data, index) => (
 						<MiniAcordeon key={index} heading={data.heading} content={data.content} />
 					))}
 				</div>
@@ -50,7 +88,7 @@ const SupportContent: FC<SupportContentProps> = ({ selectedValue }) => {
 			<div className='support-content__content'>
 				<div className='support-content__title'>{w('support-heading-2')}</div>
 				<div className='support-content__drops-wrapper'>
-					{MiniAcordeonsData.map((data, index) => (
+					{MiniAcordeonsRandoms1.map((data, index) => (
 						<MiniAcordeon key={index} heading={data.heading} content={data.content} />
 					))}
 				</div>
@@ -63,7 +101,7 @@ const SupportContent: FC<SupportContentProps> = ({ selectedValue }) => {
 			<div className='support-content__content'>
 				<div className='support-content__title'>{w('support-heading-3')}</div>
 				<div className='support-content__drops-wrapper'>
-					{MiniAcordeonsData.map((data, index) => (
+					{MiniAcordeonsRandoms2.map((data, index) => (
 						<MiniAcordeon key={index} heading={data.heading} content={data.content} />
 					))}
 				</div>
@@ -76,7 +114,7 @@ const SupportContent: FC<SupportContentProps> = ({ selectedValue }) => {
 			<div className='support-content__content'>
 				<div className='support-content__title'>{w('support-heading-4')}</div>
 				<div className='support-content__drops-wrapper'>
-					{MiniAcordeonsData.map((data, index) => (
+					{MiniAcordeonsRandoms1.map((data, index) => (
 						<MiniAcordeon key={index} heading={data.heading} content={data.content} />
 					))}
 				</div>

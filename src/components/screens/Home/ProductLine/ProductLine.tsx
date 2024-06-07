@@ -1,15 +1,18 @@
 'use client'
 
-import "../../../widgets/SliderThumbnail/SliderThumbnail.scss"
-import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
+import './ProductLine.scss'
+import '../../../widgets/SliderThumbnail/SliderThumbnail.scss'
+import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'
 import { FC } from 'react'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
 import Image from 'next/image'
+import { useParams } from 'next/navigation'
 
 interface IProductLine {
 	title: string
@@ -19,51 +22,114 @@ interface IProductLine {
 	sort?: string
 	brands?: boolean
 	logos?: boolean
+	sortingOption?: 'publishedAt' | 'price' | 'rating'
+	isDiscount?: boolean
 }
 
-const ProductLine: FC<IProductLine> = ({ title, tag, tagValue, pageNum, brands, logos }) => {
+// SwiperCore.use([Navigation, Pagination])
+
+const ProductLine: FC<IProductLine> = ({
+	title,
+	tag,
+	tagValue,
+	pageNum,
+	brands,
+	logos,
+	sortingOption,
+	isDiscount
+}) => {
 	const { data } = useGetProductsByTagQuery({ tag: tag, tagValue: tagValue, pageNum: pageNum })
-	
+	const catalogHref = sortingOption
+		? `/catalog?sorting=${sortingOption}`
+		: isDiscount
+		? `/catalog?isDiscount=${isDiscount}`
+		: '/catalog'
 	const t = useTranslations('home')
+
+	const { locale } = useParams()
+
+	const pagination = {
+		clickable: true,
+		renderBullet: function (index: number, className: any) {
+			return '<span class="' + className + '">' + '</span>'
+		}
+	}
 
 	return (
 		<div className='product-line'>
 			<div className='product-line__top'>
 				<h2 className='product-line__title'>{title}</h2>
-				<LinkBtn className='product-line__text' href='/catalog'>
+				<LinkBtn className='product-line__text' href={catalogHref}>
 					{t('seeAll')}
 				</LinkBtn>
 			</div>
-			<div className='product-line__bottom '>
-				<div className='slider-container'>
-					<Slider
-						slidesToShow={5}
-						arrows={false}
-						responsive={[
-							{ breakpoint: 375, settings: { dots: true, slidesToShow: 1 } },
-							{ breakpoint: 576, settings: { dots: true, slidesToShow: 1, centerMode: true } },
-							{ breakpoint: 768, settings: { dots: true, slidesToShow: 2 } },
-							{ breakpoint: 1220, settings: { slidesToShow: 4 } },
-							{ breakpoint: 1024, settings: { slidesToShow: 3 } }
-						]}
-						infinite={false}
+			<div className='product-line__bottom'>
+				<div className='product-line__slider-container'>
+					<Swiper
+						className='product-line__slider'
+						slidesPerView={5}
+						spaceBetween={25}
+						loop={true}
+						navigation
+						pagination={pagination}
+						modules={[Pagination]}
+						breakpoints={{
+							1440: {
+								slidesPerView: 5,
+								spaceBetween: 25
+							},
+							1024: {
+								slidesPerView: 5,
+								spaceBetween: 25,
+								pagination: false
+							},
+							762: {
+								slidesPerView: 4,
+								spaceBetween: 25
+							},
+							576: {
+								slidesPerView: 3,
+								spaceBetween: 10
+							},
+							375: {
+								slidesPerView: 2,
+								spaceBetween: 5,
+								centeredSlides: true
+							},
+							275: {
+								slidesPerView: 1,
+								spaceBetween: 5,
+								centeredSlides: true
+							}
+						}}
 					>
 						{!brands
-							? data?.data.map((el, key) => (
-									<div style={{ width: '215px' }} key={key}>
-										<ProductCard product={el} variant='card' locale={'ru'} />
-									</div>
-							  ))
-							: data?.data.map((el, index) => (
-									<div style={{ width: '175px' }} key={index}>
-										<Image
-											fill
-											alt='brand'
-											src={el.attributes.images ? el.attributes.images[index].url : ''}
-										/>
-									</div>
-							  ))}
-					</Slider>
+							? data
+								? data.data.map((el, key) => (
+										<SwiperSlide key={key}>
+											<div className='product-line__slide-content'>
+												<ProductCard product={el} variant='card' locale={'ru'} />
+											</div>
+										</SwiperSlide>
+								  ))
+								: Array.from({ length: 12 }).map((_, index) => (
+										<SwiperSlide key={index}>
+											<ProductCard variant={'card'} locale={locale} />
+										</SwiperSlide>
+								  ))
+							: data?.data.map((el, index) => {
+									if (el.attributes.images) {
+										return (
+											<SwiperSlide key={index}>
+												<div style={{ width: '175px' }}>
+													<Image fill alt='brand' src={el.attributes.images[index].url} />
+												</div>
+											</SwiperSlide>
+										)
+									}
+									return null
+							  })}
+					</Swiper>
 				</div>
 			</div>
 		</div>

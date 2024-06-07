@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
 	children: React.ReactNode
-	params: { local: string }
+	params: { local: string  }
 }
 
 export default function RootLayout({ children, params: { local } }: Readonly<RootLayoutProps>) {
@@ -26,7 +26,7 @@ export default function RootLayout({ children, params: { local } }: Readonly<Roo
 				<NextIntlClientProvider messages={messages}>
 					<ReduxProvider>
 						<div className='wrapper'>
-							{/* <Header /> */}
+							<Header />
 							<main className='main'>{children}</main>
 							<Footer />
 						</div>

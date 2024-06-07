@@ -4,14 +4,34 @@ import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { filtersQueryBuilder } from '@/utils/filtersQueryBuilder'
 import { fetchFilteredProducts } from '@/store/catalog/catalog.api'
 import { RootState } from '@/store/store'
-import { useParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import CatalogGrid from './CatalogGrid/CatalogGrid'
 import GridHead from '../../widgets/fragments/GridHead/GridHead'
+import { setSorting } from '@/store/filters/slice/filters.slice'
+type SortingOption = 'publishedAt' | 'price' | 'rating'
+
+type Params = {
+	urlSortingOption: SortingOption
+}
 
 const CatalogContent: React.FC = () => {
 	const { locale } = useParams()
-	const filters = useAppSelector((state: { filters: any }) => state.filters)
+	const filters = useAppSelector((state) => state.filters)
 	const dispatch = useAppDispatch()
+	
+	const urlParams = useSearchParams()
+	const urlSortingOption: 'publishedAt' | 'price' | 'rating' = urlParams.get('sorting') as 'publishedAt' | 'price' | 'rating'
+	const urlSortingMethod = 'desc'
+	const urlIsDiscounted: string | null = urlParams.get('isDiscount')
+
+	useEffect(() => {
+		dispatch(
+			setSorting({
+				sortingOption: urlSortingOption,
+				sortingMethod: urlSortingMethod
+			})
+		)
+	}, [urlSortingOption])
 
 	const fetchUrl = filtersQueryBuilder(
 		filters.filtersData,
@@ -20,7 +40,8 @@ const CatalogContent: React.FC = () => {
 		filters.sortingMethod,
 		filters.page,
 		filters.limit,
-		filters.start
+		filters.start,
+		urlIsDiscounted
 	)
 
 	const fetchFilteredProductsMemoized = useCallback(() => {
@@ -45,7 +66,6 @@ const CatalogContent: React.FC = () => {
 				meta={filteredProducts.meta}
 				gridMode={filteredProducts.gridMode}
 			/>
-			
 		</div>
 	)
 }

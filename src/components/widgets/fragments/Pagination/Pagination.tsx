@@ -1,4 +1,5 @@
 import './Pagination.scss'
+
 interface IPaginationProps {
 	currentPage: number
 	pageCount: number
@@ -6,57 +7,49 @@ interface IPaginationProps {
 }
 
 const Pagination: React.FC<IPaginationProps> = ({ currentPage, pageCount, paginate }) => {
-	const renderPageButtons = () => {
-		const maxButtons = 3
-		const buttons: JSX.Element[] = []
+	const maxButtons = 3
 
-		let start = Math.max(1, currentPage - Math.floor(maxButtons / 2))
-		const end = Math.min(start + maxButtons - 1, pageCount)
+	const getStartPage = () => {
+		return Math.max(1, currentPage - Math.floor(maxButtons / 2))
+	}
+
+	const getEndPage = (start: number) => {
+		return Math.min(start + maxButtons - 1, pageCount)
+	}
+
+	const renderPageButton = (pageNumber: number) => {
+		return (
+			<button
+				key={pageNumber}
+				className={`pagination__button ${pageNumber === currentPage ? 'active' : ''}`}
+				onClick={() => paginate(pageNumber)}
+			>
+				{pageNumber}
+			</button>
+		)
+	}
+
+	const renderPageButtons = () => {
+		const buttons: JSX.Element[] = []
+		let start = getStartPage()
+		let end = getEndPage(start)
 
 		if (end - start < maxButtons - 1) {
 			start = Math.max(1, end - maxButtons + 1)
 		}
 
 		if (start > 1) {
-			buttons.push(
-				<button
-					key='first'
-					className={`pagination__button ${1 === currentPage ? 'active' : ''}`}
-					onClick={() => paginate(1)}
-				>
-					{1}
-				</button>
-			)
-
+			buttons.push(renderPageButton(1))
 			buttons.push(<span key='ellipsis1'>...</span>)
 		}
 
 		for (let i = start; i <= end; i++) {
-			buttons.push(
-				<button
-					key={i}
-					className={`pagination__button ${i === currentPage ? 'active' : ''}`}
-					onClick={() => paginate(i)}
-				>
-					{i}
-				</button>
-			)
+			buttons.push(renderPageButton(i))
 		}
 
 		if (end < pageCount) {
 			buttons.push(<span key='ellipsis2'>...</span>)
-		}
-
-		if (end < pageCount) {
-			buttons.push(
-				<button
-					key='last'
-					className={`pagination__button ${pageCount === currentPage ? 'active' : ''}`}
-					onClick={() => paginate(pageCount)}
-				>
-					{pageCount}
-				</button>
-			)
+			buttons.push(renderPageButton(pageCount))
 		}
 
 		return buttons
@@ -64,21 +57,23 @@ const Pagination: React.FC<IPaginationProps> = ({ currentPage, pageCount, pagina
 
 	return (
 		pageCount > 1 && (
-			<div className='pagination'>
+			<nav className='pagination'>
 				<button
 					key='prev'
 					className='pagination__arrow left'
-					onClick={() => paginate(currentPage - 1)}
+					onClick={() => paginate(Math.max(1, currentPage - 1))}
 					aria-label='pagination-arrow-left'
+					disabled={currentPage === 1}
 				></button>
 				{renderPageButtons()}
 				<button
 					key='next'
 					className='pagination__arrow right'
-					onClick={() => paginate(currentPage + 1)}
+					onClick={() => paginate(Math.min(pageCount, currentPage + 1))}
 					aria-label='pagination-arrow-right'
+					disabled={currentPage === pageCount}
 				></button>
-			</div>
+			</nav>
 		)
 	)
 }

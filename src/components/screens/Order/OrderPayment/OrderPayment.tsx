@@ -47,9 +47,9 @@ const OrderPayment = ({}) => {
 		]
 	}
 	return (
-		<div className='order-block'>
-			<div className='order-block__title'>{w('payment-title')}</div>
-			<div className='order-block__content'>
+		<section className='order-block'>
+			<h5 className='order-block__title'>{w('payment-title')}</h5>
+			<ul className='order-block__content'>
 				{radios.payments.map((radio, index) => (
 					<ComplexRadio
 						label={radio.label}
@@ -61,8 +61,8 @@ const OrderPayment = ({}) => {
 						key={index}
 					/>
 				))}
-			</div>
-		</div>
+			</ul>
+		</section>
 	)
 }
 

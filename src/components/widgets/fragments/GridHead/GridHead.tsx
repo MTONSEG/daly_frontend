@@ -15,7 +15,7 @@ const GridHead: React.FC<Props> = ({ productsQuantity }) => {
 			</div>
 			<div className='grid-head__controls'>
 				<div className='grid-head__sort'>
-					<div className='grid-head__word'>{word('sorting-pre-word')}</div>
+					<p className='grid-head__word'>{word('sorting-pre-word')}</p>
 					<GridHeadSorter
 						sortingOptions={['publishedAt', 'price', 'rating']}
 						sortingMethods={['asc', 'desc']}

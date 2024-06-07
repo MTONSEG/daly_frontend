@@ -146,7 +146,12 @@
 		"buy-aggreement-link": "terms of sale in the Daly online store",
 		"fill-popup-text": "Some of the fields are empty. Fill them up to proceed with the order creation",
 		"fill-popup-close-button": "Close",
-		"empty-list-text": "You've not chosen any products, go check your basket first"
+		"empty-list-text": "You've not chosen any products, go check your basket first",
+		"phone-error-empty": "Phone number is required. Example: 097 078 5760",
+		"phone-error-invalid": "Phone number is invalid",
+		"email-error-empty": "Email is required",
+		"email-error-invalid": "Email is invalid. Example: example@ex.com",
+		"input-error-empty": "This field has to be filled"
 	},
 	"order-delivery": {
 		"title": "Way of shipment",
@@ -199,7 +204,7 @@
 	},
 	"top-footer": {
 		"cities": "['Odesa', 'Dnipro', 'Kiyv', 'Charkiv', 'Cherson', 'Ternopil']",
-		"socialMedia-text": "Join us"		
+		"socialMedia-text": "Join us"
 	},
 	"status-popup": {
 		"success-text": "Request fulfilled successfully!",
@@ -209,19 +214,31 @@
 	"support-nav": {
 		"registration-theme": "Registration and sign-in",
 		"registration-value-0": "Registration",
-		"registration-value-1": "Sign-in",
+		"registration-value-2": "Sign-in",
 		"delivery-theme": "Delivery and payment",
-		"delivery-value-0": "Delivery",
-		"delivery-value-1": "Payment"
+		"delivery-value-1": "Delivery",
+		"delivery-value-2": "Payment",
+		"assistant-title": "Could'nt find a solution? Message us!",
+		"assistant-text": "We answer in 24 hours",
+		"assistant-button": "Message"
 	},
 	"support-data": {
-		"support-heading": "Support Heading",
+		"support-drop-heading-1": "Support Heading",
+		"support-drop-heading-2": "Registration issues",
+		"support-drop-heading-3": "Sign-in Issues",
+		"support-drop-heading-4": "Payment Problems",
+		"support-drop-heading-5": "Can't create your account?",
 		"support-text": "Support text",
 		"support-text-long": "Support text long  long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long",
 		"support-heading-1": "Registration",
 		"support-heading-2": "Sign-in",
 		"support-heading-3": "Delivery",
-		"support-heading-4": "Payment"
+		"support-heading-4": "Payment",
+		"support-lorem-1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ornare velit vitae nunc lobortis auctor. Mauris sed purus ac sem blandit auctor at sed odio. Duis lacinia pellentesque elit sed tincidunt. Nunc quis commodo elit. Nunc et erat id justo semper maximus sit amet quis tellus. Nullam ultrices dignissim augue sed pretium. In ut felis vel metus rhoncus consectetur. Etiam facilisis, sem at dignissim pulvinar, nisl augue dignissim sapien, sed placerat arcu est eget ipsum. Aliquam gravida iaculis nibh eu tempus. Nullam et nisl quis tellus tincidunt facilisis. Nullam ut ultrices dolor. Nam in faucibus nunc. Duis eleifend est eget dignissim gravida. Cras vulputate, urna quis elementum rutrum, urna dolor rutrum ex, dapibus posuere leo erat sit amet justo.",
+		"support-lorem-2": "Aliquam pretium, orci vel volutpat suscipit, tortor tortor suscipit tellus, id iaculis diam sapien nec quam. Quisque sagittis tincidunt nisi, a laoreet neque rhoncus ut. Nunc odio massa, venenatis in odio non, finibus ornare mi. Vivamus quis velit elementum, volutpat risus non, semper dui. Pellentesque egestas felis neque, in aliquam risus sollicitudin vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean et finibus mi, a laoreet libero. Donec eu lectus at dui finibus fermentum. Praesent in metus nec magna elementum venenatis ut sed massa. Aliquam erat volutpat. Aliquam diam lectus, blandit ut arcu eu, fermentum rhoncus eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed in felis lectus. Curabitur eu eros sollicitudin, elementum lorem vitae, fermentum risus. Aliquam lacinia ex ac neque tempus condimentum. Nulla interdum interdum ante, ac tempor nulla lacinia convallis.",
+		"support-lorem-3": "Maecenas viverra ac dolor quis ultricies. Sed facilisis commodo arcu, nec laoreet nisi vehicula at. Phasellus tempus dolor sapien, sit amet bibendum lectus lacinia id. Vestibulum blandit tincidunt blandit. Proin et urna eget nisi pellentesque sodales vitae vel erat. Ut viverra vulputate fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse libero metus, viverra vel semper et, maximus in elit.",
+		"support-lorem-4": "Maecenas viverra ac dolor quis ultricies. Sed facilisis commodo arcu, nec laoreet nisi vehicula at. Phasellus tempus dolor sapien, sit amet bibendum lectus lacinia id. Vestibulum blandit tincidunt blandit. Proin et urna eget nisi pellentesque sodales vitae vel erat. Ut viverra vulputate fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse libero metus, viverra vel semper et, maximus in elit.",
+		"support-lorem-5": "In scelerisque est quam, sed porta erat viverra id. Mauris faucibus, libero ut sodales molestie, orci justo venenatis urna, et placerat ex sapien sit amet metus. "
 	},
 	"middle-footer": {
 		"title1": "Message board",
@@ -236,8 +253,27 @@
 	"bottom-footer": {
 		"navLinks": "['Privacy policy','User Agreement','Use of cookies','Site map']"
 	},
-	"404":{
+	"404": {
 		"title": "There is no such page",
 		"button": "Go to home page"
+	},
+	"breadcrumbs": {
+		"favourites": "favourites",
+		"product": "product",
+		"basket": "basket",
+		"comparison": "compare products"
+	},
+	"popup-support": {
+		"title": "Contact support"
+	},
+	"popup-support-bottom": {
+		"choose": "Choose file",
+		"screen": "Screen shot( if necessary)",
+		"send": "By pressing send, you agree to the terms of processing",
+		"personal": "personal data"
+	},
+	"popup-support-success": {
+		"title": "Your message send!",
+		"info": "Support will contact you soon"
 	}
 }

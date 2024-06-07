@@ -1,0 +1,90 @@
+@import '@/media';
+
+.mobile-menu,
+.mobile-menu-active {
+	position: fixed;
+	top: 0;
+	left: 0;
+	transform: translateX(-100%);
+	width: 100%;
+	max-width: 80%;
+	height: 100vh;
+	padding: 60px 0px 40px;
+	background: var(--white);
+	box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+	z-index: 2000;
+	transition: all 0.3s ease-in;
+
+	&__logo {
+		position: absolute;
+		top: 17px;
+		right: 24px;
+	}
+
+	&__actions {
+		padding: 48px 0 24px 28px;
+	}
+
+	&__navigation-list {
+		display: flex;
+		flex-direction: column;
+		padding: 0 0 80px;
+		border-top: 1px solid var(--grey);
+		border-bottom: 1px solid var(--grey);
+	}
+
+	&__navigation-list-item {
+		display: flex;
+		align-items: center;
+		column-gap: 12px;
+		color: var(--bright-green-06);
+		font-size: 16px;
+		font-weight: var(--500);
+		line-height: 1.5;
+		text-transform: uppercase;
+		padding: 28px;
+		cursor: pointer;
+		transition: all 0.15s ease-in;
+	}
+
+	&__navigation-list-item:hover {
+		background: var(--bright-green-06);
+    }
+	&__navigation-list-item:hover .mobile-menu__navigation-list-title{
+	    color: var(--white);
+	}
+
+    &__navigation-list-item-icon * {
+        width: 24px;
+        height: 24px;
+    }
+
+	&__navigation-list-title {
+		color: var(--bright-green-06);
+		text-transform: uppercase;
+	}
+
+	&__navigation-list-title:hover {
+		color: var(--white);
+	}
+
+	&__delivery-link {
+		display: flex !important;
+		align-items: center !important;
+		flex-wrap: nowrap !important;
+		column-gap: 12px;
+	}
+}
+.mobile-menu-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100vw;
+	min-height: 100%;
+	background: rgba(0,0,0, 0.2);
+	z-index: 1900;
+}
+
+.mobile-menu-active {
+	transform: translateX(0%);
+}

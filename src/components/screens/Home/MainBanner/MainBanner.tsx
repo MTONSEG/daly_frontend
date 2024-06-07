@@ -1,4 +1,5 @@
 'use client'
+import "./MainBanner.scss"
 import Button from '@/components/ui/buttons/Button/Button'
 import { LogoBanner } from '@/components/ui/icons'
 import Carousel from '@/components/widgets/SliderThumbnail/SliderComp/Carousel'
@@ -10,12 +11,9 @@ import Image from 'next/image'
 const MainBanner = () => {
 	const { data, isLoading } = useGetBannersQuery({ bannerType: 'hero_banners' })
 	const t = useTranslations('home')
-
-	if (isLoading) {
-		return <div>...loading</div>
-	}
+	
 	return (
-		<div className='mainBanner'>
+		<div className='main-banner'>
 			<Fancybox
 				options={{
 					Carousel: {
@@ -28,18 +26,18 @@ const MainBanner = () => {
 					{data &&
 						data.data.attributes.hero_banners &&
 						data?.data.attributes.hero_banners.map((el, index) => (
-							<div key={index} className='mainBanner-slide f-carousel__slide'>
-								<div className='mainBanner-slide__text-wr'>
+							<div key={index} className='main-banner-slide f-carousel__slide'>
+								<div className='main-banner-slide__text-wr'>
 									<div style={{ display: 'flex' }}>
-										<span className='mainBanner-slide__text mainBanner-slide__text_top'>
+										<span className='main-banner-slide__text main-banner-slide__text_top'>
 											{t('sales1')}
 										</span>
 										<LogoBanner />
 									</div>
-									<p className='mainBanner-slide__text mainBanner-slide__text_bottom'>
+									<p className='main-banner-slide__text main-banner-slide__text_bottom'>
 										{t('sales2')}
 									</p>
-									<Button className='mainBanner-slide__btn' variant={'product'}>
+									<Button className='main-banner-slide__btn' variant={'product'}>
 										{t('about')}
 									</Button>
 								</div>
@@ -48,7 +46,8 @@ const MainBanner = () => {
 									src={el.banner.data.attributes.url}
 									fill
 									alt='mainBanner'
-									className='mainBanner-slide__image'
+									className='main-banner-slide__image'
+									priority
 								/>
 							</div>
 						))}

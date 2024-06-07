@@ -1,44 +1,82 @@
 'use client'
+import './MiddleBanner.scss'
 import { useGetBannersQuery } from '@/store/api/home.api'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 const MiddleBanner = () => {
 	const { data, isLoading } = useGetBannersQuery({ bannerType: 'middle_banners' })
 	const t = useTranslations('home')
+	const duplicatedBanners = data ? Array(4).fill(data.data.attributes.middle_banners).flat() : [];
 
-	useEffect(() => {
-		console.log(data?.data.attributes.middle_banners)
-	}, [data])
-
-	if (isLoading) {
-		return <div>...loading</div>
+	const pagination = {
+		clickable: true,
+		renderBullet: function (index: number, className: any) {
+			return '<span class="' + className + '">' + (index + 1) + '</span>'
+		}
 	}
+
 	return (
-		<div className='middleBanner'>
-			{data?.data.attributes.middle_banners?.map((el, index) => {
-				return (
-					<div key={el.banner.data.attributes.url} className='middleBanner__block'>
-						<p className='middleBanner__text'>
-							{index === 0 ? (
-								t('cashBack')
-							) : (
-								<span>
-									{t('fastDelivery')}
-									<span className='highlight'>{t('hours')}</span>
-								</span>
-							)}
-						</p>
-						<Image
-							src={el.banner.data.attributes.url}
-							width={560}
-							height={200}
-							alt='middle Banner'
-						/>
-					</div>
-				)
-			})}
+		<div className='middle-banner'>
+			<Swiper
+				slidesPerView={1}
+				spaceBetween={15}
+				loop={true}
+				pagination={pagination}
+				modules={[Pagination, Autoplay]}
+				autoplay={{
+					delay: 3000, 
+					disableOnInteraction: false, 
+					pauseOnMouseEnter: true, 
+				}}
+				breakpoints={{
+					1024: {
+						slidesPerView: 1,
+						spaceBetween: 15,
+						autoplay: false 
+					},
+					0: {
+						slidesPerView: 1,
+						spaceBetween: 15,
+						autoplay: {
+							delay: 3000, 
+							disableOnInteraction: false, 
+							pauseOnMouseEnter: true, 
+						}
+					}
+				}}
+			>
+				{duplicatedBanners.map((el, index) => {
+					return (
+						<SwiperSlide>
+							<div className='middle-banner__block'>
+								<p className='middle-banner__text'>
+									{index === 0 ? (
+										t('cashBack')
+									) : (
+										<span>
+											{t('fastDelivery')}
+											<span className='middle-banner__text_highlight'>{t('hours')}</span>
+										</span>
+									)}
+								</p>
+								<Image
+									src={el.banner.data.attributes.url}
+									width={560}
+									height={200}
+									alt='middle Banner'
+									className='middle-banner__image'
+								/>
+							</div>
+						</SwiperSlide>
+					)
+				})}
+			</Swiper>
 		</div>
 	)
 }

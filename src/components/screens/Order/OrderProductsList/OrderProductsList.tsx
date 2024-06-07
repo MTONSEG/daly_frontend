@@ -6,7 +6,6 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { GreyCross } from '@/components/ui/icons'
-import Loader from '@/components/ui/loaders/Loader'
 import { Link } from '@/navigation'
 
 interface IExtendedProduct extends IProduct {
@@ -59,34 +58,34 @@ const OrderProductsList: FC = () => {
 
 	return (
 		<div className='order-products-list'>
-			<div className='order-products-list__top-bottom'>
-				<div className='order-products-list__item bold s18'>{word('chosen-title')}</div>
+			<section className='order-products-list__top-bottom'>
+				<h4 className='order-products-list__item bold s18'>{word('chosen-title')}</h4>
 				<Link href={'/basket'}>
 					<div className='order-products-list__item underline'>{word('chosen-change-button')}</div>
 				</Link>
-			</div>
-			<div className='order-products-list__list'>
+			</section>
+			<ul className='order-products-list__list'>
 				{products.length > 0 ? (
 					products.map((product) => (
-						<div className='order-products-list__product' key={product.id}>
+						<section className='order-products-list__product' key={product.id}>
 							<div className='order-products-list__box'>
-								<div className='order-products-list__item name'>{product.name}</div>
-								<div className='order-products-list__quantity'>
+								<p className='order-products-list__item name'>{product.name}</p>
+								<section className='order-products-list__quantity'>
 									<GreyCross />
-									<div className='order-products-list__item grey s16'>{product.quantity}</div>
-								</div>
+									<p className='order-products-list__item grey s16'>{product.quantity}</p>
+								</section>
 							</div>
-							<div className='order-products-list__item price'>{Math.ceil(product.price)} ₴</div>
-						</div>
+							<p className='order-products-list__item price'>{Math.ceil(product.price)} ₴</p>
+						</section>
 					))
 				) : (
-					<div className='order-products-list__item name'>{word("empty-list-text")}</div>
+					<p className='order-products-list__item name'>{word("empty-list-text")}</p>
 				)}
-			</div>
-			<div className='order-products-list__top-bottom'>
-				<div className='order-products-list__item'>{word('chosen-word')}</div>
-				<div className='order-products-list__item bold s16'>{Math.ceil(wholePrice)} ₴</div>
-			</div>
+			</ul>
+			<section className='order-products-list__top-bottom'>
+				<p className='order-products-list__item'>{word('chosen-word')}</p>
+				<p className='order-products-list__item bold s16'>{Math.ceil(wholePrice)} ₴</p>
+			</section>
 		</div>
 	)
 }

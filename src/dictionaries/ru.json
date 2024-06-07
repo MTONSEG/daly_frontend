@@ -147,7 +147,12 @@
 		"buy-aggreement-link": "условиями продажи в интернет-магазине Daly",
 		"fill-popup-text": "Некоторые из полей пустые. Заполните их чтобы продолжить оформление заказа.",
 		"fill-popup-close-button": "Закрыть",
-		"empty-list-text": "Вы не выбрали продукты для покупки, проверьте корзину"
+		"empty-list-text": "Вы не выбрали продукты для покупки, проверьте корзину",
+		"phone-error-empty": "Номер телефона обязателен. Пример: 097 078 5760",
+		"phone-error-invalid": "Неверная форма номера телефона",
+		"email-error-empty": "Email обязателен",
+		"email-error-invalid": "Неверная форма Email. Пример: example@ex.com",
+		"input-error-empty": "This field has to be filled"
 	},
 	"order-delivery": {
 		"title": "Способ получения",
@@ -209,20 +214,32 @@
 	},
 	"support-nav": {
 		"registration-theme": "Регистрация и вход",
-		"registration-value-1": "Регистрация",
-		"registration-value-2": "Вход",
+		"registration-value-0": "Регистрация",
+		"registration-value-1": "Вход",
 		"delivery-theme": "Доставка и оплата",
-		"delivery-value-1": "Доставка",
-		"delivery-value-2": "Оплата"
+		"delivery-value-0": "Доставка",
+		"delivery-value-1": "Оплата",
+		"assistant-title": "Не нашли решение? Напишите нам!",
+		"assistant-text": "Мы ответим вам в течение 24 часов",
+		"assistant-button": "Написать"
 	},
 	"support-data": {
-		"support-heading": "Поддержка заголовок",
+		"support-drop-heading-1": "Поддержка заголовок",
+		"support-drop-heading-2": "Проблемы с регистрацией",
+		"support-drop-heading-3": "Проблемы со входом в акаунт",
+		"support-drop-heading-4": "Оплата не проходит",
+		"support-drop-heading-5": "Проблемы с созданием учетной записи?",
 		"support-text": "Поддержка текст",
 		"support-text-long": "Поддержка текст long  long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long",
 		"support-heading-1": "Регистрация",
 		"support-heading-2": "Вход",
 		"support-heading-3": "Доставка",
-		"support-heading-4": "Оплата"
+		"support-heading-4": "Оплата",
+		"support-lorem-1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ornare velit vitae nunc lobortis auctor. Mauris sed purus ac sem blandit auctor at sed odio. Duis lacinia pellentesque elit sed tincidunt. Nunc quis commodo elit. Nunc et erat id justo semper maximus sit amet quis tellus. Nullam ultrices dignissim augue sed pretium. In ut felis vel metus rhoncus consectetur. Etiam facilisis, sem at dignissim pulvinar, nisl augue dignissim sapien, sed placerat arcu est eget ipsum. Aliquam gravida iaculis nibh eu tempus. Nullam et nisl quis tellus tincidunt facilisis. Nullam ut ultrices dolor. Nam in faucibus nunc. Duis eleifend est eget dignissim gravida. Cras vulputate, urna quis elementum rutrum, urna dolor rutrum ex, dapibus posuere leo erat sit amet justo.",
+		"support-lorem-2": "Aliquam pretium, orci vel volutpat suscipit, tortor tortor suscipit tellus, id iaculis diam sapien nec quam. Quisque sagittis tincidunt nisi, a laoreet neque rhoncus ut. Nunc odio massa, venenatis in odio non, finibus ornare mi. Vivamus quis velit elementum, volutpat risus non, semper dui. Pellentesque egestas felis neque, in aliquam risus sollicitudin vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean et finibus mi, a laoreet libero. Donec eu lectus at dui finibus fermentum. Praesent in metus nec magna elementum venenatis ut sed massa. Aliquam erat volutpat. Aliquam diam lectus, blandit ut arcu eu, fermentum rhoncus eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed in felis lectus. Curabitur eu eros sollicitudin, elementum lorem vitae, fermentum risus. Aliquam lacinia ex ac neque tempus condimentum. Nulla interdum interdum ante, ac tempor nulla lacinia convallis.",
+		"support-lorem-3":"Maecenas viverra ac dolor quis ultricies. Sed facilisis commodo arcu, nec laoreet nisi vehicula at. Phasellus tempus dolor sapien, sit amet bibendum lectus lacinia id. Vestibulum blandit tincidunt blandit. Proin et urna eget nisi pellentesque sodales vitae vel erat. Ut viverra vulputate fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse libero metus, viverra vel semper et, maximus in elit.",
+		"support-lorem-4":"Maecenas viverra ac dolor quis ultricies. Sed facilisis commodo arcu, nec laoreet nisi vehicula at. Phasellus tempus dolor sapien, sit amet bibendum lectus lacinia id. Vestibulum blandit tincidunt blandit. Proin et urna eget nisi pellentesque sodales vitae vel erat. Ut viverra vulputate fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse libero metus, viverra vel semper et, maximus in elit.",
+		"support-lorem-5":"In scelerisque est quam, sed porta erat viverra id. Mauris faucibus, libero ut sodales molestie, orci justo venenatis urna, et placerat ex sapien sit amet metus. "
 	},
 	"middle-footer": {
 		"title1": "Доска объявлений",
@@ -240,5 +257,24 @@
 	"404":{
 		"title": "Страницы не существует",
 		"button": "Перейти на главную страницу"
+	},
+	"breadcrumbs": {
+		"favourites": "избранное",
+		"product": "продукт",
+		"basket": "корзина",
+		"comparison": "сравнение товаров"
+	},
+	"popup-support": {
+		"title": "Обращение в службу поддержки"
+	},
+	"popup-support-bottom": {
+		"choose": "Выбрать файл",
+		"screen": "Скриншот экрана( при необходимости)",
+		"send": "Нажимая отправить, вы соглашаетесь с условиями обработки",
+		"personal": "персональных данных"
+	},
+	"popup-support-success": {
+		"title": "Ваше обращение отправлено!",
+		"info": "Служба поддержки скоро свяжется с вами"
 	}
 }

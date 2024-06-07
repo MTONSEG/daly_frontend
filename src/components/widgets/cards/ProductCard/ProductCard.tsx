@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation'
 import FavouriteBtn from '@/components/ui/buttons/FavouriteBtn/FavouriteBtn'
 import BuyButton from '@/components/ui/buttons/BuyBtn/BuyBtn'
 import DeleteBtn from '@/components/ui/buttons/DeleteButton/DeleteBtn'
+import { useAppSelector, useAppDispatch } from '@/hooks/useReduxHooks'
+import { addFavorite, removeFavorite } from '@/store/favourites/favourites.slice'
 
 interface IProductCardProps {
 	product?: IProduct
@@ -17,23 +19,50 @@ interface IProductCardProps {
 }
 
 const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared, locale }) => {
-	const displayProduct =
-		locale === product?.attributes.locale
-			? product
-			: product &&
-			  product.attributes.localizations &&
-			  product.attributes.localizations.data.length > 0
-			? product.attributes.localizations.data[0]
-			: product
+	function getDisplayProduct(product: IProduct | undefined, locale: string[] | string) {
+		if (locale === product?.attributes?.locale) {
+			return product
+		}
+		if (
+			product &&
+			product.attributes?.localizations &&
+			product.attributes.localizations.data.length > 0
+		) {
+			return product.attributes.localizations.data[0]
+		}
+		return product
+	}
+
+	const displayProduct = getDisplayProduct(product, locale)
 
 	const router = useRouter()
 	const handleRouteClick = () => {
 		router.push(`/${locale}/product/${displayProduct && displayProduct.id}`)
 	}
+	const isFavorite = useAppSelector((state) =>
+		product ? state.favourites.products.includes(product.id) : false
+	)
+	const dispatch = useAppDispatch()
+	const handleClick = () => {
+		if (product) {
+			if (isFavorite) {
+				dispatch(removeFavorite(product.id))
+			} else {
+				dispatch(addFavorite(product.id))
+			}
+		}
+	}
 	return (
 		<div className={`product-card ${variant && variant} ${!displayProduct && 'placeholder'}`}>
 			<div className='product-card__fav-container'>
-				{displayProduct && <FavouriteBtn id={displayProduct.id} isLabeled={false} />}
+				{displayProduct && (
+					<FavouriteBtn
+						id={displayProduct.id}
+						isLabeled={false}
+						isFavorite={isFavorite}
+						handleClick={handleClick}
+					/>
+				)}
 			</div>
 
 			<ProductCardImg
@@ -44,7 +73,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 				onClick={handleRouteClick}
 			/>
 
-			<div
+			<section
 				className={`product-card__info-container ${!product && 'placeholder'}`}
 				onClick={handleRouteClick}
 			>
@@ -58,13 +87,14 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 						<ColorPicker variant='forCard' />
 					</>
 				)}
-			</div>
+			</section>
 
-			<div className={`product-card__button-container ${!product && 'placeholder'}`}>
+			<section className={`product-card__button-container ${!product && 'placeholder'}`}>
 				{displayProduct && (
 					<ProductCardMetrics
 						price={displayProduct.attributes.price}
 						rating={displayProduct.attributes.rating}
+						discount={displayProduct.attributes.discount}
 						commsQuantity={
 							displayProduct.attributes.product_comments &&
 							displayProduct.attributes.product_comments.data.length
@@ -77,7 +107,7 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 						{isCompared && <DeleteBtn productId={displayProduct.id} />}
 					</div>
 				)}
-			</div>
+			</section>
 		</div>
 	)
 }

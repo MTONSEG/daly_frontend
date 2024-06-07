@@ -9,8 +9,10 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { IProduct } from '@/types/types'
 import { useParams } from 'next/navigation'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
-import Breadcrumbs, { IBreadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
+import { IBreadcrumb } from '@/types/types'
+import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
+import Loader from '@/components/ui/loaders/Loader'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 
 const Favourites: React.FC = () => {
 	const word = useTranslations('favourites')
@@ -19,14 +21,28 @@ const Favourites: React.FC = () => {
 	const gridMode = useAppSelector((state) => state.catalogProducts.gridMode)
 	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
 	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
-	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
 
-	useEffect(() => {
-		const FetchAllProducts = async () => {
-			const fetchedProducts = await useFetchMultipleByIds(productIds, locale)
-			const sortedProducts = [...fetchedProducts]
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: productIds,
+			locale
+		},
+		{
+			skip: productIds.length === 0
+		}
+	)
+	console.log('🚀 ~ fetchedProducts:', fetchedProducts)
 
+	const [products, setProducts] = useState<IProduct[]>([])
+	console.log(sortingOption)
+	useEffect(() => {
+		if (fetchedProducts) {
+			const sortedProducts = [...fetchedProducts]
 			const comparisonFunctions = {
 				publishedAt: {
 					asc: (a: IProduct, b: IProduct) =>
@@ -46,15 +62,16 @@ const Favourites: React.FC = () => {
 				}
 			}
 
-			const comparisonFunction = comparisonFunctions[sortingOption][sortingWay]
+			const validSortingOption = comparisonFunctions[sortingOption]
+			const validSortingWay = validSortingOption ? validSortingOption[sortingWay] : null
 
-			sortedProducts.sort(comparisonFunction)
+			if (validSortingWay) {
+				sortedProducts.sort(validSortingWay)
+			}
 
 			setProducts(sortedProducts)
 		}
-
-		FetchAllProducts()
-	}, [productIds, sortingWay, sortingOption, locale])
+	}, [fetchedProducts, sortingOption, sortingWay])
 
 	const breadcrumbArr: IBreadcrumb[] = [
 		{ label: 'Home', href: '/', active: false },
@@ -66,11 +83,13 @@ const Favourites: React.FC = () => {
 			<div className='favourites'>
 				<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
 				<div className='favourites__content'>
-					<div className='favourites__head'>
-						<div className='favourites__title'>{word('title')}</div>
+					<section className='favourites__head'>
+						<h2 className='favourites__title'>{word('title')}</h2>
 						<GridHead />
-					</div>
-					{productIds.length > 0 ? (
+					</section>
+					{isLoading ? (
+						<Loader />
+					) : products.length > 0 ? (
 						<CatalogGrid products={products} gridMode={gridMode} />
 					) : (
 						<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />

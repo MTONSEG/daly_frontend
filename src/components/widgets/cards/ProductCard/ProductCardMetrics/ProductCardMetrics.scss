@@ -14,17 +14,17 @@
 	&__price-block {
 		display: flex;
 		flex-direction: column;
-		gap: 7px;
+		justify-content: start;
+		gap: 0px;
 	}
 
-	&__discount {
-		color: var(--bright-green);
-		font-family: var(--inter);
+	&__old-price {
+		color: var(--grey);
+		text-decoration: line-through;
 		font-size: 10.74px;
 		font-weight: 700;
 		line-height: 130%;
 		letter-spacing: 0.31px;
-		text-align: center;
 	}
 
 	&__price {
@@ -33,11 +33,6 @@
 		font-size: 18px;
 		font-weight: 700;
 		line-height: 150%;
-
-		&.discounted {
-			color: var(--grey);
-			text-decoration: line-through;
-		}
 	}
 
 	&__r-c-block,

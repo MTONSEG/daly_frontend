@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './BasketContent.scss'
-import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
+import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import BasketRow from './BasketRow/BasketRow'
@@ -9,13 +9,13 @@ import BasketPriceCalculator from './BasketPriceCalculator/BasketPriceCalculator
 import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
-import { useFetchMultipleByIds } from '@/hooks/useFetchMultipleByIds'
-import { fillProductsData, fillProductsSets } from '@/store/order/order.slice'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
+import { skipToken } from '@reduxjs/toolkit/query'
 
 const BasketContent: React.FC = () => {
 	const word = useTranslations('basket')
 	const productIds = useAppSelector((state) => state.basket.products)
-	const dispatch: any = useAppDispatch()
+	console.log('🚀 ~ productIds:', productIds)
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
 	const [totalPrice, setTotalPrice] = useState<number>(0)
@@ -24,16 +24,27 @@ const BasketContent: React.FC = () => {
 	const productPlainIds = productIds.map((productId) => {
 		return productId.id
 	})
-	useEffect(() => {
-		const FetchProducts = async () => {
-			const fetchedProducts = await useFetchMultipleByIds(productPlainIds, locale)
-			setProducts(fetchedProducts)
-			dispatch(fillProductsData({ productsData: fetchedProducts }));
-			dispatch(fillProductsSets({productsSets: productIds}));
-			// console.log("🚀 ~ FetchProducts ~ dispatch(fillProductsData({products: fetchedProducts})):", dispatch(fillProductsData({products: fetchedProducts})))
+
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: productPlainIds,
+			locale
+		},
+		{
+			skip: productIds.length === 0
 		}
-		FetchProducts()
-	}, [productIds])
+	)
+
+	useEffect(() => {
+		if (fetchedProducts && fetchedProducts.length > 0) {
+			console.log('🚀 ~ useEffect ~ fetchedProducts:', fetchedProducts)
+			setProducts(fetchedProducts)
+		}
+	}, [productIds, fetchedProducts])
 
 	useEffect(() => {
 		let totalPrice = 0
@@ -52,31 +63,26 @@ const BasketContent: React.FC = () => {
 		setTotalPrice(totalPrice)
 		setTotalDiscount(totalDiscount)
 	}, [products, productIds])
+
 	return (
-		<div className='basket-content'>
-			<div className='basket-content__products'>
-				{productIds.length > 0 && products.length > 0 ? (
+		<section className='basket-content'>
+			<ul className='basket-content__products'>
+				{products.length > 0 ? (
 					products.map((product, index) => {
-						if (productIds[index]) {
-							return (
-								<BasketRow
-									product={product}
-									quantity={productIds[index].quantity}
-									key={product.id}
-								/>
-							)
-						}
+						return (
+							<BasketRow product={product} quantity={productIds[index].quantity} key={product.id} />
+						)
 					})
-				) : productIds.length === 0 ? (
+				) : productPlainIds.length === 0 ? (
 					<EmptyList emptyText1={word('empty-text-1')} emptyText2={word('empty-text-2')} />
 				) : (
 					<Loader />
 				)}
-			</div>
-			<div className='basket-content__calculator'>
+			</ul>
+			<section className='basket-content__calculator'>
 				<BasketPriceCalculator totalPrice={totalPrice} totalDiscount={totalDiscount} />
-			</div>
-		</div>
+			</section>
+		</section>
 	)
 }
 

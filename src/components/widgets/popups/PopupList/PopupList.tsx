@@ -15,9 +15,9 @@ const PopupList = (props: PropsData) => {
 		<div className='popup-list'>
 			<div className='popup-list__body'>
 				{props.data?.map((item, index) => (
-					<div className='popup-list__line' onClick={() => {props.getValue?.(item); props.close?.()}}
+					<div className='popup-list__line' key={index} onClick={() => {props.getValue?.(item); props.close?.()}} 
 					>
-					<p key={index}>{item}</p>
+					<p>{item}</p>
 					</div>
 				))}
 				<div className='popup-list__close' onClick={props.close}>

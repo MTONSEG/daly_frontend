@@ -1,5 +1,6 @@
 'use client'
-import '../Home.scss'
+import '../../../../components/screens/Home/Home.scss'
+import './FaqButton.scss'
 import Image from 'next/image'
 import Faq from '@/assets/images/faq.webp'
 import PopupSuport from '@/components/widgets/popups/PopupSuport/PopupSuport'
@@ -9,10 +10,12 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { setPopupSupport } from '@/store/popups/supportPopup.slice'
 import { setOverlaySupport } from '@/store/popups/supportPopup.slice'
 import { setSuccessForm } from '@/store/popups/supportPopup.slice'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 const FaqButton = () => {
 	const dispatch = useAppDispatch()
+	const popupRef = useRef<HTMLDivElement>(null)
+
 	const showPopup = () => {
 		dispatch(setPopupSupport(true))
 		dispatch(setOverlaySupport(true))
@@ -20,6 +23,7 @@ const FaqButton = () => {
 
 	const closePopup = () => {
 		dispatch(setPopupSupport(false))
+		dispatch(setOverlaySupport(false))
 	}
 
 	const closeOverlay = () => {
@@ -31,31 +35,30 @@ const FaqButton = () => {
 	const successFormState = useAppSelector((state) => state.popupSupport.successForm)
 
 	useEffect(() => {
-		const bodyClassList = document.body.classList
-		if (!popupOverlayState) {
-			bodyClassList.remove('popup-is-active')
-		} else {
-			bodyClassList.add('popup-is-active')
-		}
-	}, [popupOverlayState])
-
-	useEffect(() => {
 		if (successFormState === true) {
 			dispatch(setPopupSupport(false))
 		}
 	}, [successFormState])
 
+	useEffect(() => {
+		if (popupFormState && popupRef.current) {
+			popupRef.current.scrollIntoView({ behavior: 'smooth' })
+		}
+	}, [popupFormState])
+
 	return (
 		<>
-			<Image
-				src={Faq}
-				width={50}
-				height={50}
-				alt='faq'
-				className={'faq__icon'}
-				onClick={showPopup}
-			/>
-			{popupFormState && <PopupSuport closePopup={closePopup} />}
+			<div className='support-button'>
+				<Image
+					src={Faq}
+					width={50}
+					height={50}
+					alt='faq'
+					className={'support-button__image'}
+					onClick={showPopup}
+				/>
+			</div>
+			{popupFormState && <PopupSuport closePopup={closePopup} ref={popupRef} />}
 			{popupOverlayState && <div className='overlay'></div>}
 			{successFormState && <PopupSuccess closeOverlay={closeOverlay} />}
 		</>

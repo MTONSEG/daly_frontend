@@ -8,15 +8,45 @@ import PopupHeaderItem from '@/components/widgets/popups/PopupHeader/PopupHeader
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { COMPARE_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
+import { useAppSelector } from '@/hooks/useReduxHooks'
+import { useState, useEffect } from 'react'
+import { useParams } from 'next/navigation'
+import { IProduct } from '@/types/types'
+import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
+import Loader from '@/components/ui/loaders/Loader'
 
 export default function ComparePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
-
 	const t = useTranslations('home')
+	const [products, setProducts] = useState<IProduct[]>([])
+	const compareIds = useAppSelector((state) => state.comparison.products)
+	const { locale } = useParams()
 
 	const handleToggle = () => {
 		setIsActive((active) => !active)
 	}
+
+	//Call the hook to fetch products by IDs
+	const {
+		data: fetchedProducts,
+		error,
+		isLoading
+	} = useFetchProductsByIdsQuery(
+		{
+			ids: compareIds,
+			locale
+		},
+		{
+			skip: compareIds.length === 0
+		}
+	)
+
+	// Update the products state when fetchedProducts changes
+	useEffect(() => {
+		if (fetchedProducts) {
+			setProducts(fetchedProducts)
+		}
+	}, [fetchedProducts])
 
 	return (
 		<PopupHeader variant='compare'>
@@ -30,19 +60,21 @@ export default function ComparePopup() {
 				hrefLink={`/${COMPARE_PATH}`}
 				labelLink='В сравнение'
 				textEmpty={t('empty-compare')}
+				isEmpty={products.length > 0 ? false : true}
 			>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
-				<PopupHeaderItem
-					title='Смартфон Apple iPhone 12 mini 64 GB Green'
-					price={70000}
-					imageSrc='https://cdn.dummyjson.com/product-images/10/1.jpg'
-					onClick={handleToggle}
-				/>
+				{isLoading ? (
+					<Loader />
+				) : (
+					products.map((item, index) => (
+						<PopupHeaderItem
+							title={item.attributes.title}
+							price={item.attributes.price}
+							imageSrc={item.attributes.thumbnail}
+							onClick={handleToggle}
+							key={index}
+						/>
+					))
+				)}
 			</PopupHeaderContainer>
 		</PopupHeader>
 	)

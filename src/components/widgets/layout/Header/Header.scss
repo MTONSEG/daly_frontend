@@ -88,25 +88,19 @@
 			margin: 3px 6px 0 0;
 			width: 20px;
 			height: 20px;
+			transform: translateY(5px);
 		}
 	}
 }
 
-@include media-max(lg) {
-
-}
-
 @include media-max(md) {
-	.top-header {
-		position: fixed;
-		opacity: 0;
-	}
-
+	
 	.bottom-header {
 		padding: 5px 0;
 
 		&__row {
 			justify-content: flex-start;
+			column-gap: 10px;
 		}
 
 		&__support-link,
@@ -115,3 +109,19 @@
 		}
 	}
 }
+
+@include media-max(xs) {
+	.bottom-header {
+		align-items: flex-start;
+		padding-bottom: 10px;
+
+		&__row {
+			flex-wrap: nowrap;
+		}
+
+		&__right {
+			margin-left: 0;
+		}
+	}
+}
+

@@ -14,7 +14,7 @@ export interface StrapiOrder {
 	name: string | undefined
 	surn: string | undefined
 	email: string | undefined
-	phone: number | undefined
+	phone: string | undefined
 	payment: string | undefined
 	deliveryType: string | undefined
 	city: string | undefined
@@ -102,10 +102,10 @@ const OrderSender = () => {
 			<Button className='order__order-button' onClick={handleCreateOrder}>
 				{word('buy-button')}
 			</Button>
-			<div className='order__aggreement'>
+			<article className='order__aggreement'>
 				{word('buy-aggreement')}
 				<span>{word('buy-aggreement-link')}</span>
-			</div>
+			</article>
 		</div>
 	)
 }

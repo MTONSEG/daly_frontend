@@ -13,6 +13,7 @@
 
 .main {
 	flex: 1 1 auto;
+	padding: 20px 0 80px 0;
 }
 
 .icon {
@@ -26,14 +27,31 @@ body {
 	}
 }
 
+.base-loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;	
+	z-index: 5000;
+}
+
+.error-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;	
+	z-index: 5000;
+	background: var(--dark-grey);
+}
+
 .page-404 {
-	margin: 20px 0;
 	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 100px;
 	&__title {
 		font-family: var(--inter);
 		font-weight: 700;
@@ -47,7 +65,8 @@ body {
 		width: 100%;
 		max-width: 652px;
 		height: 235px;
-		max-height: 235px;
+		flex: 1 1 auto;
+		margin: 80px 0;
 		position: relative;
 	}
 
@@ -72,19 +91,28 @@ body {
 			border: 1px solid var(--bright-green);
 		}
 	}
-
-	@include media-max(sm){
-		gap: 20px;
+	
+	@include media-max(sm) {
+		padding: 0 15px;
+		&__title {
+			text-align: center;
+		}
+		&__image-box {
+			margin: 20px 0;
+		}
+		&__button {
+			padding: 12px 26px;
+		}
 	}
 }
 
 .overlay {
-	    position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 3000;
-        overflow-y: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 3000;
+	//overflow-y: scroll;
 }

@@ -9,7 +9,9 @@ import {
 	PURGE,
 	REGISTER
 } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+// import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
+import storage from './storage'
 
 import { setupListeners } from '@reduxjs/toolkit/query'
 import basketSlice from './basket/basket.slice'
@@ -26,13 +28,13 @@ import { commentApi } from './api/comment.api'
 import { novaPostAdressesApi } from './api/novaPost.api'
 import { homeApi } from '@/store/api/home.api'
 import orderSlice from './order/order.slice'
-import popupSupportSlice from "./popups/supportPopup.slice"
-
+import popupSupportSlice from './popups/supportPopup.slice'
+import { productsApi } from '@/hooks/useFetchMultipleByIds'
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['basket', 'favourites', 'comparison', 'order'],
+	whitelist: ['basket', 'favourites', 'comparison', 'order', 'filters']
 	// blacklist: ['header', 'filters', 'catalogProducts']
 }
 
@@ -52,8 +54,10 @@ const persistedReducer = persistReducer(
 		[novaPostAdressesApi.reducerPath]: novaPostAdressesApi.reducer,
 		[homeApi.reducerPath]: homeApi.reducer,
 		order: orderSlice,
-		popupSupport: popupSupportSlice
-		})
+		popupSupport: popupSupportSlice,
+		// favoritesApi: favoritesApiSlice,
+		[productsApi.reducerPath]: productsApi.reducer
+	})
 )
 
 export const store = configureStore({
@@ -69,6 +73,7 @@ export const store = configureStore({
 			.concat(commentApi.middleware)
 			.concat(novaPostAdressesApi.middleware)
 			.concat(homeApi.middleware)
+			.concat(productsApi.middleware)
 })
 
 export const persistor = persistStore(store)

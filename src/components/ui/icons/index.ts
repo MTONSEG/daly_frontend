@@ -3,8 +3,10 @@ export { default as LogoSite } from '@/icons/logo.svg'
 export { default as UserIcon } from '@/icons/user.svg'
 export { default as BurgerIcon } from '@/icons/burger.svg'
 export { default as DeliveryIcon } from '@/icons/car_delivery.svg'
+export { default as DeliveryIconMobile } from '@/icons/deliveryIcon.svg'
 export { default as SearchIcon } from '@/icons/search.svg'
 export { default as CompareIcon } from '@/icons/compare.svg'
+export { default as CompareActiveIcon } from '@/icons/compareActive.svg'
 export { default as FavoriteIcon } from '@/icons/favorite.svg'
 export { default as CartIcon } from '@/icons/cart.svg'
 export { default as CartIconThick } from '@/icons/cart-thick.svg'
@@ -14,6 +16,7 @@ export { default as FavoriteIconGreen } from '@/icons/favorite-green.svg'
 export { default as CheckIcon } from '@/icons/check.svg'
 export { default as DropDownIcon } from '@/icons/drop-down.svg'
 export { default as TriangleIcon } from '@/icons/triangle.svg'
+export { default as SupportMobile } from '@/icons/support-mobile.svg'
 
 // catalog popup
 export { default as AppleIcon } from '@/icons/catalog/apple.svg'
@@ -54,6 +57,11 @@ export { default as ArrowLeft } from '@/icons/arrow-left-big.svg'
 export { default as GreyCross } from '@/icons/grey-cross.svg'
 // home
 export { default as LogoBanner } from '@/icons/LogoBanner.svg'
+export { default as Catalog } from '@/icons/catalog.svg'
+//breadcrumbs
+export { default as HomeBlack } from '@/icons/home-black.svg'
+export { default as HomeGreen } from '@/icons/home-green.svg'
+
 
 
 

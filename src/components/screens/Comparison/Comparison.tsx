@@ -45,7 +45,7 @@ const Comparison: React.FC = () => {
 			setProducts(fetchedProducts)
 		}
 
-		updateIsMobile() // Initial check for mobile
+		updateIsMobile() 
 		window.addEventListener('resize', updateIsMobile)
 
 		return () => {
@@ -58,14 +58,10 @@ const Comparison: React.FC = () => {
 	const handleControlClick = (comparisonType: 'all' | 'diff') => {
 		setComparisonDisplayType(comparisonType)
 	}
-	const breadcrumbArr: IBreadcrumb[] = [
-		{ label: 'Home', href: '/', active: false },
-		{ label: 'Comparison', href: 'comparison', active: true }
-	]
-
+	
 	return (
 		<Container>
-			<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
+			<Breadcrumbs />
 			<div className='comparison'>
 				<section className='comparison__head'>
 					<h2 className='comparison__title'>{word('title')}</h2>

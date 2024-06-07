@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Breadcrumbs>;
 
 export const Primary: Story = {
     args: {
-        breadcrumbs: [
+        breadcrumbsArr: [
             {
                 href: '1',
                 label: 'link to 1',

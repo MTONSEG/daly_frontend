@@ -93,7 +93,7 @@
 
 @include media-max(md) {
 	.product-line {
-		height: 485px;
+		height: 465px;
 
 		.swiper {
 			padding-bottom: 40px !important;
@@ -111,7 +111,7 @@
 			width: 100% !important;
 			text-align: center;
 			z-index: 10 !important;
-			display: flex;
+			display: flex !important;
 			align-items: center;
 			justify-content: center;
 			column-gap: 10px;

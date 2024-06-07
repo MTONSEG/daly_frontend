@@ -76,7 +76,7 @@
 @include media-max(md) {
 	.middle-banner {
 		margin-top: 80px;
-		height: 160px;
+		height: 200px;
 
 		&__image {
 			height: 100%;
@@ -97,7 +97,7 @@
 		&__text_highlight {
 			font-size: 20px;
 		}
-
+		
 		.swiper-slide {
 			width: 100% !important;
 			max-width: 80% !important;
@@ -110,7 +110,7 @@
 			width: 100% !important;
 			text-align: center;
 			z-index: 10 !important;
-			display: flex;
+			display: flex !important;
 			align-items: center;
 			justify-content: center;
 			column-gap: 10px;
@@ -141,6 +141,10 @@
 
 		&__text {
 			font-size: 28px;
+		}
+
+		.swiper {
+			padding-bottom: 15px !important;
 		}
 
 		.swiper-slide {

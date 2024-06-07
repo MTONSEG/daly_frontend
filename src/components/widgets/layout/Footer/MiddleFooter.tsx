@@ -25,12 +25,7 @@ const MiddleFooter = () => {
 		[word('title4')]: columnArray4
 	}
 	
-	interface Translations {
-		breadcrumbs: {
-		  [key: string]: string;
-		};
-	  }
-	  
+	
 	 // const links: Array<string> = ["#","#","#","#","#","#","/catalog","/delivery","/basket","#","#","#","#","#","/support"]
 	 
 	return (

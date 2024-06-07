@@ -9,7 +9,6 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { IProduct } from '@/types/types'
 import { useParams } from 'next/navigation'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
-import { IBreadcrumb } from '@/types/types'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import Loader from '@/components/ui/loaders/Loader'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
@@ -39,7 +38,7 @@ const Favourites: React.FC = () => {
 	console.log('🚀 ~ fetchedProducts:', fetchedProducts)
 
 	const [products, setProducts] = useState<IProduct[]>([])
-	console.log(sortingOption)
+	console.log(products)
 	useEffect(() => {
 		if (fetchedProducts) {
 			const sortedProducts = [...fetchedProducts]
@@ -71,17 +70,13 @@ const Favourites: React.FC = () => {
 
 			setProducts(sortedProducts)
 		}
-	}, [fetchedProducts, sortingOption, sortingWay])
+	}, [products,productIds])
 
-	const breadcrumbArr: IBreadcrumb[] = [
-		{ label: 'Home', href: '/', active: false },
-		{ label: 'Favourites', href: 'favourites', active: true }
-	]
-
+	
 	return (
 		<Container>
 			<div className='favourites'>
-				<Breadcrumbs breadcrumbsArr={breadcrumbArr} />
+				<Breadcrumbs />
 				<div className='favourites__content'>
 					<section className='favourites__head'>
 						<h2 className='favourites__title'>{word('title')}</h2>

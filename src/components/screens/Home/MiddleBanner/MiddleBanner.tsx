@@ -21,12 +21,13 @@ const MiddleBanner = () => {
 		}
 	}
 
+	
 	return (
 		<div className='middle-banner'>
 			<Swiper
 				slidesPerView={1}
 				spaceBetween={15}
-				loop={true}
+				loop={false}
 				pagination={pagination}
 				modules={[Pagination, Autoplay]}
 				autoplay={{
@@ -53,7 +54,7 @@ const MiddleBanner = () => {
 			>
 				{duplicatedBanners.map((el, index) => {
 					return (
-						<SwiperSlide>
+						<SwiperSlide key={index}>
 							<div className='middle-banner__block'>
 								<p className='middle-banner__text'>
 									{index === 0 ? (

@@ -26,7 +26,6 @@ interface IProductLine {
 	isDiscount?: boolean
 }
 
-// SwiperCore.use([Navigation, Pagination])
 
 const ProductLine: FC<IProductLine> = ({
 	title,

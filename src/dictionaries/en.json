@@ -261,7 +261,8 @@
 		"favourites": "favourites",
 		"product": "product",
 		"basket": "basket",
-		"comparison": "compare products"
+		"comparison": "compare products",
+		"catalog": "catalog"
 	},
 	"popup-support": {
 		"title": "Contact support"

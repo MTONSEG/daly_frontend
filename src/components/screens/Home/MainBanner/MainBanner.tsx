@@ -1,5 +1,5 @@
 'use client'
-import "./MainBanner.scss"
+import './MainBanner.scss'
 import Button from '@/components/ui/buttons/Button/Button'
 import { LogoBanner } from '@/components/ui/icons'
 import Carousel from '@/components/widgets/SliderThumbnail/SliderComp/Carousel'
@@ -9,9 +9,9 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 const MainBanner = () => {
-	const { data, isLoading } = useGetBannersQuery({ bannerType: 'hero_banners' })
+	const { data } = useGetBannersQuery({ bannerType: 'hero_banners' })
 	const t = useTranslations('home')
-	
+
 	return (
 		<div className='main-banner'>
 			<Fancybox

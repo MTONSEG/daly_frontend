@@ -21,7 +21,7 @@ import useOutsideClick from '@/hooks/useOutSideClick'
 import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import { CATALOG_PATH } from '@/routes/routes'
 import type { IMapIcons } from '@/types/types'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { checkArr } from '@/utils/checkArr'
 import { ThreeDots } from 'react-loader-spinner'
@@ -33,17 +33,16 @@ import PopupCatalogItem from '@/components/widgets/popups/PopupCatalog/PopupCata
 import PopupCatalogMenu from '@/components/widgets/popups/PopupCatalog/PopupCatalogMenu/PopupCatalogMenu'
 import { useMatchMedia } from '@/hooks/use-match-media'
 
-const PopupCatalog = () => {
+interface PropsType {
+	hideMenu: () => void
+}
+
+const PopupCatalog = ({hideMenu}: PropsType) => {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLUListElement>(false)
-
 	const { locale } = useParams()
-
 	const path = usePathname()
-
 	const { data, isLoading } = useGetCategoriesQuery(checkArr(locale))
-
 	const t = useTranslations('home')
-
 	const windowWidth = useMatchMedia()
 
 	const handleOpen = () => {
@@ -73,7 +72,7 @@ const PopupCatalog = () => {
 				const products = el.attributes.products ? el.attributes.products.data : []
 
 				return (
-					<PopupCatalogItem href={''} products={products} key={el.id}>
+					<PopupCatalogItem href={''} products={products} key={el.id} onClick={hideMenu}>
 						{Icon ? <Icon /> : ''}
 
 						<span>{el.attributes.label}</span>
@@ -82,30 +81,41 @@ const PopupCatalog = () => {
 			}),
 		[data?.data, iconMap]
 	)
-
+	const [textColor, setTextColor] = useState<boolean>(false)
+	const handleTextColor = () => {
+		if (textColor) {
+			setTextColor(false)
+		} else {
+			setTextColor(true)
+		}
+	}
 	return (
 		<div className='popup-catalog'>
 			<LinkBtn
-				href={`/${CATALOG_PATH}`}
+				href={windowWidth.isDesktop ? `/${CATALOG_PATH}` : '#'}
 				className={`popup-catalog__btn ${setActive(formatPath(path) === CATALOG_PATH)}`}
 				onMouseEnter={handleOpen}
 			>
-				<BurgerIcon /> <span>{t('catalog')}</span>
+				<BurgerIcon />{' '}
+				<span
+					onClick={handleTextColor}
+					className='popup-catalog__text'
+				>
+					{t('catalog')}
+				</span>
 			</LinkBtn>
-			{!windowWidth.isMobile && (
-				<PopupCatalogMenu ref={ref} isActive={isActive}>
-					{isLoading ? (
-						<ThreeDots
-							visible={true}
-							radius='9'
-							ariaLabel='three-dots-loading'
-							wrapperClass='popup-catalog__loader'
-						/>
-					) : (
-						items
-					)}
-				</PopupCatalogMenu>
-			)}
+			<PopupCatalogMenu ref={ref} isActive={isActive}>
+				{isLoading ? (
+					<ThreeDots
+						visible={true}
+						radius='9'
+						ariaLabel='three-dots-loading'
+						wrapperClass='popup-catalog__loader'
+					/>
+				) : (
+					items
+				)}
+			</PopupCatalogMenu>
 		</div>
 	)
 }

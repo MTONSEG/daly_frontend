@@ -13,7 +13,6 @@ interface PropsTypes {
 }
 
 const MobileMenu = ({ stateMenu, toggleMenu }: PropsTypes) => {
-	const t = useTranslations('home')
 	const s = useTranslations('shared')
 
 	useEffect(() => {

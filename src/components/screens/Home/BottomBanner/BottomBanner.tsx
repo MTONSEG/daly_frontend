@@ -10,13 +10,11 @@ import Image from 'next/image'
 import React from 'react'
 
 const BottomBanner = () => {
-	const { data, isLoading } = useGetBannersQuery({ bannerType: 'bottom_bunners' })
+	const { data } = useGetBannersQuery({ bannerType: 'bottom_bunners' })
 	const t = useTranslations('home')
+	const word = useTranslations("bottom-banner")
 
 	
-	if (isLoading) {
-		return <div>...loading</div>
-	}
 	return (
 		<div className='bottom-banner'>
 			<Fancybox
@@ -34,9 +32,9 @@ const BottomBanner = () => {
 						data?.data.attributes.bottom_bunners.map((el, index) => (
 							<div key={index} className='bottom-banner-slide f-carousel__slide'>
 								<div className='bottom-banner-slide__text-wr'>
-									<h1 className='bottom-banner-slide__title'>Новый IPhon 12</h1>
-									<p className='bottom-banner-slide__text'>Теперь в новых цветах</p>
-									<p className='bottom-banner-slide__text2'>уже в продаже</p>
+									<h1 className='bottom-banner-slide__title'>{word("title")}</h1>
+									<p className='bottom-banner-slide__text'>{word("info")}</p>
+									<p className='bottom-banner-slide__text2'>{word("sale")}</p>
 									<Button className='bottom-banner-slide__btn' variant={'product'}>
 										{t('about')}
 									</Button>

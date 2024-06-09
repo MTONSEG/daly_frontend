@@ -1,33 +1,25 @@
-'use client'
-
+"use client"
 import './Terms.scss'
 import { useGetTermsQuery } from '@/store/api/productRTKQ.api'
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import noImage from "@/images/image-break.png"
+import { ITerm } from '@/types/types'
+import { useParams } from 'next/navigation'
 
 const Terms = () => {
-	const word = useTranslations('terms')
-	const titles: Array<string | JSX.Element> = [
-		<span>{word("title-1")}</span>,
-		<span>{word("title-2")}</span>,
-		<span>{word("title-3")}</span>,
-		<span>{word("title-4")}</span>,
-		<span>{word("title-5")}</span>,
-		<span>{word("title-6")}</span>,
-	]
-	const { data: termsData } = useGetTermsQuery({})
-	const termsArray = termsData?.data.attributes.termsImage.data
+	const { locale } = useParams()
+	const { data: termsData } = useGetTermsQuery({locale})
+	const dataArray = termsData?.data.attributes.terms
 
 	return (
 		<div className='main-terms'>
-			{titles.map((item, index) => (
+			{dataArray && dataArray.map((item: ITerm, index: number) => (
 				<div className='main-terms__item' key={index}>
 					<h3 className='main-terms__item-title' key={index}>
-						{item}
+						{item.title}
 					</h3>
 					<Image
-						src={termsArray ? termsArray[index].attributes.url : noImage}
+						src={dataArray ? dataArray[index].image.data.attributes.url : noImage}
 						width={65}
 						height={65}
 						alt='icon'

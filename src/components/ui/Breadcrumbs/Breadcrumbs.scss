@@ -4,14 +4,14 @@
   }
   
   .breadcrumbs {
-	font-family: var(--inter);
+	font-family: var(--nunito);
 	font-size: 14px;
 	font-weight: 400;
 	margin: 20px 0 40px;
 			
 	&__ul {
 	  display: flex;
-	  column-gap: 5px;
+	  column-gap: 0px;
 	  list-style: none; 
 	}
   
@@ -19,7 +19,7 @@
 	  display: flex;
 	  align-items: center;
 	  color: var(--dark-grey);
-	  font-family: var(--inter);
+	  font-family: var(--nunito);
 	  transition: all 0.2s ease-in;
 	}
   

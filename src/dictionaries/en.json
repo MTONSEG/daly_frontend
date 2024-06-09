@@ -258,11 +258,11 @@
 		"button": "Go to home page"
 	},
 	"breadcrumbs": {
-		"favourites": "favourites",
-		"product": "product",
-		"basket": "basket",
-		"comparison": "compare products",
-		"catalog": "catalog"
+		"favourites": "Favourites",
+		"product": "Product",
+		"basket": "Basket",
+		"comparison": "Compare products",
+		"catalog": "Catalog"
 	},
 	"popup-support": {
 		"title": "Contact support"
@@ -276,5 +276,10 @@
 	"popup-support-success": {
 		"title": "Your message send!",
 		"info": "Support will contact you soon"
+	},
+	"bottom-banner": {
+		"title": "New IPhon 12",
+		"info": "Got new colors",
+		"sale": "on sale"
 	}
 }

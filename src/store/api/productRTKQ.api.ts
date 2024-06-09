@@ -19,12 +19,13 @@ export const getProductApi = createApi({
 				return `http://localhost:1337/api/products?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=7&populate=images`
 			}
 		}),
-		getLogos: builder.query<ILogos, {}>({
+		getLogos: builder.query<ILogos, object>({
 			query: () => 'home?populate=brandsLogo.data.attributes.url*'
 		}),
-		getTerms: builder.query<ITerms, {}>({
-			query: () => 'home?populate=termsImage.data.attributes.url*'
+		getTerms: builder.query<ITerms, { locale: string | string[] }>({
+			query: ({ locale }) => `home?locale=${locale}&populate=terms.image.data.attributes.url*`
 		}),
+
 		getProductsByTag: builder.query<
 			IResponse<Omit<IProduct[], 'brand'>>,
 			{ tag: string; tagValue: boolean; pageNum?: number; sort?: string }

@@ -148,10 +148,7 @@
 	@include media-max(md) {
 		&__btn {
 			padding: 5px;
-			span {
-				display: none;
-			}
-
+			
 			svg {
 				height: 22px;
 			}
@@ -164,21 +161,6 @@
 				transition: all 0.3s ease-in-out;
 				text-decoration: underline;
 			} 
-			// &__item:hover .popup-catalog__sub-list {
-			// 	transform: translateX(-100%);
-			// 	transition: all 1.5s ease;
-			// 	z-index: 3010;
-			// }
-
-			// &__menu {
-			// 	top: calc(100% + 20px);
-			// 	left: 0;
-			// 	transform: translate(0, -10px);
-
-			// 	&.active {
-			// 		transform: translate(0, 0);
-			// 	}
-			// }
 		}
 	}
 }

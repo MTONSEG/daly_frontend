@@ -45,7 +45,7 @@ export default function Breadcrumbs() {
     return (
       <div className='crumb' key={index}>
         {isLast ? (
-          <span style={{color:"#000", fontWeight:"600", textDecoration: "none"}}>{translatedCrumb}</span>
+          <span style={{color:"var(--dark-grey)", fontWeight:"400", textDecoration: "none"}}>{translatedCrumb}</span>
         ) : (
           <>
             <LinkBtn href={currentLink}>{translatedCrumb}</LinkBtn>

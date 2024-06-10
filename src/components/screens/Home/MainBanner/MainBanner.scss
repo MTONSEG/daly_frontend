@@ -1,6 +1,5 @@
 @import '@/media';
 
-
 .main-banner {
 	height: 390px;
 	margin-top: 50px;
@@ -62,17 +61,17 @@
 }
 
 @include media-max(md) {
-    .main-banner {
+	.main-banner {
 		height: 320px;
 		margin-top: 0px;
 	}
 
-    .main-banner-slide {
+	.main-banner-slide {
 		margin-right: 15px;
 		max-width: 100%;
-		
+
 		&__image {
-		    max-height: 320px;
+			max-height: 320px;
 			object-fit: cover;
 			object-position: 10% center;
 		}
@@ -89,11 +88,11 @@
 }
 
 @include media-max(sm) {
-    .main-banner {
+	.main-banner {
 		margin-top: 20px;
 	}
 
-    .main-banner-slide {
+	.main-banner-slide {
 		&__text-wr {
 			width: 100%;
 			margin: 10px auto;
@@ -116,14 +115,14 @@
 }
 
 @include media-max(xs) {
-    .main-banner {
+	.main-banner {
 		height: 250px;
 		margin-top: 20px;
 	}
 
-    .main-banner-slide {
+	.main-banner-slide {
 		max-height: 200px;
-		
+
 		&__text-wr {
 			left: 0;
 			padding: 0 10px;
@@ -144,5 +143,4 @@
 			margin-left: 0;
 		}
 	}
-
 }

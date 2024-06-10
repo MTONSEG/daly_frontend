@@ -22,5 +22,5 @@ const PopupCatalogMenu = forwardRef(
 		)
 	}
 )
-
+PopupCatalogMenu.displayName = 'PopupCatalogMenu'
 export default PopupCatalogMenu

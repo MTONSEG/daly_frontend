@@ -61,4 +61,5 @@ const PopupSuport = forwardRef<HTMLDivElement, PopupTypes>(({ closePopup }, ref)
     )
 })
 
+PopupSuport.displayName = "PopupSuport"
 export default PopupSuport

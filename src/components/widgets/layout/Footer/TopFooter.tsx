@@ -15,8 +15,7 @@ const TopFooter = () => {
 	const word = useTranslations("top-footer")
 	const citiesString = word('cities').replace(/'/g, '"');
 	const citiesArray = JSON.parse(citiesString)
-	
-	const cities = ['Одесса', 'Днепр', 'Киев', 'Харьков', 'Херсон', 'Тернополь']
+		
 	const [popup, setPopup] = useState<boolean>(false)
 	const closePopup = () => {
 		setPopup(false)

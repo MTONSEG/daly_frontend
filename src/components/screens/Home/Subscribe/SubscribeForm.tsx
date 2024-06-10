@@ -28,8 +28,7 @@ const SubscribeForm = () => {
 
 	//---------------------------------------------------
 	const word = useTranslations('subscribe')
-
-	//validation-----------------------------------------
+    //validation-----------------------------------------
 	const [formData, setFormData] = useState({
 		subscriber: '',
 		subscribe: false
@@ -38,7 +37,7 @@ const SubscribeForm = () => {
 	useEffect(() => {
 		form.setValue('data.subscriber', formData.subscriber)
 		form.setValue('data.subscribe', formData.subscribe)
-	}, [formData.subscriber])
+	}, [formData.subscriber, form, formData.subscribe])
 
 	useEffect(() => {
 		if (formState.isSubmitSuccessful) {
@@ -55,7 +54,7 @@ const SubscribeForm = () => {
 	return (
 		<form onSubmit={onSubmit} className='subscribe-form'>
 			<div className='subscribe-form__inputs'>
-				{errors?.data?.subscriber && <span style={{ color: 'red' }}>Email обязателен</span>}
+				{errors?.data?.subscriber && <span style={{ color: 'red' }}>{word("email")}</span>}
 				<Input
 					type='email'
 					placeholder={word('placeholder')}
@@ -78,7 +77,7 @@ const SubscribeForm = () => {
 						{word('agreement-text3')} <span>{word('agreement-text4')}</span>
 						{errors?.data?.subscribe && (
 							<div style={{ color: '#e74c3c', marginTop: '16px' }}>
-								Пдтвердите, что Вы согласны с условием !
+								{word("confirmation")}
 							</div>
 						)}
 					</div>

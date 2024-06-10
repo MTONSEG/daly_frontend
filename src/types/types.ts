@@ -5,7 +5,6 @@ export interface IProductImage {
 	url: string
 }
 
-// Update the IProductProperties type definition
 export interface IProductProperties {
 	id: number
 	memory: string
@@ -15,12 +14,8 @@ export interface IProductProperties {
 	cpu: string
 	diagonale: string
 	display: string
-	[key: string]: string | number // Index signature to allow any string as property name
+	[key: string]: string | number 
 }
-
-// export type IComment = {
-
-// }
 
 export type IProductComments = {
 	id: number
@@ -161,33 +156,44 @@ export interface IComment {
 	updatedAt?: string
 }
 
+
+export interface ILogoData {
+	attributes: {
+	url: string;
+	name: string;
+	};
+}
+
+export interface ILogo {
+	data: ILogoData[];
+}
+
 export interface ILogos {
 	data: {
 		attributes: {
-			brandsLogo: {
-				data: {
-					attributes: {
-						url: string
-					}
-				}[]
-			}
-		}
-	}
+			brandsLogo: ILogo;
+		};
+	};
 }
-export interface ITerms {
-	data: {
-		attributes: {
-			termsImage: {
-				data: {
-					attributes: {
-						url: string
-					}
-				}[]
+
+export interface ITerm {
+	title: string,
+	image: {
+		data: {
+			attributes: {
+				url: string
 			}
 		}
 	}
 }
 
+export interface ITerms {
+	data: {
+		attributes: {
+			terms: ITerm[]
+		}
+	}
+}
 export interface ISubscribe {
     data: {
      subscriber: string,

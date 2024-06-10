@@ -29,7 +29,6 @@ export default function ComparePopup() {
 	//Call the hook to fetch products by IDs
 	const {
 		data: fetchedProducts,
-		error,
 		isLoading
 	} = useFetchProductsByIdsQuery(
 		{
@@ -41,7 +40,6 @@ export default function ComparePopup() {
 		}
 	)
 
-	// Update the products state when fetchedProducts changes
 	useEffect(() => {
 		if (fetchedProducts) {
 			setProducts(fetchedProducts)

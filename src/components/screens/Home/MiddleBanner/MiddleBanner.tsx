@@ -10,18 +10,18 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 const MiddleBanner = () => {
-	const { data} = useGetBannersQuery({ bannerType: 'middle_banners' })
+	const { data } = useGetBannersQuery({ bannerType: 'middle_banners' })
 	const t = useTranslations('home')
-	const duplicatedBanners = data ? Array(4).fill(data.data.attributes.middle_banners).flat() : [];
+	const duplicatedBanners = data ? Array(4).fill(data.data.attributes.middle_banners).flat() : []
 
 	const pagination = {
 		clickable: true,
+		renderBullet: function (index: number, className: string) {
 		renderBullet: function (index: number, className: string) {
 			return '<span class="' + className + '">' + (index + 1) + '</span>'
 		}
 	}
 
-	
 	return (
 		<div className='middle-banner'>
 			<Swiper
@@ -31,23 +31,23 @@ const MiddleBanner = () => {
 				pagination={pagination}
 				modules={[Pagination, Autoplay]}
 				autoplay={{
-					delay: 3000, 
-					disableOnInteraction: false, 
-					pauseOnMouseEnter: true, 
+					delay: 3000,
+					disableOnInteraction: false,
+					pauseOnMouseEnter: true
 				}}
 				breakpoints={{
 					1024: {
 						slidesPerView: 1,
 						spaceBetween: 15,
-						autoplay: false 
+						autoplay: false
 					},
 					0: {
 						slidesPerView: 1,
 						spaceBetween: 15,
 						autoplay: {
-							delay: 3000, 
-							disableOnInteraction: false, 
-							pauseOnMouseEnter: true, 
+							delay: 3000,
+							disableOnInteraction: false,
+							pauseOnMouseEnter: true
 						}
 					}
 				}}

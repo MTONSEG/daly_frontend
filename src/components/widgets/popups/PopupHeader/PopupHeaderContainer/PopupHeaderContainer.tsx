@@ -38,7 +38,7 @@ const PopupHeaderContainer = forwardRef(
 				)}
 
 				{props.hrefLink && props.labelLink ? (
-					<LinkBtn href={props.hrefLink} variant='green' children={props.labelLink} />
+					<LinkBtn href={props.hrefLink} variant='green'>{props.labelLink}</LinkBtn>
 				) : (
 					<></>
 				)}
@@ -47,4 +47,5 @@ const PopupHeaderContainer = forwardRef(
 	}
 )
 
+PopupHeaderContainer.displayName = "PopupHeaderContainer"
 export default PopupHeaderContainer

@@ -1,7 +1,5 @@
-'use client'
 import './Burger.scss'
 import MobileOverlay from '../MobileMenu/Overlay'
-import { useState } from 'react'
 
 interface PropsTypes {
 	stateMenu: boolean
@@ -9,12 +7,9 @@ interface PropsTypes {
 }
 
 const Burger = ({ toggleMenu, stateMenu }: PropsTypes) => {
-	//const [overlay, setOverlay] = useState<boolean>(false)
-
-    const handleBurger = () => {
-        toggleMenu()
-        //setOverlay(!overlay)
-    }
+	const handleBurger = () => {
+		toggleMenu()
+	}
 
 	return (
 		<div>

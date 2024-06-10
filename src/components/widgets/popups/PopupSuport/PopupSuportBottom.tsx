@@ -10,9 +10,7 @@ interface PropsTypes {
 	handleImage: (e: File | null) => void
 }
 
-
-
-const PopupSuportBottom = ({ register, handleImage }: PropsTypes) => {
+const PopupSuportBottom = ({ handleImage }: PropsTypes) => {
 	const [fileName, setFileName] = useState<string>('')
 
 	const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,29 +23,24 @@ const PopupSuportBottom = ({ register, handleImage }: PropsTypes) => {
 		handleImage(file)
 	}
 
-const word = useTranslations("popup-support-bottom")
+	const word = useTranslations('popup-support-bottom')
 	return (
 		<div className='support-bottom'>
 			<div className='support-bottom__button-choose'>
 				<input type='file' onChange={handleChangeImage} />
-				{word("choose")}
+				{word('choose')}
 				<span className='support-bottom__file-name'>{fileName}</span>
 			</div>
-			
 
-			<span className='support-bottom__button-choose-label'>
-				{word("screen")}
-			</span>
-			<Button
-				variant='product'
-				type='submit'
-				children={'Отправить обращение'}
-				className='support-bottom__send-button'
-			/>
+			<span className='support-bottom__button-choose-label'>{word('screen')}</span>
+			<Button variant='product' type='submit' className='support-bottom__send-button'>
+				{word("textButton")}
+			</Button>
+
 			<div className='support-bottom__terms'>
-				<span>{word("send")}</span>
+				<span>{word('send')}</span>
 				<br />
-				<span className='support-bottom__terms_underline'>{word("personal")}</span>
+				<span className='support-bottom__terms_underline'>{word('personal')}</span>
 			</div>
 		</div>
 	)

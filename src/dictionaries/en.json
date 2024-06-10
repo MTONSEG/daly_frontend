@@ -195,7 +195,9 @@
 		"agreement-text1": "I agree to the terms of processing",
 		"agreement-text2": "personal data",
 		"agreement-text3": "and with",
-		"agreement-text4": "subscription terms"
+		"agreement-text4": "subscription terms",
+		"email": "Email mandatory",
+		"confirmation": "Confirm if you agree with terms"
 	},
 	"faq": {
 		"title": "Do you want to sell or buy something quickly and profitably?",
@@ -271,7 +273,8 @@
 		"choose": "Choose file",
 		"screen": "Screen shot( if necessary)",
 		"send": "By pressing send, you agree to the terms of processing",
-		"personal": "personal data"
+		"personal": "personal data",
+		"textButton": "Send message"
 	},
 	"popup-support-success": {
 		"title": "Your message send!",
@@ -281,5 +284,18 @@
 		"title": "New IPhon 12",
 		"info": "Got new colors",
 		"sale": "on sale"
+	},
+	"popup-support-form": {
+		"ask": "How can I address you?",
+		"name": "Enter your name",
+		"phoneAccount": "The phone number that’s linked to your account",
+		"pnone": "Enter phone number",
+		"emailResponse": "E-mail to which we will answer you",
+		"email": "Enter Email",
+		"appeal": "Appeal",
+		"textAppeal": "Enter text appeal",
+		"placeholderName": "Fido",
+		"placeholderPhone": "Phone number",
+		"placeholderEmail": "E-mail"
 	}
 }

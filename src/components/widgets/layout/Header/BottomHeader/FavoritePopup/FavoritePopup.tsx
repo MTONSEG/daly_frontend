@@ -30,7 +30,6 @@ export default function FavoritePopup() {
 	
 	const {
 		data: fetchedProducts,
-		error,
 		isLoading
 	} = useFetchProductsByIdsQuery(
 		{
@@ -79,9 +78,7 @@ export default function FavoritePopup() {
 		<PopupHeader variant='favorite'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
 				{products.length > 0 ? <FavoriteIcon style={{
-		filter:
-		  'brightness(0) saturate(100%) invert(44%) sepia(83%) saturate(1289%) hue-rotate(116deg) brightness(100%) contrast(103%)'
-	  }}/> : <FavoriteIcon />}
+		filter:'brightness(0) saturate(100%) invert(44%) sepia(83%) saturate(1289%) hue-rotate(116deg) brightness(100%) contrast(103%)'}}/> : <FavoriteIcon />}
 			</Button>
 			<PopupHeaderContainer
 				ref={ref}

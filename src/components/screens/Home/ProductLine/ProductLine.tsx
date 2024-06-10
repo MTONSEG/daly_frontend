@@ -26,14 +26,12 @@ interface IProductLine {
 	isDiscount?: boolean
 }
 
-
 const ProductLine: FC<IProductLine> = ({
 	title,
 	tag,
 	tagValue,
 	pageNum,
 	brands,
-	logos,
 	sortingOption,
 	isDiscount
 }) => {
@@ -49,7 +47,7 @@ const ProductLine: FC<IProductLine> = ({
 
 	const pagination = {
 		clickable: true,
-		renderBullet: function (index: number, className: any) {
+		renderBullet: function (index: number, className: string) {
 			return '<span class="' + className + '">' + '</span>'
 		}
 	}
@@ -109,13 +107,11 @@ const ProductLine: FC<IProductLine> = ({
 											<div className='product-line__slide-content'>
 												<ProductCard product={el} variant='card' locale={'ru'} />
 											</div>
-										</SwiperSlide>
-								  ))
+										</SwiperSlide>))
 								: Array.from({ length: 12 }).map((_, index) => (
 										<SwiperSlide key={index}>
 											<ProductCard variant={'card'} locale={locale} />
-										</SwiperSlide>
-								  ))
+										</SwiperSlide>))
 							: data?.data.map((el, index) => {
 									if (el.attributes.images) {
 										return (
@@ -126,8 +122,7 @@ const ProductLine: FC<IProductLine> = ({
 											</SwiperSlide>
 										)
 									}
-									return null
-							  })}
+									return null})}
 					</Swiper>
 				</div>
 			</div>

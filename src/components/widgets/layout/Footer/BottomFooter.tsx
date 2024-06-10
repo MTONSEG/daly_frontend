@@ -3,11 +3,11 @@ import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import { useTranslations } from 'next-intl'
 
 const BottomFooter = () => {
-	const word = useTranslations("bottom-footer")
-	const navLinksString = word("navLinks").replace(/'/g, '"')
+	const word = useTranslations('bottom-footer')
+	const navLinksString = word('navLinks').replace(/'/g, '"')
 	const navLinksArray = JSON.parse(navLinksString)
 	const navLinks: Array<string> = navLinksArray
-	
+
 	return (
 		<div className='bottom-footer'>
 			<div className='container container_dafault'>
@@ -18,10 +18,11 @@ const BottomFooter = () => {
 								<LinkBtn
 									href={item}
 									text={item}
-									children={item}
 									className='bottom-footer__navigation-link'
 									variant='default'
-								/>
+								>
+									{item}
+								</LinkBtn>
 							}
 						</p>
 					))}

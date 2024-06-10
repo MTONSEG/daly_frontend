@@ -32,7 +32,6 @@ export default function CartPopup() {
 
 	const {
 		data: fetchedProducts,
-		error,
 		isLoading
 	} = useFetchProductsByIdsQuery(
 		{
@@ -44,7 +43,6 @@ export default function CartPopup() {
 		}
 	)
 
-	// Update the products state when fetchedProducts changes
 	useEffect(() => {
 		if (fetchedProducts) {
 			setProducts(fetchedProducts)

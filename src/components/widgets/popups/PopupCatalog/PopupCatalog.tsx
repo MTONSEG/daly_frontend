@@ -34,7 +34,7 @@ import PopupCatalogMenu from '@/components/widgets/popups/PopupCatalog/PopupCata
 import { useMatchMedia } from '@/hooks/use-match-media'
 
 interface PropsType {
-	hideMenu: () => void
+	hideMenu?: () => void
 }
 
 const PopupCatalog = ({hideMenu}: PropsType) => {
@@ -79,7 +79,7 @@ const PopupCatalog = ({hideMenu}: PropsType) => {
 					</PopupCatalogItem>
 				)
 			}),
-		[data?.data, iconMap]
+		[data?.data, iconMap,hideMenu]
 	)
 	const [textColor, setTextColor] = useState<boolean>(false)
 	const handleTextColor = () => {

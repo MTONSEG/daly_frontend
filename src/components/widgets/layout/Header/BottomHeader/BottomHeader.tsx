@@ -47,13 +47,11 @@ export default function BottomHeader() {
 					<SearchHeader />
 
 					<div className='bottom-header__right'>
-						{windowWidth.isDesktop &&
-						<LinkBtn
-							href={`/${SUPPORT_PATH}`}
-							className='bottom-header__support-link'
-							children={t('support')}
-						/>
-						}
+						{windowWidth.isDesktop && (
+							<LinkBtn href={`/${SUPPORT_PATH}`} className='bottom-header__support-link'>
+								{t('support')}
+							</LinkBtn>
+						)}
 						<div className='bottom-header__popup-wrap'>
 							<ComparePopup />
 							<FavoritePopup />
@@ -61,7 +59,7 @@ export default function BottomHeader() {
 						</div>
 					</div>
 				</div>
-				<MobileMenu stateMenu={stateMenu} toggleMenu={toggleMenu}/>
+				<MobileMenu stateMenu={stateMenu} toggleMenu={toggleMenu} />
 			</Container>
 		</div>
 	)

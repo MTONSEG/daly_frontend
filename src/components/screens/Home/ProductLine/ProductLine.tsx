@@ -35,15 +35,19 @@ const ProductLine: FC<IProductLine> = ({
 	sortingOption,
 	isDiscount
 }) => {
-	const { data } = useGetProductsByTagQuery({ tag: tag, tagValue: tagValue, pageNum: pageNum })
+	const { locale } = useParams()
+	const { data } = useGetProductsByTagQuery({
+		tag: tag,
+		tagValue: tagValue,
+		pageNum: pageNum,
+		locale: locale
+	})
 	const catalogHref = sortingOption
 		? `/catalog?sorting=${sortingOption}`
 		: isDiscount
 		? `/catalog?isDiscount=${isDiscount}`
 		: '/catalog'
 	const t = useTranslations('home')
-
-	const { locale } = useParams()
 
 	const pagination = {
 		clickable: true,

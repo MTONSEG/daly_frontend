@@ -7,7 +7,6 @@ import { HomeBlack } from '../icons';
 import { usePathname } from 'next/navigation';
 import ruTranslations from '../../../dictionaries/ru.json';
 import enTranslations from '../../../dictionaries/en.json';
-import { IBreadcrumb } from '@/types/types';
 
 interface Translations {
   breadcrumbs: {
@@ -18,13 +17,7 @@ interface Translations {
 const ru: Translations = ruTranslations;
 const en: Translations = enTranslations;
 
-export default function Breadcrumbs({
-  breadcrumbsArr,
-  classname = ''
-}: {
-  breadcrumbsArr?: IBreadcrumb[];
-  classname?: string;
-}) {
+export default function Breadcrumbs() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const { locale } = useParams();
   
@@ -39,11 +32,11 @@ export default function Breadcrumbs({
     setIsHovered(false);
   };
 
-  let path = usePathname();
-  let newPath = path.replace('/ru/', '').replace('/en/', '');
+  const path = usePathname();
+  const newPath = path.replace('/ru/', '').replace('/en/', '');
   let currentLink = '';
   const crumbsArray = newPath.split('/').filter((crumb) => crumb !== '');
-  let crumbs = crumbsArray.map((crumb, index) => {
+  const crumbs = crumbsArray.map((crumb, index) => {
     currentLink += `/${crumb}`;
     
     const isLast = index === crumbsArray.length - 1;

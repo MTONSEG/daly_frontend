@@ -11,7 +11,6 @@ import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBt
 import ComparisonBlock from './ComparisonBlock/ComparisonBlock'
 import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
-import { IBreadcrumb } from '@/types/types'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 
@@ -28,8 +27,6 @@ const Comparison: React.FC = () => {
 
 	const {
 		data: fetchedProducts,
-		error,
-		isLoading
 	} = useFetchProductsByIdsQuery(
 		{
 			ids: productIds,

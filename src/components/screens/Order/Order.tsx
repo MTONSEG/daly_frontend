@@ -12,7 +12,7 @@ import OrderSender from './OrderSender/OrderSender'
 
 interface IOrder {}
 
-const Order: FC<IOrder> = ({}) => {
+const Order: FC<IOrder> = () => {
 	const word = useTranslations('order')
 
 	return (

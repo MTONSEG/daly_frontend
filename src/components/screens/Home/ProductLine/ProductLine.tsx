@@ -26,18 +26,22 @@ interface IProductLine {
 	isDiscount?: boolean
 }
 
-
 const ProductLine: FC<IProductLine> = ({
 	title,
 	tag,
 	tagValue,
 	pageNum,
 	brands,
-	logos,
 	sortingOption,
 	isDiscount
 }) => {
-	const { data } = useGetProductsByTagQuery({ tag: tag, tagValue: tagValue, pageNum: pageNum })
+	const { locale } = useParams()
+	const { data } = useGetProductsByTagQuery({
+		tag: tag,
+		tagValue: tagValue,
+		pageNum: pageNum,
+		locale: locale
+	})
 	const catalogHref = sortingOption
 		? `/catalog?sorting=${sortingOption}`
 		: isDiscount
@@ -45,11 +49,9 @@ const ProductLine: FC<IProductLine> = ({
 		: '/catalog'
 	const t = useTranslations('home')
 
-	const { locale } = useParams()
-
 	const pagination = {
 		clickable: true,
-		renderBullet: function (index: number, className: any) {
+		renderBullet: function (index: number, className: string) {
 			return '<span class="' + className + '">' + '</span>'
 		}
 	}

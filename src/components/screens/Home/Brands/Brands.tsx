@@ -27,23 +27,34 @@ const Brands = () => {
 			</div>
 			<div className={'brands__logos'}>
 				{logosArray &&
-					logosArray.map((item: any, index: number) => {
-						const brandName = upperFirstLetter(item.attributes.name.replace('Logo.svg', ''))
+					logosArray.map(
+						(
+							item: {
+								attributes: {
+									url: string
+								}
+							},
+							index: number
+						) => {
+							console.log("🚀 ~ Brands ~ item:", item)
+							
+							const brandName = upperFirstLetter(item.attributes.name.replace('Logo.svg', ''))
 
-						return (
-							<Link key={index} href={`/${locale}/catalog?brand=${brandName}`}>
-								<div className='brands__logos-item'>
-									<Image
-										alt='brand'
-										src={item.attributes.url ? item.attributes.url : ''}
-										width={175}
-										height={80}
-										loading='lazy'
-									/>
-								</div>
-							</Link>
-						)
-					})}
+							return (
+								<Link key={index} href={`/${locale}/catalog?brand=${brandName}`}>
+									<div className='brands__logos-item'>
+										<Image
+											alt='brand'
+											src={item.attributes.url ? item.attributes.url : ''}
+											width={175}
+											height={80}
+											loading='lazy'
+										/>
+									</div>
+								</Link>
+							)
+						}
+					)}
 			</div>
 		</div>
 	)

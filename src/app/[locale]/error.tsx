@@ -1,10 +1,10 @@
 'use client'
 
-interface PropType {
-	error: string
-}
+// interface PropType {
+// 	error: string
+// }
 
-export default function Error({ error }: PropType) {
+export default function Error() {
 	return (
 		<div className='error-wrapper'>
 			<h2

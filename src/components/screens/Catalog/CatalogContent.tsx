@@ -8,11 +8,6 @@ import { useParams, useSearchParams } from 'next/navigation'
 import CatalogGrid from './CatalogGrid/CatalogGrid'
 import GridHead from '../../widgets/fragments/GridHead/GridHead'
 import { setSorting } from '@/store/filters/slice/filters.slice'
-type SortingOption = 'publishedAt' | 'price' | 'rating'
-
-type Params = {
-	urlSortingOption: SortingOption
-}
 
 const CatalogContent: React.FC = () => {
 	const { locale } = useParams()

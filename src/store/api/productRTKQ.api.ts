@@ -27,10 +27,10 @@ export const getProductApi = createApi({
 		}),
 		getProductsByTag: builder.query<
 			IResponse<Omit<IProduct[], 'brand'>>,
-			{ tag: string; tagValue: boolean; pageNum?: number; sort?: string }
+			{ tag: string; tagValue: boolean; pageNum?: number; sort?: string; locale: string| string[] }
 		>({
-			query: ({ tag, tagValue, pageNum = 1, sort }) => {
-				return `products?filters[${tag}][$eq]=${tagValue}&pagination[page]=${pageNum}&pagination[pageSize]=7&populate=images&${sort}`
+			query: ({ tag, tagValue, pageNum = 1, sort , locale}) => {
+				return `products?locale=${locale}&filters[${tag}][$eq]=${tagValue}&pagination[page]=${pageNum}&pagination[pageSize]=7&populate=images&${sort}`
 			}
 		})
 	})

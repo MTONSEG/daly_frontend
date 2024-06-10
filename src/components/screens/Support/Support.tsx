@@ -18,7 +18,7 @@ const themes = [
 	}
 ]
 
-const Support: FC<ISupport> = ({}) => {
+const Support: FC<ISupport> = () => {
 	const [selectedValue, setSelectedValue] = useState<string>(themes[0].values[0])
 
 	const handleSelectValue = (value: string) => {

@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 const MainBanner = () => {
-	const { data, isLoading } = useGetBannersQuery({ bannerType: 'hero_banners' })
+	const { data} = useGetBannersQuery({ bannerType: 'hero_banners' })
 	const t = useTranslations('home')
 	
 	return (

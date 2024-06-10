@@ -4,16 +4,13 @@ import SliderThumbnailFancyApp from '@/components/widgets/SliderThumbnail/Slider
 import './Product.scss'
 import { inter, open_sans } from '@/fonts/fonts'
 import Breadcrumbs from '@/components/ui/Breadcrumbs/Breadcrumbs'
-import { useParams, usePathname } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { useGetProductQuery } from '@/store/api/productRTKQ.api'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import ProductInfoContainer from './ProductInfoContainer/ProductInfoContainer'
 import Tabs from './Tabs/Tabs'
 import AdditionalGoods from './AdditionalGoods/AdditionalGoods'
 import LoremComp from '@/components/widgets/fragments/Lorem/Lorem'
-import { motion } from 'framer-motion'
-import { ArrowDown } from '@/components/ui/icons'
-import { useTranslations } from 'next-intl'
 
 interface IProduct {
 	id: number
@@ -22,10 +19,9 @@ interface IProduct {
 const Product: FC<IProduct> = ({ id }) => {
 	const { locale } = useParams()
 
-	const { data, isLoading } = useGetProductQuery({ locale: locale[0], id: id })
+	const { data } = useGetProductQuery({ locale: locale[0], id: id })
 	const properties = data && data.data.attributes.properties
 
-	const currentPath = usePathname()
 
 		
 	return (

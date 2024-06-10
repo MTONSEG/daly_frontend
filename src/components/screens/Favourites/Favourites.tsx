@@ -24,7 +24,6 @@ const Favourites: React.FC = () => {
 
 	const {
 		data: fetchedProducts,
-		error,
 		isLoading
 	} = useFetchProductsByIdsQuery(
 		{

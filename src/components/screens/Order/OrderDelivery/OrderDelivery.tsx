@@ -1,5 +1,4 @@
 'use client'
-import Container from '@/components/ui/containers/Container/Container'
 import './OrderDelivery.scss'
 import '../../Product/Tabs/Delivery/Delivery.scss'
 import { useEffect, useState } from 'react'
@@ -36,7 +35,7 @@ const Pickup = () => {
 	)
 }
 
-const OrderDelivery = ({}) => {
+const OrderDelivery = () => {
 	const dispatch = useAppDispatch()
 	const w = useTranslations('order-delivery')
 	const [deliveryType, setDeliveryType] = useState<'delivery' | 'takeout'>('delivery')

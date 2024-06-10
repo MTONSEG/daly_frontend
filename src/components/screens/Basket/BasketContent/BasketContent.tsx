@@ -10,12 +10,10 @@ import Loader from '@/components/ui/loaders/Loader'
 import EmptyList from '@/components/widgets/fragments/EmptyList/EmptyList'
 import { useTranslations } from 'next-intl'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
-import { skipToken } from '@reduxjs/toolkit/query'
 
 const BasketContent: React.FC = () => {
 	const word = useTranslations('basket')
 	const productIds = useAppSelector((state) => state.basket.products)
-	console.log('🚀 ~ productIds:', productIds)
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { locale } = useParams()
 	const [totalPrice, setTotalPrice] = useState<number>(0)
@@ -25,11 +23,7 @@ const BasketContent: React.FC = () => {
 		return productId.id
 	})
 
-	const {
-		data: fetchedProducts,
-		error,
-		isLoading
-	} = useFetchProductsByIdsQuery(
+	const { data: fetchedProducts } = useFetchProductsByIdsQuery(
 		{
 			ids: productPlainIds,
 			locale
@@ -41,7 +35,6 @@ const BasketContent: React.FC = () => {
 
 	useEffect(() => {
 		if (fetchedProducts && fetchedProducts.length > 0) {
-			console.log('🚀 ~ useEffect ~ fetchedProducts:', fetchedProducts)
 			setProducts(fetchedProducts)
 		}
 	}, [productIds, fetchedProducts])

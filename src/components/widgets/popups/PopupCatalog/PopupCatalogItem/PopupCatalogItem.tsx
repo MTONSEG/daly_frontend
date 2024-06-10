@@ -4,7 +4,6 @@ import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { IProduct } from '@/types/types'
 import { useMemo, type HTMLAttributes, type ReactNode } from 'react'
 import { CATALOG_PATH } from '@/routes/routes'
-import { useState } from 'react'
 
 interface PropsType extends HTMLAttributes<HTMLLIElement> {
 	children: ReactNode | string

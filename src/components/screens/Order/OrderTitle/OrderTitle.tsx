@@ -2,7 +2,7 @@
 import { ArrowLeft } from '@/components/ui/icons'
 import { useTranslations } from 'next-intl'
 
-const OrderTitle = ({}) => {
+const OrderTitle = () => {
 	const word = useTranslations('order')
 
 	const handleGoBack = () => {

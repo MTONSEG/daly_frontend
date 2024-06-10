@@ -10,13 +10,13 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 const MiddleBanner = () => {
-	const { data, isLoading } = useGetBannersQuery({ bannerType: 'middle_banners' })
+	const { data} = useGetBannersQuery({ bannerType: 'middle_banners' })
 	const t = useTranslations('home')
 	const duplicatedBanners = data ? Array(4).fill(data.data.attributes.middle_banners).flat() : [];
 
 	const pagination = {
 		clickable: true,
-		renderBullet: function (index: number, className: any) {
+		renderBullet: function (index: number, className: string) {
 			return '<span class="' + className + '">' + (index + 1) + '</span>'
 		}
 	}

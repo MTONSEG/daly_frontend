@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { fillPaymentData } from '@/store/order/order.slice'
 export type PaymentType = 'online' | 'installment payment' | 'upon receipt' | 'digital wallet'
-const OrderPayment = ({}) => {
+const OrderPayment = () => {
 	const w = useTranslations('order')
 	const word = useTranslations('payment')
 	const [activeRadio, setActiveRadio] = useState<

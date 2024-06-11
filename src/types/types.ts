@@ -14,7 +14,7 @@ export interface IProductProperties {
 	cpu: string
 	diagonale: string
 	display: string
-	[key: string]: string | number 
+	[key: string]: string | number
 }
 
 export type IProductComments = {
@@ -156,28 +156,27 @@ export interface IComment {
 	updatedAt?: string
 }
 
-
 export interface ILogoData {
 	attributes: {
-	url: string;
-	name: string;
-	};
+		url: string
+		name: string
+	}
 }
 
 export interface ILogo {
-	data: ILogoData[];
+	data: ILogoData[]
 }
 
 export interface ILogos {
 	data: {
 		attributes: {
-			brandsLogo: ILogo;
-		};
-	};
+			brandsLogo: ILogo
+		}
+	}
 }
 
 export interface ITerm {
-	title: string,
+	title: string
 	image: {
 		data: {
 			attributes: {
@@ -195,23 +194,23 @@ export interface ITerms {
 	}
 }
 export interface ISubscribe {
-    data: {
-     subscriber: string,
-	 subscribe: boolean
-    }
- }
-
- export interface ISuport {
 	data: {
-		name: string,
-		phone: number,
-		email: string,
-		message: string,
+		subscriber: string
+		subscribe: boolean
+	}
+}
+
+export interface ISuport {
+	data: {
+		name: string
+		phone: number
+		email: string
+		message: string
 		image: any
 	}
- }
+}
 
- export interface IBreadcrumb {
+export interface IBreadcrumb {
 	label: string
 	href: string
 	active?: boolean

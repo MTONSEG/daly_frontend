@@ -17,7 +17,6 @@ const MiddleBanner = () => {
 	const pagination = {
 		clickable: true,
 		renderBullet: function (index: number, className: string) {
-		renderBullet: function (index: number, className: string) {
 			return '<span class="' + className + '">' + (index + 1) + '</span>'
 		}
 	}

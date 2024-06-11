@@ -1,66 +1,68 @@
-import Carousel from './SliderComp/Carousel'
-import Fancybox from './SliderComp/Fancybox'
+import { FC, useState } from 'react'
 import Image from 'next/image'
 import './SliderThumbnail.scss'
-import { FC } from 'react'
+import './SliderThumbnailFancyApp.scss'
 import { IProductImage } from '@/types/types'
-import imageBreak from '@/images/image-break.png'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/controller'
+import SwiperCore from 'swiper'
+import { Controller } from 'swiper/modules'
 
+// Initialize Swiper modules
+SwiperCore.use([Controller])
 const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) => {
+	const [mainSwiper, setMainSwiper] = useState<SwiperCore | null>(null)
+	console.log('🚀 ~ mainSwiper:', mainSwiper?.activeIndex)
+	const [thumbSwiper, setThumbSwiper] = useState<SwiperCore | null>(null)
+	console.log('🚀 ~ thumbSwiper:', thumbSwiper?.activeIndex)
+
 	return (
-		<div className='slider-wrapper'>
-			<Fancybox
-				options={{
-					Carousel: {
-						infinite: false,
-						transition: 'fade'
-					}
-				}}
+		<div className='product-slider'>
+			<Swiper
+				className='product-slider__main-slider'
+				slidesPerView={1}
+				spaceBetween={25}
+				initialSlide={0}
+				slideToClickedSlide={true}
+				onSwiper={setMainSwiper} // Set the main swiper instance
+				controller={{ control: thumbSwiper }} // Sync with thumbnail swiper
 			>
-				<Carousel
-					options={{
-						infinite: false,
-						Navigation: false,
-						fill: true,
-						center: true,
-						transition: 'fade',
-						classes: {
-							container: 'slider'
-						},
-						breakpoints: {
-							'(max-width: 576px)': {
-								Thumbs: false,
-								Dots: true
-							}
-						}
-					}}
-				>
-					{!images.length || !images ? (
-						<div
-							className='f-carousel__slide slider__slide-wr slider__slide-wr_top'
-							data-fancybox='gallery'
-							data-src={imageBreak}
-							data-thumb-src={imageBreak}
-						>
-							<Image alt='' src={imageBreak} width={370} height={300} />
+				{images.map((el, key) => (
+					<SwiperSlide key={key} className='product-slider__main-slide'>
+						<div className='product-slider__main-img-box'>
+							<Image
+								fill={true}
+								src={el.url}
+								alt='slider-big-img'
+								className='product-slider__main-img'
+							/>
 						</div>
-					) : (
-						images.map((el, index) => {
-							return (
-								<div
-									key={index}
-									className='f-carousel__slide slider__slide-wr slider__slide-wr_top'
-									data-fancybox='gallery'
-									data-src={el.url}
-									data-thumb-src={el.url}
-								>
-									<Image alt='' src={el.url} width={370} height={300} />
-								</div>
-							)
-						})
-					)}
-				</Carousel>
-			</Fancybox>
+					</SwiperSlide>
+				))}
+			</Swiper>
+			<Swiper
+				className='product-slider__thumbnail-slider'
+				slidesPerView={3}
+				spaceBetween={25}
+				initialSlide={0}
+				centeredSlides={true}
+				onSwiper={setThumbSwiper} // Set the thumbnail swiper instance
+				slideToClickedSlide={true}
+				controller={{ control: mainSwiper }} // Sync with main swiper
+			>
+				{images.map((el, key) => (
+					<SwiperSlide key={key} className='product-slider__thumbnail-slide'>
+						<Image
+							fill={true}
+							src={el.url}
+							alt='slider-big-img'
+							className='product-slider__thumbnail-img'
+						/>
+					</SwiperSlide>
+				))}
+			</Swiper>
 		</div>
 	)
 }

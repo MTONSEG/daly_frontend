@@ -46,8 +46,14 @@
 			opacity: 1;
 			pointer-events: all;
 		}
-	}
 
+		&.hidden {
+			display: none;
+			height: 0px;
+		}
+	}
+	
+	
 	&__triangle {
 		position: absolute;
 		bottom: calc(100% - 2px);

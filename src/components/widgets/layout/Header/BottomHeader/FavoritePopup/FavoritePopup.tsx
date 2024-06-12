@@ -1,5 +1,6 @@
 'use client'
 
+import './Favourite-popup.scss'
 import Button from '@/components/ui/buttons/Button/Button'
 import { FavoriteIcon } from '@/components/ui/icons'
 import PopupHeader from '@/components/widgets/popups/PopupHeader/PopupHeader'
@@ -14,12 +15,16 @@ import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 import Loader from '@/components/ui/loaders/Loader'
+import useHidePopupsOnReload from '@/hooks/useHidePopupOnNavigation'
 
 export default function FavoritePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
 	const { locale } = useParams()
-	const sortingWay = useAppSelector((state) => state.filters.sortingMethod)
-	const sortingOption = useAppSelector((state) => state.filters.sortingOption)
+	const sortingWay = useAppSelector((state) => state.filters.sortingMethod) as 'asc' | 'desc'
+	const sortingOption = useAppSelector((state) => state.filters.sortingOption) as
+		| 'publishedAt'
+		| 'price'
+		| 'rating'
 	const t = useTranslations('home')
 	const productIds = useAppSelector((state) => state.favourites.products)
 	const [products, setProducts] = useState<IProduct[]>([])
@@ -27,11 +32,8 @@ export default function FavoritePopup() {
 	const handleToggle = () => {
 		setIsActive((active) => !active)
 	}
-	
-	const {
-		data: fetchedProducts,
-		isLoading
-	} = useFetchProductsByIdsQuery(
+
+	const { data: fetchedProducts, isLoading } = useFetchProductsByIdsQuery(
 		{
 			ids: productIds,
 			locale
@@ -40,7 +42,7 @@ export default function FavoritePopup() {
 			skip: productIds.length === 0
 		}
 	)
-	
+
 	useEffect(() => {
 		if (fetchedProducts) {
 			const sortedProducts = [...fetchedProducts]
@@ -73,12 +75,22 @@ export default function FavoritePopup() {
 			setProducts(sortedProducts)
 		}
 	}, [fetchedProducts, sortingOption, sortingWay])
-	
+
+	useHidePopupsOnReload({ className: 'popup-header__container' })
+
 	return (
 		<PopupHeader variant='favorite'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
-				{products.length > 0 ? <FavoriteIcon style={{
-		filter:'brightness(0) saturate(100%) invert(44%) sepia(83%) saturate(1289%) hue-rotate(116deg) brightness(100%) contrast(103%)'}}/> : <FavoriteIcon />}
+				{products.length > 0 ? (
+					<FavoriteIcon
+						style={{
+							filter:
+								'brightness(0) saturate(100%) invert(44%) sepia(83%) saturate(1289%) hue-rotate(116deg) brightness(100%) contrast(103%)'
+						}}
+					/>
+				) : (
+					<FavoriteIcon />
+				)}
 			</Button>
 			<PopupHeaderContainer
 				ref={ref}
@@ -89,7 +101,7 @@ export default function FavoritePopup() {
 				textEmpty={t('empty-favorite')}
 			>
 				{isLoading ? (
-					<Loader/>
+					<Loader />
 				) : (
 					products.map((item, index) => (
 						<PopupHeaderItem

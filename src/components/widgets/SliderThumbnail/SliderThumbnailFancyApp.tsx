@@ -1,66 +1,84 @@
-import Carousel from './SliderComp/Carousel'
-import Fancybox from './SliderComp/Fancybox'
+import { FC, useState } from 'react'
 import Image from 'next/image'
 import './SliderThumbnail.scss'
-import { FC } from 'react'
+import './SliderThumbnailFancyApp.scss'
 import { IProductImage } from '@/types/types'
-import imageBreak from '@/images/image-break.png'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/controller'
+import SwiperCore from 'swiper'
+import { Controller } from 'swiper/modules'
+import useOutsideClick from '@/hooks/useOutSideClick'
 
+// Initialize Swiper modules
+SwiperCore.use([Controller])
 const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) => {
+	const [mainSwiper, setMainSwiper] = useState<SwiperCore | null>(null)
+	const [thumbSwiper, setThumbSwiper] = useState<SwiperCore | null>(null)
+	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
+
 	return (
-		<div className='slider-wrapper'>
-			<Fancybox
-				options={{
-					Carousel: {
-						infinite: false,
-						transition: 'fade'
-					}
-				}}
-			>
-				<Carousel
-					options={{
-						infinite: false,
-						Navigation: false,
-						fill: true,
-						center: true,
-						transition: 'fade',
-						classes: {
-							container: 'slider'
-						},
-						breakpoints: {
-							'(max-width: 576px)': {
-								Thumbs: false,
-								Dots: true
-							}
-						}
-					}}
-				>
-					{!images.length || !images ? (
-						<div
-							className='f-carousel__slide slider__slide-wr slider__slide-wr_top'
-							data-fancybox='gallery'
-							data-src={imageBreak}
-							data-thumb-src={imageBreak}
-						>
-							<Image alt='' src={imageBreak} width={370} height={300} />
-						</div>
-					) : (
-						images.map((el, index) => {
-							return (
+		<div className='product-slider'>
+			<div className='product-slider__slider-placeholder'></div>
+			<div className={`product-slider__popup-wrapper ${isActive && 'active'}`}>
+				<div className={`product-slider__popup-container ${isActive && 'active'}`} ref={ref}>
+					<Swiper
+						className={`product-slider__main-slider ${isActive && 'active'}`}
+						slidesPerView={1}
+						spaceBetween={25}
+						initialSlide={0}
+						slideToClickedSlide={true}
+						onSwiper={setMainSwiper} // Set the main swiper instance
+						controller={{ control: thumbSwiper }} // Sync with thumbnail swiper
+					>
+						{images.map((el, key) => (
+							<SwiperSlide
+								key={key}
+								className={`product-slider__main-slide ${isActive && 'active'}`}
+							>
 								<div
-									key={index}
-									className='f-carousel__slide slider__slide-wr slider__slide-wr_top'
-									data-fancybox='gallery'
-									data-src={el.url}
-									data-thumb-src={el.url}
+									className='product-slider__main-img-box'
+									onClick={() => {
+										setIsActive(true)
+									}}
 								>
-									<Image alt='' src={el.url} width={370} height={300} />
+									<Image
+										fill={true}
+										src={el.url}
+										alt='slider-big-img'
+										className='product-slider__main-img'
+									/>
 								</div>
-							)
-						})
-					)}
-				</Carousel>
-			</Fancybox>
+							</SwiperSlide>
+						))}
+					</Swiper>
+					<Swiper
+						className={`product-slider__thumbnail-slider ${isActive && 'active'}`}
+						slidesPerView={3}
+						spaceBetween={25}
+						initialSlide={0}
+						centeredSlides={true}
+						onSwiper={setThumbSwiper} // Set the thumbnail swiper instance
+						slideToClickedSlide={true}
+						controller={{ control: mainSwiper }} // Sync with main swiper
+					>
+						{images.map((el, key) => (
+							<SwiperSlide
+								key={key}
+								className={`product-slider__thumbnail-slide ${isActive && 'active'}`}
+							>
+								<Image
+									fill={true}
+									src={el.url}
+									alt='slider-big-img'
+									className='product-slider__thumbnail-img'
+								/>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</div>
+			</div>
 		</div>
 	)
 }

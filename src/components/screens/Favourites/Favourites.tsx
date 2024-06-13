@@ -37,7 +37,7 @@ const Favourites: React.FC = () => {
 	console.log('🚀 ~ fetchedProducts:', fetchedProducts)
 
 	const [products, setProducts] = useState<IProduct[]>([])
-	console.log(products)
+	
 	useEffect(() => {
 		if (fetchedProducts) {
 			const sortedProducts = [...fetchedProducts]
@@ -69,7 +69,7 @@ const Favourites: React.FC = () => {
 
 			setProducts(sortedProducts)
 		}
-	}, [products,productIds])
+	}, [productIds,fetchedProducts,sortingOption,sortingWay])
 
 	
 	return (

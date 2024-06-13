@@ -50,6 +50,8 @@ export { default as StarProduct } from '@/icons/star-product.svg'
 export { default as CloseSign } from '@/icons/btn-close_off.svg'
 export { default as TelIcon } from '@/icons/phone.svg'
 export { default as ArrowDown } from '@/icons/downArrow.svg'
+export {default as PrevButton} from '@/icons/p-slider-prev.svg'
+export {default as NextButton} from '@/icons/p-slider-next.svg'
 // comparison
 export { default as TrashIcon } from '@/icons/trash-can.svg'
 // order

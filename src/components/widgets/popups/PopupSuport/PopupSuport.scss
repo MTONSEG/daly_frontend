@@ -66,6 +66,21 @@
 	&__close-wrapper:hover {
 		transform: scale(120%);
 	}
+
+	&__close-popup {
+		position: absolute;
+		top: -22px;
+		right: -13px;
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+		background: var(--dark-grey-008);
+		cursor: pointer;
+	}
+	
+	 &__close-popup:hover {
+		transform: scale(120%);
+	}
 }
 
 .support-bottom {

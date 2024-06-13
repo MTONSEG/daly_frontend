@@ -23,7 +23,7 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
 	const prevRef = useRef(null)
 	const nextRef = useRef(null)
-	
+
 	return (
 		<div className='product-slider'>
 			<div className='product-slider__slider-placeholder'></div>

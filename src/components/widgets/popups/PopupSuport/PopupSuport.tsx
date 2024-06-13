@@ -9,8 +9,7 @@ import { useForm } from 'react-hook-form'
 import SuportForm from './SuportForm'
 import { suportApi } from '@/store/api/support.api'
 import PopupSuportBottom from './PopupSuportBottom'
-import Image from 'next/image'
-import GreenCross from '@/images/green-cross.webp'
+import ClosePopup from '@/components/ui/Buttons/ClosePopup/ClosePopup'
 
 
 interface PopupTypes {
@@ -52,9 +51,7 @@ const PopupSuport = forwardRef<HTMLDivElement, PopupTypes>(({ closePopup }, ref)
                     <h2 className='popup-suport__title'>{word("title")}</h2>
                     <SuportForm register={register} errors={errors} />
                     <PopupSuportBottom register={register} handleImage={handleImage} />
-                    <div className='popup-suport__close-wrapper' onClick={closePopup}>
-                        <Image src={GreenCross} width={30} height={30} alt='cross' />
-                    </div>
+                    <ClosePopup closeWindow={closePopup} className={'popup-suport__close-popup'}/>
                 </div>
             </div>
         </form>

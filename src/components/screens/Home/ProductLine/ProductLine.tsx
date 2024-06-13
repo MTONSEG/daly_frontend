@@ -71,7 +71,6 @@ const ProductLine: FC<IProductLine> = ({
 						slidesPerView={5}
 						spaceBetween={25}
 						loop={true}
-						navigation
 						pagination={pagination}
 						modules={[Pagination]}
 						breakpoints={{

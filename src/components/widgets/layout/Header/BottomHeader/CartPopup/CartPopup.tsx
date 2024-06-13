@@ -10,6 +10,7 @@ import { BASKET_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 import { useParams } from 'next/navigation'
@@ -48,6 +49,12 @@ export default function CartPopup() {
 			setProducts(fetchedProducts)
 		}
 	}, [fetchedProducts])
+
+	const path = usePathname()
+	useEffect(() => {
+		setIsActive(false)
+	}, [path, setIsActive])
+
 	return (
 		<PopupHeader variant='cart'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
@@ -58,6 +65,7 @@ export default function CartPopup() {
 			<PopupHeaderContainer
 				ref={ref}
 				isActive={isActive}
+				className={`!isActive && ${"hidden"}`}
 				hrefLink={`/${BASKET_PATH}`}
 				labelLink='В корзину'
 				isEmpty={products.length > 0 ? false : true}

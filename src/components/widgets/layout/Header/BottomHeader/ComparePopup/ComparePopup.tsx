@@ -10,6 +10,7 @@ import { COMPARE_PATH } from '@/routes/routes'
 import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { useParams } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
@@ -46,6 +47,11 @@ export default function ComparePopup() {
 		}
 	}, [fetchedProducts])
 
+	const path = usePathname()
+	useEffect(() => {
+		setIsActive(false)
+	}, [path, setIsActive])
+
 	return (
 		<PopupHeader variant='compare'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
@@ -55,6 +61,7 @@ export default function ComparePopup() {
 			<PopupHeaderContainer
 				ref={ref}
 				isActive={isActive}
+				className={`!isActive && ${"hidden"}`}
 				hrefLink={`/${COMPARE_PATH}`}
 				labelLink='В сравнение'
 				textEmpty={t('empty-compare')}

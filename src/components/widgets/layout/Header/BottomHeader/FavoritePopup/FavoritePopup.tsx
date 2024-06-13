@@ -12,10 +12,10 @@ import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 import Loader from '@/components/ui/loaders/Loader'
-import useHidePopupsOnReload from '@/hooks/useHidePopupOnNavigation'
 
 export default function FavoritePopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
@@ -76,7 +76,10 @@ export default function FavoritePopup() {
 		}
 	}, [fetchedProducts, sortingOption, sortingWay])
 
-	useHidePopupsOnReload({ className: 'popup-header__container' })
+	const path = usePathname()
+	useEffect(() => {
+		setIsActive(false)
+	}, [path, setIsActive])
 
 	return (
 		<PopupHeader variant='favorite'>
@@ -99,6 +102,7 @@ export default function FavoritePopup() {
 				labelLink='В избранное'
 				isEmpty={products.length === 0}
 				textEmpty={t('empty-favorite')}
+				className={`!isActive && ${"hidden"}`}
 			>
 				{isLoading ? (
 					<Loader />

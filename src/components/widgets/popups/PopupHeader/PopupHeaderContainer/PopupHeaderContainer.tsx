@@ -5,7 +5,7 @@ import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import { TriangleIcon } from '@/components/ui/icons'
 import { setActive } from '@/utils/setActive'
 import { useTranslations } from 'next-intl'
-import { ReactNode, forwardRef, ForwardedRef } from 'react'
+import { ReactNode, forwardRef, ForwardedRef} from 'react'
 
 
 interface PropsType {
@@ -16,18 +16,20 @@ interface PropsType {
 	isEmpty?: boolean
 	textEmpty?: string
 	variant?: 'default'
+	className?: string | undefined
 }
 
 const PopupHeaderContainer = forwardRef(
 	({ variant = 'default', ...props }: PropsType, ref: ForwardedRef<HTMLDivElement>) => {
 		const t = useTranslations('shared')
-
+		// const [popupState, setPopupState] = useState(false)
+			
 		return (
 			<div
 				ref={ref}
 				className={`popup-header__container ${setActive(
 					props.isActive
-				)} popup-header__container_${variant}`}
+				)} popup-header__container_${variant} ${!props.isActive && 'hidden'}`}
 			>
 				<TriangleIcon className='popup-header__triangle' />
 
@@ -40,7 +42,9 @@ const PopupHeaderContainer = forwardRef(
 				)}
 
 				{props.hrefLink && props.labelLink ? (
-					<LinkBtn href={props.hrefLink} variant='green'>{props.labelLink}</LinkBtn>
+					<LinkBtn href={props.hrefLink} variant='green'>
+						{props.labelLink}
+					</LinkBtn>
 				) : (
 					<></>
 				)}
@@ -49,5 +53,5 @@ const PopupHeaderContainer = forwardRef(
 	}
 )
 
-PopupHeaderContainer.displayName = "PopupHeaderContainer"
+PopupHeaderContainer.displayName = 'PopupHeaderContainer'
 export default PopupHeaderContainer

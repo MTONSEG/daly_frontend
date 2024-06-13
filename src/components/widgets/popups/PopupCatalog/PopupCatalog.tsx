@@ -21,7 +21,7 @@ import useOutsideClick from '@/hooks/useOutSideClick'
 import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
 import { CATALOG_PATH } from '@/routes/routes'
 import type { IMapIcons } from '@/types/types'
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { checkArr } from '@/utils/checkArr'
 import { ThreeDots } from 'react-loader-spinner'
@@ -37,7 +37,7 @@ interface PropsType {
 	hideMenu?: () => void
 }
 
-const PopupCatalog = ({hideMenu}: PropsType) => {
+const PopupCatalog = ({ hideMenu }: PropsType) => {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLUListElement>(false)
 	const { locale } = useParams()
 	const path = usePathname()
@@ -48,6 +48,10 @@ const PopupCatalog = ({hideMenu}: PropsType) => {
 	const handleOpen = () => {
 		setIsActive(true)
 	}
+
+	useEffect(() => {
+		setIsActive(false)
+	}, [path, setIsActive])
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const iconMap: IMapIcons = {
@@ -79,7 +83,7 @@ const PopupCatalog = ({hideMenu}: PropsType) => {
 					</PopupCatalogItem>
 				)
 			}),
-		[data?.data, iconMap,hideMenu]
+		[data?.data, iconMap, hideMenu]
 	)
 	const [textColor, setTextColor] = useState<boolean>(false)
 	const handleTextColor = () => {
@@ -89,6 +93,7 @@ const PopupCatalog = ({hideMenu}: PropsType) => {
 			setTextColor(true)
 		}
 	}
+
 	return (
 		<div className='popup-catalog'>
 			<LinkBtn
@@ -97,10 +102,7 @@ const PopupCatalog = ({hideMenu}: PropsType) => {
 				onMouseEnter={handleOpen}
 			>
 				<BurgerIcon />{' '}
-				<span
-					onClick={handleTextColor}
-					className='popup-catalog__text'
-				>
+				<span onClick={handleTextColor} className='popup-catalog__text'>
 					{t('catalog')}
 				</span>
 			</LinkBtn>

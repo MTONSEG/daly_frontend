@@ -40,7 +40,7 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 
 	return (
 		<div className='product-slider'>
-			<div className={`product-slider__slider-placeholder ${isActive && 'active'}`}></div>
+			{/* <div className={`product-slider__slider-placeholder ${isActive && 'active'}`}></div> */}
 
 			<div className={`product-slider__popup-wrapper ${isActive && 'active'}`} ref={ref}>
 				<div className={`product-slider__popup-container ${isActive && 'active'}`}>
@@ -85,6 +85,8 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 							</SwiperSlide>
 						))}
 					</Swiper>
+
+
 					<div className={`product-slider__buttons-wrapper ${isActive && 'active'}`}>
 						<button ref={prevRef} className='swiper-button-prev'></button>
 						<button ref={nextRef} className='swiper-button-next'></button>
@@ -97,6 +99,32 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 						initialSlide={0}
 						centeredSlides={false}
 						onSwiper={setThumbSwiper} // Set the thumbnail swiper instance
+						breakpoints={{
+							1440: {
+								slidesPerView: isActive ? 5 : 3,
+								spaceBetween: 25
+							},
+							1024: {
+								slidesPerView: isActive ? 5 : 3,
+								spaceBetween: 25,
+							},
+							762: {
+								slidesPerView: isActive ? 4 : 3,
+								spaceBetween: 25
+							},
+							576: {
+								slidesPerView: isActive ? 3 : 2,
+								spaceBetween: 20
+							},
+							375: {
+								slidesPerView: isActive ? 2 : 2,
+								spaceBetween: 18,
+							},
+							275: {
+								slidesPerView: 2,
+								spaceBetween: 15,
+							}
+						}}
 					>
 						{images.map((el, key) => (
 							<SwiperSlide

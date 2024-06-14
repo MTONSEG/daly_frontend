@@ -97,7 +97,7 @@ const PopupCatalog = ({ hideMenu }: PropsType) => {
 	return (
 		<div className='popup-catalog'>
 			<LinkBtn
-				href={windowWidth.isDesktop ? `/${CATALOG_PATH}` : '#'}
+				href={windowWidth.isDesktop ? `/${CATALOG_PATH}` : ''}
 				className={`popup-catalog__btn ${setActive(formatPath(path) === CATALOG_PATH)}`}
 				onMouseEnter={handleOpen}
 			>

@@ -10,7 +10,7 @@ const Terms = () => {
 	const { locale } = useParams()
 	const { data: termsData } = useGetTermsQuery({locale})
 	const dataArray = termsData?.data.attributes.terms
-console.log(termsData)
+
 	return (
 		<div className='main-terms'>
 			{dataArray && dataArray.map((item: ITerm, index: number) => (

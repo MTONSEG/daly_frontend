@@ -8,10 +8,11 @@ import { useGetBannersQuery } from '@/store/api/home.api'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
+
 const MainBanner = () => {
 	const { data } = useGetBannersQuery({ bannerType: 'hero_banners' })
 	const t = useTranslations('home')
-
+	
 	return (
 		<div className='main-banner'>
 			<Fancybox

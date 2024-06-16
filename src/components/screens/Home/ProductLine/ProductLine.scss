@@ -57,20 +57,19 @@
 
 	&__slide-content {
 		width: 100%;
-		// max-width: 214px;
-		// padding: 5px;
+		
 		.product-card {
 			max-width: 100% !important;
 		}
 	}
 
+	.swiper-pagination {
+		display: none !important;
+	}
+
 	@include media-max(ul) {
 		.swiper {
 			padding-bottom: 0;
-		}
-
-		.swiper-pagination {
-			display: none !important;
 		}
 	}
 

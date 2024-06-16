@@ -8,7 +8,7 @@ interface PropsType {
 
 const ClosePopup = ({closeWindow,className}: PropsType) => {
     return (
-		<div className={className} onClick={() => {closeWindow}}>
+		<div className={className} onClick={closeWindow}>
 			<Image src={GreenCross} width={30} height={30} alt='cross' />
 		</div>
 	)

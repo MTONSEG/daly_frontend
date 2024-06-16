@@ -16,9 +16,10 @@ interface IProductCardProps {
 	variant: 'card' | 'row'
 	isCompared?: boolean
 	locale: string[] | string
+	handleLoader?: () => void | undefined
 }
 
-const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared, locale }) => {
+const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared, locale, handleLoader }) => {
 	function getDisplayProduct(product: IProduct | undefined, locale: string[] | string) {
 		if (locale === product?.attributes?.locale) {
 			return product
@@ -38,6 +39,9 @@ const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared
 	const router = useRouter()
 	const handleRouteClick = () => {
 		router.push(`/${locale}/product/${displayProduct && displayProduct.id}`)
+		if (handleLoader) {
+			handleLoader()
+		}
 	}
 	const isFavorite = useAppSelector((state) =>
 		product ? state.favourites.products.includes(product.id) : false

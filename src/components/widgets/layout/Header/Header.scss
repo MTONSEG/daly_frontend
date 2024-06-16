@@ -107,13 +107,29 @@
 		&__delivery-link {
 			display: none;
 		}
+
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 4px;
+			width: 100%;
+			background: linear-gradient(
+				90deg,
+				#00c65e 25.16%,
+				rgba(0, 198, 94, 0) 100%
+			);
+		}
+	
 	}
 }
 
 @include media-max(xs) {
 	.bottom-header {
 		align-items: flex-start;
-		padding-bottom: 10px;
+		padding: 10px 0;
 
 		&__row {
 			flex-wrap: nowrap;

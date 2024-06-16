@@ -5,6 +5,8 @@ import Header from '@/components/widgets/layout/Header/Header'
 import Footer from '@/components/widgets/layout/Footer/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { ReduxProvider } from '@/components/providers/ReduxProvider'
+import NextTopLoader from 'nextjs-toploader'
+
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -14,11 +16,12 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
 	children: React.ReactNode
-	params: { local: string  }
+	params: { local: string }
 }
 
 export default function RootLayout({ children, params: { local } }: Readonly<RootLayoutProps>) {
 	const messages = useMessages()
+	
 
 	return (
 		<html lang={local}>
@@ -26,6 +29,7 @@ export default function RootLayout({ children, params: { local } }: Readonly<Roo
 				<NextIntlClientProvider messages={messages}>
 					<ReduxProvider>
 						<div className='wrapper'>
+							<NextTopLoader color="#fff" easing="ease" height={7}/>
 							<Header />
 							<main className='main'>{children}</main>
 							<Footer />

@@ -6,19 +6,20 @@ import Brands from './Brands/Brands'
 import Terms from './Terms/Terms'
 import Subscribe from './Subscribe/Subscribe'
 import FAQ from './FAQ/FAQ'
-import FaqButton from '@/components/ui/buttons/FaqButton/FaqButton'
+import FaqButton from '@/components/ui/Buttons/FaqButton/FaqButton'
 import Container from '@/components/ui/containers/Container/Container'
 import MiddleBanner from './MiddleBanner/MiddleBanner'
 import BottomBanner from './BottomBanner/BottomBanner'
 
+
 export default function Home() {
 	const t = useTranslations('home')
-
+		
 	return (
 			<div style={{ position: 'relative' }}>
 				<MainBanner />
 				<Container>
-					<ProductLine title={t('hits')} tag='hit' tagValue={true} sortingOption='rating' />
+					<ProductLine title={t('hits')} tag='hit' tagValue={true} sortingOption='rating'/>
 					<ProductLine
 						title={t('new')}
 						tag='hit'

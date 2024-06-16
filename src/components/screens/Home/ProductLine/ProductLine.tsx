@@ -13,6 +13,9 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
+import { useState } from 'react'
+import Loader from '@/components/ui/loaders/Loader'
+
 
 interface IProductLine {
 	title: string
@@ -33,7 +36,7 @@ const ProductLine: FC<IProductLine> = ({
 	pageNum,
 	brands,
 	sortingOption,
-	isDiscount
+	isDiscount,
 }) => {
 	const { locale } = useParams()
 	const { data } = useGetProductsByTagQuery({
@@ -55,9 +58,14 @@ const ProductLine: FC<IProductLine> = ({
 			return '<span class="' + className + '">' + '</span>'
 		}
 	}
-
+	const [loading, setIsLoading] = useState<boolean>(false)
+	const handleLoader = () => {
+		setIsLoading(true)
+	}
+  
 	return (
 		<div className='product-line'>
+			<div className='product-line__loader'>{loading && <Loader />}</div>
 			<div className='product-line__top'>
 				<h2 className='product-line__title'>{title}</h2>
 				<LinkBtn className='product-line__text' href={catalogHref}>
@@ -102,19 +110,22 @@ const ProductLine: FC<IProductLine> = ({
 								centeredSlides: true
 							}
 						}}
+						// onClick={() => setIsLoading(true)}
 					>
 						{!brands
 							? data
 								? data.data.map((el, key) => (
 										<SwiperSlide key={key}>
 											<div className='product-line__slide-content'>
-												<ProductCard product={el} variant='card' locale={'ru'} />
+												<ProductCard product={el} variant='card' locale={'ru'} handleLoader={handleLoader}/>
 											</div>
-										</SwiperSlide>))
+										</SwiperSlide>
+								))
 								: Array.from({ length: 12 }).map((_, index) => (
 										<SwiperSlide key={index}>
-											<ProductCard variant={'card'} locale={locale} />
-										</SwiperSlide>))
+											<ProductCard variant={'card'} locale={locale} handleLoader={handleLoader}/>
+										</SwiperSlide>
+								))
 							: data?.data.map((el, index) => {
 									if (el.attributes.images) {
 										return (
@@ -125,7 +136,8 @@ const ProductLine: FC<IProductLine> = ({
 											</SwiperSlide>
 										)
 									}
-									return null})}
+									return null
+							})}
 					</Swiper>
 				</div>
 			</div>

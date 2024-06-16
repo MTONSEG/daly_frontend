@@ -94,6 +94,7 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 										src={el.url}
 										alt='slider-big-img'
 										className='product-slider__main-img'
+										sizes='100%'
 									/>
 								</div>
 							</SwiperSlide>
@@ -149,6 +150,7 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 							>
 								<Image
 									fill={true}
+									sizes='100%'
 									src={el.url}
 									alt='slider-big-img'
 									className='product-slider__thumbnail-img'

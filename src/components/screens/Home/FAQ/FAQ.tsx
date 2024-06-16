@@ -25,6 +25,7 @@ const FAQ = () => {
 					height={24}
 					alt='arrow'
 					className={showMore ? 'faq__open-arrow' : ''}
+					loading='lazy'
 				/>
 			</div>
 		</div>

@@ -110,7 +110,6 @@ const ProductLine: FC<IProductLine> = ({
 								centeredSlides: true
 							}
 						}}
-						// onClick={() => setIsLoading(true)}
 					>
 						{!brands
 							? data

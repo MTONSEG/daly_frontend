@@ -46,6 +46,7 @@ const BottomBanner = () => {
 									height={285}
 									alt='bottomBanner'
 									className='bottom-banner-slide__image'
+									loading='lazy'
 								/>
 							</div>
 						))}

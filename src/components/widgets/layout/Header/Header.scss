@@ -20,20 +20,20 @@
 .top-header {
 	padding: 17px 0 13px;
 
-	&::after {
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 6px;
-		width: 100%;
-		background: linear-gradient(
-			90deg,
-			#00c65e 25.16%,
-			rgba(0, 198, 94, 0) 100%
-		);
-	}
+	// &::after {
+	// 	content: '';
+	// 	display: block;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	height: 6px;
+	// 	width: 100%;
+	// 	background: linear-gradient(
+	// 		90deg,
+	// 		#00c65e 25.16%,
+	// 		rgba(0, 198, 94, 0) 100%
+	// 	);
+	// }
 
 	&__row {
 		justify-content: space-between;

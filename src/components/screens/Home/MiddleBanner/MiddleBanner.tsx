@@ -71,6 +71,7 @@ const MiddleBanner = () => {
 									height={200}
 									alt='middle Banner'
 									className='middle-banner__image'
+									loading='lazy'
 								/>
 							</div>
 						</SwiperSlide>

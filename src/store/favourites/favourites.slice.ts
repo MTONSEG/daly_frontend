@@ -15,11 +15,19 @@ const favoritesData = createSlice({
 	reducers: {
 		addFavorite: (state, action: PayloadAction<number>) => {
 			const productId = action.payload
-			if (!state.products.includes(productId)) {
+			const index = state.products.indexOf(productId)
+
+			if (index === -1) {
+				// If the product ID does not exist, add it
 				state.products.push(productId)
-				console.log(state.products)
+			} else {
+				// If the product ID exists, remove it
+				state.products.splice(index, 1)
 			}
+
+			console.log(state.products)
 		},
+
 		removeFavorite: (state, action: PayloadAction<number>) => {
 			const productId = action.payload
 			const index = state.products.indexOf(productId)

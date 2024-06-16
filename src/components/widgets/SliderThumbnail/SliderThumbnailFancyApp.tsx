@@ -1,5 +1,4 @@
-import { FC, useState } from 'react'
-import { useRef } from 'react'
+import { FC, useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import './SliderThumbnail.scss'
 import './SliderThumbnailFancyApp.scss'
@@ -19,11 +18,19 @@ SwiperCore.use([Navigation])
 
 const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) => {
 	const [mainSwiper, setMainSwiper] = useState<SwiperCore | null>(null)
-	const [, setThumbSwiper] = useState<SwiperCore | null>(null)
+	const [thumbSwiper, setThumbSwiper] = useState<SwiperCore | null>(null)
 	const [activeThumbnailIndex, setActiveThumbnailIndex] = useState(0) // State to track active thumbnail
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
 	const prevRef = useRef<HTMLButtonElement | null>(null)
 	const nextRef = useRef<HTMLButtonElement | null>(null)
+
+	useEffect(() => {
+		if (isActive) {
+			document.body.classList.add('open')
+		} else {
+			document.body.classList.remove('open')
+		}
+	}, [isActive])
 
 	const handleThumbnailClick = (index: number) => {
 		setActiveThumbnailIndex(index) // Update active thumbnail index
@@ -38,24 +45,40 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 		}
 	}
 
+	// Update Swiper instances on resize
+	useEffect(() => {
+		const handleResize = () => {
+			if (thumbSwiper) {
+				thumbSwiper.update()
+			}
+		}
+
+		window.addEventListener('resize', handleResize)
+
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [thumbSwiper])
+
 	return (
 		<div className='product-slider'>
 			<div className={`product-slider__slider-placeholder ${isActive && 'active'}`}></div>
 
-			<div className={`product-slider__popup-wrapper ${isActive && 'active'}`} ref={ref}>
-				<div className={`product-slider__popup-container ${isActive && 'active'}`}>
-					{isActive && (
-						<ClosePopup
-							closeWindow={() => setIsActive(false)}
-							className={'product-slider__close-popup'}
-						/>
-					)}
+			<div className={`product-slider__popup-wrapper ${isActive && 'active'}`}>
+				{isActive && (
+					<ClosePopup
+						closeWindow={() => setIsActive(false)}
+						className={'product-slider__close-popup'}
+					/>
+				)}
+				<div className={`product-slider__popup-container ${isActive && 'active'}`} ref={ref}>
 					<Swiper
 						className={`product-slider__main-slider ${isActive && 'active'}`}
 						slidesPerView={1}
 						spaceBetween={25}
 						initialSlide={0}
 						slideToClickedSlide={true}
+						centeredSlides={true}
 						onSwiper={setMainSwiper} // Set the main swiper instance
 						onSlideChange={handleSlideChange} // Listen to slide change event
 						modules={[Navigation]}
@@ -86,6 +109,7 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 							</SwiperSlide>
 						))}
 					</Swiper>
+
 					<div className={`product-slider__buttons-wrapper ${isActive && 'active'}`}>
 						<button ref={prevRef} className='swiper-button-prev'></button>
 						<button ref={nextRef} className='swiper-button-next'></button>
@@ -98,6 +122,32 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 						initialSlide={0}
 						centeredSlides={false}
 						onSwiper={setThumbSwiper} // Set the thumbnail swiper instance
+						breakpoints={{
+							1440: {
+								slidesPerView: isActive ? 5 : 3,
+								spaceBetween: 25
+							},
+							1024: {
+								slidesPerView: isActive ? 5 : 3,
+								spaceBetween: 25
+							},
+							762: {
+								slidesPerView: isActive ? 4 : 3,
+								spaceBetween: 25
+							},
+							576: {
+								slidesPerView: isActive ? 3 : 2,
+								spaceBetween: 20
+							},
+							375: {
+								slidesPerView: isActive ? 2 : 2,
+								spaceBetween: 18
+							},
+							275: {
+								slidesPerView: 2,
+								spaceBetween: 15
+							}
+						}}
 					>
 						{images.map((el, key) => (
 							<SwiperSlide

@@ -5,7 +5,8 @@
 	grid-template-columns: 370px 1fr;
 
 	&__slider-container {
-		max-width: 370px;
+		width: 100%;
+		// max-width: 370px;
 	}
 
 	&__title {
@@ -95,8 +96,6 @@
 		}
 	}
 }
-
-
 
 @include media-max(xs) {
 	.product {

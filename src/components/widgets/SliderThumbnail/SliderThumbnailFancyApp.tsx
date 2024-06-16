@@ -24,6 +24,14 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 	const prevRef = useRef<HTMLButtonElement | null>(null)
 	const nextRef = useRef<HTMLButtonElement | null>(null)
 
+	useEffect(() => {
+		if (isActive) {
+			document.body.classList.add('open')
+		} else {
+			document.body.classList.remove('open')
+		}
+	}, [isActive])
+
 	const handleThumbnailClick = (index: number) => {
 		setActiveThumbnailIndex(index) // Update active thumbnail index
 		if (mainSwiper) {
@@ -70,6 +78,7 @@ const SliderThumbnailFancyApp: FC<{ images: IProductImage[] }> = ({ images }) =>
 						spaceBetween={25}
 						initialSlide={0}
 						slideToClickedSlide={true}
+						centeredSlides={true}
 						onSwiper={setMainSwiper} // Set the main swiper instance
 						onSlideChange={handleSlideChange} // Listen to slide change event
 						modules={[Navigation]}

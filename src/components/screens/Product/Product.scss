@@ -6,7 +6,7 @@
 
 	&__slider-container {
 		width: 100%;
-		max-width: 370px;
+		// max-width: 370px;
 	}
 
 	&__title {
@@ -96,8 +96,6 @@
 		}
 	}
 }
-
-
 
 @include media-max(xs) {
 	.product {

@@ -206,7 +206,7 @@ export interface ISuport {
 		phone: number
 		email: string
 		message: string
-		image: any
+		image: string
 	}
 }
 

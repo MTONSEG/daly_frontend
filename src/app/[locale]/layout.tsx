@@ -5,7 +5,8 @@ import Header from '@/components/widgets/layout/Header/Header'
 import Footer from '@/components/widgets/layout/Footer/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { ReduxProvider } from '@/components/providers/ReduxProvider'
-import NextTopLoader from 'nextjs-toploader'
+//import NextTopLoader from 'nextjs-toploader'
+import TopProgressBar from '@/components/screens/Home/TopProgressBar'
 
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -21,7 +22,6 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children, params: { local } }: Readonly<RootLayoutProps>) {
 	const messages = useMessages()
-	
 
 	return (
 		<html lang={local}>
@@ -29,7 +29,16 @@ export default function RootLayout({ children, params: { local } }: Readonly<Roo
 				<NextIntlClientProvider messages={messages}>
 					<ReduxProvider>
 						<div className='wrapper'>
-							<NextTopLoader color="#fff" easing="ease" height={7}/>
+							<TopProgressBar />
+							{/* <NextTopLoader
+								color='linear-gradient(
+			90deg,
+			#00c65e 25.16%,
+			rgba(0, 198, 94, 0) 100%
+		) '
+								easing='ease'
+								height={7}
+							/> */}
 							<Header />
 							<main className='main'>{children}</main>
 							<Footer />

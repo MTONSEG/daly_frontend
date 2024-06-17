@@ -5,7 +5,7 @@ import { upperFirstLetter } from '@/utils/upperFirtLetter';
 import Arrow from '@/components/ui/arrows/Arrow';
 import PriceRange from '@/components/ui/forms/PriceRange/PriceRange';
 import Checkbox from '../../../../ui/checkboxes/Checkbox';
-import ShowBtn from '@/components/ui/buttons/ShowBtn/ShowBtn';
+import ShowBtn from '@/components/ui/Buttons/ShowBtn/ShowBtn';
 import { useDebounce } from '@/hooks/useDebounce';
 
 interface IFilterDropDownProps {

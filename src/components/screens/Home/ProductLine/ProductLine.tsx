@@ -2,7 +2,7 @@
 
 import './ProductLine.scss'
 import '../../../widgets/SliderThumbnail/SliderThumbnail.scss'
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'

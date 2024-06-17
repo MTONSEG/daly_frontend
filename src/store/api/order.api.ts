@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { postData } from '@/services/axios.config'
 import { StrapiOrder } from '@/components/screens/Order/OrderSender/OrderSender'
 
-export const createOrder = createAsyncThunk<StrapiOrder, StrapiOrder, { rejectValue: string }>(
+export const createOrder = createAsyncThunk<unknown, StrapiOrder, { rejectValue: string }>(
 	'filtersData/fetchAllFilters',
 	async (data, thunkAPI) => {
 		console.log("date:"+data.deliveryData);

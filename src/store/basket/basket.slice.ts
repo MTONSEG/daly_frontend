@@ -47,7 +47,7 @@ const basketData = createSlice({
 		}
 	},
 	extraReducers: (builder) => {
-		builder.addCase(createOrder.fulfilled, (state, action) => {
+		builder.addCase(createOrder.fulfilled, (state) => {
 			// Clear basket when order is successfully created
 			state.products = []
 		})

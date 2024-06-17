@@ -3,10 +3,9 @@
 import '../Home.scss'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
-import arrow from '@/assets/images/arrowDown.png'
+import { ArrowDropDown } from '@/components/ui/icons'
 
-const FAQ = () => {
+const Faq = () => {
 	const word = useTranslations('faq')
     const [showMore, setShowMore] = useState<boolean>(false)
 
@@ -19,17 +18,11 @@ const FAQ = () => {
 			</div>
 			<div className='faq__open' onClick={() => setShowMore(!showMore)}>
 				<p className='faq__open-text'>{word('open-text')}</p>
-				<Image
-					src={arrow}
-					width={24}
-					height={24}
-					alt='arrow'
-					className={showMore ? 'faq__open-arrow' : ''}
-					loading='lazy'
-				/>
+				<ArrowDropDown className={showMore ? 'faq__open-arrow' : ''} style={{width:"12px",height:"12px"}}/>
+				
 			</div>
 		</div>
 	)
 }
 
-export default FAQ
+export default Faq

@@ -26,7 +26,7 @@ const CatalogContent: React.FC = () => {
 				sortingMethod: urlSortingMethod
 			})
 		)
-	}, [urlSortingOption])
+	}, [urlSortingOption,dispatch])
 
 	const fetchUrl = filtersQueryBuilder(
 		filters.filtersData,

@@ -60,6 +60,7 @@ export { default as GreyCross } from '@/icons/grey-cross.svg'
 // home
 export { default as LogoBanner } from '@/icons/LogoBanner.svg'
 export { default as Catalog } from '@/icons/catalog.svg'
+export { default as ArrowDropDown } from '@/icons/arrow-dropdown.svg'
 //breadcrumbs
 export { default as HomeBlack } from '@/icons/home-black.svg'
 export { default as HomeGreen } from '@/icons/home-green.svg'

@@ -20,7 +20,7 @@ export const useMatchMedia = () => {
 
 		return () => mediaQueryLists.forEach((mql) => mql.removeEventListener('change', handler))
 	})
-	const setIsMobile = (value: any) => {
+	const setIsMobile = (value: boolean) => {
 		setValues([value, values[1], values[2]])
 	}
 

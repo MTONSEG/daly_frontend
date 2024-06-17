@@ -1,9 +1,8 @@
 'use client'
 import { useTranslations } from 'next-intl'
 
-import Button from '@/components/ui/buttons/Button/Button'
+import Button from '@/components/ui/Buttons/Button/Button'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
-
 import { createOrder } from '@/store/api/order.api'
 import { IOrderData } from '@/store/order/order.slice'
 import { useState } from 'react'
@@ -26,7 +25,7 @@ export interface StrapiOrder {
 		| {
 				product: number[]
 				quantity: number
-		  }[]
+		}[]
 }
 
 const OrderSender = () => {

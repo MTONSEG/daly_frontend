@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Dispatch, ForwardedRef, SetStateAction, forwardRef, useState } from 'react'
+import React, { Dispatch, ForwardedRef, SetStateAction, forwardRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { CloseSign } from '@/components/ui/icons'
 import CommentForm from './CommentForm'
@@ -16,7 +16,6 @@ interface ICommentPopup {
 const CommentPopup = forwardRef(
 	({ isActive, setIsActive, refetch, id }: ICommentPopup, ref: ForwardedRef<HTMLDivElement>) => {
 		const {
-			ref: thanksRef,
 			isActive: thanksPopup,
 			setIsActive: setThanksPopup
 		} = useOutsideClick<HTMLDivElement>(false)
@@ -54,4 +53,5 @@ const CommentPopup = forwardRef(
 	}
 )
 
+CommentPopup.displayName='CommentPopup'
 export default CommentPopup

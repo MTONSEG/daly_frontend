@@ -32,7 +32,7 @@ const Pagination: React.FC<IPaginationProps> = ({ currentPage, pageCount, pagina
 	const renderPageButtons = () => {
 		const buttons: JSX.Element[] = []
 		let start = getStartPage()
-		let end = getEndPage(start)
+		const end = getEndPage(start)
 
 		if (end - start < maxButtons - 1) {
 			start = Math.max(1, end - maxButtons + 1)

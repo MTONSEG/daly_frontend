@@ -4,7 +4,7 @@ interface PopupSupportType {
   popupForm: boolean;
   overlay: boolean;
   successForm: boolean
- };
+ }
 
 const initialState: PopupSupportType = {
   popupForm: false,

@@ -2,10 +2,20 @@ import axios from 'axios'
 import { ISuport } from '@/types/types'
 import { toast } from 'react-toastify'
 
+interface SupportRequest {
+	data: {
+		name: string,
+		phone: string | number,
+		email: string,
+		message: string
+		image?: string
+	}
+}
+
 export const suportApi = (resetForm: () => void) => {
 	const onSubmit = async (data: ISuport) => {
 		const fetchUser = data
-		const requestData: any = {
+		const requestData: SupportRequest = {
 			data: {
 				name: fetchUser.data.name,
 				phone: fetchUser.data.phone,

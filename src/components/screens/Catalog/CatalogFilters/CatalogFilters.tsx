@@ -35,35 +35,40 @@ const CatalogFilters: React.FC = () => {
 		}
 	}, [locale, dispatch, queryBrand, queryCategory])
 
-	const initializeFilters = useCallback((filters: IFilter[]) => {
-		return filters.map((filter) => {
-			const updatedCategories = filter.attributes.categories?.map((category) => {
-				return category.category.data.attributes.name === queryCategory
-					? { ...category, active: true }
-					: category
-			})
+	const initializeFilters = useCallback(
+		(filters: IFilter[]) => {
+			return filters.map((filter) => {
+				const updatedCategories = filter.attributes.categories?.map((category) => {
+					return category.category.data.attributes.name === queryCategory
+						? { ...category, active: true }
+						: category
+				})
 
-			const updatedBrands = filter.attributes.brands?.map((brand) => {
-				return brand.brand.data.attributes.name === queryBrand ? { ...brand, active: true } : brand
-			})
+				const updatedBrands = filter.attributes.brands?.map((brand) => {
+					return brand.brand.data.attributes.name === queryBrand
+						? { ...brand, active: true }
+						: brand
+				})
 
-			return {
-				...filter,
-				attributes: {
-					...filter.attributes,
-					categories: updatedCategories || filter.attributes.categories,
-					brands: updatedBrands || filter.attributes.brands
+				return {
+					...filter,
+					attributes: {
+						...filter.attributes,
+						categories: updatedCategories || filter.attributes.categories,
+						brands: updatedBrands || filter.attributes.brands
+					}
 				}
-			}
-		})
-	}, [queryCategory, queryBrand])
-
-	const handleUpdateFiltersFromUrl = (urlFilters: IFilter[]) => {
-		dispatch(updateStateFilters(urlFilters))
-		setIsActive(false)
-	}
+			})
+		},
+		[queryCategory, queryBrand]
+	)
 
 	useEffect(() => {
+		const handleUpdateFiltersFromUrl = (urlFilters: IFilter[]) => {
+			dispatch(updateStateFilters(urlFilters))
+			setIsActive(false)
+		}
+
 		if (filtersFromRedux.length === 0 && !isInitialized) {
 			dispatch(fetchAllFilters(locale))
 		}
@@ -79,7 +84,16 @@ const CatalogFilters: React.FC = () => {
 		if (filtersFromRedux.length > 0 && !queryCategory && !queryBrand) {
 			setFilters(filtersFromRedux)
 		}
-	}, [filtersFromRedux, isInitialized, queryCategory, queryBrand, locale, dispatch, initializeFilters])
+	}, [
+		filtersFromRedux,
+		isInitialized,
+		queryCategory,
+		queryBrand,
+		locale,
+		dispatch,
+		initializeFilters,
+		setIsActive
+	])
 
 	const updateFilter = useCallback((updatedFilter: IFilter) => {
 		setFilters((prevFilters) => {

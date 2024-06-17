@@ -28,7 +28,7 @@ export interface IOrderData {
 			| {
 					id: number
 					quantity: number
-			  }[]
+			}[]
 	}
 }
 

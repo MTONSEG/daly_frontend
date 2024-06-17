@@ -1,3 +1,3 @@
-import LocaleSelect from '@/components/ui/forms/LocaleSelect/LocaleSelect'
+// import LocaleSelect from '@/components/ui/forms/LocaleSelect/LocaleSelect'
 
-export default { LocaleSelect }
+// export default { LocaleSelect }

@@ -22,49 +22,54 @@ const CatalogFilters: React.FC = () => {
 	const word = useTranslations('catalog')
 
 	const filtersFromRedux = useAppSelector((state) => state.filters.filtersData)
-	// console.log('🚀 ~ filtersFromRedux:', filtersFromRedux)
-	// console.log('🚀 ~ filtersFromRedux:', filtersFromRedux[1]?.attributes.categories[0]?.active)
 	const [filters, setFilters] = useState<IFilter[]>([])
 	const [isInitialized, setIsInitialized] = useState<boolean>(false)
-	// console.log("🚀 ~ isInitialized:", isInitialized)
 
 	const urlParams = useSearchParams()
 	const queryCategory = urlParams.get('category')
 	const queryBrand = urlParams.get('brand')
 
 	useEffect(() => {
-		console.log('changed the locale so fetched the localized filters')
 		if (!queryCategory && !queryBrand) {
 			dispatch(fetchAllFilters(locale))
 		}
-	}, [locale])
+	}, [locale, dispatch, queryBrand, queryCategory])
 
-	const initializeFilters = (filters: IFilter[]) => {
-		return filters.map((filter) => {
-			const updatedCategories = filter.attributes.categories?.map((category) => {
-				return category.category.data.attributes.name === queryCategory
-					? { ...category, active: true }
-					: category
-			})
+	const initializeFilters = useCallback(
+		(filters: IFilter[]) => {
+			return filters.map((filter) => {
+				const updatedCategories = filter.attributes.categories?.map((category) => {
+					return category.category.data.attributes.name === queryCategory
+						? { ...category, active: true }
+						: category
+				})
 
-			const updatedBrands = filter.attributes.brands?.map((brand) => {
-				return brand.brand.data.attributes.name === queryBrand ? { ...brand, active: true } : brand
-			})
+				const updatedBrands = filter.attributes.brands?.map((brand) => {
+					return brand.brand.data.attributes.name === queryBrand
+						? { ...brand, active: true }
+						: brand
+				})
 
-			return {
-				...filter,
-				attributes: {
-					...filter.attributes,
-					categories: updatedCategories || filter.attributes.categories,
-					brands: updatedBrands || filter.attributes.brands
+				return {
+					...filter,
+					attributes: {
+						...filter.attributes,
+						categories: updatedCategories || filter.attributes.categories,
+						brands: updatedBrands || filter.attributes.brands
+					}
 				}
-			}
-		})
-	}
+			})
+		},
+		[queryCategory, queryBrand]
+	)
 
 	useEffect(() => {
+		const handleUpdateFiltersFromUrl = (urlFilters: IFilter[]) => {
+			dispatch(updateStateFilters(urlFilters))
+			setIsActive(false)
+		}
+
 		if (filtersFromRedux.length === 0 && !isInitialized) {
-			// console.log('fetched def filters')
 			dispatch(fetchAllFilters(locale))
 		}
 
@@ -79,7 +84,16 @@ const CatalogFilters: React.FC = () => {
 		if (filtersFromRedux.length > 0 && !queryCategory && !queryBrand) {
 			setFilters(filtersFromRedux)
 		}
-	}, [filtersFromRedux, isInitialized, queryCategory, queryBrand, locale])
+	}, [
+		filtersFromRedux,
+		isInitialized,
+		queryCategory,
+		queryBrand,
+		locale,
+		dispatch,
+		initializeFilters,
+		setIsActive
+	])
 
 	const updateFilter = useCallback((updatedFilter: IFilter) => {
 		setFilters((prevFilters) => {
@@ -106,11 +120,6 @@ const CatalogFilters: React.FC = () => {
 		setIsActive(false)
 	}
 
-	const handleUpdateFiltersFromUrl = (urlFilters: IFilter[]) => {
-		dispatch(updateStateFilters(urlFilters))
-		setIsActive(false)
-	}
-
 	const handleFetchDefaultFilters = () => {
 		dispatch(fetchAllFilters(locale))
 		setIsActive(false)
@@ -132,14 +141,14 @@ const CatalogFilters: React.FC = () => {
 				{filters.length > 0
 					? filters.map((filter, index) => (
 							<FilterDropdown filter={filter} updateFilter={updateFilter} key={index} />
-					  ))
+					))
 					: Array.from({ length: 11 }).map((_, index) => (
 							<FilterDropdown
 								updateFilter={updateFilter}
 								key={index}
-								isManuallyPrice={index === 0} // Set isManuallyPrice to true for the first element
+								isManuallyPrice={index === 0}
 							/>
-					  ))}
+					))}
 				<section className='catalog-filters__buttons'>
 					<TransparentBtn onClick={handleUpdateFilters}>
 						{word('save-filters-button')}

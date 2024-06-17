@@ -56,4 +56,5 @@ const Textarea = forwardRef<HTMLTextAreaElement, ITextareaProps>(
 	}
 )
 
+Textarea.displayName='Textarea'
 export default Textarea

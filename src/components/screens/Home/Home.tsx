@@ -5,7 +5,7 @@ import ProductLine from './ProductLine/ProductLine'
 import Brands from './Brands/Brands'
 import Terms from './Terms/Terms'
 import Subscribe from './Subscribe/Subscribe'
-import FAQ from './FAQ/FAQ'
+import Faq from './FAQ/FAQ'
 import FaqButton from '@/components/ui/Buttons/FaqButton/FaqButton'
 import Container from '@/components/ui/containers/Container/Container'
 import MiddleBanner from './MiddleBanner/MiddleBanner'
@@ -50,7 +50,7 @@ export default function Home() {
 				</Container>
 				<Subscribe />
 				<Container>
-					<FAQ />
+					<Faq />
 					<FaqButton />
 				</Container>
 			</div>

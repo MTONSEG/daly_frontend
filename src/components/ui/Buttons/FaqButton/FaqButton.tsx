@@ -38,7 +38,7 @@ const FaqButton = () => {
 		if (successFormState === true) {
 			dispatch(setPopupSupport(false))
 		}
-	}, [successFormState])
+	}, [successFormState,dispatch])
 
 	useEffect(() => {
 		if (popupFormState && popupRef.current) {

@@ -32,7 +32,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 						allowEmptyFormatting
 						mask='_'
 						className='input__input'
-						onValueChange={(values, sourceInfo) => {
+						onValueChange={(values) => {
 							onTelChange(values.value)
 						}}
 					></PatternFormat>
@@ -55,4 +55,5 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 	}
 )
 
+Input.displayName="Input"
 export default Input

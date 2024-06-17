@@ -48,7 +48,7 @@ const Comparison: React.FC = () => {
 		return () => {
 			window.removeEventListener('resize', updateIsMobile)
 		}
-	}, [productIds, locale])
+	}, [productIds, locale, fetchedProducts])
 
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 568)
 

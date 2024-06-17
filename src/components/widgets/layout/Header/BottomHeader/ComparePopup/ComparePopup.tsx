@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/components/ui/buttons/Button/Button'
+import Button from '@/components/ui/Buttons/Button/Button'
 import { CompareIcon } from '@/components/ui/icons'
 import PopupHeader from '@/components/widgets/popups/PopupHeader/PopupHeader'
 import PopupHeaderContainer from '@/components/widgets/popups/PopupHeader/PopupHeaderContainer/PopupHeaderContainer'

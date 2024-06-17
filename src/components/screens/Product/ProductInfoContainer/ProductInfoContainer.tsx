@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { IProduct, IProductProperties } from '@/types/types'
 import ProductInfoAction from './ProductInfoAction/ProductInfoAction'
 import ProductInfo from './ProductInfo/ProductInfo'
-import Button from '@/components/ui/buttons/Button/Button'
+import Button from '@/components/ui/Buttons/Button/Button'
 import { ArrowRight } from '@/components/ui/icons'
 import { useTranslations } from 'use-intl'
 

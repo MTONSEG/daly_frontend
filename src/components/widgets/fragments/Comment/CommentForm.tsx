@@ -1,4 +1,4 @@
-import Button from '@/components/ui/buttons/Button/Button'
+import Button from '@/components/ui/Buttons/Button/Button'
 import Input from '@/components/ui/forms/Input/Input'
 import Textarea from '@/components/ui/forms/Textarea/Textarea'
 import { StarProduct } from '@/components/ui/icons'

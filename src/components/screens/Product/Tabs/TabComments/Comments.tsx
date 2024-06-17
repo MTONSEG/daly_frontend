@@ -1,6 +1,6 @@
 import './Comments.scss'
 import Comment from '../../../../widgets/fragments/Comment/Comment'
-import Button from '@/components/ui/buttons/Button/Button'
+import Button from '@/components/ui/Buttons/Button/Button'
 import CommentPopup from '../../../../widgets/fragments/Comment/CommentPopup'
 import { useEffect } from 'react'
 import useOutsideClick from '@/hooks/useOutSideClick'

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getProduct } from '../api/productRTK.api'
+import { getProductApi } from '../api/productRTKQ.api'
 import { IProduct } from '@/types/types'
 
 interface IInitSlice {
@@ -20,7 +20,7 @@ const productSlice = createSlice({
 		}
 	},
 	extraReducers: (builder) => {
-		builder.addCase(getProduct.fulfilled, (state, action) => {
+		builder.addMatcher(getProductApi.endpoints.getProduct.matchFulfilled, (state, action) => {
 			state.product = action.payload.data
 		})
 	}

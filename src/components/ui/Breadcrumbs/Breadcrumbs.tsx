@@ -2,7 +2,7 @@
 import "./Breadcrumbs.scss"
 import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
-import LinkBtn from '../Buttons/LinkBtn/LinkBtn';
+import LinkBtn from '../buttons/LinkBtn/LinkBtn';
 import { HomeBlack } from '../icons';
 import { usePathname } from 'next/navigation';
 import ruTranslations from '../../../dictionaries/ru.json';

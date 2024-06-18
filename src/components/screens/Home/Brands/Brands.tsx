@@ -2,7 +2,7 @@
 
 import './Brands.scss'
 import { useGetLogosQuery } from '@/store/api/productRTKQ.api'
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'

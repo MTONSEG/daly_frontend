@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import SupportNavDropdown from './SupportNavDropdown/SupportNavDropdown'
 import './SupportNav.scss'
-import Button from '@/components/ui/Buttons/Button/Button'
+import Button from '@/components/ui/buttons/Button/Button'
 import { useTranslations } from 'next-intl'
 
 interface Theme {

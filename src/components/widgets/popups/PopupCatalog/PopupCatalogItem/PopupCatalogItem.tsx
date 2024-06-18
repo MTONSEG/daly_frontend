@@ -1,6 +1,6 @@
 'use client'
 
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { IProduct } from '@/types/types'
 import { useMemo, type HTMLAttributes, type ReactNode } from 'react'
 import { CATALOG_PATH } from '@/routes/routes'

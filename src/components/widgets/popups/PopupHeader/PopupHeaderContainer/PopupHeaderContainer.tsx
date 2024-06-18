@@ -1,7 +1,7 @@
 'use client'
 
 import '../PopupHeader.scss'
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { TriangleIcon } from '@/components/ui/icons'
 import { setActive } from '@/utils/setActive'
 import { useTranslations } from 'next-intl'

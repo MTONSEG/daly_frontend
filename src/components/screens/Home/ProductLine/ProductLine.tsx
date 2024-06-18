@@ -1,8 +1,9 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 'use client'
 
 import './ProductLine.scss'
 import '../../../widgets/SliderThumbnail/SliderThumbnail.scss'
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import ProductCard from '@/components/widgets/cards/ProductCard/ProductCard'
 import { useGetProductsByTagQuery } from '@/store/api/productRTKQ.api'
 import { useTranslations } from 'next-intl'
@@ -15,7 +16,6 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import Loader from '@/components/ui/loaders/Loader'
-
 
 interface IProductLine {
 	title: string
@@ -36,7 +36,7 @@ const ProductLine: FC<IProductLine> = ({
 	pageNum,
 	brands,
 	sortingOption,
-	isDiscount,
+	isDiscount
 }) => {
 	const { locale } = useParams()
 	const { data } = useGetProductsByTagQuery({
@@ -62,7 +62,7 @@ const ProductLine: FC<IProductLine> = ({
 	const handleLoader = () => {
 		setIsLoading(true)
 	}
-  
+
 	return (
 		<div className='product-line'>
 			<div className='product-line__loader'>{loading && <Loader />}</div>
@@ -116,15 +116,20 @@ const ProductLine: FC<IProductLine> = ({
 								? data.data.map((el, key) => (
 										<SwiperSlide key={key}>
 											<div className='product-line__slide-content'>
-												<ProductCard product={el} variant='card' locale={'ru'} handleLoader={handleLoader}/>
+												<ProductCard
+													product={el}
+													variant='card'
+													locale={'ru'}
+													handleLoader={handleLoader}
+												/>
 											</div>
 										</SwiperSlide>
-								))
+								  ))
 								: Array.from({ length: 12 }).map((_, index) => (
 										<SwiperSlide key={index}>
-											<ProductCard variant={'card'} locale={locale} handleLoader={handleLoader}/>
+											<ProductCard variant={'card'} locale={locale} handleLoader={handleLoader} />
 										</SwiperSlide>
-								))
+								  ))
 							: data?.data.map((el, index) => {
 									if (el.attributes.images) {
 										return (
@@ -136,7 +141,7 @@ const ProductLine: FC<IProductLine> = ({
 										)
 									}
 									return null
-							})}
+							  })}
 					</Swiper>
 				</div>
 			</div>

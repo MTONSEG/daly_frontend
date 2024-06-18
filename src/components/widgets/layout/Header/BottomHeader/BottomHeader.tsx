@@ -1,6 +1,6 @@
 'use client'
 
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import Container from '@/components/ui/containers/Container/Container'
 import { DeliveryIcon } from '@/components/ui/icons'
 import CartPopup from '@/components/widgets/layout/Header/BottomHeader/CartPopup/CartPopup'

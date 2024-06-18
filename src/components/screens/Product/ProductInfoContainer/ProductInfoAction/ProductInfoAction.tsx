@@ -1,5 +1,5 @@
 import './ProductInfoAction.scss'
-import Button from '@/components/ui/Buttons/Button/Button'
+import Button from '@/components/ui/buttons/Button/Button'
 import { CompareIcon } from '@/components/ui/icons'
 import { CompareActiveIcon } from '@/components/ui/icons'
 import { useTranslations } from 'next-intl'
@@ -19,7 +19,7 @@ interface IProductInfoAction {
 const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 	const dispatch = useAppDispatch()
 	const t = useTranslations('product')
-	
+
 	const isFavorite = useAppSelector((state) => state.favourites.products.includes(id))
 	const isCompare = useAppSelector((state) => state.comparison.products.includes(id))
 	console.log(isFavorite)
@@ -37,7 +37,7 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 			dispatch(addComparisonProduct(id))
 		}
 	}
-	
+
 	const onBuyHandler = () => {}
 
 	return (

@@ -1,7 +1,7 @@
 'use client'
 
 import './Favourite-popup.scss'
-import Button from '@/components/ui/Buttons/Button/Button'
+import Button from '@/components/ui/buttons/Button/Button'
 import { FavoriteIcon } from '@/components/ui/icons'
 import PopupHeader from '@/components/widgets/popups/PopupHeader/PopupHeader'
 import PopupHeaderContainer from '@/components/widgets/popups/PopupHeader/PopupHeaderContainer/PopupHeaderContainer'
@@ -102,7 +102,7 @@ export default function FavoritePopup() {
 				labelLink='В избранное'
 				isEmpty={products.length === 0}
 				textEmpty={t('empty-favorite')}
-				className={`!isActive && ${"hidden"}`}
+				className={`!isActive && ${'hidden'}`}
 			>
 				{isLoading ? (
 					<Loader />

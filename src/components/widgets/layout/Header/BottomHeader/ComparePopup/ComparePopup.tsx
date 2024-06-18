@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/components/ui/Buttons/Button/Button'
+import Button from '@/components/ui/buttons/Button/Button'
 import { CompareIcon } from '@/components/ui/icons'
 import PopupHeader from '@/components/widgets/popups/PopupHeader/PopupHeader'
 import PopupHeaderContainer from '@/components/widgets/popups/PopupHeader/PopupHeaderContainer/PopupHeaderContainer'
@@ -28,10 +28,7 @@ export default function ComparePopup() {
 	}
 
 	//Call the hook to fetch products by IDs
-	const {
-		data: fetchedProducts,
-		isLoading
-	} = useFetchProductsByIdsQuery(
+	const { data: fetchedProducts, isLoading } = useFetchProductsByIdsQuery(
 		{
 			ids: compareIds,
 			locale
@@ -61,7 +58,7 @@ export default function ComparePopup() {
 			<PopupHeaderContainer
 				ref={ref}
 				isActive={isActive}
-				className={`!isActive && ${"hidden"}`}
+				className={`!isActive && ${'hidden'}`}
 				hrefLink={`/${COMPARE_PATH}`}
 				labelLink='В сравнение'
 				textEmpty={t('empty-compare')}

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { IProduct, IProductProperties } from '@/types/types'
 import ProductInfoAction from './ProductInfoAction/ProductInfoAction'
 import ProductInfo from './ProductInfo/ProductInfo'
-import Button from '@/components/ui/Buttons/Button/Button'
+import Button from '@/components/ui/buttons/Button/Button'
 import { ArrowRight } from '@/components/ui/icons'
 import { useTranslations } from 'use-intl'
 
@@ -27,7 +27,7 @@ const ProductInfoContainer: FC<IProductInfoContainer> = ({ properties, data }) =
 			</div>
 
 			<div className='info__right'>
-				<ProductInfoAction price={data.attributes.price} id={data.id}/>
+				<ProductInfoAction price={data.attributes.price} id={data.id} />
 				<Button className='info__deliver-btn' variant='product'>
 					{t('buy-button')} <ArrowRight />
 				</Button>

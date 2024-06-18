@@ -101,7 +101,7 @@ const PopupCatalog = ({ hideMenu }: PropsType) => {
 				className={`popup-catalog__btn ${setActive(formatPath(path) === CATALOG_PATH)}`}
 				onMouseEnter={handleOpen}
 			>
-				<BurgerIcon style={{ transform: "translateY(4px)" }} />{' '}
+				<BurgerIcon style={{ transform: 'translateY(4px)' }} />{' '}
 				<span onClick={handleTextColor} className='popup-catalog__text'>
 					{t('catalog')}
 				</span>

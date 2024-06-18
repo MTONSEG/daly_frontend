@@ -28,10 +28,7 @@ export default function ComparePopup() {
 	}
 
 	//Call the hook to fetch products by IDs
-	const {
-		data: fetchedProducts,
-		isLoading
-	} = useFetchProductsByIdsQuery(
+	const { data: fetchedProducts, isLoading } = useFetchProductsByIdsQuery(
 		{
 			ids: compareIds,
 			locale
@@ -61,7 +58,7 @@ export default function ComparePopup() {
 			<PopupHeaderContainer
 				ref={ref}
 				isActive={isActive}
-				className={`!isActive && ${"hidden"}`}
+				className={`!isActive && ${'hidden'}`}
 				hrefLink={`/${COMPARE_PATH}`}
 				labelLink='В сравнение'
 				textEmpty={t('empty-compare')}

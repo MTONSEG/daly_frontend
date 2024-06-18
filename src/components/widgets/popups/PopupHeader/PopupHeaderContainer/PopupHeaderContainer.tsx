@@ -5,8 +5,7 @@ import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { TriangleIcon } from '@/components/ui/icons'
 import { setActive } from '@/utils/setActive'
 import { useTranslations } from 'next-intl'
-import { ReactNode, forwardRef, ForwardedRef} from 'react'
-
+import { ReactNode, forwardRef, ForwardedRef } from 'react'
 
 interface PropsType {
 	children: ReactNode
@@ -23,7 +22,7 @@ const PopupHeaderContainer = forwardRef(
 	({ variant = 'default', ...props }: PropsType, ref: ForwardedRef<HTMLDivElement>) => {
 		const t = useTranslations('shared')
 		// const [popupState, setPopupState] = useState(false)
-			
+
 		return (
 			<div
 				ref={ref}

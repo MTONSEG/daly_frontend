@@ -12,13 +12,13 @@ interface PropsTypes {
 
 const MenuNavigation = ({ toggleMenu }: PropsTypes) => {
 	const t = useTranslations('home')
-	
+
 	return (
 		<>
 			<nav className='mobile-menu__navigation'>
 				<ul className='mobile-menu__navigation-list'>
 					<li className='mobile-menu__navigation-list-item'>
-						<PopupCatalog hideMenu={toggleMenu}/>
+						<PopupCatalog hideMenu={toggleMenu} />
 					</li>
 					<li className='mobile-menu__navigation-list-item' onClick={toggleMenu}>
 						<LinkBtn

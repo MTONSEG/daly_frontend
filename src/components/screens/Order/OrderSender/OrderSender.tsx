@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 'use client'
 import { useTranslations } from 'next-intl'
 
@@ -25,7 +26,7 @@ export interface StrapiOrder {
 		| {
 				product: number[]
 				quantity: number
-		}[]
+		  }[]
 }
 
 const OrderSender = () => {

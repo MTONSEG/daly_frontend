@@ -16,7 +16,7 @@ interface SupportNavProps {
 
 const SupportNav: FC<SupportNavProps> = ({ themes, onSelectValue }) => {
 	const [selectedValue, setSelectedValue] = useState<string>(themes[0].values[0])
-	const w = useTranslations("support-nav");
+	const w = useTranslations('support-nav')
 
 	const handleValueSelection = (value: string) => {
 		setSelectedValue(value)
@@ -37,9 +37,9 @@ const SupportNav: FC<SupportNavProps> = ({ themes, onSelectValue }) => {
 				))}
 			</div>
 			<div className='support-nav__assistant'>
-				<div className='support-nav__assistant-title'>{ w("assistant-title") }</div>
-				<div className='support-nav__assistant-text'>{ w("assistant-text") }</div>
-				<Button className='support-nav__button'>{ w("assistant-button") }</Button>
+				<div className='support-nav__assistant-title'>{w('assistant-title')}</div>
+				<div className='support-nav__assistant-text'>{w('assistant-text')}</div>
+				<Button className='support-nav__button'>{w('assistant-button')}</Button>
 			</div>
 		</div>
 	)

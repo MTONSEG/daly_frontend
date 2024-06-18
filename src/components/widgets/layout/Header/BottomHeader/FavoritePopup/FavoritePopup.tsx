@@ -102,7 +102,7 @@ export default function FavoritePopup() {
 				labelLink='В избранное'
 				isEmpty={products.length === 0}
 				textEmpty={t('empty-favorite')}
-				className={`!isActive && ${"hidden"}`}
+				className={`!isActive && ${'hidden'}`}
 			>
 				{isLoading ? (
 					<Loader />

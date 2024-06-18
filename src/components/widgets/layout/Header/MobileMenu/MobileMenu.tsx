@@ -40,7 +40,7 @@ const MobileMenu = ({ stateMenu, toggleMenu }: PropsTypes) => {
 					</span>
 				</LinkBtn>
 			</div>
-			<MenuNavigation toggleMenu={toggleMenu}/>
+			<MenuNavigation toggleMenu={toggleMenu} />
 		</div>
 	)
 }

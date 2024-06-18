@@ -7,7 +7,7 @@ import OrderTitle from './OrderTitle/OrderTitle'
 import OrderDelivery from './OrderDelivery/OrderDelivery'
 import OrderPayment from './OrderPayment/OrderPayment'
 import OrderPersonalInfo from './OrderPersonalInfo/OrderPersonalInfo'
-import ScrollToBtn from '@/components/ui/buttons/ScrollToBtn/ScrollToBtn'
+import ScrollToBtn from '@/components/ui/Buttons/ScrollToBtn/ScrollToBtn'
 import OrderSender from './OrderSender/OrderSender'
 
 interface IOrder {}

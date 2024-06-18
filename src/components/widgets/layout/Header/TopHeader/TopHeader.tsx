@@ -1,5 +1,5 @@
 'use client'
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import Container from '@/components/ui/containers/Container/Container'
 import LocaleSelect from '@/components/ui/forms/LocaleSelect/LocaleSelect'
 import { UserIcon } from '@/components/ui/icons'

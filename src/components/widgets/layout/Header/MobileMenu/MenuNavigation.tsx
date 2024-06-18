@@ -1,5 +1,5 @@
 import './MobileMenu.scss'
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import { DeliveryIconMobile } from '@/components/ui/icons'
 import PopupCatalog from '@/components/widgets/popups/PopupCatalog/PopupCatalog'
 import { DELIVERY_PATH, SUPPORT_PATH } from '@/routes/routes'

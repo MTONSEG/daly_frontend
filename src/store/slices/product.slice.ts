@@ -4,11 +4,11 @@ import axios from 'axios'
 import { IProduct } from '@/types/types'
 
 interface IInitialProduct {
-	data: IProduct
+	data: IProduct | null
 }
 
 const initialState: IInitialProduct = {
-	data: {}
+	data: null
 }
 
 export const getProduct = createAsyncThunk<IProduct, number, { rejectValue: string }>(

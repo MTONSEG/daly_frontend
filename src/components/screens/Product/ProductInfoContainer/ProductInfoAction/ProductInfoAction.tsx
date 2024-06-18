@@ -1,5 +1,5 @@
 import './ProductInfoAction.scss'
-import Button from '@/components/ui/Buttons/Button/Button'
+import Button from '@/components/ui/buttons/Button/Button'
 import { CompareIcon } from '@/components/ui/icons'
 import { CompareActiveIcon } from '@/components/ui/icons'
 import { useTranslations } from 'next-intl'

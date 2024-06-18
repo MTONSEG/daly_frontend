@@ -1,7 +1,7 @@
 import './MobileMenu.scss'
 import { useEffect } from 'react'
 import LocaleSelect from '@/components/ui/forms/LocaleSelect/LocaleSelect'
-import LinkBtn from '@/components/ui/Buttons/LinkBtn/LinkBtn'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import Logo from '@/components/ui/icons/Logo/Logo'
 import { UserIcon } from '@/components/ui/icons'
 import { useTranslations } from 'next-intl'

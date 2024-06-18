@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import SuportForm from './SuportForm'
 import { suportApi } from '@/store/api/support.api'
 import PopupSuportBottom from './PopupSuportBottom'
-import ClosePopup from '@/components/ui/Buttons/ClosePopup/ClosePopup'
+import ClosePopup from '@/components/ui/buttons/ClosePopup/ClosePopup'
 
 
 interface PopupTypes {

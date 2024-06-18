@@ -12,7 +12,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/controller'
 import SwiperCore from 'swiper'
 import useOutsideClick from '@/hooks/useOutSideClick'
-import ClosePopup from '@/components/ui/Buttons/ClosePopup/ClosePopup'
+import ClosePopup from '@/components/ui/buttons/ClosePopup/ClosePopup'
 
 // Initialize Swiper modules
 SwiperCore.use([Navigation])

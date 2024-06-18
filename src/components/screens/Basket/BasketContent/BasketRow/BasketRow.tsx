@@ -7,7 +7,7 @@ import Counter from '@/components/widgets/fragments/Counter/Counter'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { addProduct, removeProduct, deleteProduct } from '@/store/basket/basket.slice'
 import { useTranslations } from 'use-intl'
-import TransparentBtn from '@/components/ui/Buttons/TransparentBtn/TransparentBtn'
+import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
 
 interface IBasketRowProps {
 	product: IProduct

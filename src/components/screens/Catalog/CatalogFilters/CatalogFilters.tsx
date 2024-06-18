@@ -9,7 +9,7 @@ import FilterDropdown from './FilterDropdown/FilterDropdown'
 import { useTranslations } from 'next-intl'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { fetchAllFilters } from '@/store/filters/filters.api'
-import TransparentBtn from '@/components/ui/Buttons/TransparentBtn/TransparentBtn'
+import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
 import { useSearchParams } from 'next/navigation'
 
 // probable dynamic import

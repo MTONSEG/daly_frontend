@@ -8,7 +8,7 @@ const auth = {
 }
 
 export const instanceAxios = axios.create({
-	baseURL: 'http://localhost:1337/api'
+	baseURL: 'https://daly-backend-1.onrender.com/api'
 })
 
 export const getData = async <T>(endpoint: string): Promise<T> => {

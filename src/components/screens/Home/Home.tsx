@@ -1,15 +1,6 @@
 import { useTranslations } from 'next-intl'
 import './Home.scss'
-//import MainBanner from './MainBanner/MainBanner'
-//import ProductLine from './ProductLine/ProductLine'
-//import Brands from './Brands/Brands'
-//import Terms from './Terms/Terms'
-//import Subscribe from './Subscribe/Subscribe'
-//import Faq from './FAQ/FAQ'
-//import FaqButton from '@/components/ui/buttons/FaqButton/FaqButton'
 import Container from '@/components/ui/containers/Container/Container'
-//import MiddleBanner from './MiddleBanner/MiddleBanner'
-//import BottomBanner from './BottomBanner/BottomBanner'
 import dynamic from 'next/dynamic'
 
 export default function Home() {

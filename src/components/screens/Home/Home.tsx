@@ -7,7 +7,7 @@ import './Home.scss'
 //import Subscribe from './Subscribe/Subscribe'
 //import Faq from './FAQ/FAQ'
 //import FaqButton from '@/components/ui/buttons/FaqButton/FaqButton'
-//import Container from '@/components/ui/containers/Container/Container'
+import Container from '@/components/ui/containers/Container/Container'
 //import MiddleBanner from './MiddleBanner/MiddleBanner'
 //import BottomBanner from './BottomBanner/BottomBanner'
 import dynamic from 'next/dynamic'
@@ -23,7 +23,7 @@ export default function Home() {
 	const Subscribe = dynamic(() => import('./Subscribe/Subscribe'))
 	const Faq = dynamic(() => import('./FAQ/FAQ'))
 	const FaqButton = dynamic(() => import('@/components/ui/buttons/FaqButton/FaqButton'))
-	const Container = dynamic(() => import('@/components/ui/containers/Container/Container'))
+	
 
 	return (
 		<div style={{ position: 'relative' }}>

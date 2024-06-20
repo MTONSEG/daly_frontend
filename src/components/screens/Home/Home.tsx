@@ -1,18 +1,29 @@
 import { useTranslations } from 'next-intl'
 import './Home.scss'
-import MainBanner from './MainBanner/MainBanner'
-import ProductLine from './ProductLine/ProductLine'
-import Brands from './Brands/Brands'
-import Terms from './Terms/Terms'
-import Subscribe from './Subscribe/Subscribe'
-import Faq from './FAQ/FAQ'
-import FaqButton from '@/components/ui/buttons/FaqButton/FaqButton'
-import Container from '@/components/ui/containers/Container/Container'
-import MiddleBanner from './MiddleBanner/MiddleBanner'
-import BottomBanner from './BottomBanner/BottomBanner'
+//import MainBanner from './MainBanner/MainBanner'
+//import ProductLine from './ProductLine/ProductLine'
+//import Brands from './Brands/Brands'
+//import Terms from './Terms/Terms'
+//import Subscribe from './Subscribe/Subscribe'
+//import Faq from './FAQ/FAQ'
+//import FaqButton from '@/components/ui/buttons/FaqButton/FaqButton'
+//import Container from '@/components/ui/containers/Container/Container'
+//import MiddleBanner from './MiddleBanner/MiddleBanner'
+//import BottomBanner from './BottomBanner/BottomBanner'
+import dynamic from 'next/dynamic'
 
 export default function Home() {
 	const t = useTranslations('home')
+	const MainBanner = dynamic(() => import('./MainBanner/MainBanner'))
+	const ProductLine = dynamic(() => import('./ProductLine/ProductLine'))
+	const MiddleBanner = dynamic(() => import('./MiddleBanner/MiddleBanner'))
+	const BottomBanner = dynamic(() => import('./BottomBanner/BottomBanner'))
+	const Brands = dynamic(() => import('./Brands/Brands'))
+	const Terms = dynamic(() => import('./Terms/Terms'))
+	const Subscribe = dynamic(() => import('./Subscribe/Subscribe'))
+	const Faq = dynamic(() => import('./FAQ/FAQ'))
+	const FaqButton = dynamic(() => import('@/components/ui/buttons/FaqButton/FaqButton'))
+	const Container = dynamic(() => import('@/components/ui/containers/Container/Container'))
 
 	return (
 		<div style={{ position: 'relative' }}>

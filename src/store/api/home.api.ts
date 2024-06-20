@@ -45,7 +45,7 @@ type bannerType = 'hero_banners' | 'middle_banners' | 'bottom_bunners'
 export const homeApi = createApi({
 	reducerPath: 'homeApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:1337/api/',
+		baseUrl: 'https://daly-backend-1.onrender.com/api/',
 		headers: getAuthToken()
 	}),
 	endpoints: (builder) => ({

@@ -28,14 +28,14 @@ export const suportApi = (resetForm: () => void) => {
 		if (fetchUser.data.image) {
 			const screenImage = new FormData()
 			screenImage.append('files', fetchUser.data.image)
-			const responseImage = await axios.post('http://localhost:1337/api/upload', screenImage)
+			const responseImage = await axios.post('https://daly-backend-1.onrender.com/api/upload', screenImage)
 			const imageResponse = responseImage.data[0].id
 			requestData.data.image = imageResponse
 		}
 
 		try {
 			const response = await axios.post<ISuport>(
-				'http://localhost:1337/api/support-requests',
+				'https://daly-backend-1.onrender.com/api/support-requests',
 				requestData
 			)
 			if (response.status === 200) {

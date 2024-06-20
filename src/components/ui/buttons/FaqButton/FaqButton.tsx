@@ -51,8 +51,8 @@ const FaqButton = () => {
 			<div className='support-button'>
 				<Image
 					src={Faq}
-					width={50}
-					height={50}
+					fill
+					loading='lazy'
 					alt='faq'
 					className={'support-button__image'}
 					onClick={showPopup}

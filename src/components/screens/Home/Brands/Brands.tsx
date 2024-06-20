@@ -39,6 +39,7 @@ const Brands = () => {
 											src={item.attributes.url ? item.attributes.url : ''}
 											width={175}
 											height={80}
+											//layout='fill'
 											loading='lazy'
 										/>
 									</div>

@@ -9,7 +9,7 @@ export const subscribeApi = (resetForm: () => void) => {
 		if (fetchUser.data.subscriber !== "") {
 			try {
 				const response = await axios.post<ISubscribe>(
-					'http://localhost:1337/api/subscribes',
+					'https://daly-backend-8qon.onrender.com/api/subscribes',
 					fetchUser
 				)
 				if (response.status === 200) {

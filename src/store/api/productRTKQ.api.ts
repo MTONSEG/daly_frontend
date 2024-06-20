@@ -5,25 +5,25 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const getProductApi = createApi({
 	reducerPath: 'productReducerApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:1337/api/',
+		baseUrl: 'https://daly-backend-8qon.onrender.com/api/',
 		headers: getAuthToken()
 	}),
 	endpoints: (builder) => ({
 		getProduct: builder.query<IResponse<IProduct>, { locale: string; id: number }>({
 			query: ({ locale, id }) => {
-				return `products/${id}?locale=${locale}&populate=images,properties,product_comments`
+				return `/products/${id}?locale=${locale}&populate=images,properties,product_comments`
 			}
 		}),
 		getProducts: builder.query<IResponse<IProduct[]>, { locale: string; page: number }>({
 			query: ({ locale, page }) => {
-				return `http://localhost:1337/api/products?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=7&populate=images`
+				return `/products?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=7&populate=images`
 			}
 		}),
 		getLogos: builder.query<ILogos, object>({
-			query: () => 'home?populate=brandsLogo.data.attributes.url*'
+			query: () => '/home?populate=brandsLogo.data.attributes.url*'
 		}),
 		getTerms: builder.query<ITerms, { locale: string | string[] }>({
-			query: ({ locale }) => `home?locale=${locale}&populate=terms.image.data.attributes.url*`
+			query: ({ locale }) => `/home?locale=${locale}&populate=terms.image.data.attributes.url*`
 		}),
 
 		getProductsByTag: builder.query<
@@ -31,7 +31,7 @@ export const getProductApi = createApi({
 			{ tag: string; tagValue: boolean; pageNum?: number; sort?: string; locale: string| string[] }
 		>({
 			query: ({ tag, tagValue, pageNum = 1, sort , locale}) => {
-				return `products?locale=${locale}&filters[${tag}][$eq]=${tagValue}&pagination[page]=${pageNum}&pagination[pageSize]=7&populate=images&${sort}`
+				return `/products?locale=${locale}&filters[${tag}][$eq]=${tagValue}&pagination[page]=${pageNum}&pagination[pageSize]=7&populate=images&${sort}`
 			}
 		})
 	})

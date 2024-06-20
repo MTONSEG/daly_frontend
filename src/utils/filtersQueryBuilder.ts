@@ -12,7 +12,7 @@ export const filtersQueryBuilder = (
 	start?: number,
 	isDiscounted?: string | null
 ): string => {
-	const baseurl = `http://localhost:1337/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
+	const baseurl = `https://daly-backend-1.onrender.com/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
 
 	const filterHandlers: { [key: string]: FilterHandler } = {
 		price: (filter) =>

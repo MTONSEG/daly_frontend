@@ -7,7 +7,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const catalogHeaderApi = createApi({
 	reducerPath: 'catalogHeaderApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:1337/api/',
+		baseUrl: 'https://daly-backend-1.onrender.com/api/',
 		headers: getAuthToken()
 	}),
 	endpoints: (builder) => ({
@@ -27,7 +27,7 @@ export const searchProduct = createAsyncThunk<
 >('api/searchProduct', async ({ title, locale }) => {
 	try {
 		const response = await getData<IResponse<IProduct[]>>(
-			`/products?filters[title][$containsi]=${title}&locale=${locale}`
+			`products?filters[title][$containsi]=${title}&locale=${locale}`
 		)
 
 		return response.data

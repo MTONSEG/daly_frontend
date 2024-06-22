@@ -15,7 +15,7 @@ export const getProduct = createAsyncThunk<IProduct, number, { rejectValue: stri
 	'getProduct',
 	async (productId: number) => {
 		const data = (
-			await axios.get(`https://daly-backend-1.onrender.com/api/products/${productId}`, {
+			await axios.get(`https://dalybackend-production.up.railway.app/api/products/${productId}`, {
 				headers: getAuthToken()
 			})
 		).data

@@ -4,7 +4,7 @@ import { IProduct, IResponse } from '@/types/types'
 // Define the API service
 export const productsApi = createApi({
     reducerPath: 'productsApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://daly-backend-1.onrender.com/api/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://daly-backend-9vv0.onrender.com/api/' }),
     endpoints: (builder) => ({
         fetchProductsByIds: builder.query<IProduct[], { ids: number[]; locale: string | string[] }>({
             query: ({ ids, locale }) => {

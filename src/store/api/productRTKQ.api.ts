@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const getProductApi = createApi({
 	reducerPath: 'productReducerApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://daly-backend-1.onrender.com/api/',
+		baseUrl: 'https://dalybackend-production.up.railway.app/api/',
 		headers: getAuthToken()
 	}),
 	endpoints: (builder) => ({

@@ -18,7 +18,7 @@ interface ICommentResponse {
 export const commentApi = createApi({
 	reducerPath: 'commentReducerApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://daly-backend-1.onrender.com/api/',
+		baseUrl: 'https://dalybackend-production.up.railway.app/api/',
 		headers: getAuthToken()
 	}),
 	endpoints: (builder) => ({

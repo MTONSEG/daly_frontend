@@ -7,15 +7,15 @@ import Fancybox from '@/components/widgets/SliderThumbnail/SliderComp/Fancybox'
 import { useGetBannersQuery } from '@/store/api/home.api'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import Loading from '@/app/[locale]/loading'
+//import Loading from '@/app/[locale]/loading'
 
 const MainBanner = () => {
 	const { data } = useGetBannersQuery({ bannerType: 'hero_banners' })
 	const t = useTranslations('home')
-
+console.log(data)
 	return (
 		<>
-			{data ? (
+		
 				<div className='main-banner'>
 					<Fancybox
 						options={{
@@ -57,11 +57,7 @@ const MainBanner = () => {
 						</Carousel>
 					</Fancybox>
 				</div>
-			) : (
-				<div><h2 style={{position:'absolute', top: "100px", left: "50%", transform: "translate(-50%, -50%)", zIndex: "10000", fontSize: "48px"}}>Loading...</h2><Loading /></div>
-				
-			)}
-		</>
+				</>
 	)
 }
 

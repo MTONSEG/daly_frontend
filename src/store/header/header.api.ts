@@ -7,7 +7,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const catalogHeaderApi = createApi({
 	reducerPath: 'catalogHeaderApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://dalybackend-production.up.railway.app/api/',
+		baseUrl: 'http://localhost:1337/api/',
 		headers: getAuthToken()
 	}),
 	endpoints: (builder) => ({

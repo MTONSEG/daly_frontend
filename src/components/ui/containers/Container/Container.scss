@@ -30,6 +30,12 @@
 	}
 }
 
+@include media-max(sm) {
+	.container_product {
+		padding: 30px 15px;
+	}
+}
+
 @include media-max(xs) {
 	.container_product {
 		padding: 30px 15px;

@@ -12,7 +12,7 @@ export const filtersQueryBuilder = (
 	start?: number,
 	isDiscounted?: string | null
 ): string => {
-	const baseurl = `https://dalybackend-production.up.railway.app/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
+	const baseurl = `http://localhost:1337/api/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
 
 	const filterHandlers: { [key: string]: FilterHandler } = {
 		price: (filter) =>

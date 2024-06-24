@@ -12,7 +12,7 @@ import Image from 'next/image'
 const MainBanner = () => {
 	const { data } = useGetBannersQuery({ bannerType: 'hero_banners' })
 	const t = useTranslations('home')
-console.log(data)
+
 	return (
 		<>
 		

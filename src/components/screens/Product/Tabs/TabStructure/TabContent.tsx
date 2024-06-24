@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import '../Tabs.scss'
 import { cardVariant } from './variants'
 import { ITab } from '../Tabs'
 import { motion } from 'framer-motion'
@@ -9,6 +10,7 @@ interface ITabContent {
 }
 
 const TabContent: FC<ITabContent> = ({ tabs, activeTabIndex }) => {
+	
 	return (
 		<div className='tab__content-wr'>
 			{tabs.map((tab, index) => (

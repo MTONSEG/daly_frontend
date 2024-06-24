@@ -32,6 +32,7 @@ const BasketContent: React.FC = () => {
 			skip: productIds.length === 0
 		}
 	)
+	console.log(fetchedProducts)
 
 	useEffect(() => {
 		if (fetchedProducts && fetchedProducts.length > 0) {

@@ -1,4 +1,5 @@
 import './ProductInfoAction.scss'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 import Button from '@/components/ui/buttons/Button/Button'
 import { CompareIcon } from '@/components/ui/icons'
 import { CompareActiveIcon } from '@/components/ui/icons'
@@ -64,9 +65,11 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 					</p>
 				</Button>
 			</div>
-			<Button className='action-box__buy-btn' variant='product' onClick={onBuyHandler}>
-				{t('buy')}
-			</Button>
+			<LinkBtn href='/order'>
+				<Button className='action-box__buy-btn' variant='product' onClick={onBuyHandler}>
+					{t('buy')}
+				</Button>
+			</LinkBtn>
 		</div>
 	)
 }

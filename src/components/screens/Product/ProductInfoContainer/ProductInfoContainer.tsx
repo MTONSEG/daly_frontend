@@ -5,6 +5,7 @@ import ProductInfo from './ProductInfo/ProductInfo'
 import Button from '@/components/ui/buttons/Button/Button'
 import { ArrowRight } from '@/components/ui/icons'
 import { useTranslations } from 'use-intl'
+import LinkBtn from '@/components/ui/buttons/LinkBtn/LinkBtn'
 
 interface IProductInfoContainer {
 	properties: IProductProperties
@@ -28,9 +29,11 @@ const ProductInfoContainer: FC<IProductInfoContainer> = ({ properties, data }) =
 
 			<div className='info__right'>
 				<ProductInfoAction price={data.attributes.price} id={data.id} />
-				<Button className='info__deliver-btn' variant='product'>
-					{t('buy-button')} <ArrowRight />
-				</Button>
+				<LinkBtn href='/delivery'>
+					<Button className='info__deliver-btn' variant='product'>
+						{t('buy-button')} <ArrowRight />
+					</Button>
+				</LinkBtn>
 			</div>
 		</div>
 	)

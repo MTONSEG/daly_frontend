@@ -1,3 +1,4 @@
+"use client"
 import Container from '@/components/ui/containers/Container/Container'
 import './Order.scss'
 import { FC } from 'react'
@@ -12,9 +13,10 @@ import OrderSender from './OrderSender/OrderSender'
 
 interface IOrder {}
 
+
 const Order: FC<IOrder> = () => {
 	const word = useTranslations('order')
-
+	
 	return (
 		<Container>
 			<div className='order'>
@@ -27,7 +29,7 @@ const Order: FC<IOrder> = () => {
 				<Container variant='block'>
 					<div className='order__delivery'>
 						<OrderDelivery />
-					</div>
+				   </div>
 				</Container>
 				<ScrollToBtn text={word('next-button')} elementId={'order-payment'} />
 				<Container variant='block'>

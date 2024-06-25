@@ -66,6 +66,7 @@ export interface IProduct {
 		product_comments?: { data: IComment[] }
 		brand?: { data: IBrand }
 		localizations?: IProductLocales
+		quantity?: number
 	}
 }
 

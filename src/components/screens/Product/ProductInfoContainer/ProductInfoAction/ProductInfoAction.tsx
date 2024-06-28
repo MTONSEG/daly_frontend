@@ -11,6 +11,7 @@ import { removeFavorite } from '@/store/favourites/favourites.slice'
 import { addComparisonProduct } from '@/store/comparison/comparison.slice'
 import { removeComparisonProduct } from '@/store/comparison/comparison.slice'
 import { FavoriteIconGreen } from '@/components/ui/icons'
+import { addProduct } from '@/store/basket/basket.slice'
 
 interface IProductInfoAction {
 	price: number
@@ -23,7 +24,7 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 
 	const isFavorite = useAppSelector((state) => state.favourites.products.includes(id))
 	const isCompare = useAppSelector((state) => state.comparison.products.includes(id))
-	console.log(isFavorite)
+	
 	const handleFavouriteClick = () => {
 		if (isFavorite) {
 			dispatch(removeFavorite(id))
@@ -38,8 +39,10 @@ const ProductInfoAction: FC<IProductInfoAction> = ({ price, id }) => {
 			dispatch(addComparisonProduct(id))
 		}
 	}
-
-	const onBuyHandler = () => {}
+	
+	const onBuyHandler = () => {
+		dispatch(addProduct({id:id}))
+	}
 
 	return (
 		<div className='action-box'>

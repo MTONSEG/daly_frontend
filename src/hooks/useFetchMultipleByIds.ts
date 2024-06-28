@@ -8,7 +8,6 @@ export const productsApi = createApi({
     endpoints: (builder) => ({
         fetchProductsByIds: builder.query<IProduct[], { ids: number[]; locale: string | string[] }>({
             query: ({ ids, locale }) => {
-                // console.log(ids)
                 const queryString = ids.map((id) => `filters[id][$in][]=${id}`).join('&')
                 return `products?${queryString}&locale=${locale}&populate=images,properties,category,brand,product_comments&populate[2]=localizations.images,localizations.properties,localizations.category,localizations.brand,localizations.product_comments`
             },

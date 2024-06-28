@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useMemo } from 'react'
 import './CatalogFilters.scss'
-import { useParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { updateStateFilters } from '@/store/filters/slice/filters.slice'
 import { IFilter } from '@/types/types'
@@ -10,9 +10,6 @@ import { useTranslations } from 'next-intl'
 import useOutsideClick from '@/hooks/useOutSideClick'
 import { fetchAllFilters } from '@/store/filters/filters.api'
 import TransparentBtn from '@/components/ui/buttons/TransparentBtn/TransparentBtn'
-import { useSearchParams } from 'next/navigation'
-
-// probable dynamic import
 import { FilterMobileIcon } from '@/components/ui/icons'
 
 const CatalogFilters: React.FC = () => {
@@ -22,9 +19,10 @@ const CatalogFilters: React.FC = () => {
 	const word = useTranslations('catalog')
 
 	const filtersFromRedux = useAppSelector((state) => state.filters.filtersData)
-	const [filters, setFilters] = useState<IFilter[]>([])
+	const filters = useMemo(() => filtersFromRedux || [], [filtersFromRedux])
+	const [localFilters, setLocalFilters] = useState<IFilter[]>([])
 	const [isInitialized, setIsInitialized] = useState<boolean>(false)
-
+	
 	const urlParams = useSearchParams()
 	const queryCategory = urlParams.get('category')
 	const queryBrand = urlParams.get('brand')
@@ -69,23 +67,23 @@ const CatalogFilters: React.FC = () => {
 			setIsActive(false)
 		}
 
-		if (filtersFromRedux.length === 0 && !isInitialized) {
+		if (filters.length === 0 && !isInitialized) {
 			dispatch(fetchAllFilters(locale))
 		}
 
-		if (filtersFromRedux.length > 0 && !isInitialized) {
-			const updatedFilters = initializeFilters([...filtersFromRedux])
-			setFilters(updatedFilters)
+		if (filters.length > 0 && !isInitialized) {
+			const updatedFilters = initializeFilters([...filters])
+			setLocalFilters(updatedFilters)
 
 			setIsInitialized(true)
 			handleUpdateFiltersFromUrl(updatedFilters)
 		}
 
-		if (filtersFromRedux.length > 0 && !queryCategory && !queryBrand) {
-			setFilters(filtersFromRedux)
+		if (filters.length > 0 && !queryCategory && !queryBrand) {
+			setLocalFilters(filters)
 		}
 	}, [
-		filtersFromRedux,
+		filters,
 		isInitialized,
 		queryCategory,
 		queryBrand,
@@ -96,7 +94,7 @@ const CatalogFilters: React.FC = () => {
 	])
 
 	const updateFilter = useCallback((updatedFilter: IFilter) => {
-		setFilters((prevFilters) => {
+		setLocalFilters((prevFilters) => {
 			const index = prevFilters.findIndex((filter) => filter.id === updatedFilter.id)
 			if (index !== -1) {
 				const updatedFilters = [...prevFilters]
@@ -116,7 +114,7 @@ const CatalogFilters: React.FC = () => {
 	}, [isActive])
 
 	const handleUpdateFilters = () => {
-		dispatch(updateStateFilters(filters))
+		dispatch(updateStateFilters(localFilters))
 		setIsActive(false)
 	}
 
@@ -138,8 +136,8 @@ const CatalogFilters: React.FC = () => {
 				</section>
 			)}
 			<section className={`catalog-filters ${isActive ? 'active' : ''}`} ref={ref}>
-				{filters.length > 0
-					? filters.map((filter, index) => (
+				{localFilters.length > 0
+					? localFilters.map((filter, index) => (
 							<FilterDropdown filter={filter} updateFilter={updateFilter} key={index} />
 					))
 					: Array.from({ length: 11 }).map((_, index) => (

@@ -21,6 +21,7 @@ interface IProductCardProps {
 
 const ProductCard: React.FC<IProductCardProps> = ({ product, variant, isCompared, locale, handleLoader }) => {
 	function getDisplayProduct(product: IProduct | undefined, locale: string[] | string) {
+		
 		if (locale === product?.attributes?.locale) {
 			return product
 		}

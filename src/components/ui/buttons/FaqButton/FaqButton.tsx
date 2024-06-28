@@ -10,9 +10,12 @@ import { useAppSelector } from '@/hooks/useReduxHooks'
 import { setPopupSupport } from '@/store/popups/supportPopup.slice'
 import { setOverlaySupport } from '@/store/popups/supportPopup.slice'
 import { setSuccessForm } from '@/store/popups/supportPopup.slice'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useMatchMedia } from '@/hooks/use-match-media'
 
 const FaqButton = () => {
+	const [stateOverlay, setStateOverlay] = useState<boolean>(false)
+	const screenWidth = useMatchMedia()
 	const dispatch = useAppDispatch()
 	const popupRef = useRef<HTMLDivElement>(null)
 
@@ -24,11 +27,13 @@ const FaqButton = () => {
 	const closePopup = () => {
 		dispatch(setPopupSupport(false))
 		dispatch(setOverlaySupport(false))
+		setStateOverlay(false)
 	}
 
 	const closeOverlay = () => {
 		dispatch(setOverlaySupport(false))
 		dispatch(setSuccessForm(false))
+		setStateOverlay(false)
 	}
 	const popupFormState = useAppSelector((state) => state.popupSupport.popupForm)
 	const popupOverlayState = useAppSelector((state) => state.popupSupport.overlay)
@@ -41,14 +46,17 @@ const FaqButton = () => {
 	}, [successFormState,dispatch])
 
 	useEffect(() => {
-		if (popupFormState && popupRef.current) {
-			popupRef.current.scrollIntoView({ behavior: 'smooth' })
+		const bodyClassList = document.body.classList
+		if (!stateOverlay && screenWidth.isDesktop) {
+			bodyClassList.remove('popup-is-active')
+		} else if (screenWidth.isDesktop) {
+			bodyClassList.add('popup-is-active')
 		}
-	}, [popupFormState])
+	}, [stateOverlay,screenWidth])
 
 	return (
 		<>
-			<div className='support-button'>
+			<div className='support-button' onClick={() => setStateOverlay(true)}>
 				<Image
 					src={Faq}
 					fill
@@ -59,7 +67,7 @@ const FaqButton = () => {
 				/>
 			</div>
 			{popupFormState && <PopupSuport closePopup={closePopup} ref={popupRef} />}
-			{popupOverlayState && <div className='overlay'></div>}
+			{popupOverlayState && <div className='support-button__overlay'></div>}
 			{successFormState && <PopupSuccess closeOverlay={closeOverlay} />}
 		</>
 	)

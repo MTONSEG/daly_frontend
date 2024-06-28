@@ -4,7 +4,6 @@ import { FC} from 'react'
 import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { useParams } from 'next/navigation'
-//import { IProduct } from '@/types/types'
 import { GreyCross } from '@/components/ui/icons'
 import { Link } from '@/navigation'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
@@ -23,9 +22,12 @@ const OrderProductsList: FC = () => {
 	//const [products, setProducts] = useState<IExtendedProduct[]>([])
 	const chosenProducts = useAppSelector((state) => state.basket.products)
 	//const productsData = useAppSelector((state) => state.order.order.productsData)
-	const productPlainIds = chosenProducts.map((productId) => {
-		return productId.id
-	})
+	const orderId = useAppSelector((state) => state.order.order)
+	const chosenProductIds = chosenProducts.map((product) => product.id)
+	const orderProductIds = (orderId.productsSets || []).map((product) => product.id)
+
+	// Объединение и удаление дублирующихся id
+	const productPlainIds = Array.from(new Set([...chosenProductIds, ...orderProductIds]))
 	const { data: fetchedProducts } = useFetchProductsByIdsQuery(
 		{
 			ids: productPlainIds,
@@ -35,7 +37,7 @@ const OrderProductsList: FC = () => {
 			skip: chosenProducts.length === 0
 		}
 	)
-	
+	console.log(fetchedProducts)
 	// useEffect(() => {
 	// 	// Extract product IDs and quantities from chosenProducts
 	// 	const productIds = chosenProducts.map((product: { id: number; quantity: number }) => product.id)
@@ -74,6 +76,8 @@ const OrderProductsList: FC = () => {
 		const productTotal = chosenProduct ? Number(item.attributes.price) * chosenProduct.quantity : 0
 		return totalSum + productTotal
 	}, 0)
+
+	
 		
 	return (
 		<div className='order-products-list'>

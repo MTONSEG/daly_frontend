@@ -63,7 +63,7 @@ const BasketContent: React.FC = () => {
 				{products.length > 0 ? (
 					products.map((product, index) => {
 						return (
-							<BasketRow product={product} quantity={productIds[index].quantity} key={product.id} />
+							<BasketRow product={product} quantity={productIds[index]?.quantity} key={product.id} />
 						)
 					})
 				) : productPlainIds.length === 0 ? (

@@ -12,7 +12,7 @@ export const filtersQueryBuilder = (
 	start?: number,
 	isDiscounted?: string | null
 ): string => {
-	const baseurl = `http://localhost:1337/api/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
+	const baseurl = `http://localhost:1337/api/products?locale=${locale}&populate=images,properties,category,brand,product_comments`
 
 	const filterHandlers: { [key: string]: FilterHandler } = {
 		price: (filter) =>
@@ -35,10 +35,10 @@ export const filtersQueryBuilder = (
 				.join('&')
 	}
 
-	const filterQueries = filters.map((filter) => {
+	const filterQueries = filters?.map((filter) => {
 		const handler = filterHandlers[filter.attributes.name] || filterHandlers.default
 		return handler(filter)
-	})
+	}) || []
 
 	// remove the empty strings
 	const validFilterQueries = filterQueries.filter((query) => query !== '')

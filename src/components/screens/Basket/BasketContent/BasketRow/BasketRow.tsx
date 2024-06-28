@@ -15,7 +15,6 @@ interface IBasketRowProps {
 }
 
 const BasketRow: React.FC<IBasketRowProps> = ({ product, quantity }) => {
-	console.log('🚀 ~ product:', product.id)
 	const word = useTranslations('basket')
 	const [isDeleting, setIsDeleting] = useState<boolean>(false)
 	const [counter, setCounter] = useState<number>(5)

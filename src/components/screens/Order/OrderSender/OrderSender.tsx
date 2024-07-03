@@ -1,11 +1,10 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 'use client'
 import { useTranslations } from 'next-intl'
 
 import Button from '@/components/ui/buttons/Button/Button'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { createOrder } from '@/store/api/order.api'
-import { IOrderData } from '@/store/order/order.slice'
+import { IOrderData, resetStatus } from '@/store/order/order.slice'
 import { useState } from 'react'
 import StatusPopup from '@/components/ui/forms/StatusPopup/StatusPopup'
 import { useParams, useRouter } from 'next/navigation'
@@ -40,8 +39,8 @@ const OrderSender = () => {
 	const transformOrderData = (orderData: IOrderData): StrapiOrder | null => {
 		const { order } = orderData
 		if (
-			Object.values(order).some((value) => value === undefined) ||
-			order.productsSets === undefined
+			Object.values(order).some((value) => value === undefined) 
+
 		) {
 			return null
 		}
@@ -50,8 +49,7 @@ const OrderSender = () => {
 			product: [set.id],
 			quantity: set.quantity
 		}))
-
-		const transformedOrder: StrapiOrder = {
+			const transformedOrder: StrapiOrder = {
 			name: order.name,
 			surn: order.surname,
 			email: order.email,
@@ -64,14 +62,13 @@ const OrderSender = () => {
 			address: order.deliveryAddress,
 			products: products || [] // Assign the products array, default to empty array if products is undefined
 		}
-
 		return transformedOrder
 	}
-
+	
 	const handleCreateOrder = async () => {
 		setOrderStatus('waiting')
 		const transformedOrder = transformOrderData(order)
-		if (!transformedOrder) {
+			if (!transformedOrder) {
 			console.error('Failed to transform order data')
 			setOrderStatus('failed')
 			return
@@ -87,9 +84,18 @@ const OrderSender = () => {
 		}
 	}
 
+	// const handleStatusPopupClose = () => {
+	// 	if (orderStatus === 'success') {
+	// 		router.push(`/${locale}/catalog`)
+	// 	} else if (orderStatus === 'failed') {
+	// 		setOrderStatus('idle')
+	// 	}
+	// }
+
 	const handleStatusPopupClose = () => {
 		if (orderStatus === 'success') {
 			router.push(`/${locale}/catalog`)
+			dispatch(resetStatus()) // Сброс статуса после успешного выполнения
 		} else if (orderStatus === 'failed') {
 			setOrderStatus('idle')
 		}

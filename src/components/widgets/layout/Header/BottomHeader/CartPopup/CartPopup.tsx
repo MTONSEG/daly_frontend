@@ -14,16 +14,15 @@ import { usePathname } from 'next/navigation'
 import { IProduct } from '@/types/types'
 import { useFetchProductsByIdsQuery } from '@/hooks/useFetchMultipleByIds'
 import { useParams } from 'next/navigation'
-import Loader from '@/components/ui/loaders/Loader'
 
 export default function CartPopup() {
 	const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false)
-	const [products, setProducts] = useState<IProduct[]>([])
 	const productIds = useAppSelector((state) => state.basket.products)
+	const [products, setProducts] = useState<IProduct[]>([])
 	const productPlainIds = productIds.map((productId) => {
 		return productId.id
 	})
-
+console.log(productIds)
 	const { locale } = useParams()
 	const t = useTranslations('home')
 
@@ -31,24 +30,21 @@ export default function CartPopup() {
 		setIsActive((active) => !active)
 	}
 
-	const {
-		data: fetchedProducts,
-		isLoading
-	} = useFetchProductsByIdsQuery(
+	const { data: fetchedProducts } = useFetchProductsByIdsQuery(
 		{
 			ids: productPlainIds,
 			locale
 		},
 		{
-			skip: productPlainIds.length === 0
+			skip: productIds.length === 0
 		}
 	)
-
+	
 	useEffect(() => {
-		if (fetchedProducts) {
+		if (fetchedProducts && fetchedProducts.length > 0) {
 			setProducts(fetchedProducts)
 		}
-	}, [fetchedProducts])
+	}, [productIds, fetchedProducts])
 
 	const path = usePathname()
 	useEffect(() => {
@@ -59,31 +55,30 @@ export default function CartPopup() {
 		<PopupHeader variant='cart'>
 			<Button className='popup-header__btn' onClick={handleToggle}>
 				<CartIcon />
-				{products.length > 0 && <div className='busket-amount'>{products.length}</div>}
+				{productIds.length > 0 && <div className='busket-amount'>{productIds.length}</div>}
 			</Button>
 
 			<PopupHeaderContainer
 				ref={ref}
 				isActive={isActive}
-				className={`!isActive && ${"hidden"}`}
+				className={`!isActive && ${'hidden'}`}
 				hrefLink={`/${BASKET_PATH}`}
 				labelLink='В корзину'
-				isEmpty={products.length > 0 ? false : true}
+				isEmpty={productIds.length > 0 ? false : true}
 				textEmpty={t('empty-cart')}
 			>
-				{isLoading ? (
-					<Loader />
-				) : (
-					products.map((item, index) => (
-						<PopupHeaderItem
-							title={item.attributes.title}
-							price={item.attributes.price}
-							imageSrc={item.attributes.thumbnail}
-							onClick={handleToggle}
-							key={index}
-						/>
-					))
-				)}
+				<div>
+					{products.length > 0 && productIds.length > 0 &&
+						products.map((item, index) => (
+							<PopupHeaderItem
+								title={item.attributes.title}
+								price={item.attributes.price}
+								imageSrc={item.attributes.thumbnail}
+								onClick={handleToggle}
+								key={index}
+							/>
+						))}
+				</div>
 			</PopupHeaderContainer>
 		</PopupHeader>
 	)
